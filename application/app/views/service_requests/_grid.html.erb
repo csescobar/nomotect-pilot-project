@@ -1,0 +1,25 @@
+<% definition = GridEngine::Catalog.fetch("service_requests") %>
+<% scope = GridEngine::Catalog.scope_for("service_requests", user: Current.user, organization: @organization) %>
+<% result = GridEngine::ActiveRecordAdapter.new(definition).call(GridEngine::Query::Ast.new, scope: scope) %>
+
+<div
+  class="grid-page-container"
+  data-controller="ej2-grid"
+  data-ej2-grid-url-value="<%= grid_path("service_requests", format: :json, adapter: :syncfusion) %>"
+  data-ej2-grid-columns-value="<%= GridEngine::SyncfusionAdapter.new(definition).columns.to_json %>"
+  data-ej2-grid-page-size-value="25"
+  data-ej2-grid-reset-url-value="<%= grid_path("service_requests") %>"
+>
+  <div
+    class="ej2-grid-container"
+    aria-label="<%= t("service_requests.index.title", organization: @organization.name) %>"
+    id="ej2-grid-service_requests"
+  ></div>
+
+  <noscript>
+    <turbo-frame id="grid-results">
+      <p aria-live="polite"><%= t("grid_engine.results", count: result.total_count) %></p>
+      <%= GridEngine::HtmlRenderer.new(definition, result.records).call %>
+    </turbo-frame>
+  </noscript>
+</div>

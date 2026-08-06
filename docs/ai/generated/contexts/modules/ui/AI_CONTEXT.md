@@ -29,11 +29,8 @@
 
 ## Relationships
 
-- `component:Ui::Base` —DOCUMENTED_BY→ `document:Adoption::Phase-4b-grid-ux-baseline`
 - `component:Ui::Base` —DOCUMENTED_BY→ `document:Installation::Database-provisioning`
-- `component:Ui::Base` —DOCUMENTED_BY→ `document:Packaging::Container-baseline`
 - `component:Ui::Base` —DOCUMENTED_BY→ `document:Security::Security-baseline`
-- `component:Ui::Base` —DOCUMENTED_BY→ `document:Validation::Release-baseline`
 - `component:Ui::Button` —TESTED_BY→ `test:Components::Ui::ButtonComponent`
 - `component:Ui::DangerZone` —TESTED_BY→ `test:Components::Ui::DangerZoneComponent`
 - `component:Ui::Layout::ApplicationShell` —TESTED_BY→ `test:Components::Ui::Layout::ApplicationShellComponent`

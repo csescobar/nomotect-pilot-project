@@ -1,0 +1,93 @@
+"pt-BR":
+  service_requests:
+    index:
+      title: "Solicitações de serviço"
+      description: "Navegue, filtre e exporte solicitações de serviço de %{organization}."
+    new:
+      title: "Nova solicitação de serviço"
+      description: "Descreva o problema para que a equipe de suporte possa ajudar."
+    edit:
+      title: "Editar %{identifier}"
+      description: "Atualize os detalhes da solicitação."
+    show:
+      title: "%{identifier}"
+      description: "Solicitação %{identifier}"
+    created: "Solicitação de serviço criada."
+    updated: "Solicitação de serviço atualizada."
+    status_changed: "Status alterado."
+    invalid_transition: "Essa mudança de status não é permitida."
+    assigned: "Agente atribuído."
+    invalid_agent: "O agente selecionado não é membro desta organização."
+    attached: "Arquivo anexado."
+    attachment_required: "Escolha um arquivo para anexar."
+    conflict: "Esta solicitação mudou desde que você a abriu. Revise e salve novamente."
+    actions:
+      new: "Nova solicitação"
+      save: "Salvar"
+      back: "Voltar para a lista"
+      edit: "Editar"
+      assign: "Atribuir"
+      attach: "Anexar"
+      export_csv: "Exportar CSV"
+    fields:
+      title: "Título"
+      description: "Descrição"
+      category: "Categoria"
+      priority: "Prioridade"
+      status: "Status"
+      requester: "Solicitante"
+      assigned_support_agent: "Agente atribuído"
+      created_at: "Criada em"
+    categories:
+      hardware: "Hardware"
+      software: "Software"
+      network: "Rede"
+      access: "Acesso"
+      other: "Outro"
+    priorities:
+      low: "Baixa"
+      medium: "Média"
+      high: "Alta"
+      critical: "Crítica"
+    statuses:
+      open: "Aberta"
+      triaged: "Triada"
+      in_progress: "Em andamento"
+      resolved: "Resolvida"
+      closed: "Encerrada"
+    transitions:
+      title: "Alterar status"
+      to_triaged: "Marcar como triada"
+      to_in_progress: "Iniciar trabalho"
+      to_resolved: "Marcar como resolvida"
+      to_closed: "Encerrar"
+      to_open: "Reabrir"
+    assign:
+      title: "Atribuir a um agente"
+      none: "Sem atribuição"
+    attachments:
+      title: "Anexos"
+      upload_title: "Anexar um arquivo"
+      file: "Arquivo"
+      empty:
+        title: "Sem anexos"
+        description: "Esta solicitação ainda não possui arquivos anexados."
+    audit:
+      title: "Atividade"
+      events:
+        service_request_created: "Solicitação criada"
+        service_request_updated: "Solicitação atualizada"
+        service_request_status_changed: "Status alterado"
+        service_request_attached: "Arquivo anexado"
+      empty:
+        title: "Nenhuma atividade ainda"
+        description: "Eventos aparecerão aqui conforme a solicitação é trabalhada."
+  activerecord:
+    errors:
+      models:
+        service_request:
+          attributes:
+            assigned_support_agent:
+              not_same_tenant: "deve pertencer à mesma organização"
+            status:
+              transition_not_allowed: "não é uma transição de status válida"

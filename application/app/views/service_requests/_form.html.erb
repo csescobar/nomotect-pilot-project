@@ -1,0 +1,9 @@
+<%= form_with model: [ organization, service_request ], builder: Ui::FormBuilder, html: { class: "showcase__form" } do |form| %>
+  <%= form.ui_error_summary %>
+  <%= form.hidden_field :lock_version %>
+  <%= form.ui_text_field :title, label: t("service_requests.fields.title"), required: true %>
+  <%= form.ui_text_area :description, label: t("service_requests.fields.description"), rows: 6 %>
+  <%= form.ui_select :category, ServiceRequest::CATEGORIES.map { |category| [ t("service_requests.categories.#{category}"), category ] }, label: t("service_requests.fields.category") %>
+  <%= form.ui_select :priority, ServiceRequest::PRIORITIES.map { |priority| [ t("service_requests.priorities.#{priority}"), priority ] }, label: t("service_requests.fields.priority") %>
+  <%= form.ui_submit t("service_requests.actions.save") %>
+<% end %>

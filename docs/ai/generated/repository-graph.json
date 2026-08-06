@@ -522,26 +522,6 @@
       }
     },
     {
-      "id": "document:Adoption::Clean-starter-onboarding",
-      "type": "document",
-      "name": "Adoption::Clean-starter-onboarding",
-      "path": "docs/adoption/clean-starter-onboarding.md",
-      "properties": {
-        "sha256": "a5c0f00c8da42d7d6bed53fb3f14471165dd25ae52698ef3284f8fe7144580e2",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Adoption::Phase-4b-grid-ux-baseline",
-      "type": "document",
-      "name": "Adoption::Phase-4b-grid-ux-baseline",
-      "path": "docs/adoption/phase-4b-grid-ux-baseline.md",
-      "properties": {
-        "sha256": "ba6686b4b02831d43ce1513454361770b835090bb1843304eb7e41fa2adb916d",
-        "source": "platform"
-      }
-    },
-    {
       "id": "document:Ai::Ai-first-roadmap",
       "type": "document",
       "name": "Ai::Ai-first-roadmap",
@@ -862,186 +842,6 @@
       }
     },
     {
-      "id": "document:Certifications::Epic-9",
-      "type": "document",
-      "name": "Certifications::Epic-9",
-      "path": "docs/certifications/epic-9.md",
-      "properties": {
-        "sha256": "b93aeacdd9dd15f01770a5054ab6fdaff7ce64bfa7a57e20e651293c44bc5ab6",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Commercial-readiness::Certification",
-      "type": "document",
-      "name": "Commercial-readiness::Certification",
-      "path": "docs/commercial-readiness/certification.md",
-      "properties": {
-        "sha256": "1615b56f9995c2d7004a8cde0c1c6d914a210863307a065930b7cdb484d03e39",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Commercial-readiness::Editions-and-entitlements",
-      "type": "document",
-      "name": "Commercial-readiness::Editions-and-entitlements",
-      "path": "docs/commercial-readiness/editions-and-entitlements.md",
-      "properties": {
-        "sha256": "285ba625a41f60cb7e739b7b9843ad210f957d99d8ac6c63a10b6d6731bbee17",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Commercial-readiness::Opt-in-telemetry",
-      "type": "document",
-      "name": "Commercial-readiness::Opt-in-telemetry",
-      "path": "docs/commercial-readiness/opt-in-telemetry.md",
-      "properties": {
-        "sha256": "004198c210b9600a7190198dcdc5c643441bc3d2500815175ec43b09ef2ebd01",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Commercial-readiness::Support-consent",
-      "type": "document",
-      "name": "Commercial-readiness::Support-consent",
-      "path": "docs/commercial-readiness/support-consent.md",
-      "properties": {
-        "sha256": "d929ac076effc211d0552260315b6fd47b8db5df9f8c5da3e3d4c9235b0b2f3a",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Commercial-readiness::Support-identifiers",
-      "type": "document",
-      "name": "Commercial-readiness::Support-identifiers",
-      "path": "docs/commercial-readiness/support-identifiers.md",
-      "properties": {
-        "sha256": "90b90733c03fc98555cf07c23927262fd6a44b2f629eab98f35474818924e114",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Decisions::0004-apache-2-license",
-      "type": "document",
-      "name": "Decisions::0004-apache-2-license",
-      "path": "docs/decisions/0004-apache-2-license.md",
-      "properties": {
-        "sha256": "b166ade01d67aed0c4c3238618e946a5a3096c45ae32e77b84af3f12778a547c",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Decisions::0005-ai-native-positioning",
-      "type": "document",
-      "name": "Decisions::0005-ai-native-positioning",
-      "path": "docs/decisions/0005-ai-native-positioning.md",
-      "properties": {
-        "sha256": "808251eed03da628b4edef6424c1cbbbc6dadd90040e711e446a4eb3941314f8",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Decisions::0006-modular-monolith",
-      "type": "document",
-      "name": "Decisions::0006-modular-monolith",
-      "path": "docs/decisions/0006-modular-monolith.md",
-      "properties": {
-        "sha256": "a4611246ba3aecda3424ff2f11ce7f7933818c5788452df0e2d8fa2b11d99702",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Decisions::0007-rails-authentication",
-      "type": "document",
-      "name": "Decisions::0007-rails-authentication",
-      "path": "docs/decisions/0007-rails-authentication.md",
-      "properties": {
-        "sha256": "a86ba76f95be7345d91c54ac0ede54a448ad1cc9c48531a336902a173a1de69f",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Decisions::0008-supported-runtime-versions",
-      "type": "document",
-      "name": "Decisions::0008-supported-runtime-versions",
-      "path": "docs/decisions/0008-supported-runtime-versions.md",
-      "properties": {
-        "sha256": "ef3cfdae0f33db79a7e77602bfcf612b19eef42dcacd2fd2d17bb367890d96d6",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Decisions::0009-javascript-strategy",
-      "type": "document",
-      "name": "Decisions::0009-javascript-strategy",
-      "path": "docs/decisions/0009-javascript-strategy.md",
-      "properties": {
-        "sha256": "c749b07127f2f2f3b3685f1b1906d5ed578cd32ade6a3d85011af7207cbbec70",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Decisions::0010-testing-strategy",
-      "type": "document",
-      "name": "Decisions::0010-testing-strategy",
-      "path": "docs/decisions/0010-testing-strategy.md",
-      "properties": {
-        "sha256": "249132969e6de428606e1ecb2631bc4a5e9ce718458de67b84cb6c245a483e12",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Decisions::0011-css-strategy",
-      "type": "document",
-      "name": "Decisions::0011-css-strategy",
-      "path": "docs/decisions/0011-css-strategy.md",
-      "properties": {
-        "sha256": "22bc4c770cbafaf9ae739857f4aa573bcd145424bcc60c6b677ad7f3bde69f40",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Decisions::0012-design-token-architecture",
-      "type": "document",
-      "name": "Decisions::0012-design-token-architecture",
-      "path": "docs/decisions/0012-design-token-architecture.md",
-      "properties": {
-        "sha256": "1958a4c4bdacaafdb066ccd1ff21c7b80741732988382c82920b5dc0a887e06c",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Decisions::0013-enterprise-extension-boundaries",
-      "type": "document",
-      "name": "Decisions::0013-enterprise-extension-boundaries",
-      "path": "docs/decisions/0013-enterprise-extension-boundaries.md",
-      "properties": {
-        "sha256": "90c7fa4bb79d6e300c0652266fc6c3a2e19d292057ffc0106cd0e3f3d2f3045a",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Decisions::0014-supported-distribution-channels",
-      "type": "document",
-      "name": "Decisions::0014-supported-distribution-channels",
-      "path": "docs/decisions/0014-supported-distribution-channels.md",
-      "properties": {
-        "sha256": "1d1f5761be455062424b91042d7b5ff5a7db78039959c03ca978b99fa61d59b7",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Decisions::0015-syncfusion-ej2-ui-library",
-      "type": "document",
-      "name": "Decisions::0015-syncfusion-ej2-ui-library",
-      "path": "docs/decisions/0015-syncfusion-ej2-ui-library.md",
-      "properties": {
-        "sha256": "da81a2942f836b60e3ec0b52c523536227545c354f50b6fe3942b8f7c65e41c9",
-        "source": "platform"
-      }
-    },
-    {
       "id": "document:Deployment::Container-registry",
       "type": "document",
       "name": "Deployment::Container-registry",
@@ -1158,106 +958,6 @@
       "path": "docs/design-system/token-integrity.md",
       "properties": {
         "sha256": "ad8fc4982bcd1100aecb7e22b7881cfd120959610d2840dd4b8713fd2d7cd353",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Distribution::Application-starter",
-      "type": "document",
-      "name": "Distribution::Application-starter",
-      "path": "docs/distribution/application-starter.md",
-      "properties": {
-        "sha256": "195891fdbc0a8db2f8f75d0de0a1317cb244f05f3cf45253162cb7ec96eb5fe5",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Distribution::Architecture",
-      "type": "document",
-      "name": "Distribution::Architecture",
-      "path": "docs/distribution/architecture.md",
-      "properties": {
-        "sha256": "2179850058cc5f455936f4efd0f709f379712ababe5a007fa2e465ad10867ba2",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Distribution::Channel-policy",
-      "type": "document",
-      "name": "Distribution::Channel-policy",
-      "path": "docs/distribution/channel-policy.md",
-      "properties": {
-        "sha256": "35186804c453dfcee73ed1fcca17054792a6e52d4ee0ea176f9f94b93a6ab623",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Distribution::Failure-codes",
-      "type": "document",
-      "name": "Distribution::Failure-codes",
-      "path": "docs/distribution/failure-codes.md",
-      "properties": {
-        "sha256": "bc2d528d8fa9e6b88e7c76cf9c9395dd6870e816d68c5332a74e47d30dbdfcd2",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Distribution::Ghcr",
-      "type": "document",
-      "name": "Distribution::Ghcr",
-      "path": "docs/distribution/ghcr.md",
-      "properties": {
-        "sha256": "ff36811e9b99a81024775504a49d139a0e28a75c1355a1f53c6aec1073e1e0ce",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Distribution::Github-releases",
-      "type": "document",
-      "name": "Distribution::Github-releases",
-      "path": "docs/distribution/github-releases.md",
-      "properties": {
-        "sha256": "f3607ba85ae664ecfbc8529644a8f06928f5e1ad206471b626c8e50c317ec196",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Distribution::Inspection",
-      "type": "document",
-      "name": "Distribution::Inspection",
-      "path": "docs/distribution/inspection.md",
-      "properties": {
-        "sha256": "0eddf91f958d8cedbf5fbc07adf362d1bdaff4e0329aea478e4be63fe946a17d",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Distribution::Operations",
-      "type": "document",
-      "name": "Distribution::Operations",
-      "path": "docs/distribution/operations.md",
-      "properties": {
-        "sha256": "c8d18496a823089c097d3ba41f9611a39779a2745c924e694272f34b3e570c52",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Distribution::Verification",
-      "type": "document",
-      "name": "Distribution::Verification",
-      "path": "docs/distribution/verification.md",
-      "properties": {
-        "sha256": "d09bbf13160fc0bb1dee6a099a2850babb6a4a244e87c40bba876d921572ec15",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Examples::Readme",
-      "type": "document",
-      "name": "Examples::Readme",
-      "path": "docs/examples/README.md",
-      "properties": {
-        "sha256": "d7293dd67cc61317ad7514febf60b070d6272a45377b9d74e05d9bde67949272",
         "source": "platform"
       }
     },
@@ -1742,126 +1442,6 @@
       }
     },
     {
-      "id": "document:Packaging::Container-baseline",
-      "type": "document",
-      "name": "Packaging::Container-baseline",
-      "path": "docs/packaging/container-baseline.md",
-      "properties": {
-        "sha256": "becdd113b7da1190b005c8d8c1cc323364ec76f84a3e18ed96574c4769ad287a",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Releases::0.8.0::Migration-notes",
-      "type": "document",
-      "name": "Releases::0.8.0::Migration-notes",
-      "path": "docs/releases/0.8.0/migration-notes.md",
-      "properties": {
-        "sha256": "885e8935f871a7f5811a24ebac2ed215a65667d532237be26deb052740552f1d",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Releases::0.8.0::Release-notes",
-      "type": "document",
-      "name": "Releases::0.8.0::Release-notes",
-      "path": "docs/releases/0.8.0/release-notes.md",
-      "properties": {
-        "sha256": "26603eb102b953fd26098e373012b79b1bef3eb582af9f4ddcdb85a4c7b81fef",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Releases::0.8.0::Upgrade-notes",
-      "type": "document",
-      "name": "Releases::0.8.0::Upgrade-notes",
-      "path": "docs/releases/0.8.0/upgrade-notes.md",
-      "properties": {
-        "sha256": "1ee98754fd3848efdc687b5ceadc21757917243dcdd27a2a8aad460d81dd2321",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Releases::0.9.0::Migration-notes",
-      "type": "document",
-      "name": "Releases::0.9.0::Migration-notes",
-      "path": "docs/releases/0.9.0/migration-notes.md",
-      "properties": {
-        "sha256": "41f5b00de29b1bf81cbb7a04a40c72d8c39954b1b6a9aa6f1d56536967ce9cc8",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Releases::0.9.0::Release-notes",
-      "type": "document",
-      "name": "Releases::0.9.0::Release-notes",
-      "path": "docs/releases/0.9.0/release-notes.md",
-      "properties": {
-        "sha256": "ce3b549061665afa10bf79e459cba5529c0fa0260c62d8589db0973c274e57e8",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Releases::0.9.0::Upgrade-notes",
-      "type": "document",
-      "name": "Releases::0.9.0::Upgrade-notes",
-      "path": "docs/releases/0.9.0/upgrade-notes.md",
-      "properties": {
-        "sha256": "f0fa90a35857f69be4be35381f21500d066d91a8f92dcc1d8323235d4cfe16c3",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Releases::Architecture",
-      "type": "document",
-      "name": "Releases::Architecture",
-      "path": "docs/releases/architecture.md",
-      "properties": {
-        "sha256": "486fe5a0bf7bceb6e1c25b5b8f32620d84d13416db3e6df0180d85183ad3c3a0",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Releases::Consistency",
-      "type": "document",
-      "name": "Releases::Consistency",
-      "path": "docs/releases/consistency.md",
-      "properties": {
-        "sha256": "36a2e2eb3c817f3246164521353482703151877a26369bafb6e7753ec8eb26dd",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Releases::Generated::Migration-notes",
-      "type": "document",
-      "name": "Releases::Generated::Migration-notes",
-      "path": "docs/releases/generated/migration-notes.md",
-      "properties": {
-        "sha256": "7858a680cda42b53269f527bafc8a5aeb58071f69f5e82fc8a16fe7336c2aa6c",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Releases::Generated::Unreleased",
-      "type": "document",
-      "name": "Releases::Generated::Unreleased",
-      "path": "docs/releases/generated/unreleased.md",
-      "properties": {
-        "sha256": "3a782342ca195cade89cdc83925a3e2b4763c751659586a2a4e3c988df588e65",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Releases::Generated::Upgrade-notes",
-      "type": "document",
-      "name": "Releases::Generated::Upgrade-notes",
-      "path": "docs/releases/generated/upgrade-notes.md",
-      "properties": {
-        "sha256": "0b5c2c10ceaa59fe0e4ea1f87c51b21c2d2b16bc14753de8566d38414be32643",
-        "source": "platform"
-      }
-    },
-    {
       "id": "document:RepositoryIntelligence::Documentation-governance",
       "type": "document",
       "name": "RepositoryIntelligence::Documentation-governance",
@@ -1877,27 +1457,7 @@
       "name": "Roadmap::Adoption-validation-improvements",
       "path": "docs/roadmap/adoption-validation-improvements.md",
       "properties": {
-        "sha256": "ccfdf1fa11dd5221ac511d07dc1e84d0fdb65803a16cb015772446a927a19ccb",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Roadmap::Epic-10-plan",
-      "type": "document",
-      "name": "Roadmap::Epic-10-plan",
-      "path": "docs/roadmap/epic-10-plan.md",
-      "properties": {
-        "sha256": "03c902b9c37a5f35f3e6f72c11b898e92383ce647b008bed1aa11230013d095a",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Roadmap::Roadmap",
-      "type": "document",
-      "name": "Roadmap::Roadmap",
-      "path": "docs/roadmap/roadmap.md",
-      "properties": {
-        "sha256": "2569cdadf9985cf5232741b314930a52109c0e8803c4ccb51382e17dcb1cc5d6",
+        "sha256": "af76a572a82f1e309091900542391ec07b770ff869af09388e48d80916ae3dac",
         "source": "platform"
       }
     },
@@ -2008,106 +1568,6 @@
       "path": "docs/upgrades/recovery-and-certification.md",
       "properties": {
         "sha256": "e325947071070483ea9dc21846f8f9e95c01414afca19564e3fcdd27f3213229",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Validation::Architecture",
-      "type": "document",
-      "name": "Validation::Architecture",
-      "path": "docs/validation/architecture.md",
-      "properties": {
-        "sha256": "fdbb16235be96e4fcde879768b2656eac066b73ecd2508069889c3668a2272d0",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Validation::Findings::Bug-001-ruby-version-mismatch",
-      "type": "document",
-      "name": "Validation::Findings::Bug-001-ruby-version-mismatch",
-      "path": "docs/validation/findings/BUG-001-ruby-version-mismatch.md",
-      "properties": {
-        "sha256": "b7fdfd3c9898fd1f758c1c734cbe8207af2fd69b46754b5ad985531b392aee19",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Validation::Findings::Bug-002-bin-ci-executable-permission",
-      "type": "document",
-      "name": "Validation::Findings::Bug-002-bin-ci-executable-permission",
-      "path": "docs/validation/findings/BUG-002-bin-ci-executable-permission.md",
-      "properties": {
-        "sha256": "b0864b478c1542cbb2e54918eeb7a28888e9246ec842361a097240938547082e",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Validation::Findings::Bug-003-postgresql-prerequisite-check",
-      "type": "document",
-      "name": "Validation::Findings::Bug-003-postgresql-prerequisite-check",
-      "path": "docs/validation/findings/BUG-003-postgresql-prerequisite-check.md",
-      "properties": {
-        "sha256": "5800071895bb72d01de3e19db074da0e1757f14edcd2be52f7be17381f931dfb",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Validation::Findings::Issue-001-dx-bootstrap-frictions",
-      "type": "document",
-      "name": "Validation::Findings::Issue-001-dx-bootstrap-frictions",
-      "path": "docs/validation/findings/ISSUE-001-dx-bootstrap-frictions.md",
-      "properties": {
-        "sha256": "91d800042c2837dd0e68b70c644037535a2989e2c1f984348eb049fbf2d6b96e",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Validation::Findings::Proposal-bootstrap-frictions",
-      "type": "document",
-      "name": "Validation::Findings::Proposal-bootstrap-frictions",
-      "path": "docs/validation/findings/PROPOSAL-BOOTSTRAP-FRICTIONS.md",
-      "properties": {
-        "sha256": "afe6ec15f22c2848c715f727d99c2cb9739ef0e905f89b3322ad4f445d426ea7",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Validation::Rc-preparation",
-      "type": "document",
-      "name": "Validation::Rc-preparation",
-      "path": "docs/validation/rc-preparation.md",
-      "properties": {
-        "sha256": "45bb91f9637ba58a479edb598e97d17716220d618104c5a8aa34f9edab8dbade",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Validation::Release-baseline",
-      "type": "document",
-      "name": "Validation::Release-baseline",
-      "path": "docs/validation/release-baseline.md",
-      "properties": {
-        "sha256": "e9752569cf24f2ccb4ab553710c88c3fdfad9f4a17a0df3d9edda1804c0128f4",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Validation::Representative-application",
-      "type": "document",
-      "name": "Validation::Representative-application",
-      "path": "docs/validation/representative-application.md",
-      "properties": {
-        "sha256": "24708f19776f77e500f75ae1be17ef5ce04bec2bae56a9a6605540fa7ecccf2c",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "document:Validation::Threat-model",
-      "type": "document",
-      "name": "Validation::Threat-model",
-      "path": "docs/validation/threat-model.md",
-      "properties": {
-        "sha256": "f86fbb870ad917d2d176c5c9d891d20fe2d12665f9860c2081e4094f8b0a5794",
         "source": "platform"
       }
     },
@@ -2848,16 +2308,6 @@
       "path": "test/lib/application_registrations_test.rb",
       "properties": {
         "sha256": "b61726e80a9f2083ac5611366cdf786c0bcd4a93a922729f760c281faf597f98",
-        "source": "platform"
-      }
-    },
-    {
-      "id": "test:Lib::ApplicationStarter",
-      "type": "test",
-      "name": "Lib::ApplicationStarter",
-      "path": "test/lib/application_starter_test.rb",
-      "properties": {
-        "sha256": "3bf8205e2db1f47c05bc29f6da2aa73732ddef0ca7a424fc420ee3ab4a5e8eac",
         "source": "platform"
       }
     },
@@ -3865,18 +3315,6 @@
     },
     {
       "from": "component:Application",
-      "to": "document:Distribution::Application-starter",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "component:Application",
-      "to": "document:Validation::Representative-application",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "component:Application",
       "to": "test:Components::Ui::Layout::ApplicationShellComponent",
       "type": "TESTED_BY",
       "properties": {}
@@ -3896,12 +3334,6 @@
     {
       "from": "component:Application",
       "to": "test:Lib::ApplicationRegistrations",
-      "type": "TESTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "component:Application",
-      "to": "test:Lib::ApplicationStarter",
       "type": "TESTED_BY",
       "properties": {}
     },
@@ -3961,31 +3393,13 @@
     },
     {
       "from": "component:Ui::Base",
-      "to": "document:Adoption::Phase-4b-grid-ux-baseline",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "component:Ui::Base",
       "to": "document:Installation::Database-provisioning",
       "type": "DOCUMENTED_BY",
       "properties": {}
     },
     {
       "from": "component:Ui::Base",
-      "to": "document:Packaging::Container-baseline",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "component:Ui::Base",
       "to": "document:Security::Security-baseline",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "component:Ui::Base",
-      "to": "document:Validation::Release-baseline",
       "type": "DOCUMENTED_BY",
       "properties": {}
     },
@@ -4057,18 +3471,6 @@
     },
     {
       "from": "controller:Application",
-      "to": "document:Distribution::Application-starter",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "controller:Application",
-      "to": "document:Validation::Representative-application",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "controller:Application",
       "to": "test:Components::Ui::Layout::ApplicationShellComponent",
       "type": "TESTED_BY",
       "properties": {}
@@ -4088,12 +3490,6 @@
     {
       "from": "controller:Application",
       "to": "test:Lib::ApplicationRegistrations",
-      "type": "TESTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "controller:Application",
-      "to": "test:Lib::ApplicationStarter",
       "type": "TESTED_BY",
       "properties": {}
     },
@@ -4213,31 +3609,13 @@
     },
     {
       "from": "controller:Installation::Base",
-      "to": "document:Adoption::Phase-4b-grid-ux-baseline",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "controller:Installation::Base",
       "to": "document:Installation::Database-provisioning",
       "type": "DOCUMENTED_BY",
       "properties": {}
     },
     {
       "from": "controller:Installation::Base",
-      "to": "document:Packaging::Container-baseline",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "controller:Installation::Base",
       "to": "document:Security::Security-baseline",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "controller:Installation::Base",
-      "to": "document:Validation::Release-baseline",
       "type": "DOCUMENTED_BY",
       "properties": {}
     },
@@ -4308,20 +3686,8 @@
       "properties": {}
     },
     {
-      "from": "document:Ai::Commands::Readme",
-      "to": "document:Examples::Readme",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
       "from": "document:Ai::Readme",
       "to": "document:Ai::Commands::Readme",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Ai::Readme",
-      "to": "document:Examples::Readme",
       "type": "DOCUMENTED_BY",
       "properties": {}
     },
@@ -4329,168 +3695,6 @@
       "from": "document:Architecture::Application-layer",
       "to": "document:Architecture::Decisions::0005-use-application-layer-boundary",
       "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Commercial-readiness::Certification",
-      "to": "document:Extensions::Certification",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Commercial-readiness::Certification",
-      "to": "document:Modules::EnterpriseServices::Tenant-safety-certification",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Commercial-readiness::Certification",
-      "to": "document:Operations::Resilience-certification",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Commercial-readiness::Certification",
-      "to": "document:Upgrades::Recovery-and-certification",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Commercial-readiness::Certification",
-      "to": "test:Integration::CommercialReadinessCertification",
-      "type": "TESTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Commercial-readiness::Certification",
-      "to": "test:Integration::DistributionCertification",
-      "type": "TESTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Commercial-readiness::Certification",
-      "to": "test:Integration::ExtensionFrameworkCertification",
-      "type": "TESTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Commercial-readiness::Certification",
-      "to": "test:Integration::OperationalExamplesCertification",
-      "type": "TESTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Commercial-readiness::Certification",
-      "to": "test:Integration::OperationalHealthCertification",
-      "type": "TESTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Commercial-readiness::Certification",
-      "to": "test:Integration::OperationalRestoreCertification",
-      "type": "TESTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Commercial-readiness::Certification",
-      "to": "test:Integration::OperatorGuidesCertification",
-      "type": "TESTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Commercial-readiness::Certification",
-      "to": "test:Integration::ReleaseFrameworkCertification",
-      "type": "TESTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Commercial-readiness::Certification",
-      "to": "test:Integration::RepositoryIntelligenceCertification",
-      "type": "TESTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Commercial-readiness::Certification",
-      "to": "test:Integration::ResilienceCertification",
-      "type": "TESTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Commercial-readiness::Certification",
-      "to": "test:Integration::SupportBundleCertification",
-      "type": "TESTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Commercial-readiness::Certification",
-      "to": "test:Integration::UpgradeFrameworkCertification",
-      "type": "TESTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Commercial-readiness::Certification",
-      "to": "test:Lib::Epic9Certification",
-      "type": "TESTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Commercial-readiness::Certification",
-      "to": "test:Services::ApplicationLayer::Certification",
-      "type": "TESTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Commercial-readiness::Certification",
-      "to": "test:Services::Epic10::AccessibilityCertification",
-      "type": "TESTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Commercial-readiness::Certification",
-      "to": "test:Services::Epic10::AiReadinessCertification",
-      "type": "TESTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Commercial-readiness::Certification",
-      "to": "test:Services::Epic10::FunctionalFrameworkCertification",
-      "type": "TESTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Commercial-readiness::Certification",
-      "to": "test:Services::Epic10::OperationalResilienceCertification",
-      "type": "TESTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Commercial-readiness::Certification",
-      "to": "test:Services::Epic10::PerformanceCompatibilityCertification",
-      "type": "TESTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Commercial-readiness::Certification",
-      "to": "test:Services::Epic10::ProductionDeploymentCertification",
-      "type": "TESTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Commercial-readiness::Certification",
-      "to": "test:Services::Epic10::RcUpgradeCertification",
-      "type": "TESTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Commercial-readiness::Certification",
-      "to": "test:Services::Epic10::RepresentativeApplicationCertification",
-      "type": "TESTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Commercial-readiness::Certification",
-      "to": "test:Services::Epic10::SecurityPrivacyIsolationCertification",
-      "type": "TESTED_BY",
       "properties": {}
     },
     {
@@ -4536,108 +3740,6 @@
       "properties": {}
     },
     {
-      "from": "document:Distribution::Architecture",
-      "to": "document:Extensions::Architecture",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Distribution::Architecture",
-      "to": "document:Grid::Architecture",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Distribution::Architecture",
-      "to": "document:Installation::Architecture",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Distribution::Architecture",
-      "to": "document:Operations::Architecture",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Distribution::Architecture",
-      "to": "document:Releases::Architecture",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Distribution::Architecture",
-      "to": "document:Upgrades::Architecture",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Distribution::Architecture",
-      "to": "document:Validation::Architecture",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Distribution::Ghcr",
-      "to": "test:Services::Distributions::GhcrPromotionPlan",
-      "type": "TESTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Distribution::Inspection",
-      "to": "document:Extensions::Inspection",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Distribution::Inspection",
-      "to": "document:Upgrades::Inspection-and-preflight",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Distribution::Operations",
-      "to": "document:Extensions::Operations",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Distribution::Operations",
-      "to": "document:Operations::Architecture",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Distribution::Operations",
-      "to": "document:Operations::Disaster-recovery",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Distribution::Operations",
-      "to": "document:Operations::Resilience-certification",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Distribution::Operations",
-      "to": "document:Security::Security-operations",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Distribution::Operations",
-      "to": "test:Operations::CustomersOperations",
-      "type": "TESTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Distribution::Verification",
-      "to": "document:Upgrades::Post-upgrade-verification",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
       "from": "document:Extensions::Architecture",
       "to": "document:Grid::Architecture",
       "type": "DOCUMENTED_BY",
@@ -4657,19 +3759,7 @@
     },
     {
       "from": "document:Extensions::Architecture",
-      "to": "document:Releases::Architecture",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Extensions::Architecture",
       "to": "document:Upgrades::Architecture",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Extensions::Architecture",
-      "to": "document:Validation::Architecture",
       "type": "DOCUMENTED_BY",
       "properties": {}
     },
@@ -4879,19 +3969,7 @@
     },
     {
       "from": "document:Grid::Architecture",
-      "to": "document:Releases::Architecture",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Grid::Architecture",
       "to": "document:Upgrades::Architecture",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Grid::Architecture",
-      "to": "document:Validation::Architecture",
       "type": "DOCUMENTED_BY",
       "properties": {}
     },
@@ -4903,109 +3981,13 @@
     },
     {
       "from": "document:Installation::Architecture",
-      "to": "document:Releases::Architecture",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Installation::Architecture",
-      "to": "document:Upgrades::Architecture",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Installation::Architecture",
-      "to": "document:Validation::Architecture",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Operations::Architecture",
-      "to": "document:Releases::Architecture",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Operations::Architecture",
       "to": "document:Upgrades::Architecture",
       "type": "DOCUMENTED_BY",
       "properties": {}
     },
     {
       "from": "document:Operations::Architecture",
-      "to": "document:Validation::Architecture",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Releases::0.8.0::Migration-notes",
-      "to": "document:Releases::0.9.0::Migration-notes",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Releases::0.8.0::Migration-notes",
-      "to": "document:Releases::Generated::Migration-notes",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Releases::0.8.0::Release-notes",
-      "to": "document:Releases::0.9.0::Release-notes",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Releases::0.8.0::Upgrade-notes",
-      "to": "document:Releases::0.9.0::Upgrade-notes",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Releases::0.8.0::Upgrade-notes",
-      "to": "document:Releases::Generated::Upgrade-notes",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Releases::0.9.0::Migration-notes",
-      "to": "document:Releases::Generated::Migration-notes",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Releases::0.9.0::Upgrade-notes",
-      "to": "document:Releases::Generated::Upgrade-notes",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Releases::Architecture",
       "to": "document:Upgrades::Architecture",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Releases::Architecture",
-      "to": "document:Validation::Architecture",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Releases::Consistency",
-      "to": "test:Services::Releases::ConsistencyValidator",
-      "type": "TESTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Security::Threat-model",
-      "to": "document:Validation::Threat-model",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "document:Upgrades::Architecture",
-      "to": "document:Validation::Architecture",
       "type": "DOCUMENTED_BY",
       "properties": {}
     },
@@ -5041,18 +4023,6 @@
     },
     {
       "from": "job:Application",
-      "to": "document:Distribution::Application-starter",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "job:Application",
-      "to": "document:Validation::Representative-application",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "job:Application",
       "to": "test:Components::Ui::Layout::ApplicationShellComponent",
       "type": "TESTED_BY",
       "properties": {}
@@ -5072,12 +4042,6 @@
     {
       "from": "job:Application",
       "to": "test:Lib::ApplicationRegistrations",
-      "type": "TESTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "job:Application",
-      "to": "test:Lib::ApplicationStarter",
       "type": "TESTED_BY",
       "properties": {}
     },
@@ -5233,18 +4197,6 @@
     },
     {
       "from": "policy:Application",
-      "to": "document:Distribution::Application-starter",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "policy:Application",
-      "to": "document:Validation::Representative-application",
-      "type": "DOCUMENTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "policy:Application",
       "to": "test:Components::Ui::Layout::ApplicationShellComponent",
       "type": "TESTED_BY",
       "properties": {}
@@ -5264,12 +4216,6 @@
     {
       "from": "policy:Application",
       "to": "test:Lib::ApplicationRegistrations",
-      "type": "TESTED_BY",
-      "properties": {}
-    },
-    {
-      "from": "policy:Application",
-      "to": "test:Lib::ApplicationStarter",
       "type": "TESTED_BY",
       "properties": {}
     },
@@ -5520,5 +4466,5 @@
       "properties": {}
     }
   ],
-  "repository_commit": "c04584c3e56b173a3e2c3c87f92efe5bfb8ecee1"
+  "repository_commit": "9dacf29a98d9f08dffbde1588f5dc703f2c9b215"
 }
