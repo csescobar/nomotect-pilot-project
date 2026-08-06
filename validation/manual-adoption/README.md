@@ -74,20 +74,21 @@ Password for every account: `NomoTectLocal2026!`
 | Job idempotency | 4 | pass |
 | Grid registration | 5 | pass |
 | Controller | 13 | pass |
-| System (Cuprite) | 4 | blocked by environment |
+| System (Cuprite) | 4 | pass |
 
-The 4 system tests are blocked by a pre-existing environment gap: the licensed
-Syncfusion EJ2 trial assets are not committed and `bin/extract_syncfusion_assets`
-requires the trial zip. The identical `Ferrum::JavaScriptError` blocks the platform's
-own 8 EJ2 showcase system tests in the baseline. The system tests exercise the full
-requester-creates → admin-transitions → admin-assigns flow and will run once the
-assets are present.
+All 51 tests pass. The system tests exercise the full
+requester-creates → admin-transitions → admin-assigns flow and the requester
+scoping rule in the grid. The Syncfusion EJ2 trial assets are committed under
+`vendor/` (extracted via `bin/extract_syncfusion_assets`); extracting them also
+resolved the platform's own 8 EJ2 showcase system tests in the baseline.
 
 ## Known limitations
 
+- The Syncfusion EJ2 assets are licensed trial assets committed under `vendor/`;
+  the full licensed package is not included.
 - The SLA extension is committed with `enabled: false` because the platform's
   `application_extension_sample_test` asserts that the default configuration has no
   enabled extensions and `ApplicationLayer::Certification` rejects any enabled
   extension. The capability is proven through the documented in-memory enablement
   consumer path.
-- The platform's 6 pre-existing test failures are unrelated to this work.
+- The platform's 6 pre-existing test failures and 22 errors are unrelated to this work.

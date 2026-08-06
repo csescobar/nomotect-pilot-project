@@ -23,15 +23,15 @@
     "background_jobs_with_tenant_checks": true,
     "file_attachment_handling": true,
     "custom_extension_registration": true,
-    "real_browser_system_tests": "blocked_by_environment",
+    "real_browser_system_tests": true,
     "readiness_and_evidence_reports": true
   },
   "tests": {
     "files": 8,
     "total": 51,
-    "passing": 47,
-    "system_tests_blocked": 4,
-    "notes": "The 4 system tests are blocked by the pre-existing environment gap: the licensed Syncfusion EJ2 trial assets were never extracted into vendor/javascript/syncfusion (bin/extract_syncfusion_assets). All 4 fail with the identical Ferrum::JavaScriptError module-specifier failure that also blocks the platform's own 8 EJ2 showcase system tests in the baseline."
+    "passing": 51,
+    "system_tests_blocked": 0,
+    "notes": "All 51 tests pass. The 4 system tests were initially blocked by the missing Syncfusion EJ2 trial assets (bin/extract_syncfusion_assets); after extracting vendor/javascript/syncfusion and vendor/assets/syncfusion from the trial zip, all 4 pass. Two test bugs were also fixed: the account-menu <details> must be opened before clicking Sign out, and requester scoping is asserted against a request owned by a different user."
   },
   "baseline_comparison": {
     "baseline_runs": 482,
@@ -39,8 +39,8 @@
     "baseline_errors": 30,
     "final_runs": 533,
     "final_failures": 6,
-    "final_errors": 34,
-    "notes": "The 6 failures are pre-existing platform failures unchanged by this work. Errors rose by exactly 4, all attributable to the documented Syncfusion asset gap in system tests. 47 new functional tests pass."
+    "final_errors": 22,
+    "notes": "The 6 failures are pre-existing platform failures unchanged by this work. Extracting the Syncfusion EJ2 assets resolved 8 of the baseline's 30 errors (the platform's own EJ2 showcase system tests), bringing errors from 30 down to 22; the remaining 22 errors are pre-existing platform issues. All 51 application tests pass."
   },
   "ci_status": {
     "entrypoint": "bin/ci",
@@ -156,8 +156,8 @@
     "roles": ["administrator", "support_agent", "requester"]
   },
   "known_limitations": [
-    "System tests require the licensed Syncfusion EJ2 assets that are not committed (bin/extract_syncfusion_assets needs the trial zip).",
+    "The Syncfusion EJ2 trial assets are now committed in vendor/ (extracted via bin/extract_syncfusion_assets); they are licensed trial assets, not the full licensed package.",
     "The SLA extension is committed with enabled: false to satisfy the platform disabled-default contract; the capability is proven through the documented in-memory enablement consumer path.",
-    "The platform's own 6 baseline test failures are pre-existing and unrelated to this work."
+    "The platform's own 6 baseline test failures and 22 errors are pre-existing and unrelated to this work."
   ]
 }
