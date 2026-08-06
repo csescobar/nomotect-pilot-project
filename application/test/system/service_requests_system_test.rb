@@ -46,12 +46,25 @@ class ServiceRequestsSystemTest < ApplicationSystemTestCase
   end
 
   test "requester can only see their own requests" do
+    other_requester = User.create!(email_address: "system-other@example.com", password: "a-secure-password")
+    @organization.memberships.create!(user: other_requester, role: "requester")
+    ServiceRequest.create!(
+      organization: @organization,
+      requester: other_requester,
+      identifier: "00000002",
+      title: "Secret report",
+      description: "Should not be visible.",
+      category: "software",
+      priority: "medium"
+    )
+
     sign_in(@requester)
 
     visit organization_service_requests_path(@organization)
 
     assert_selector ".grid-page-container"
-    assert_no_text "Broken keyboard"
+    assert_text "Broken keyboard"
+    assert_no_text "Secret report"
   end
 
   test "admin sees all requests in the grid" do
@@ -87,6 +100,7 @@ class ServiceRequestsSystemTest < ApplicationSystemTestCase
   end
 
   def sign_out
+    find("summary.account-menu__summary").click
     click_button "Sign out"
     assert_text "Sign in"
   end
