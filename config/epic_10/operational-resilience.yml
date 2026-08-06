@@ -1,0 +1,36 @@
+schema_version: 1
+id: representative_operational_resilience
+scenarios:
+  - id: process_restart
+    degraded_dependency: none
+    recovery: verified
+  - id: application_replacement
+    degraded_dependency: none
+    recovery: verified
+  - id: database_unavailable
+    degraded_dependency: database
+    recovery: verified
+  - id: storage_unavailable
+    degraded_dependency: storage
+    recovery: verified
+  - id: integration_unavailable
+    degraded_dependency: integration
+    recovery: verified
+  - id: backup_restore
+    degraded_dependency: none
+    recovery: verified
+required_evidence:
+  - health_before
+  - fault_observed
+  - credential_free_backup
+  - restored_state_checksum
+  - health_after
+  - operator_guidance
+evidence:
+  deterministic: true
+  credential_free: true
+  production_data: false
+  persistent_state_verified: true
+  source_commit_required: true
+publication:
+  allowed: false

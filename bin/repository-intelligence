@@ -1,0 +1,127 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "json"
+require "open3"
+require "pathname"
+require_relative "../lib/repository_intelligence"
+require_relative "../lib/repository_intelligence/manifest_generator"
+require_relative "../lib/repository_intelligence/providers/null_provider"
+require_relative "../lib/repository_intelligence/providers/command_provider"
+require_relative "../lib/repository_intelligence/platform"
+require_relative "../lib/repository_intelligence/graph_exports"
+require_relative "../lib/repository_intelligence/graph_validator"
+require_relative "../lib/repository_intelligence/sqlite_graph_store"
+require_relative "../lib/repository_intelligence/snapshot_drift"
+require_relative "../lib/repository_intelligence/ai_artifact_generator"
+require_relative "../lib/repository_intelligence/mcp_server"
+require_relative "../lib/repository_intelligence/mcp_playbook_tools"
+require_relative "../lib/repository_intelligence/mcp_health_tools"
+
+root = File.expand_path("..", __dir__)
+commit = ENV["GITHUB_SHA"].to_s
+commit = Open3.capture2("git", "rev-parse", "HEAD", chdir: root).first.strip if commit.empty?
+command = ARGV.shift || "generate"
+manifest = RepositoryIntelligence::ManifestGenerator.new(repository_path: root, repository_commit: commit).generate
+provider = case ENV.fetch("CODE_GRAPH_PROVIDER", "null")
+           when "codebase_memory" then RepositoryIntelligence::Providers::CodebaseMemoryProvider.new
+           when "gitnexus" then RepositoryIntelligence::Providers::GitNexusProvider.new
+           else RepositoryIntelligence::Providers::NullProvider.new
+           end
+provider_result = RepositoryIntelligence::LazyProviderResult.new(
+  provider:, repository_path: root, repository_commit: commit
+)
+graph = RepositoryIntelligence::GovernanceScanner.new(repository_path: root, manifest:, provider_result:).scan
+contracts = RepositoryIntelligence::ContractRegistry.new(File.join(root, "config/ai/contracts"))
+playbooks = RepositoryIntelligence::PlaybookRegistry.new(File.join(root, "config/ai/playbooks"))
+documentation = RepositoryIntelligence::DocumentationGovernance.new(
+  repository_path: root, contracts: contracts.load,
+  catalog_path: File.join(root, "config/ai/documentation.yml")
+)
+graph_errors = RepositoryIntelligence::GraphValidator.new(graph).validate
+report = RepositoryIntelligence::ReadinessReport.new(
+  manifest:, graph:, contract_errors: contracts.validate + graph_errors + documentation.validate, playbook_errors: playbooks.validate,
+  indexed_commit: provider_result.repository_commit, current_commit: commit
+).to_h.merge(provider: provider.status)
+output = Pathname(root).join("docs/ai/generated")
+ai_output = output.join("contexts")
+graph_payload = graph.to_h.merge(repository_commit: commit)
+store = RepositoryIntelligence::SqliteGraphStore.new(path: Pathname(root).join("tmp/ai/repository-graph.sqlite3"))
+ai_artifacts = RepositoryIntelligence::AiArtifactGenerator.new(
+  repository_path: root, graph:, contracts: contracts.load, output_directory: ai_output
+)
+validation = lambda do
+  drift = RepositoryIntelligence::SnapshotDrift.new(
+    snapshot_path: output.join("repository-graph.json"), checksum_path: output.join("repository-graph.json.sha256")
+  ).validate(graph_payload)
+  report.fetch(:findings) + drift.findings + ai_artifacts.validate
+end
+RepositoryIntelligence.configure(
+  graph:, contracts: contracts.load, playbooks: playbooks.load, manifest:, readiness: report,
+  generator: ai_artifacts, validator: validation, provider_status: provider.status,
+  artifact_validator: -> { ai_artifacts.validate }, documentation_validator: -> { documentation.validate }
+)
+case command
+when "generate"
+  writer = RepositoryIntelligence::SnapshotWriter.new(output_directory: output)
+  exports = RepositoryIntelligence::GraphExports.new(graph)
+  writer.write("architecture-manifest", manifest)
+  writer.write("repository-graph", graph_payload)
+  writer.write("repository-graph-jsonld", exports.json_ld)
+  writer.write("contracts", contracts.load)
+  writer.write("readiness-report", report)
+  output.join("repository-graph.mmd").write(exports.mermaid)
+  output.join("repository-graph.dot").write(exports.dot)
+  RepositoryIntelligence.generate!
+  store.replace(graph:, repository_commit: commit, provider: provider_result.provider) if store.available?
+  abort JSON.pretty_generate(report) unless report.fetch(:status) == "ready"
+when "refresh"
+  abort "sqlite3 command is required for refresh" unless store.available?
+  changed = ARGV.empty? ? manifest.fetch(:files).map { |file| file.fetch(:path) } : ARGV
+  store.replace_sources(graph:, source_paths: changed, repository_commit: commit, provider: provider_result.provider)
+  RepositoryIntelligence.generate!
+  RepositoryIntelligence.publish(:graph_updated, changed_sources: changed.sort, repository_commit: commit)
+  puts JSON.generate(status: "refreshed", changed_sources: changed.sort, metadata: store.metadata)
+when "validate"
+  findings = RepositoryIntelligence.validate!
+  validated = report.merge(status: findings.empty? ? "ready" : "not_ready", findings:)
+  abort JSON.pretty_generate(validated) unless validated.fetch(:status) == "ready"
+  puts JSON.generate(validated)
+when "health"
+  puts JSON.pretty_generate(RepositoryIntelligence.health)
+when "readiness"
+  puts JSON.pretty_generate(RepositoryIntelligence.readiness_dashboard)
+when "validators"
+  id = ARGV.shift
+  results = id ? RepositoryIntelligence.validator_results(id) : RepositoryIntelligence.validator_results
+  puts JSON.pretty_generate(results.map(&:to_h))
+when "query"
+  operation = ARGV.shift || "statistics"
+  result = case operation
+           when "search" then RepositoryIntelligence.search(query: ARGV.shift, type: ARGV.shift)
+           when "describe" then RepositoryIntelligence.describe_module(ARGV.fetch(0))
+           when "impact" then RepositoryIntelligence.impact_analysis(ARGV.fetch(0), depth: ARGV.fetch(1, 2))
+           when "path" then RepositoryIntelligence.dependency_path(from: ARGV.fetch(0), to: ARGV.fetch(1))
+           else RepositoryIntelligence.statistics
+           end
+  puts JSON.pretty_generate(result)
+when "playbook"
+  operation = ARGV.shift || "list"
+  result = case operation
+           when "list" then RepositoryIntelligence.playbooks
+           when "validate" then RepositoryIntelligence.validate_playbook(ARGV.fetch(0))
+           when "execute"
+             inputs = ARGV[1] ? JSON.parse(ARGV[1]) : {}
+             RepositoryIntelligence.execute_playbook(ARGV.fetch(0), inputs:).to_h
+           when "status" then RepositoryIntelligence.playbook_execution(ARGV.fetch(0)).to_h
+           else abort "Usage: ... playbook [list|validate ID|execute ID [JSON]|status EXECUTION_ID]"
+           end
+  puts JSON.pretty_generate(result)
+when "mcp"
+  RepositoryIntelligence::McpServer.new(
+    intelligence: RepositoryIntelligence, playbooks: playbooks.load, provider_status: provider.status,
+    artifact_directory: output, allow_writes: ENV["MCP_ALLOW_WRITES"] == "true"
+  ).run
+else
+  abort "Usage: bin/repository-intelligence [generate|refresh|validate|health|readiness|validators|query|playbook|mcp]"
+end

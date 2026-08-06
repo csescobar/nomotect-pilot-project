@@ -1,0 +1,163 @@
+<%# ── EJ2 Forms Section ────────────────────────────────────────────────────── %>
+<div class="ej2-showcase-section">
+  <header class="ej2-showcase-section__header">
+    <h2 class="ej2-showcase-section__title"><%= t("ej2_showcase.forms.title") %></h2>
+    <p class="ej2-showcase-section__desc"><%= t("ej2_showcase.forms.description") %></p>
+  </header>
+
+  <%# ── TextBox ──────────────────────────────────────────────────────────────── %>
+  <div class="ej2-showcase-card" id="ej2-forms-textbox">
+    <div class="ej2-showcase-card__header">
+      <h3 class="ej2-showcase-card__title"><%= t("ej2_showcase.forms.text_input.title") %></h3>
+      <p class="ej2-showcase-card__desc"><%= t("ej2_showcase.forms.text_input.description") %></p>
+    </div>
+    <div class="ej2-showcase-card__demo">
+      <div class="ej2-form-group"
+           data-controller="ej2-textbox"
+           data-ej2-textbox-placeholder-value="<%= t("ej2_showcase.forms.text_input.placeholder") %>">
+        <label for="demo-textbox" class="ej2-form-group__label">
+          <%= t("ej2_showcase.forms.text_input.label") %>
+        </label>
+        <input
+          id="demo-textbox"
+          type="text"
+          aria-describedby="demo-textbox-help"
+        >
+        <p class="ej2-form-group__help" id="demo-textbox-help">
+          <%= t("ej2_showcase.forms.text_input.help") %>
+        </p>
+      </div>
+
+      <div class="ej2-form-group"
+           data-controller="ej2-textbox"
+           data-ej2-textbox-placeholder-value="<%= t("ej2_showcase.forms.text_input.placeholder") %>"
+           data-ej2-textbox-value-value="Acme Corporation"
+           data-ej2-textbox-readonly-value="true">
+        <label for="demo-textbox-readonly" class="ej2-form-group__label">
+          <%= t("ej2_showcase.forms.text_input.label") %> (Read-only)
+        </label>
+        <input
+          id="demo-textbox-readonly"
+          type="text"
+        >
+      </div>
+    </div>
+  </div>
+
+  <%# ── NumericTextBox ──────────────────────────────────────────────────────── %>
+  <div class="ej2-showcase-card" id="ej2-forms-numeric">
+    <div class="ej2-showcase-card__header">
+      <h3 class="ej2-showcase-card__title"><%= t("ej2_showcase.forms.numeric_input.title") %></h3>
+      <p class="ej2-showcase-card__desc"><%= t("ej2_showcase.forms.numeric_input.description") %></p>
+    </div>
+    <div class="ej2-showcase-card__demo">
+      <div class="ej2-form-group"
+           data-controller="ej2-numeric"
+           data-ej2-numeric-placeholder-value="<%= t("ej2_showcase.forms.numeric_input.placeholder") %>"
+           data-ej2-numeric-value-value="1"
+           data-ej2-numeric-min-value="1"
+           data-ej2-numeric-max-value="1000">
+        <label for="demo-numeric" class="ej2-form-group__label">
+          <%= t("ej2_showcase.forms.numeric_input.label") %>
+        </label>
+        <input
+          id="demo-numeric"
+          type="text"
+          aria-describedby="demo-numeric-help"
+        >
+        <p class="ej2-form-group__help" id="demo-numeric-help">
+          <%= t("ej2_showcase.forms.numeric_input.help") %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <%# ── DropDownList ────────────────────────────────────────────────────────── %>
+  <div class="ej2-showcase-card" id="ej2-forms-dropdown">
+    <div class="ej2-showcase-card__header">
+      <h3 class="ej2-showcase-card__title"><%= t("ej2_showcase.forms.dropdown.title") %></h3>
+      <p class="ej2-showcase-card__desc"><%= t("ej2_showcase.forms.dropdown.description") %></p>
+    </div>
+    <div class="ej2-showcase-card__demo">
+      <div class="ej2-form-group"
+           data-controller="ej2-dropdown"
+           data-ej2-dropdown-placeholder-value="<%= t("ej2_showcase.forms.dropdown.placeholder") %>"
+           data-ej2-dropdown-items-value="<%= [
+             { value: "active",   text: t("ej2_showcase.forms.dropdown.options.active") },
+             { value: "inactive", text: t("ej2_showcase.forms.dropdown.options.inactive") },
+             { value: "pending",  text: t("ej2_showcase.forms.dropdown.options.pending") },
+             { value: "archived", text: t("ej2_showcase.forms.dropdown.options.archived") }
+           ].to_json %>">
+        <label for="demo-dropdown" class="ej2-form-group__label">
+          <%= t("ej2_showcase.forms.dropdown.label") %>
+        </label>
+        <input
+          id="demo-dropdown"
+          type="text"
+          aria-describedby="demo-dropdown-help"
+        >
+        <p class="ej2-form-group__help" id="demo-dropdown-help">
+          <%= t("ej2_showcase.forms.dropdown.help") %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <%# ── DatePicker ──────────────────────────────────────────────────────────── %>
+  <div class="ej2-showcase-card" id="ej2-forms-datepicker">
+    <div class="ej2-showcase-card__header">
+      <h3 class="ej2-showcase-card__title"><%= t("ej2_showcase.forms.datepicker.title") %></h3>
+      <p class="ej2-showcase-card__desc"><%= t("ej2_showcase.forms.datepicker.description") %></p>
+    </div>
+    <div class="ej2-showcase-card__demo">
+      <div class="ej2-form-group"
+           data-controller="ej2-datepicker"
+           data-ej2-datepicker-placeholder-value="<%= t("ej2_showcase.forms.datepicker.placeholder") %>"
+           data-ej2-datepicker-format-value="<%= I18n.locale == :"pt-BR" ? "dd/MM/yyyy" : "MM/dd/yyyy" %>">
+        <label for="demo-datepicker" class="ej2-form-group__label">
+          <%= t("ej2_showcase.forms.datepicker.label") %>
+        </label>
+        <input
+          id="demo-datepicker"
+          type="text"
+          aria-describedby="demo-datepicker-help"
+        >
+        <p class="ej2-form-group__help" id="demo-datepicker-help">
+          <%= t("ej2_showcase.forms.datepicker.help") %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <%# ── MultiSelect ────────────────────────────────────────────────────────── %>
+  <div class="ej2-showcase-card" id="ej2-forms-multiselect">
+    <div class="ej2-showcase-card__header">
+      <h3 class="ej2-showcase-card__title"><%= t("ej2_showcase.forms.multiselect.title") %></h3>
+      <p class="ej2-showcase-card__desc"><%= t("ej2_showcase.forms.multiselect.description") %></p>
+    </div>
+    <div class="ej2-showcase-card__demo">
+      <div class="ej2-form-group"
+           data-controller="ej2-multiselect"
+           data-ej2-multiselect-placeholder-value="<%= t("ej2_showcase.forms.multiselect.placeholder") %>"
+           data-ej2-multiselect-items-value="<%= [
+             { value: "critical", text: t("ej2_showcase.forms.multiselect.options.critical") },
+             { value: "high",     text: t("ej2_showcase.forms.multiselect.options.high") },
+             { value: "medium",   text: t("ej2_showcase.forms.multiselect.options.medium") },
+             { value: "low",      text: t("ej2_showcase.forms.multiselect.options.low") },
+             { value: "review",   text: t("ej2_showcase.forms.multiselect.options.review") }
+           ].to_json %>">
+        <label for="demo-multiselect" class="ej2-form-group__label">
+          <%= t("ej2_showcase.forms.multiselect.label") %>
+        </label>
+        <input
+          id="demo-multiselect"
+          type="text"
+          aria-describedby="demo-multiselect-help"
+        >
+        <p class="ej2-form-group__help" id="demo-multiselect-help">
+          <%= t("ej2_showcase.forms.multiselect.help") %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "yaml"
+
+blueprint = YAML.safe_load_file("render.yaml", aliases: false)
+errors = []
+
+service = Array(blueprint["services"]).find { |candidate| candidate["name"] == "nomotect-platform" }
+database = Array(blueprint["databases"]).find { |candidate| candidate["name"] == "nomotect-platform-db" }
+
+errors << "web service definition is missing" unless service
+errors << "PostgreSQL definition is missing" unless database
+
+if service
+  errors << "service must use the Docker runtime" unless service["runtime"] == "docker"
+  errors << "healthCheckPath must be /health" unless service["healthCheckPath"] == "/health"
+  errors << "Render startup adapter is not configured" unless service["dockerCommand"] == "bash bin/render-start"
+  errors << "database migrations must run as a pre-deploy command" unless service["preDeployCommand"] == "bundle exec rails db:migrate"
+
+  disk = service["disk"] || {}
+  errors << "persistent disk must mount at /rails/storage" unless disk["mountPath"] == "/rails/storage"
+
+  env_vars = Array(service["envVars"]).to_h { |entry| [entry["key"], entry] }
+  database_url = env_vars["DATABASE_URL"] || {}
+  database_reference = database_url["fromDatabase"] || {}
+  errors << "DATABASE_URL must reference Render Postgres" unless database_reference == {
+    "name" => "nomotect-platform-db",
+    "property" => "connectionString"
+  }
+
+  %w[SECRET_KEY_BASE INSTALLATION_BOOTSTRAP_TOKEN].each do |name|
+    entry = env_vars[name] || {}
+    errors << "#{name} must be operator-supplied" unless entry["sync"] == false && !entry.key?("value")
+  end
+
+  expected_clear_values = {
+    "RAILS_ENV" => "production",
+    "INSTALLATION_ENABLED" => "true",
+    "RUN_DB_PREPARE" => "false",
+    "RENDER_PERSISTENCE_ROOT" => "/rails/storage"
+  }
+  expected_clear_values.each do |name, value|
+    errors << "#{name} must equal #{value}" unless env_vars.dig(name, "value") == value
+  end
+end
+
+if errors.any?
+  errors.each { |error| warn("render configuration error: #{error}") }
+  exit 1
+end
+
+puts "Render deployment contract validated"

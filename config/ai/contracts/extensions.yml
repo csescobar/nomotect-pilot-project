@@ -1,0 +1,77 @@
+id: extensions
+version: 1
+owns:
+  - community_enterprise_boundary
+  - extension_manifest
+  - extension_configuration
+  - extension_identity
+  - extension_capability
+  - extension_dependency
+  - extension_component_declaration
+  - extension_package_discovery
+  - extension_compatibility_preflight
+  - extension_dependency_order
+  - extension_inspection_report
+  - extension_registration_sdk
+  - extension_registry
+  - trusted_extension_loader
+  - extension_component_resolver
+  - extension_installed_state
+  - extension_lifecycle
+  - extension_readiness_gate
+  - extension_certification_fixture
+  - extension_certification_matrix
+  - extension_lifecycle_documentation
+  - application_extension_configuration
+  - application_extension_package
+may_use:
+  - platform_version
+  - repository_intelligence
+  - installed_platform_state
+  - upgrade_manifest
+cannot_use:
+  - proprietary_implementation_constants
+  - arbitrary_remote_download
+  - secret_persistence
+  - automatic_code_execution_before_validation
+  - runtime_installation
+  - hot_unloading
+  - compatibility_override
+  - monkey_patch_registration
+  - global_mutation_outside_registration_context
+invariants:
+  - the community core remains fully functional without extensions
+  - enterprise implementations remain in separately licensed repositories
+  - extension manifests are validated before entrypoint execution
+  - the complete enabled extension graph is compatible before any entrypoint executes
+  - inspection and preflight never require an extension entrypoint
+  - compatible load order is deterministic and dependency-first
+  - only a ready preflight plan can reach extension entrypoint execution
+  - extension registration is explicit atomic and limited to manifest declarations
+  - the registry is sealed after successful dependency-ordered loading
+  - loader failures expose stable codes and exception classes without internal messages
+  - required extension failures deny readiness and normal application traffic
+  - optional extensions are skipped only before execution and only for fully scoped findings
+  - any entrypoint failure requires process replacement before retry
+  - extension configuration contains no credentials or runtime secrets
+  - application extension packages resolve only below the fixed application extensions root
+  - component paths remain inside the extension package root
+  - component real paths cannot escape the package root through symbolic links
+  - extension upgrade observations never execute entrypoints or migrations
+  - extensions are trusted in-process code and are not security sandboxes
+  - production-like certification covers the extension-free core and adversarial extension states
+  - repeated preflight is equivalent and one loader instance executes each entrypoint at most once
+required_tests:
+  - extensions_manifest_test
+  - extensions_configuration_test
+  - extensions_catalog_test
+  - extensions_compatibility_planner_test
+  - extensions_inspector_test
+  - extensions_registry_test
+  - extensions_loader_test
+  - extensions_component_resolver_test
+  - extensions_installed_state_test
+  - extensions_lifecycle_test
+  - extension_health_controller_test
+  - extension_framework_certification_test
+  - extension_readiness_playbook_test

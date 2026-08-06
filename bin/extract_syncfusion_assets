@@ -1,0 +1,94 @@
+#!/usr/bin/env bash
+# bin/extract_syncfusion_assets
+#
+# Extracts the necessary Syncfusion EJ2 package files from the offline zip into
+# the vendor directories used by Propshaft and Importmap.
+#
+# Run once after cloning or when updating the EJ2 package version.
+#
+# Usage:
+#   bin/extract_syncfusion_assets [path/to/syncfusionejs2_trial.zip]
+#
+# The zip defaults to syncfusionejs2_trial.zip in the project root.
+#
+# Output directories (git-tracked, zip is not):
+#   vendor/javascript/syncfusion/  — ESM JS files for Importmap
+#   vendor/assets/syncfusion/      — CSS theme files for Propshaft
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(dirname "$SCRIPT_DIR")"
+ZIP="${1:-$ROOT/syncfusionejs2_trial.zip}"
+
+if [[ ! -f "$ZIP" ]]; then
+  echo "ERROR: Zip file not found at: $ZIP"
+  echo "Usage: bin/extract_syncfusion_assets [path/to/syncfusionejs2_trial.zip]"
+  exit 1
+fi
+
+echo "==> Extracting Syncfusion EJ2 assets from: $ZIP"
+echo ""
+
+PACKAGES=(
+  ej2-base
+  ej2-data
+  ej2-grids
+  ej2-inputs
+  ej2-dropdowns
+  ej2-calendars
+  ej2-buttons
+  ej2-popups
+  ej2-lists
+  ej2-navigations
+  ej2-notifications
+  ej2-excel-export
+  ej2-pdf-export
+  ej2-splitbuttons
+  ej2-file-utils
+  ej2-compression
+)
+
+JS_DIR="$ROOT/vendor/javascript/syncfusion"
+CSS_DIR="$ROOT/vendor/assets/syncfusion"
+
+mkdir -p "$JS_DIR"
+
+for PKG in "${PACKAGES[@]}"; do
+  echo "  → $PKG"
+
+  # Extract ESM JavaScript (ES2015 module format, compatible with Importmap)
+  JS_SOURCE="Packages/${PKG}/dist/es6/${PKG}.es2015.js"
+  if unzip -l "$ZIP" "$JS_SOURCE" &>/dev/null; then
+    unzip -j -o "$ZIP" "$JS_SOURCE" -d "$JS_DIR/"
+    echo "    ✓ JS:  vendor/javascript/syncfusion/${PKG}.es2015.js"
+  else
+    echo "    ⚠ JS not found in zip: $JS_SOURCE (skipping)"
+  fi
+
+  # Extract Fluent2 CSS theme (light)
+  CSS_LIGHT="Packages/${PKG}/styles/fluent2.css"
+  CSS_PKG_DIR="$CSS_DIR/${PKG}"
+  mkdir -p "$CSS_PKG_DIR"
+  if unzip -l "$ZIP" "$CSS_LIGHT" &>/dev/null; then
+    unzip -j -o "$ZIP" "$CSS_LIGHT" -d "$CSS_PKG_DIR/"
+    echo "    ✓ CSS: vendor/assets/syncfusion/${PKG}/fluent2.css"
+  else
+    echo "    ⚠ CSS not found in zip: $CSS_LIGHT (skipping)"
+  fi
+
+  # Extract Fluent2-dark CSS theme (dark mode support)
+  CSS_DARK="Packages/${PKG}/styles/fluent2-dark.css"
+  if unzip -l "$ZIP" "$CSS_DARK" &>/dev/null; then
+    unzip -j -o "$ZIP" "$CSS_DARK" -d "$CSS_PKG_DIR/"
+    echo "    ✓ CSS: vendor/assets/syncfusion/${PKG}/fluent2-dark.css"
+  fi
+done
+
+echo ""
+echo "==> Done. Files extracted to:"
+echo "    JS:  $JS_DIR"
+echo "    CSS: $CSS_DIR"
+echo ""
+echo "Next: set SYNCFUSION_LICENSE_KEY in your environment, then run:"
+echo "  bin/rails server"

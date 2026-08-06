@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+root = File.expand_path("..", __dir__)
+server = File.join(root, "bin", "repository-intelligence")
+
+abort "Repository Intelligence runtime was not found in this application workspace." unless File.file?(server)
+abort "NomoTect adoption bootstrap requires MCP_ALLOW_WRITES=false." unless ENV.fetch("MCP_ALLOW_WRITES", "false") == "false"
+
+ENV["MCP_ALLOW_WRITES"] = "false"
+ENV["CODE_GRAPH_PROVIDER"] ||= "null"
+Dir.chdir(root)
+exec RbConfig.ruby, server, "mcp"

@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+bundle exec rails test \
+  test/integration/application_layer_bootstrap_test.rb \
+  test/lib/application_registrations_test.rb \
+  test/integration/application_extension_sample_test.rb \
+  test/services/application_layer/certification_test.rb
+
+source_commit="${GITHUB_SHA:-$(git rev-parse HEAD)}"
+baseline_commit="${NOMOTECT_APPLICATION_BASELINE_SHA:-$(git rev-parse "${source_commit}^")}"
+report_path="tmp/ci/application-layer-certification.json"
+mkdir -p "$(dirname "${report_path}")"
+
+bundle exec rails runner - "${source_commit}" "${baseline_commit}" > "${report_path}" <<'RUBY'
+require "json"
+
+report = ApplicationLayer::Certification.new(
+  source_commit: ARGV.fetch(0),
+  baseline_commit: ARGV.fetch(1)
+).call
+puts JSON.pretty_generate(report)
+RUBY
+
+grep -q '"source_commit"' "${report_path}"
+grep -q '"protected_core_modified"' "${report_path}"
+grep -q 'id: application_layer' config/ai/contracts/application_layer.yml
+grep -q 'Completed' docs/roadmap/adoption-validation-improvements.md
+grep -q 'Phase 3 certification' docs/architecture/application-layer.md
+
+printf 'Application layer Phase 3 contracts certified: %s\n' "${report_path}"

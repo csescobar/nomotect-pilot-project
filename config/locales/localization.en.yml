@@ -1,0 +1,36 @@
+en:
+  localization:
+    label: "Language"
+    apply: "Apply"
+    updated: "Language changed to %{locale_name}."
+    unsupported: "That language is not supported."
+  date:
+    formats:
+      short: "%m/%d/%Y"
+      long: "%B %-d, %Y"
+  time:
+    formats:
+      short: "%m/%d/%Y %H:%M"
+      long: "%B %-d, %Y at %H:%M %Z"
+  number:
+    format:
+      separator: "."
+      delimiter: ","
+    precision:
+      format:
+        separator: "."
+        delimiter: ","
+    currency:
+      format:
+        unit: "$"
+        format: "%u%n"
+        separator: "."
+        delimiter: ","
+        precision: 2
+      units:
+        usd: "$"
+        brl: "R$"
+    percentage:
+      format:
+        delimiter: ","
+        separator: "."

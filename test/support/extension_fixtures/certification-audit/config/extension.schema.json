@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/extensions/certification-audit/configuration.schema.json",
+  "title": "Certification audit extension configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "retention_days": {
+      "type": "integer",
+      "minimum": 1
+    }
+  }
+}

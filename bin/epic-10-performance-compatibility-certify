@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "json"
+require_relative "../config/environment"
+
+begin
+  commit = ARGV.fetch(0) { abort "Usage: bin/epic-10-performance-compatibility-certify SOURCE_COMMIT" }
+  puts JSON.pretty_generate(Epic10::PerformanceCompatibilityCertification.new(source_commit: commit).call)
+rescue Epic10::PerformanceCompatibilityCertification::InvalidCertification => error
+  warn error.message
+  exit 1
+end

@@ -1,0 +1,41 @@
+{
+  "name": "NomoTect Platform",
+  "dockerComposeFile": [
+    "../compose.yaml",
+    "compose.devcontainer.yaml"
+  ],
+  "service": "web",
+  "workspaceFolder": "/rails",
+  "shutdownAction": "stopCompose",
+  "overrideCommand": true,
+  "remoteUser": "vscode",
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Rails application",
+      "onAutoForward": "notify"
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+  "postStartCommand": "bash .devcontainer/post-start.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Shopify.ruby-lsp",
+        "eamodio.gitlens",
+        "ms-azuretools.vscode-docker"
+      ],
+      "settings": {
+        "rubyLsp.rubyVersionManager": "none",
+        "files.insertFinalNewline": true,
+        "editor.formatOnSave": true
+      }
+    },
+    "codespaces": {
+      "openFiles": [
+        "README.md",
+        "docs/installation/container-packaging.md"
+      ]
+    }
+  }
+}

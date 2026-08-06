@@ -1,0 +1,20 @@
+<% content_for :title, t("preferences.title") %>
+
+<%= render Ui::Layout::PageHeaderComponent.new(
+  title: t("preferences.title"),
+  description: t("preferences.description")
+) %>
+
+<div class="preferences-layout">
+  <section class="showcase__section preferences-card" aria-labelledby="appearance-preferences-heading">
+    <h2 id="appearance-preferences-heading"><%= t("preferences.appearance.title") %></h2>
+    <p class="showcase__section-desc"><%= t("preferences.appearance.description") %></p>
+    <%= render Ui::ThemeSwitcherComponent.new %>
+  </section>
+
+  <section class="showcase__section preferences-card" aria-labelledby="regional-preferences-heading">
+    <h2 id="regional-preferences-heading"><%= t("preferences.regional.title") %></h2>
+    <p class="showcase__section-desc"><%= t("preferences.regional.description") %></p>
+    <%= render Ui::LocaleSwitcherComponent.new(current_locale: I18n.locale, action: locale_preference_path) %>
+  </section>
+</div>

@@ -1,0 +1,89 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "json"
+require "open3"
+require "optparse"
+require_relative "../config/environment"
+
+options = { format: "human" }
+parser = OptionParser.new do |configuration|
+  configuration.banner = "Usage: bin/github-release-publish [plan|apply] [options]"
+  configuration.on("--manifest PATH", "Approved distribution manifest") { |path| options[:manifest] = path }
+  configuration.on("--artifact-directory PATH", "Verified release artifact bundle") do |path|
+    options[:artifact_directory] = path
+  end
+  configuration.on("--repository OWNER/REPOSITORY", "Active GitHub repository") do |value|
+    options[:repository] = value
+  end
+  configuration.on("--format FORMAT", %w[human json], "Output format") { |value| options[:format] = value }
+end
+parser.parse!
+
+command = ARGV.shift
+abort parser.to_s unless
+  %w[plan apply].include?(command) &&
+  ARGV.empty? &&
+  %i[manifest artifact_directory repository].all? { |key| options[key].present? }
+
+begin
+  manifest = Distributions::Manifest.load(options.fetch(:manifest))
+  plan = Distributions::GithubReleasePlan.new(
+    manifest: manifest,
+    artifact_directory: options.fetch(:artifact_directory)
+  )
+
+  if command == "plan"
+    if options.fetch(:format) == "json"
+      puts JSON.pretty_generate(plan.to_h)
+    else
+      puts "GitHub Release publication plan: #{plan.tag}"
+      puts "Target: #{plan.target_commit}"
+      puts "Assets: #{plan.asset_paths.size}"
+    end
+    exit
+  end
+
+  abort "GitHub Release publication requires the protected release environment" unless
+    ENV["DISTRIBUTION_APPROVED"] == "true"
+  abort "GitHub Release publication is restricted to GitHub Actions" unless ENV["GITHUB_ACTIONS"] == "true"
+  abort "GitHub Release publication requires main" unless ENV["GITHUB_REF_NAME"] == "main"
+  abort "GitHub Release source commit does not match the approved manifest" unless
+    ENV["DISTRIBUTION_SOURCE_COMMIT"] == plan.target_commit &&
+    ENV["GITHUB_SHA"] == plan.target_commit
+  abort "GitHub Release publication requires GH_TOKEN" if ENV["GH_TOKEN"].blank?
+
+  repository = options.fetch(:repository)
+  abort "repository does not match GITHUB_REPOSITORY" unless repository == ENV["GITHUB_REPOSITORY"]
+
+  release_exists = system(
+    "gh", "release", "view", plan.tag,
+    "--repo", repository,
+    out: File::NULL,
+    err: File::NULL
+  )
+  abort "GitHub Release already exists: #{plan.tag}" if release_exists
+
+  tag_path = "repos/#{repository}/git/ref/tags/#{plan.tag}"
+  tag_exists = system("gh", "api", tag_path, out: File::NULL, err: File::NULL)
+  abort "Git tag already exists without a matching release: #{plan.tag}" if tag_exists
+
+  command_arguments = [
+    "gh", "release", "create", plan.tag,
+    "--repo", repository,
+    "--target", plan.target_commit,
+    "--title", plan.tag,
+    "--notes-file", plan.notes_path.to_s
+  ]
+  command_arguments << "--prerelease" if plan.prerelease?
+  command_arguments.concat(plan.asset_paths.map(&:to_s))
+
+  stdout, stderr, status = Open3.capture3(*command_arguments)
+  abort "GitHub Release publication failed" unless status.success?
+
+  puts stdout
+  warn stderr unless stderr.empty?
+rescue Distributions::Manifest::InvalidManifest,
+  Distributions::GithubReleasePlan::InvalidBundle => error
+  abort "GitHub Release publication input is invalid: #{error.message}"
+end

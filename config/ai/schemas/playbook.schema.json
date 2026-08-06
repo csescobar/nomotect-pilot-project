@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nomotect.example/schemas/playbook.schema.json",
+  "title": "Repository Intelligence Playbook",
+  "type": "object",
+  "required": ["id", "version", "title", "inputs", "steps", "completion_gate"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+    "version": {"type": "integer", "minimum": 1},
+    "title": {"type": "string", "minLength": 1},
+    "inputs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "on_failure": {"enum": ["stop", "continue"]},
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "oneOf": [
+          {"type": "string"},
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "tool", "args"],
+            "properties": {
+              "id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+              "tool": {"type": "string", "minLength": 1},
+              "args": {"type": "object"},
+              "timeout_seconds": {"type": "number", "exclusiveMinimum": 0},
+              "retry": {"type": "integer", "minimum": 0},
+              "on_failure": {"enum": ["stop", "continue"]}
+            }
+          }
+        ]
+      }
+    },
+    "completion_gate": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+  }
+}

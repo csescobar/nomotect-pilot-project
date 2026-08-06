@@ -1,0 +1,60 @@
+en:
+  installation:
+    wizard:
+      title: "Setup Wizard — %{platform}"
+      progress: "Installation progress"
+    steps:
+      appearance: "Appearance"
+      database: "Database"
+      provisioning: "Provisioning"
+      migrations: "Migrations"
+      platform_owner: "Platform owner"
+    appearance:
+      subtitle: "Configure your platform name, language, and brand assets."
+      application_name: "Platform name"
+      default_locale: "Default language"
+      supported_locales: "Supported languages"
+      trademark_mode: "Header trademark display"
+      trademark_name_only: "Name only"
+      trademark_image_only: "Logo image only"
+      trademark_image_and_name: "Logo image and name"
+      logo: "Logo (full)"
+      logo_help: "Recommended size: 200 × 60 px. PNG, JPG or SVG, max 2 MB."
+      compact_logo: "Logo (compact / icon)"
+      compact_logo_help: "Recommended size: 64 × 64 px. PNG, JPG, SVG or ICO, max 2 MB."
+      favicon: "Favicon"
+      favicon_help: "Recommended size: 32 × 32 px. PNG, ICO or SVG, max 2 MB."
+      current_logo: "Current logo"
+      current_compact_logo: "Current compact logo"
+      current_favicon: "Current favicon"
+      design_tokens: "Design-system YAML"
+      save_and_continue: "Save appearance and continue"
+    database:
+      subtitle: "Administrative credentials are request-scoped and never persisted."
+      host: "Host"
+      port: "Port"
+      maintenance_database: "Maintenance database"
+      admin_username: "Administrative username"
+      admin_password: "Administrative password"
+      application_database: "Application database"
+      application_username: "Application role"
+      sslmode: "SSL mode"
+      test_connection: "Test connection"
+      provision: "Provision database"
+    provisioning:
+      subtitle: "The runtime role and database are ready. Run migrations to create the application schema."
+      run_migrations: "Run migrations"
+    migrations:
+      subtitle: "Database migrations are running. Retry is safe if execution is interrupted."
+    platform_owner:
+      subtitle: "Create the global platform administrator and the initial tenant organization."
+      organization_name: "Initial organization name"
+      email: "Platform administrator email"
+      password: "Password"
+      password_confirmation: "Confirm password"
+      submit: "Create administrator and complete installation"
+    complete:
+      title: "Installation complete"
+      body: "Your platform has been configured. You may now sign in."
+    log:
+      title: "Installation log"

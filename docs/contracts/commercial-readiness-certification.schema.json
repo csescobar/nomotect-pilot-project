@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nomotect.dev/contracts/commercial-readiness-certification.schema.json",
+  "title": "NomoTect Commercial Readiness Certification",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "status", "checked_at", "checks"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "status": { "enum": ["passed", "failed"] },
+    "checked_at": { "type": "string", "format": "date-time" },
+    "checks": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "status", "detail"],
+        "properties": {
+          "id": { "type": "string" },
+          "status": { "enum": ["passed", "failed"] },
+          "detail": { "type": "string" }
+        }
+      }
+    }
+  }
+}

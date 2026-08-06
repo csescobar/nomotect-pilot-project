@@ -1,0 +1,48 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "json"
+require "optparse"
+require_relative "../config/environment"
+
+options = { format: "human" }
+parser = OptionParser.new do |configuration|
+  configuration.banner = "Usage: bin/upgrade [inspect|preflight] --manifest PATH [--format human|json]"
+  configuration.on("--manifest PATH", "Target upgrade manifest") { |path| options[:manifest] = path }
+  configuration.on("--format FORMAT", %w[human json], "Output format") { |format| options[:format] = format }
+end
+parser.parse!
+
+command = ARGV.shift
+abort parser.to_s unless %w[inspect preflight].include?(command) && options[:manifest]
+
+begin
+  manifest = Upgrades::Manifest.load(options.fetch(:manifest))
+  inspector = Upgrades::Inspector.new(manifest:)
+  report = command == "inspect" ? inspector.inspect : inspector.preflight
+
+  if options.fetch(:format) == "json"
+    puts JSON.pretty_generate(report.to_h)
+  else
+    puts "Upgrade #{report.mode}: #{report.status}"
+    puts "Installed: #{report.installed_state.dig('platform', 'version') || 'unknown'}"
+    puts "Target: #{manifest.target_version} (#{manifest.id})"
+    report.blockers.each { |finding| puts "BLOCKER [#{finding.fetch(:code)}] #{finding.fetch(:message)}" }
+    report.warnings.each { |finding| puts "WARNING [#{finding.fetch(:code)}] #{finding.fetch(:message)}" }
+    report.operator_actions.each { |finding| puts "ACTION [#{finding.fetch(:code)}] #{finding.fetch(:message)}" }
+  end
+
+  exit 2 if command == "preflight" && !report.ready?
+rescue Upgrades::Manifest::InvalidManifest, Errno::ENOENT => error
+  finding = {
+    code: "manifest_invalid",
+    message: "Target upgrade manifest is missing or invalid",
+    details: { error: error.class.name }
+  }
+  if options.fetch(:format) == "json"
+    puts JSON.pretty_generate(schema_version: 1, mode: command, status: "blocked", ready: false, blockers: [ finding ])
+  else
+    warn "BLOCKER [manifest_invalid] Target upgrade manifest is missing or invalid"
+  end
+  exit 2
+end

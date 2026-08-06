@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ruby -rjson -e 'ARGV.each { |path| JSON.parse(File.read(path)) }' \
+  docs/contracts/channel-state.schema.json \
+  docs/contracts/distribution-manifest.schema.json \
+  docs/contracts/publication-evidence.schema.json
+
+bundle exec rails test \
+  test/integration/distribution_certification_test.rb \
+  test/services/distributions/channel_state_test.rb \
+  test/services/distributions/ghcr_promotion_plan_test.rb \
+  test/services/distributions/github_release_plan_test.rb \
+  test/services/distributions/inspector_test.rb \
+  test/services/distributions/manifest_test.rb \
+  test/services/distributions/verifier_test.rb
+ruby -Ilib -rrepository_intelligence/platform -e '
+  registry = RepositoryIntelligence::ContractRegistry.new("config/ai/contracts")
+  abort registry.validate.join("\n") unless registry.validate.empty?
+  abort "distribution contract is not registered" unless
+    registry.load.any? { |contract| contract.fetch("id") == "distributions" }
+'
+
+grep -q 'GitHub Releases and GHCR are the only supported baseline channels' \
+  config/ai/contracts/distributions.yml
+grep -q 'repository_context' docs/contracts/distribution-manifest.schema.json
+grep -q 'partially_published' docs/contracts/publication-evidence.schema.json
+grep -q 'enterprise repository' docs/distribution/architecture.md
+grep -q 'latest.*prohibited' docs/distribution/channel-policy.md
+grep -q '`preflight` treats every missing' docs/distribution/inspection.md
+
+test -x bin/distribution-contract-certify
+test -x bin/distribution
+test -x bin/distribution-bundle
+test -x bin/ghcr-promote
+test -x bin/github-release-publish
+test -x bin/distribution-verify
+grep -q 'command == "publish"' bin/release
+! grep -Eq 'contents: write|packages: write|id-token: write' \
+  .github/workflows/distribution-contract.yml
+grep -q 'environment: release' .github/workflows/publish-github-release.yml
+grep -q 'contents: write' .github/workflows/publish-github-release.yml
+grep -q 'gh.*release.*create' bin/github-release-publish
+grep -q 'environment: release' .github/workflows/promote-ghcr-release.yml
+grep -q 'packages: write' .github/workflows/promote-ghcr-release.yml
+grep -q 'imagetools.*create' bin/ghcr-promote
+! grep -q ':latest' .github/workflows/promote-ghcr-release.yml
+grep -q 'actions/attest@v4' .github/workflows/publish-github-release.yml
+grep -q 'attestations: write' .github/workflows/publish-github-release.yml
+grep -q 'origin/main' .github/workflows/verify-distribution.yml
+grep -q 'conclusion.*success' .github/workflows/verify-distribution.yml
+! grep -Eq 'contents: write|packages: write|id-token: write|attestations: write' \
+  .github/workflows/verify-distribution.yml
+grep -q 'packaging-evidence' .github/workflows/prepare-distribution.yml
+grep -q 'distribution-bundle' .github/workflows/prepare-distribution.yml
+grep -q 'origin/main' .github/workflows/prepare-distribution.yml
+grep -q 'conclusion.*success' .github/workflows/prepare-distribution.yml
+grep -q 'name).*CI' .github/workflows/prepare-distribution.yml
+! grep -Eq 'contents: write|packages: write|id-token: write|attestations: write' \
+  .github/workflows/prepare-distribution.yml
+ruby -rjson -e 'ARGV.each { |path| JSON.parse(File.read(path)) }' \
+  docs/releases/0.8.0/compatibility.json \
+  docs/releases/0.8.0/release-metadata.json
+
+printf 'Distribution contracts and channel policy certified\n'

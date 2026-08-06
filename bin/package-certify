@@ -1,0 +1,102 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+source_commit="${SOURCE_COMMIT:-${GITHUB_SHA:-local}}"
+source_created="${SOURCE_CREATED:-1970-01-01T00:00:00Z}"
+source_repository="${SOURCE_REPOSITORY_URL:-local://repository}"
+image_primary="${IMAGE_NAME:-rails-application:ci}"
+image_repeat="${REPEAT_IMAGE_NAME:-rails-application:ci-repeat}"
+source_version="${SOURCE_VERSION:-$(tr -d '[:space:]' < VERSION)}"
+oci_title="${OCI_TITLE:-Rails Application}"
+oci_description="${OCI_DESCRIPTION:-Rails and Hotwire application container}"
+
+mkdir -p tmp/ci
+bundle check
+git diff --exit-code -- Gemfile.lock
+cp Gemfile.lock tmp/ci/Gemfile.lock.packaging
+
+build_image() {
+  local tag="$1"
+  local log="$2"
+  docker build \
+    --no-cache \
+    --provenance=false \
+    --build-arg OCI_SOURCE="$source_repository" \
+    --build-arg OCI_REVISION="$source_commit" \
+    --build-arg OCI_CREATED="$source_created" \
+    --build-arg OCI_VERSION="$source_version" \
+    --build-arg OCI_TITLE="$oci_title" \
+    --build-arg OCI_DESCRIPTION="$oci_description" \
+    --tag "$tag" . 2>&1 | tee "$log"
+}
+
+build_image "$image_primary" tmp/ci/container-build.log
+build_image "$image_repeat" tmp/ci/container-repeat-build.log
+
+payload_manifest() {
+  local image="$1"
+  docker run --rm --entrypoint bash "$image" -lc '
+    set -euo pipefail
+    find /rails /usr/local/bundle \
+      -path /rails/tmp/cache -prune -o \
+      -type f ! -name gem_make.out ! -name mkmf.log -print0 \
+      | sort -z | xargs -0 sha256sum
+    dpkg-query -W -f="\${Package}\t\${Version}\n" | sort
+  '
+}
+
+payload_manifest "$image_primary" > tmp/ci/payload-primary.txt
+payload_manifest "$image_repeat" > tmp/ci/payload-repeat.txt
+
+if ! cmp -s tmp/ci/payload-primary.txt tmp/ci/payload-repeat.txt; then
+  diff -u tmp/ci/payload-primary.txt tmp/ci/payload-repeat.txt > tmp/ci/reproducibility.log || true
+  echo "packaging certification error: repeated clean builds produced different runtime payloads" >&2
+  exit 1
+fi
+
+primary_id="$(docker image inspect --format '{{.Id}}' "$image_primary")"
+repeat_id="$(docker image inspect --format '{{.Id}}' "$image_repeat")"
+payload_sha="$(sha256sum tmp/ci/payload-primary.txt | cut -d' ' -f1)"
+{
+  echo "source_repository=$source_repository"
+  echo "source_commit=$source_commit"
+  echo "source_created=$source_created"
+  echo "primary_image_id=$primary_id"
+  echo "repeat_image_id=$repeat_id"
+  echo "normalized_payload_sha256=$payload_sha"
+  echo "payload_equivalent=true"
+  echo "excluded_ephemeral_path=/rails/tmp/cache"
+  echo "excluded_native_build_logs=gem_make.out,mkmf.log"
+} > tmp/ci/reproducibility.log
+
+test "$(docker image inspect --format '{{index .Config.Labels "org.opencontainers.image.source"}}' "$image_primary")" = "$source_repository"
+test "$(docker image inspect --format '{{index .Config.Labels "org.opencontainers.image.revision"}}' "$image_primary")" = "$source_commit"
+test "$(docker image inspect --format '{{index .Config.Labels "org.opencontainers.image.created"}}' "$image_primary")" = "$source_created"
+test "$(docker image inspect --format '{{index .Config.Labels "org.opencontainers.image.version"}}' "$image_primary")" = "$source_version"
+test "$(docker image inspect --format '{{index .Config.Labels "org.opencontainers.image.licenses"}}' "$image_primary")" = "Apache-2.0"
+test "$(docker image inspect --format '{{.Config.User}}' "$image_primary")" = "rails"
+test "$(docker image inspect --format '{{json .Config.Healthcheck.Test}}' "$image_primary")" != "null"
+
+docker run --rm --entrypoint bash "$image_primary" -lc '
+  set -euo pipefail
+  test -d /rails/storage
+  test -d /rails/var/installation
+  test -w /rails/storage
+  test -w /rails/var/installation
+  ! command -v git
+  ! command -v gcc
+  ! command -v make
+  ! command -v pkg-config
+  bundle check
+  ! bundle show debug >/dev/null 2>&1
+  ! bundle show capybara >/dev/null 2>&1
+  ! bundle show rubocop >/dev/null 2>&1
+'
+
+SOURCE_REPOSITORY_URL="$source_repository" SOURCE_COMMIT="$source_commit" SOURCE_CREATED="$source_created" \
+  SOURCE_VERSION="$source_version" IMAGE_NAME="$image_primary" ruby bin/container-sbom
+SOURCE_REPOSITORY_URL="$source_repository" SOURCE_COMMIT="$source_commit" SOURCE_CREATED="$source_created" \
+  SOURCE_VERSION="$source_version" IMAGE_NAME="$image_primary" ruby bin/packaging-manifest
+SOURCE_COMMIT="$source_commit" SOURCE_VERSION="$source_version" ruby bin/release-provenance
+
+printf 'Reproducible packaging certification passed\n'

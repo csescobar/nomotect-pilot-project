@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "id": "community-baseline",
+  "environment": "production",
+  "objectives": { "rto_minutes": 480, "rpo_minutes": 1440 },
+  "scope": { "components": ["postgresql", "persistent_files", "generated_configuration", "installation_metadata"] },
+  "roles": {
+    "incident_commander": "assigned_by_operator",
+    "recovery_operator": "assigned_by_operator",
+    "security_reviewer": "assigned_by_operator",
+    "application_owner": "assigned_by_operator"
+  },
+  "scenarios": [
+    {"id":"application_restart"},{"id":"node_replacement"},{"id":"database_unavailable"},{"id":"database_loss"},
+    {"id":"persistent_storage_loss"},{"id":"configuration_loss"},{"id":"job_backend_unavailable"},
+    {"id":"integration_unavailable"},{"id":"partial_restore_failure"},{"id":"complete_environment_loss"}
+  ],
+  "evidence": { "backup_manifest": true, "restore_plan": true, "operational_health": true, "support_bundle": true },
+  "approval": { "restore": "human_required", "return_to_service": "human_required" }
+}

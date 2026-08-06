@@ -1,0 +1,93 @@
+<% content_for :title, t("grid_engine.#{@definition.key}.title") %>
+<% current_columns = Array(params[:columns]).presence || @preferences["columns"] %>
+
+<%= render Ui::Layout::PageHeaderComponent.new(
+  title: t("grid_engine.#{@definition.key}.title"),
+  description: t("grid_engine.#{@definition.key}.description")
+) %>
+
+<%# ── EJ2 Grid Page Container ────────────────────────────────────────────────── %>
+<div
+  class="grid-page-container"
+  data-controller="ej2-grid"
+  data-ej2-grid-url-value="<%= grid_path(@definition.key, format: :json, adapter: :syncfusion) %>"
+  data-ej2-grid-columns-value="<%= GridEngine::SyncfusionAdapter.new(@definition).columns.to_json %>"
+  data-ej2-grid-page-size-value="25"
+  data-ej2-grid-reset-url-value="<%= grid_path(@definition.key) %>"
+  data-ej2-grid-current-view-id-value="<%= @selected_view&.id || '' %>"
+>
+  <%# ── Compact Saved Views Dropdown Template (Injected into EJ2 Grid Toolbar) ── %>
+  <div id="grid-saved-views-bar" class="grid-saved-views-bar">
+    <select
+      id="saved-view-selector"
+      class="grid-saved-views-bar__select"
+      data-action="change->ej2-grid#handleSavedViewSelection"
+      aria-label="<%= t("grid_engine.saved_views.title") %>"
+    >
+      <option value="" disabled <%= "selected" if @selected_view.nil? %>>
+        📌 <%= t("grid_engine.saved_views.title") %>
+      </option>
+      <optgroup label="<%= t("grid_engine.saved_views.user_views") %>">
+        <option value="__default__" <%= "selected" if @selected_view.nil? %>>
+          <%= t("grid_engine.saved_views.system_default") %>
+        </option>
+        <% @saved_views.each do |view| %>
+          <option value="<%= view.id %>" <%= "selected" if @selected_view&.id == view.id %>>
+            <%= view.name %><%= " (#{t('grid_engine.saved_views.default_tag')})" if view.default? %>
+          </option>
+        <% end %>
+      </optgroup>
+      <optgroup label="<%= t("grid_engine.saved_views.actions_group") %>">
+        <option value="__save_new__">
+          ➕ <%= t("grid_engine.saved_views.save_current") %>
+        </option>
+        <option value="__reset__">
+          ↺ <%= t("grid_engine.saved_views.reset") %>
+        </option>
+      </optgroup>
+    </select>
+  </div>
+
+  <%# ── EJ2 Grid Container ──────────────────────────────────────────────────── %>
+  <div
+    class="ej2-grid-container"
+    aria-label="<%= t("grid_engine.#{@definition.key}.title") %>"
+    id="ej2-grid-<%= @definition.key %>"
+  ></div>
+
+  <%# ── Save View Modal Dialog ──────────────────────────────────────────────── %>
+  <dialog id="save-view-dialog" class="e-dialog e-control grid-save-view-modal">
+    <div class="e-dlg-header-content">
+      <h3 class="e-title"><%= t("grid_engine.saved_views.modal_title") %></h3>
+    </div>
+    <%= form_with(url: grid_grid_saved_views_path(@definition.key), scope: :grid_saved_view, method: :post, class: "e-dlg-content") do |f| %>
+      <input type="hidden" id="save-view-query-json" name="grid_saved_view[query_json]" value="{}">
+      <input type="hidden" id="save-view-preferences-json" name="grid_saved_view[preferences_json]" value="{}">
+
+      <div class="form-group mb-4">
+        <label for="save-view-name-input" class="form-label"><%= t("grid_engine.saved_views.name_label") %></label>
+        <input type="text" id="save-view-name-input" name="grid_saved_view[name]" class="e-input" required placeholder="<%= t('grid_engine.saved_views.name_placeholder') %>">
+      </div>
+
+      <div class="form-group form-group--checkbox mb-4">
+        <label class="e-checkbox-wrapper">
+          <input type="checkbox" name="grid_saved_view[default]" value="1">
+          <span class="e-label"><%= t("grid_engine.saved_views.set_as_default") %></span>
+        </label>
+      </div>
+
+      <div class="e-footer-content flex justify-end gap-2">
+        <button type="button" class="btn btn--secondary" data-action="click->ej2-grid#closeSaveViewModal"><%= t("common.cancel", default: "Cancelar") %></button>
+        <button type="submit" class="btn btn--primary"><%= t("common.save", default: "Salvar") %></button>
+      </div>
+    <% end %>
+  </dialog>
+
+  <%# Accessible HTML fallback — rendered for screen readers, no-JS, print and tests %>
+  <noscript>
+    <turbo-frame id="grid-results">
+      <p aria-live="polite"><%= t("grid_engine.results", count: @result.total_count) %></p>
+      <%= GridEngine::HtmlRenderer.new(@definition, @result.records, columns: current_columns).call %>
+    </turbo-frame>
+  </noscript>
+</div>

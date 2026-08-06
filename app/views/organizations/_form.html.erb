@@ -1,0 +1,5 @@
+<%= form_with model: organization, builder: Ui::FormBuilder, html: { class: "showcase__form" } do |form| %>
+  <%= form.ui_error_summary %>
+  <%= form.ui_text_field :name, label: t("organizations.fields.name"), required: true %>
+  <%= form.ui_submit t("organizations.actions.save") %>
+<% end %>

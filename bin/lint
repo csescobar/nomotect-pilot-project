@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+mkdir -p tmp
+bin/rubocop --format progress --format simple --out tmp/rubocop.txt "$@"

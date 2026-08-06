@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ruby -rjson -e 'ARGV.each { |path| JSON.parse(File.read(path)) }' \
+  docs/contracts/epic-10-validation-plan.schema.json \
+  docs/contracts/epic-10-finding.schema.json \
+  docs/contracts/epic-10-certification.schema.json \
+  docs/contracts/epic-10-release-baseline.schema.json \
+  docs/contracts/epic-10-rc-plan.schema.json
+
+bundle exec rails test \
+  test/services/epic_10/contract_validator_test.rb \
+  test/services/epic_10/release_baseline_test.rb \
+  test/services/epic_10/rc_preparation_test.rb \
+  test/services/epic_10/representative_application_test.rb \
+  test/services/epic_10/representative_application_journey_test.rb \
+  test/services/epic_10/domain_services_journey_test.rb \
+  test/services/epic_10/multitenant_extension_journey_test.rb \
+  test/services/epic_10/representative_application_certification_test.rb \
+  test/services/epic_10/rc_upgrade_fixture_test.rb \
+  test/services/epic_10/rc_upgrade_certification_test.rb \
+  test/services/epic_10/functional_framework_certification_test.rb \
+  test/services/epic_10/production_deployment_certification_test.rb \
+  test/services/epic_10/operational_resilience_certification_test.rb \
+  test/services/epic_10/accessibility_certification_test.rb \
+  test/services/epic_10/security_privacy_isolation_certification_test.rb \
+  test/services/epic_10/performance_compatibility_certification_test.rb \
+  test/services/epic_10/ai_readiness_certification_test.rb
+
+grep -q '"additionalProperties": false' docs/contracts/epic-10-validation-plan.schema.json
+grep -q '"critical", "high", "medium", "low"' docs/contracts/epic-10-finding.schema.json
+grep -q 'passed certification requires every phase complete' app/services/epic_10/contract_validator.rb
+grep -q 'critical and high findings cannot be accepted' app/services/epic_10/contract_validator.rb
+grep -q 'must never publish or merge' docs/roadmap/epic-10-plan.md
+grep -q 'missing required runtimes' app/services/epic_10/release_baseline.rb
+grep -q 'manual_screen_reader_review' config/epic_10/release-baseline.yml
+grep -q 'publication.allowed: false' docs/validation/rc-preparation.md
+grep -q 'cross-tenant assignment is forbidden' app/services/epic_10/representative_application.rb
+grep -q 'publication:' config/epic_10/representative-application.yml
+
+mkdir -p tmp/ci
+bundle exec ruby bin/epic-10-rc-plan \
+  --target-version 1.0.0-rc.1 \
+  --source-commit aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa \
+  > tmp/ci/epic-10-rc-plan.json
+ruby -rjson -e '
+  plan = JSON.parse(File.read("tmp/ci/epic-10-rc-plan.json"))
+  abort "RC plan may not publish" unless plan.dig("publication", "allowed") == false
+  abort "RC plan may not self-approve" unless plan.dig("approval", "approved") == false
+'
+
+bundle exec ruby bin/epic-10-representative-app-certify aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa > tmp/ci/representative-application-certification.json
+bundle exec ruby bin/epic-10-rc-upgrade-certify > tmp/ci/rc-upgrade-certification.json
+bundle exec ruby bin/epic-10-functional-certify aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa > tmp/ci/functional-framework-certification.json
+bundle exec ruby bin/epic-10-production-deployment-certify aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa > tmp/ci/production-deployment-certification.json
+bundle exec ruby bin/epic-10-operational-resilience-certify aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa > tmp/ci/operational-resilience-certification.json
+bundle exec ruby bin/epic-10-accessibility-certify aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa > tmp/ci/accessibility-certification.json
+bundle exec ruby bin/epic-10-security-privacy-certify aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa > tmp/ci/security-privacy-isolation-certification.json
+bundle exec ruby bin/epic-10-performance-compatibility-certify aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa > tmp/ci/performance-compatibility-certification.json
+bundle exec ruby bin/epic-10-ai-readiness-certify aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa > tmp/ci/ai-readiness-certification.json
+
+printf 'Epic 10 validation contracts certified\n'

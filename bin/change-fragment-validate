@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "json"
+require "open3"
+require_relative "../config/environment"
+
+base = ENV["CHANGE_BASE"]
+head = ENV.fetch("CHANGE_HEAD", "HEAD")
+format = ENV.fetch("OUTPUT_FORMAT", "human")
+
+begin
+  Releases::ChangeCatalog.new.fragments
+  if base.present?
+    stdout, stderr, status = Open3.capture3("git", "diff", "--name-only", "#{base}...#{head}")
+    abort(stderr) unless status.success?
+    report = Releases::PullRequestValidator.new(
+      changed_paths: stdout.lines(chomp: true),
+      pull_request_number: ENV["PR_NUMBER"]
+    ).call
+  else
+    report = Releases::PullRequestValidator::Report.new([])
+  end
+
+  if format == "json"
+    puts JSON.pretty_generate(report.to_h)
+  elsif report.ready?
+    puts "Change fragments: ready"
+  else
+    report.findings.each do |finding|
+      warn "BLOCKER [#{finding.fetch(:code)}] #{finding.fetch(:message)}"
+    end
+  end
+  exit 2 unless report.ready?
+rescue Releases::ChangeFragment::InvalidFragment,
+  Releases::ChangeCatalog::DuplicateFragment => error
+  warn "BLOCKER [change_fragment_invalid] #{error.message}"
+  exit 2
+end

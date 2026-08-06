@@ -1,0 +1,36 @@
+<%# Installation progress log — terminal style %>
+<section class="install-log" aria-label="<%= title %>">
+  <div class="install-log__header">
+    <span class="install-log__dot install-log__dot--red"></span>
+    <span class="install-log__dot install-log__dot--yellow"></span>
+    <span class="install-log__dot install-log__dot--green"></span>
+    <p class="install-log__title"><%= title %></p>
+  </div>
+  <div class="install-log__body" data-controller="log-scroll">
+    <% progress.each do |event| %>
+      <%
+        status = event["status"].to_s
+        css_mod = case status
+                  when "ok", "success", "completed" then "ok"
+                  when "error", "failed"            then "error"
+                  when "running", "started"         then "running"
+                  else "info"
+                  end
+        icon = case css_mod
+               when "ok"      then "✓"
+               when "error"   then "✕"
+               when "running" then "◌"
+               else "›"
+               end
+        ts = event["timestamp"].present? ? Time.parse(event["timestamp"]).strftime("%H:%M:%S") : nil
+      %>
+      <div class="install-log__entry install-log__entry--<%= css_mod %>">
+        <% if ts %>
+          <span class="install-log__timestamp"><%= ts %></span>
+        <% end %>
+        <span class="install-log__icon" aria-hidden="true"><%= icon %></span>
+        <span class="install-log__message"><%= event["message"] %></span>
+      </div>
+    <% end %>
+  </div>
+</section>

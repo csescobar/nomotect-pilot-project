@@ -1,0 +1,47 @@
+<%# ── EJ2 Toasts Section ────────────────────────────────────────────────────────── %>
+<div class="ej2-showcase-section">
+  <header class="ej2-showcase-section__header">
+    <h2 class="ej2-showcase-section__title"><%= t("ej2_showcase.toasts.title") %></h2>
+    <p class="ej2-showcase-section__desc"><%= t("ej2_showcase.toasts.description") %></p>
+  </header>
+
+  <div class="ej2-showcase-card" id="ej2-toasts-demo">
+    <div class="ej2-showcase-card__header">
+      <h3 class="ej2-showcase-card__title"><%= t("ej2_showcase.toasts.demo.title") %></h3>
+      <p class="ej2-showcase-card__desc"><%= t("ej2_showcase.toasts.demo.description") %></p>
+    </div>
+    <div class="ej2-showcase-card__demo" data-controller="ej2-toast">
+      <div class="ej2-button-group">
+        <button type="button"
+                class="e-btn e-success-btn"
+                data-action="click->ej2-toast#showSuccess"
+                data-ej2-toast-message-param="<%= t("ej2_showcase.toasts.demo.success_msg") %>">
+          <%= t("ej2_showcase.toasts.demo.success_btn") %>
+        </button>
+
+        <button type="button"
+                class="e-btn e-danger"
+                data-action="click->ej2-toast#showError"
+                data-ej2-toast-message-param="<%= t("ej2_showcase.toasts.demo.danger_msg") %>">
+          <%= t("ej2_showcase.toasts.demo.danger_btn") %>
+        </button>
+
+        <button type="button"
+                class="e-btn e-warning-btn"
+                data-action="click->ej2-toast#showWarning"
+                data-ej2-toast-message-param="<%= t("ej2_showcase.toasts.demo.warning_msg") %>">
+          <%= t("ej2_showcase.toasts.demo.warning_btn") %>
+        </button>
+
+        <button type="button"
+                class="e-btn e-info-btn"
+                data-action="click->ej2-toast#showInfo"
+                data-ej2-toast-message-param="<%= t("ej2_showcase.toasts.demo.info_msg") %>">
+          <%= t("ej2_showcase.toasts.demo.info_btn") %>
+        </button>
+      </div>
+
+      <div class="ej2-toast-container"></div>
+    </div>
+  </div>
+</div>

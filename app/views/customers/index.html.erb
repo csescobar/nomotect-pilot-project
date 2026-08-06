@@ -1,0 +1,26 @@
+<% content_for :title, t("customers.index.title", organization: @organization.name) %>
+
+<%= render Ui::Layout::PageHeaderComponent.new(title: t("customers.index.title", organization: @organization.name), description: t("customers.index.description")) do %>
+  <% if @organization.membership_for(Current.user)&.admin? %>
+    <%= link_to t("customers.actions.new"), new_organization_customer_path(@organization), class: "button button--primary" %>
+  <% end %>
+<% end %>
+
+<% if @customers.any? %>
+  <div class="grid-engine-table-wrap" tabindex="0">
+    <table class="grid-engine-table responsive-data-table">
+      <thead><tr><th scope="col"><%= t("customers.fields.name") %></th><th scope="col"><%= t("customers.fields.email") %></th><th scope="col"><%= t("customers.fields.status") %></th></tr></thead>
+      <tbody>
+        <% @customers.each do |customer| %>
+          <tr>
+            <td data-label="<%= t("customers.fields.name") %>"><%= link_to customer.name, [ @organization, customer ] %></td>
+            <td data-label="<%= t("customers.fields.email") %>"><%= customer.email_address %></td>
+            <td data-label="<%= t("customers.fields.status") %>"><span class="ui-badge ui-badge--small <%= customer.status == "active" ? "ui-badge--success" : "" %>"><%= t("customers.statuses.#{customer.status}") %></span></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <%= render Ui::EmptyStateComponent.new(title: t("customers.empty.title"), description: t("customers.empty.description")) %>
+<% end %>

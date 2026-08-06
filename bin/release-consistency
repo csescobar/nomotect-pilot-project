@@ -1,0 +1,41 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "json"
+require_relative "../config/environment"
+
+manifest_path = ARGV.fetch(0) do
+  abort "Usage: bin/release-consistency RELEASE_EVIDENCE_JSON"
+end
+abort "Usage: bin/release-consistency RELEASE_EVIDENCE_JSON" unless ARGV.one?
+
+manifest = JSON.parse(File.read(manifest_path))
+required = %w[
+  schema_version version tag release_metadata release_notes compatibility
+  application_sbom container_sbom packaging_manifest provenance
+]
+unless manifest["schema_version"] == 1 && manifest.keys.sort == required.sort
+  abort "Unsupported release evidence schema"
+end
+root = Pathname(manifest_path).expand_path.dirname
+resolve = lambda do |name|
+  path = root.join(manifest.fetch(name)).expand_path
+  abort "Evidence paths must remain below #{root}" unless path.to_s.start_with?("#{root}/")
+  path
+end
+load_json = ->(name) { JSON.parse(resolve.call(name).read) }
+
+report = Releases::ConsistencyValidator.new(
+  version: manifest.fetch("version"),
+  tag: manifest.fetch("tag"),
+  release_metadata: load_json.call("release_metadata"),
+  release_notes: resolve.call("release_notes").read,
+  compatibility: load_json.call("compatibility"),
+  application_sbom: load_json.call("application_sbom"),
+  container_sbom: load_json.call("container_sbom"),
+  packaging_manifest: load_json.call("packaging_manifest"),
+  provenance: load_json.call("provenance")
+).call
+
+puts JSON.pretty_generate(report.to_h)
+exit 2 unless report.ready?

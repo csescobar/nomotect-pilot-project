@@ -1,0 +1,79 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "digest"
+require "fileutils"
+require "json"
+require "open3"
+require "time"
+
+image = ENV.fetch("IMAGE_NAME", ARGV.fetch(0, "nomotect-platform:ci"))
+source_commit = ENV.fetch("SOURCE_COMMIT", "local")
+source_version = ENV.fetch("SOURCE_VERSION") { File.read("VERSION").strip }
+output = ENV.fetch("CONTAINER_SBOM_PATH", "tmp/ci/container-sbom.cdx.json")
+
+run = lambda do |*command|
+  stdout, stderr, status = Open3.capture3(*command)
+  abort(stderr) unless status.success?
+  stdout
+end
+
+packages = run.call(
+  "docker", "run", "--rm", "--entrypoint", "dpkg-query", image,
+  "-W", "-f=${Package}\t${Version}\n"
+).lines.filter_map do |line|
+  name, version = line.strip.split("\t", 2)
+  next if name.to_s.empty? || version.to_s.empty?
+
+  {
+    type: "library",
+    name: name,
+    version: version,
+    purl: "pkg:deb/debian/#{name}@#{version}"
+  }
+end
+
+gems = run.call(
+  "docker", "run", "--rm", "--entrypoint", "ruby", image,
+  "-e", 'Gem::Specification.sort_by(&:name).each { |spec| puts "#{spec.name}\t#{spec.version}" }'
+).lines.filter_map do |line|
+  name, version = line.strip.split("\t", 2)
+  next if name.to_s.empty? || version.to_s.empty?
+
+  {
+    type: "library",
+    name: name,
+    version: version,
+    purl: "pkg:gem/#{name}@#{version}"
+  }
+end
+
+components = (packages + gems).uniq { |component| component[:purl] }.sort_by { |component| component[:purl] }
+serial_seed = [source_commit, image, components.map { |component| component[:purl] }].flatten.join("\n")
+
+bom = {
+  bomFormat: "CycloneDX",
+  specVersion: "1.5",
+  serialNumber: "urn:uuid:#{Digest::SHA256.hexdigest(serial_seed)[0, 32]}",
+  version: 1,
+  metadata: {
+    timestamp: ENV.fetch("SOURCE_CREATED", "1970-01-01T00:00:00Z"),
+    component: {
+      type: "container",
+      name: image,
+      version: source_version
+    },
+    properties: [
+      { name: "source.commit", value: source_commit },
+      { name: "platform.version", value: source_version },
+      { name: "container.image", value: image }
+    ]
+  },
+  components: components
+}
+
+FileUtils.mkdir_p(File.dirname(output))
+json = JSON.pretty_generate(bom) + "\n"
+File.write(output, json)
+File.write("#{output}.sha256", "#{Digest::SHA256.hexdigest(json)}  #{File.basename(output)}\n")
+puts "Container SBOM written to #{output}"

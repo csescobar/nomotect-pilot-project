@@ -1,0 +1,79 @@
+<%# ── EJ2 Cards & Panels Section ────────────────────────────────────────────────── %>
+<div class="ej2-showcase-section">
+  <header class="ej2-showcase-section__header">
+    <h2 class="ej2-showcase-section__title"><%= t("ej2_showcase.cards.title") %></h2>
+    <p class="ej2-showcase-section__desc"><%= t("ej2_showcase.cards.description") %></p>
+  </header>
+
+  <%# ── Dashboard KPI Metric Card ────────────────────────────────────────────── %>
+  <div class="ej2-showcase-card" id="ej2-cards-kpi">
+    <div class="ej2-showcase-card__header">
+      <h3 class="ej2-showcase-card__title"><%= t("ej2_showcase.cards.kpi.title") %></h3>
+      <p class="ej2-showcase-card__desc"><%= t("ej2_showcase.cards.kpi.description") %></p>
+    </div>
+    <div class="ej2-showcase-card__demo">
+      <div class="e-card ej2-kpi-card">
+        <div class="ej2-kpi-card__header">
+          <span class="ej2-kpi-card__label"><%= t("ej2_showcase.cards.kpi.metric_label") %></span>
+          <span class="ej2-kpi-card__icon" aria-hidden="true">⚡</span>
+        </div>
+        <div class="ej2-kpi-card__body">
+          <span class="ej2-kpi-card__value"><%= t("ej2_showcase.cards.kpi.metric_value") %></span>
+          <span class="ej2-kpi-card__trend ej2-kpi-card__trend--up">
+            <%= t("ej2_showcase.cards.kpi.metric_trend") %>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%# ── Profile & Detail Card ──────────────────────────────────────────────── %>
+  <div class="ej2-showcase-card" id="ej2-cards-profile">
+    <div class="ej2-showcase-card__header">
+      <h3 class="ej2-showcase-card__title"><%= t("ej2_showcase.cards.profile.title") %></h3>
+      <p class="ej2-showcase-card__desc"><%= t("ej2_showcase.cards.profile.description") %></p>
+    </div>
+    <div class="ej2-showcase-card__demo">
+      <div class="e-card ej2-profile-card">
+        <div class="e-card-header">
+          <div class="e-card-header-caption">
+            <div class="e-card-title"><%= t("ej2_showcase.cards.profile.name") %></div>
+            <div class="e-card-sub-title"><%= t("ej2_showcase.cards.profile.subtitle") %></div>
+          </div>
+          <span class="ej2-card-badge"><%= t("ej2_showcase.cards.profile.badge") %></span>
+        </div>
+        <div class="e-card-content">
+          <p><%= t("ej2_showcase.cards.profile.details") %></p>
+        </div>
+        <div class="e-card-actions">
+          <button type="button" class="e-btn e-primary">
+            <%= t("ej2_showcase.cards.profile.action") %>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%# ── Collapsible Panel Card ──────────────────────────────────────────────── %>
+  <div class="ej2-showcase-card" id="ej2-cards-collapsible">
+    <div class="ej2-showcase-card__header">
+      <h3 class="ej2-showcase-card__title"><%= t("ej2_showcase.cards.collapsible.title") %></h3>
+      <p class="ej2-showcase-card__desc"><%= t("ej2_showcase.cards.collapsible.description") %></p>
+    </div>
+    <div class="ej2-showcase-card__demo">
+      <div class="e-card ej2-collapsible-card" data-controller="ej2-card" data-ej2-card-expanded-value="false">
+        <div class="e-card-header ej2-collapsible-card__header" data-action="click->ej2-card#toggle">
+          <div class="e-card-header-caption">
+            <div class="e-card-title"><%= t("ej2_showcase.cards.collapsible.header") %></div>
+          </div>
+          <button type="button" class="ej2-collapsible-card__toggle-btn" aria-label="Toggle Panel">
+            <span data-ej2-card-target="toggleIcon">▼</span>
+          </button>
+        </div>
+        <div class="e-card-content ej2-collapsible-card__content is-collapsed" data-ej2-card-target="content">
+          <p><%= t("ej2_showcase.cards.collapsible.content") %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

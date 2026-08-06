@@ -1,0 +1,22 @@
+id: repository-readiness
+version: 1
+title: Repository readiness verification
+inputs: []
+on_failure: stop
+steps:
+  - id: statistics
+    tool: repository.statistics
+    args: {}
+    timeout_seconds: 5
+  - id: validation
+    tool: repository.validate
+    args: {}
+    timeout_seconds: 30
+  - id: readiness
+    tool: repository.readiness
+    args: {}
+    timeout_seconds: 5
+completion_gate:
+  - all_steps_pass
+  - validation_passes
+  - repository_ready

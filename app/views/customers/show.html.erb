@@ -1,0 +1,37 @@
+<% content_for :title, @customer.name %>
+
+<%= render Ui::Layout::PageHeaderComponent.new(title: @customer.name, description: t("customers.show.description")) do %>
+  <% if @organization.membership_for(Current.user)&.admin? %>
+    <%= link_to t("customers.actions.edit"), edit_organization_customer_path(@organization, @customer), class: "button button--secondary" %>
+  <% end %>
+<% end %>
+
+<%= render Ui::CardComponent.new do %>
+  <dl class="ui-property-list">
+    <div class="ui-property-list__item"><dt><%= t("customers.fields.email") %></dt><dd><%= @customer.email_address.presence || "—" %></dd></div>
+    <div class="ui-property-list__item"><dt><%= t("customers.fields.status") %></dt><dd><span class="ui-badge ui-badge--small <%= @customer.status == "active" ? "ui-badge--success" : "" %>"><%= t("customers.statuses.#{@customer.status}") %></span></dd></div>
+    <div class="ui-property-list__item"><dt><%= t("customers.fields.notes") %></dt><dd><%= simple_format(@customer.notes.presence || "—") %></dd></div>
+  </dl>
+<% end %>
+
+<section aria-labelledby="customer-audit" class="content-section">
+  <h2 id="customer-audit"><%= t("customers.audit.title") %></h2>
+  <% if @events.any? %>
+    <div class="page-stack">
+      <% @events.each do |event| %>
+        <%= render Ui::CardComponent.new do %>
+          <strong><%= t("customers.audit.events.#{event.event_type.tr('.', '_')}", default: event.event_type.humanize) %></strong>
+          <p><%= format_local_time(event.occurred_at) %></p>
+        <% end %>
+      <% end %>
+    </div>
+  <% else %>
+    <%= render Ui::EmptyStateComponent.new(title: t("customers.audit.empty.title"), description: t("customers.audit.empty.description")) %>
+  <% end %>
+</section>
+
+<% if @organization.membership_for(Current.user)&.admin? %>
+  <%= render Ui::DangerZoneComponent.new(id: "customer-danger-zone", title: t("customers.danger_zone.title"), description: t("customers.danger_zone.description")) do %>
+    <%= button_to t("customers.actions.delete"), [ @organization, @customer ], method: :delete, class: "button button--danger", data: { turbo_confirm: t("customers.delete_confirmation") } %>
+  <% end %>
+<% end %>

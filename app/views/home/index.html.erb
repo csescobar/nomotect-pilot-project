@@ -1,0 +1,8 @@
+<% content_for :title, t("home.title") %>
+
+<section class="card">
+  <h1><%= t("home.heading") %></h1>
+  <p><%= t("home.description") %></p>
+
+  <%= render Ui::ButtonComponent.new(label: t("home.primary_action"), href: health_path) %>
+</section>

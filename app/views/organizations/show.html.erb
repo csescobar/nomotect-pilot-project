@@ -1,0 +1,79 @@
+<% content_for :title, @organization.name %>
+
+<%= render Ui::Layout::PageHeaderComponent.new(title: @organization.name, description: t("organizations.show.description")) do %>
+  <%= link_to t("customers.actions.view"), organization_customers_path(@organization), class: "button button--primary" %>
+  <% if @membership.admin? %>
+    <%= link_to t("organizations.actions.edit"), edit_organization_path(@organization), class: "button button--secondary" %>
+  <% end %>
+<% end %>
+
+<section aria-labelledby="organization-members" class="showcase__section">
+  <h2 id="organization-members"><%= t("organizations.show.members") %></h2>
+  <div class="showcase__stack">
+    <% @memberships.each do |membership| %>
+      <%= render Ui::CardComponent.new do %>
+        <strong><%= membership.user.email_address %></strong>
+        <p><%= t("organizations.roles.#{membership.role}") %></p>
+
+        <% if @membership.admin? && membership.user != Current.user && (!membership.owner? || @membership.owner?) %>
+          <div class="showcase__row">
+            <% available_roles = @membership.owner? ? Membership.roles : Membership.manageable_roles %>
+            <%= form_with model: [ @organization, membership ], method: :patch do |form| %>
+              <%= form.select :role,
+                available_roles.map { |role| [ t("organizations.roles.#{role}"), role ] },
+                {},
+                aria: { label: t("memberships.change_role", email: membership.user.email_address) } %>
+              <%= form.submit t("memberships.actions.update"), class: "button button--secondary button--small" %>
+            <% end %>
+            <%= button_to t("memberships.actions.remove"),
+              [ @organization, membership ],
+              method: :delete,
+              class: "button button--danger button--small",
+              data: { turbo_confirm: t("memberships.remove_confirmation", email: membership.user.email_address) } %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</section>
+
+<% if @membership.admin? %>
+  <section aria-labelledby="organization-invitations" class="showcase__section">
+    <h2 id="organization-invitations"><%= t("organization_invitations.title") %></h2>
+
+    <%= form_with model: [ @organization, @invitation ], builder: Ui::FormBuilder, html: { class: "showcase__form" } do |form| %>
+      <%= form.ui_error_summary %>
+      <%= form.ui_email_field :email_address, label: t("organization_invitations.fields.email"), required: true %>
+      <%= form.ui_select :role,
+        Membership.manageable_roles.map { |role| [ t("organizations.roles.#{role}"), role ] },
+        label: t("organization_invitations.fields.role") %>
+      <%= form.ui_submit t("organization_invitations.actions.invite") %>
+    <% end %>
+
+    <% if @pending_invitations.any? %>
+      <h3><%= t("organization_invitations.pending") %></h3>
+      <div class="showcase__stack">
+        <% @pending_invitations.each do |invitation| %>
+          <%= render Ui::CardComponent.new do %>
+            <strong><%= invitation.email_address %></strong>
+            <p><%= t("organizations.roles.#{invitation.role}") %></p>
+            <%= button_to t("organization_invitations.actions.accept_link"),
+              accept_organization_invitation_path(invitation.acceptance_token),
+              method: :patch,
+              class: "button button--secondary button--small" %>
+            <%= button_to t("organization_invitations.actions.revoke"),
+              [ @organization, invitation ],
+              method: :delete,
+              class: "button button--danger button--small" %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </section>
+<% end %>
+
+<% if @membership.owner? %>
+  <%= render Ui::DangerZoneComponent.new(id: "organization-danger-zone", title: t("organizations.danger_zone.title"), description: t("organizations.danger_zone.description")) do %>
+    <%= button_to t("organizations.actions.delete"), @organization, method: :delete, class: "button button--danger", data: { turbo_confirm: t("organizations.delete_confirmation") } %>
+  <% end %>
+<% end %>

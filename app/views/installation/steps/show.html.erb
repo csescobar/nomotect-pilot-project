@@ -1,0 +1,227 @@
+<%# ── Wizard Step: Appearance ──────────────────────────────── %>
+<% if @step.name == "appearance" %>
+  <div class="wizard-card">
+    <div class="wizard-card__header">
+      <h1 class="wizard-card__title"><%= t("installation.steps.appearance") %></h1>
+      <p class="wizard-card__subtitle"><%= t("installation.appearance.subtitle") %></p>
+    </div>
+    <div class="wizard-card__body">
+      <%= form_with url: installation_step_path("appearance"), method: :patch, multipart: true, class: "showcase__form" do %>
+        <%# Platform name %>
+        <div class="ui-field">
+          <%= label_tag "appearance_application_name", t("installation.appearance.application_name"), class: "ui-field__label" %>
+          <%= text_field_tag "appearance[application_name]", @appearance["application_name"], required: true, class: "ui-input", placeholder: "My Platform" %>
+        </div>
+
+        <%# Default locale %>
+        <div class="ui-field">
+          <%= label_tag "appearance_default_locale", t("installation.appearance.default_locale"), class: "ui-field__label" %>
+          <%= select_tag "appearance[default_locale]", options_for_select(%w[en pt-BR], @appearance["default_locale"]), class: "ui-input" %>
+        </div>
+
+        <%# Supported locales %>
+        <fieldset class="ui-field">
+          <legend class="ui-field__label"><%= t("installation.appearance.supported_locales") %></legend>
+          <% %w[en pt-BR].each do |locale| %>
+            <label class="ui-checkbox-field__label">
+              <%= check_box_tag "appearance[supported_locales][]", locale, @appearance["supported_locales"].include?(locale), class: "ui-checkbox" %>
+              <%= locale %>
+            </label>
+          <% end %>
+        </fieldset>
+
+        <%# Trademark mode %>
+        <fieldset class="ui-field">
+          <legend class="ui-field__label"><%= t("installation.appearance.trademark_mode") %></legend>
+          <div class="ui-radio-group__options">
+            <% [["name_only", t("installation.appearance.trademark_name_only")], ["image_only", t("installation.appearance.trademark_image_only")], ["image_and_name", t("installation.appearance.trademark_image_and_name")]].each do |value, label| %>
+              <label class="ui-radio-group__option">
+                <%= radio_button_tag "appearance[trademark_mode]", value, (@appearance["trademark_mode"] || "name_only") == value, class: "ui-radio" %>
+                <%= label %>
+              </label>
+            <% end %>
+          </div>
+        </fieldset>
+
+        <%# Logo upload %>
+        <div class="ui-field" data-controller="image-preview">
+          <%= label_tag "appearance_logo", t("installation.appearance.logo"), class: "ui-field__label" %>
+          <p class="ui-field__help"><%= t("installation.appearance.logo_help") %></p>
+          <%= file_field_tag "appearance[logo]", accept: "image/png,image/jpeg,image/svg+xml", class: "ui-input",
+                data: { "image-preview-target": "input", action: "change->image-preview#change" } %>
+          <div class="ui-image-preview ui-image-preview--hidden" data-image-preview-target="preview">
+            <img src="" alt="" class="ui-image-preview__img" data-image-preview-target="img">
+          </div>
+          <% if @appearance["logo_path"].present? %>
+            <div class="ui-image-preview">
+              <img src="<%= @appearance["logo_path"] %>" alt="<%= t("installation.appearance.current_logo") %>" class="ui-image-preview__img">
+              <span class="ui-field__help"><%= t("installation.appearance.current_logo") %></span>
+            </div>
+          <% end %>
+        </div>
+
+        <%# Compact logo / icon upload %>
+        <div class="ui-field" data-controller="image-preview">
+          <%= label_tag "appearance_compact_logo", t("installation.appearance.compact_logo"), class: "ui-field__label" %>
+          <p class="ui-field__help"><%= t("installation.appearance.compact_logo_help") %></p>
+          <%= file_field_tag "appearance[compact_logo]", accept: "image/png,image/jpeg,image/svg+xml,image/x-icon", class: "ui-input",
+                data: { "image-preview-target": "input", action: "change->image-preview#change" } %>
+          <div class="ui-image-preview ui-image-preview--hidden" data-image-preview-target="preview">
+            <img src="" alt="" class="ui-image-preview__img" data-image-preview-target="img">
+          </div>
+          <% if @appearance["compact_logo_path"].present? %>
+            <div class="ui-image-preview">
+              <img src="<%= @appearance["compact_logo_path"] %>" alt="<%= t("installation.appearance.current_compact_logo") %>" class="ui-image-preview__img">
+              <span class="ui-field__help"><%= t("installation.appearance.current_compact_logo") %></span>
+            </div>
+          <% end %>
+        </div>
+
+        <%# Favicon upload %>
+        <div class="ui-field" data-controller="image-preview">
+          <%= label_tag "appearance_favicon", t("installation.appearance.favicon"), class: "ui-field__label" %>
+          <p class="ui-field__help"><%= t("installation.appearance.favicon_help") %></p>
+          <%= file_field_tag "appearance[favicon]", accept: "image/png,image/x-icon,image/svg+xml", class: "ui-input",
+                data: { "image-preview-target": "input", action: "change->image-preview#change" } %>
+          <div class="ui-image-preview ui-image-preview--hidden" data-image-preview-target="preview">
+            <img src="" alt="" class="ui-image-preview__img" data-image-preview-target="img">
+          </div>
+          <% if @appearance["favicon_path"].present? %>
+            <div class="ui-image-preview">
+              <img src="<%= @appearance["favicon_path"] %>" alt="<%= t("installation.appearance.current_favicon") %>" class="ui-image-preview__img">
+              <span class="ui-field__help"><%= t("installation.appearance.current_favicon") %></span>
+            </div>
+          <% end %>
+        </div>
+
+        <%# Design token YAML (dev only) %>
+        <% if Installation::Configuration.token_editing_allowed? %>
+          <div class="ui-field">
+            <%= label_tag :token_yaml, t("installation.appearance.design_tokens"), class: "ui-field__label" %>
+            <%= text_area_tag :token_yaml, @token_yaml, rows: 24, class: "ui-input ui-code", spellcheck: false %>
+          </div>
+        <% end %>
+
+        <div class="wizard-card__actions">
+          <%= submit_tag t("installation.appearance.save_and_continue"), class: "button button--primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+<%# ── Wizard Step: Database ───────────────────────────────── %>
+<% elsif @step.name == "database" %>
+  <div class="wizard-card">
+    <div class="wizard-card__header">
+      <h1 class="wizard-card__title"><%= t("installation.steps.database") %></h1>
+      <p class="wizard-card__subtitle"><%= t("installation.database.subtitle") %></p>
+    </div>
+    <div class="wizard-card__body">
+      <%= form_with url: installation_step_path("database"), method: :patch, class: "showcase__form" do %>
+        <% { host: t("installation.database.host"), port: t("installation.database.port"), maintenance_database: t("installation.database.maintenance_database"), admin_username: t("installation.database.admin_username"), application_database: t("installation.database.application_database"), application_username: t("installation.database.application_username") }.each do |field, label| %>
+          <div class="ui-field">
+            <%= label_tag "database_#{field}", label, class: "ui-field__label" %>
+            <%= text_field_tag "database[#{field}]", @database[field.to_s], required: true, class: "ui-input", autocomplete: "off" %>
+          </div>
+        <% end %>
+        <div class="ui-field">
+          <%= label_tag "database_admin_password", t("installation.database.admin_password"), class: "ui-field__label" %>
+          <%= password_field_tag "database[admin_password]", nil, required: true, class: "ui-input", autocomplete: "new-password" %>
+        </div>
+        <div class="ui-field">
+          <%= label_tag "database_sslmode", t("installation.database.sslmode"), class: "ui-field__label" %>
+          <%= select_tag "database[sslmode]", options_for_select(Installation::DatabaseConfiguration::SSL_MODES, @database["sslmode"]), class: "ui-input" %>
+        </div>
+        <div class="wizard-card__actions">
+          <%= submit_tag t("installation.database.test_connection"), name: "commit", class: "button button--secondary" %>
+          <%= submit_tag t("installation.database.provision"), name: "commit", class: "button button--primary" %>
+        </div>
+      <% end %>
+
+      <% if @progress.present? %>
+        <%= render "installation/steps/progress_log", progress: @progress, title: t("installation.log.title") %>
+      <% end %>
+    </div>
+  </div>
+
+<%# ── Wizard Step: Provisioning ───────────────────────────── %>
+<% elsif @step.name == "provisioning" %>
+  <div class="wizard-card">
+    <div class="wizard-card__header">
+      <h1 class="wizard-card__title"><%= t("installation.steps.provisioning") %></h1>
+      <p class="wizard-card__subtitle"><%= t("installation.provisioning.subtitle") %></p>
+    </div>
+    <div class="wizard-card__body">
+      <%= form_with url: installation_step_path("provisioning"), method: :patch do %>
+        <div class="wizard-card__actions">
+          <%= submit_tag t("installation.provisioning.run_migrations"), class: "button button--primary" %>
+        </div>
+      <% end %>
+
+      <% if @progress.present? %>
+        <%= render "installation/steps/progress_log", progress: @progress, title: t("installation.log.title") %>
+      <% end %>
+    </div>
+  </div>
+
+<%# ── Wizard Step: Migrations ─────────────────────────────── %>
+<% elsif @step.name == "migrations" %>
+  <div class="wizard-card">
+    <div class="wizard-card__header">
+      <h1 class="wizard-card__title"><%= t("installation.steps.migrations") %></h1>
+      <p class="wizard-card__subtitle"><%= t("installation.migrations.subtitle") %></p>
+    </div>
+    <div class="wizard-card__body">
+      <% if @progress.present? %>
+        <%= render "installation/steps/progress_log", progress: @progress, title: t("installation.log.title") %>
+      <% end %>
+    </div>
+  </div>
+
+<%# ── Wizard Step: Platform Owner ─────────────────────────── %>
+<% elsif @step.name == "platform_owner" %>
+  <div class="wizard-card">
+    <div class="wizard-card__header">
+      <h1 class="wizard-card__title"><%= t("installation.steps.platform_owner") %></h1>
+      <p class="wizard-card__subtitle"><%= t("installation.platform_owner.subtitle") %></p>
+    </div>
+    <div class="wizard-card__body">
+      <%= form_with url: installation_step_path("platform-owner"), method: :patch, class: "showcase__form" do %>
+        <div class="ui-field">
+          <%= label_tag "platform_owner_organization_name", t("installation.platform_owner.organization_name"), class: "ui-field__label" %>
+          <%= text_field_tag "platform_owner[organization_name]", nil, required: true, maxlength: 120, class: "ui-input", autocomplete: "organization" %>
+        </div>
+        <div class="ui-field">
+          <%= label_tag "platform_owner_email_address", t("installation.platform_owner.email"), class: "ui-field__label" %>
+          <%= email_field_tag "platform_owner[email_address]", nil, required: true, class: "ui-input", autocomplete: "email" %>
+        </div>
+        <div class="ui-field">
+          <%= label_tag "platform_owner_password", t("installation.platform_owner.password"), class: "ui-field__label" %>
+          <%= password_field_tag "platform_owner[password]", nil, required: true, minlength: 12, class: "ui-input", autocomplete: "new-password" %>
+        </div>
+        <div class="ui-field">
+          <%= label_tag "platform_owner_password_confirmation", t("installation.platform_owner.password_confirmation"), class: "ui-field__label" %>
+          <%= password_field_tag "platform_owner[password_confirmation]", nil, required: true, minlength: 12, class: "ui-input", autocomplete: "new-password" %>
+        </div>
+        <div class="wizard-card__actions">
+          <%= submit_tag t("installation.platform_owner.submit"), class: "button button--primary" %>
+        </div>
+      <% end %>
+
+      <% if @progress.present? %>
+        <%= render "installation/steps/progress_log", progress: @progress, title: t("installation.log.title") %>
+      <% end %>
+    </div>
+  </div>
+
+<%# ── Installation Complete ────────────────────────────────── %>
+<% else %>
+  <div class="wizard-card">
+    <div class="wizard-card__header">
+      <h1 class="wizard-card__title"><%= t("installation.complete.title") %></h1>
+    </div>
+    <div class="wizard-card__body">
+      <p><%= t("installation.complete.body") %></p>
+    </div>
+  </div>
+<% end %>

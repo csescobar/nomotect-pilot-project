@@ -1,0 +1,18 @@
+<% content_for(:title, t("marketing.meta.title")) %>
+<% content_for(:meta_description, t("marketing.meta.description")) %>
+
+<%= render Marketing::HeaderComponent.new(authenticated: false, current_user: nil, show_auth: @show_auth != false) %>
+
+<main id="main-content">
+  <%= render Marketing::HeroComponent.new %>
+  <%= render Marketing::ProductPreviewComponent.new %>
+  <%= render Marketing::CapabilityComponent.new %>
+  <%= render Marketing::EngineeringFlowComponent.new %>
+  <%= render Marketing::ArchitectureLayersComponent.new %>
+  <%= render Marketing::LifecycleComponent.new %>
+  <%= render Marketing::TechnologyStackComponent.new %>
+  <%= render Marketing::ApplicationCategoryComponent.new %>
+  <%= render Marketing::CallToActionComponent.new %>
+</main>
+
+<%= render Marketing::FooterComponent.new %>

@@ -1,0 +1,19 @@
+id: implement_feature
+version: 1
+title: Implement a platform feature
+inputs:
+  - objective
+  - target_module
+steps:
+  - load_repository_status
+  - describe_target_module
+  - run_impact_analysis
+  - identify_security_tenant_and_privacy_invariants
+  - implement_with_tests
+  - run_repository_validators
+  - update_documentation
+completion_gate:
+  - tests_pass
+  - architecture_valid
+  - contracts_valid
+  - final_ci_green

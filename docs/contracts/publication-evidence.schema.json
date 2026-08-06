@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nomotect.example/contracts/publication-evidence.schema.json",
+  "title": "Credential-free distribution publication evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "publication_id",
+    "version",
+    "tag",
+    "source",
+    "status",
+    "channels",
+    "artifacts",
+    "findings"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "publication_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9.-]+$"
+    },
+    "version": { "$ref": "#/$defs/semanticVersion" },
+    "tag": {
+      "type": "string",
+      "pattern": "^v(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(-[0-9A-Za-z.-]+)?(\\+[0-9A-Za-z.-]+)?$"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "commit", "manifest_digest"],
+      "properties": {
+        "repository": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"
+        },
+        "commit": { "$ref": "#/$defs/commit" },
+        "manifest_digest": { "$ref": "#/$defs/digest" }
+      }
+    },
+    "status": {
+      "enum": [
+        "planned",
+        "preflight_ready",
+        "publishing",
+        "partially_published",
+        "published",
+        "verification_failed",
+        "recovery_required"
+      ]
+    },
+    "channels": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "status", "immutable_reference"],
+        "properties": {
+          "id": { "enum": ["github_release", "ghcr"] },
+          "status": {
+            "enum": ["pending", "published", "verified", "failed", "conflict"]
+          },
+          "immutable_reference": {
+            "type": ["string", "null"]
+          }
+        }
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "sha256", "size"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "sha256": { "$ref": "#/$defs/digest" },
+          "size": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/finding" }
+    }
+  },
+  "$defs": {
+    "semanticVersion": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(-[0-9A-Za-z.-]+)?(\\+[0-9A-Za-z.-]+)?$"
+    },
+    "commit": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "severity", "message"],
+      "properties": {
+        "code": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]+$"
+        },
+        "severity": { "enum": ["warning", "blocker"] },
+        "message": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+schema_version: 1
+id: design_i18n_grid
+themes:
+  - light
+  - dark
+locales:
+  en:
+    title: Service requests
+    status_label: Status
+  pt-BR:
+    title: Solicitações de serviço
+    status_label: Status
+grid:
+  columns:
+    - id: title
+      type: string
+      operators:
+        - contains
+        - equals
+    - id: status
+      type: enum
+      operators:
+        - equals
+        - not_equals
+    - id: tenant_id
+      type: string
+      operators:
+        - equals
+  default_sort:
+    column: title
+    direction: asc
+  saved_view:
+    id: open_requests
+    filters:
+      - column: status
+        operator: not_equals
+        value: resolved
+  export:
+    format: csv
+    credential_free: true
+evidence:
+  theme_rendering: required
+  locale_resolution: required
+  grid_query: required
+  saved_view: required
+  export: required

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nomotect.example/contracts/operational-health-snapshot.schema.json",
+  "title": "NomoTect operational health snapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "observed_at", "status", "summary", "signals"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "observed_at": { "type": "string", "format": "date-time" },
+    "status": { "enum": ["healthy", "degraded", "unhealthy", "unknown"] },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["healthy", "degraded", "unhealthy", "unknown"],
+      "properties": {
+        "healthy": { "type": "integer", "minimum": 0 },
+        "degraded": { "type": "integer", "minimum": 0 },
+        "unhealthy": { "type": "integer", "minimum": 0 },
+        "unknown": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "signals": { "type": "array", "minItems": 1, "items": { "type": "object" } }
+  }
+}

@@ -1,0 +1,183 @@
+en:
+  application:
+    name: Service Desk Lite
+  layout:
+    dashboard: Dashboard
+    organizations: Organizations
+    grid_engine: Grid Engine
+    component_showcase: Component Showcase
+    close_notification: Close notification
+    skip_to_content: Skip to main content
+  marketing:
+    meta:
+      title: "Service Desk Lite — AI-Native Enterprise Application Platform"
+      description: "An open-source, AI-native enterprise application platform for building secure, governed, accessible, and maintainable business applications with Ruby on Rails and Hotwire."
+    nav:
+      platform: "Platform"
+      capabilities: "Capabilities"
+      architecture: "Architecture"
+      documentation: "Documentation"
+      community: "Community"
+      github: "GitHub"
+      explore_platform: "Explore Platform"
+      sign_in: "Sign In"
+      dashboard: "Go to Dashboard"
+    hero:
+      eyebrow: "AI-native enterprise application platform"
+      headline_1: "Build with structure."
+      headline_2: "Evolve with confidence."
+      description: "An AI-native foundation for building secure, governed, and maintainable business applications with Ruby on Rails and Hotwire."
+      primary_cta: "Explore the platform"
+      secondary_cta: "View on GitHub"
+      principle_1: "Open-source community core"
+      principle_2: "Apache 2.0 licensed"
+      principle_3: "Vendor-neutral AI architecture"
+    preview:
+      title: "Interactive Application Shell & Enterprise Grid"
+      org: "Acme Global Enterprise"
+      search_placeholder: "Search customers, invoices, audit logs..."
+      nav_customers: "Customers"
+      nav_invoices: "Invoices"
+      nav_reports: "Reports"
+      nav_settings: "Settings"
+      grid_title: "Organization Customers"
+      filter_status: "Filter by Status"
+      saved_view: "Default View"
+      export_csv: "Export CSV"
+      col_name: "Customer"
+      col_org: "Domain"
+      col_plan: "Tier"
+      col_status: "Status"
+      col_actions: "Actions"
+      status_active: "Active"
+      status_pending: "Pending"
+      status_review: "Under Review"
+    capabilities:
+      heading: "A foundation for serious business applications."
+      intro: "Built to handle the complexity of enterprise domains while remaining agile enough to evolve. Service Desk Lite provides explicit contracts and reusable capabilities that make large-scale development predictable."
+      foundation_title: "Application Foundation"
+      foundation_desc: "Ruby 3.4, Rails 8, Hotwire, ViewComponent, and Propshaft providing structured modular conventions."
+      design_system_title: "Design System"
+      design_system_desc: "Canonical tokens, light and dark themes, strict accessibility, and zero third-party utility clutter."
+      data_grid_title: "Enterprise Data Grid"
+      data_grid_desc: "Grid DSL with composable filtering, saved user views, server pagination, and CSV/JSON exports."
+      architecture_title: "Domain Architecture"
+      architecture_desc: "Explicit module contracts, clean layering, inward dependencies, and bounded context isolation."
+      multitenancy_title: "Multi-tenant Services"
+      multitenancy_desc: "Tenant boundaries, membership scoping, organization switching, and strict data isolation."
+      security_title: "Security & Privacy"
+      security_desc: "Deny-by-default authorization, strict CSP headers, structured audit events, and data compliance."
+    ai_section:
+      heading: "AI-native by architecture, not by marketing"
+      description: "Humans and coding agents can understand and extend Service Desk Lite safely without undocumented knowledge, proprietary memory tooling, or dependence on one AI provider."
+      step_1_title: "Module Contract"
+      step_1_desc: "Machine-readable interface boundary"
+      step_2_title: "AI Context"
+      step_2_desc: "Structured domain and governance facts"
+      step_3_title: "Engineering Playbook"
+      step_3_desc: "Deterministic step-by-step workflow"
+      step_4_title: "Deterministic Validation"
+      step_4_desc: "Automated verification against contracts"
+      step_5_title: "Human Review"
+      step_5_desc: "Final accountability and merge decision"
+    architecture:
+      heading: "Conventions where they help. Explicit boundaries where they matter."
+      layer_1_title: "Presentation Layer"
+      layer_1_desc: "ViewComponents, Hotwire progressive enhancement, design tokens, and Rails I18n."
+      layer_2_title: "Application Layer"
+      layer_2_desc: "Controllers, command handlers, authorization policies, and application event dispatching."
+      layer_3_title: "Domain Layer"
+      layer_3_desc: "Entities, aggregate invariants, domain specifications, and business event definitions."
+      layer_4_title: "Infrastructure Layer"
+      layer_4_desc: "ActiveRecord adapters, repository intelligence, MCP server, and observability contracts."
+    lifecycle:
+      heading: "Built to evolve beyond the first release"
+      stage_1: "Install"
+      stage_2: "Brand"
+      stage_3: "Build"
+      stage_4: "Govern"
+      stage_5: "Operate"
+      stage_6: "Upgrade"
+      stage_7: "Extend"
+      status_stable: "[Stable]"
+      status_core: "[Core]"
+      status_active: "[Active]"
+    open_source:
+      heading: "An open community core built for real applications"
+      license_title: "Apache License 2.0"
+      license_desc: "Complete community core with commercial-friendly open-source licensing."
+      neutral_title: "Vendor-Neutral AI"
+      neutral_desc: "Independent MCP server adapters and open AI context standards."
+      stack_heading: "Technology Stack Foundation"
+    target_apps:
+      heading: "Designed for long-lived operational software"
+      cat_1_title: "Administrative and operational systems"
+      cat_1_desc: "Core back-office portals, internal processing engines, and operational dashboards."
+      cat_2_title: "Governance, risk, and compliance platforms"
+      cat_2_desc: "Audit trails, policy enforcement engines, and regulatory reporting suites."
+      cat_3_title: "Workflow and approval applications"
+      cat_3_desc: "Multi-step request routing, approval matrices, and state machine automation."
+      cat_4_title: "Document and records management"
+      cat_4_desc: "Structured record archiving, versioning, access control, and retention."
+      cat_5_title: "Multi-tenant business applications"
+      cat_5_desc: "SaaS products requiring strict organization isolation and membership roles."
+      cat_6_title: "Internal enterprise tools"
+      cat_6_desc: "Bespoke internal tooling designed to replace fragmented legacy spreadsheets."
+    cta:
+      heading: "Build the business application. Keep the architecture."
+      read_docs: "Read the documentation"
+      view_repo: "View the repository"
+    footer:
+      platform_col: "Platform"
+      capabilities_col: "Capabilities"
+      architecture_col: "Architecture"
+      security_col: "Security"
+      docs_col: "Documentation"
+      community_col: "Community"
+      privacy_policy: "Privacy Policy"
+      terms_of_service: "Terms of Service"
+      status: "System Status"
+      copy: "© 2026 Service Desk Lite. Governed evolution. Open-source under the Apache License 2.0."
+  theme:
+    label: Theme
+    light: Light
+    dark: Dark
+  tenant_selection:
+    updated: Active organization updated.
+  privacy_requests:
+    rate_limited: Too many privacy requests. Please try again later.
+    accepted: Your privacy request was accepted for processing.
+    export: Export my data
+    anonymize: Anonymize my personal data
+  authentication:
+    required: Please sign in to continue.
+    sign_in: Sign in
+    sign_out: Sign out
+    email: Email address
+    password: Password
+    invalid_credentials: The email address or password is incorrect.
+    try_later: Too many attempts. Please try again later.
+  passwords:
+    forgot: Forgot your password?
+    reset: Reset your password
+    send_instructions: Send reset instructions
+    instructions_sent: If that account exists, reset instructions have been sent.
+    choose_new: Choose a new password
+    confirm: Confirm password
+    update: Update password
+    updated: Your password has been updated. Please sign in again.
+    invalid_token: The password reset link is invalid or has expired.
+    mailer:
+      subject: Password reset instructions
+      heading: Reset your password
+      instructions: Use the link below to choose a new password.
+      action: Choose a new password
+      expiration: This link expires in 20 minutes.
+  home:
+    title: Service Desk Lite Dashboard
+    heading: Service Desk Lite Application Home
+    description: The executable platform core, authentication, request context, health checks, authorization contract, ViewComponent and Hotwire are active.
+    primary_action: Check service health
+  errors:
+    not_found: The requested resource was not found.
+    forbidden: You are not authorized to perform this action.

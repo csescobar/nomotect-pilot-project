@@ -1,0 +1,53 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "yaml"
+
+blueprint = YAML.safe_load_file("render.validation.yaml", aliases: false)
+errors = []
+
+service = Array(blueprint["services"]).find { |candidate| candidate["name"] == "nomotect-visual-validation" }
+database = Array(blueprint["databases"]).find { |candidate| candidate["name"] == "nomotect-visual-validation-db" }
+
+errors << "visual-validation web service is missing" unless service
+errors << "visual-validation PostgreSQL database is missing" unless database
+errors << "visual-validation database must use the free plan" unless database&.fetch("plan", nil) == "free"
+
+if service
+  errors << "visual-validation service must use Docker" unless service["runtime"] == "docker"
+  errors << "visual-validation service must use the free plan" unless service["plan"] == "free"
+  errors << "visual-validation health check must use /health" unless service["healthCheckPath"] == "/health"
+  errors << "visual-validation boot adapter is missing" unless service["dockerCommand"] == "bash bin/render-start bash bin/render-validation-boot"
+  errors << "visual-validation profile must not attach a persistent disk" if service.key?("disk")
+  errors << "visual-validation profile must not run paid pre-deploy commands" if service.key?("preDeployCommand")
+  errors << "visual-validation profile must not configure paid shutdown delay" if service.key?("maxShutdownDelaySeconds")
+
+  env_vars = Array(service["envVars"]).to_h { |entry| [ entry["key"], entry ] }
+  database_reference = env_vars.dig("DATABASE_URL", "fromDatabase")
+  errors << "DATABASE_URL must reference visual-validation PostgreSQL" unless database_reference == {
+    "name" => "nomotect-visual-validation-db",
+    "property" => "connectionString"
+  }
+
+  %w[SECRET_KEY_BASE INSTALLATION_BOOTSTRAP_TOKEN VISUAL_VALIDATION_EMAIL VISUAL_VALIDATION_PASSWORD].each do |name|
+    entry = env_vars[name] || {}
+    errors << "#{name} must be operator-supplied" unless entry["sync"] == false && !entry.key?("value")
+  end
+
+  expected_values = {
+    "RAILS_ENV" => "production",
+    "INSTALLATION_ENABLED" => "true",
+    "RUN_DB_PREPARE" => "false",
+    "VISUAL_VALIDATION_ENABLED" => "true"
+  }
+  expected_values.each do |name, value|
+    errors << "#{name} must equal #{value}" unless env_vars.dig(name, "value") == value
+  end
+end
+
+if errors.any?
+  errors.each { |error| warn("Render visual-validation configuration error: #{error}") }
+  exit 1
+end
+
+puts "Render visual-validation contract validated"

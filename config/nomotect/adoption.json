@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "product": {
+    "product_name": "Service Desk Lite",
+    "organization": "Nomotect Adoption",
+    "repository": "nomotect-pilot-project"
+  },
+  "platform": {
+    "name": "NomoTect",
+    "version": "0.9.0",
+    "source_commit": "405c2d19cb7c46a1df8e2714513a9a62acfe4de6"
+  }
+}

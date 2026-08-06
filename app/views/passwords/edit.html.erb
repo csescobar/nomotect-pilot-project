@@ -1,0 +1,19 @@
+<% content_for :title, t("passwords.choose_new") %>
+
+<section class="card auth-card">
+  <h1><%= t("passwords.choose_new") %></h1>
+
+  <%= form_with url: password_path(params[:token]), method: :patch do |form| %>
+    <div class="field">
+      <%= form.label :password, t("authentication.password") %>
+      <%= form.password_field :password, required: true, autofocus: true, autocomplete: "new-password" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :password_confirmation, t("passwords.confirm") %>
+      <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password" %>
+    </div>
+
+    <%= form.submit t("passwords.update"), class: "button button--primary" %>
+  <% end %>
+</section>

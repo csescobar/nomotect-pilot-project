@@ -1,0 +1,36 @@
+<header class="mkt-header" data-controller="marketing-nav">
+  <div class="mkt-container mkt-header__inner">
+    <%= link_to root_path, class: "mkt-header__brand", aria: { label: "Service Desk Lite Home" } do %>
+      <%= image_tag "brand/Service Desk Lite_Lockup_Horizontal.svg", alt: "Service Desk Lite", class: "mkt-header__logo mkt-header__logo--light", height: 44, width: 176 %>
+      <%= image_tag "brand/Service Desk Lite_Lockup_Horizontal_Dark.svg", alt: "Service Desk Lite", class: "mkt-header__logo mkt-header__logo--dark", height: 44, width: 176 %>
+    <% end %>
+
+    <button type="button" class="mkt-header__toggle button button--ghost" data-action="marketing-nav#toggle" aria-expanded="false" aria-label="Toggle Navigation">
+      <svg class="mkt-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+
+    <div class="mkt-header__menu-wrapper" data-marketing-nav-target="menu">
+      <nav class="mkt-header__nav">
+        <a href="#capabilities" class="mkt-header__link"><%= t("marketing.nav.capabilities") %></a>
+        <a href="#architecture" class="mkt-header__link"><%= t("marketing.nav.architecture") %></a>
+        <a href="#ai-native" class="mkt-header__link"><%= t("marketing.nav.platform") %></a>
+        <a href="#open-source" class="mkt-header__link"><%= t("marketing.nav.community") %></a>
+        <a href="https://github.com/csescobar/nomotect-platform" class="mkt-header__link" target="_blank" rel="noopener"><%= t("marketing.nav.github") %></a>
+      </nav>
+
+      <div class="mkt-header__actions">
+        <div class="mkt-header__controls-row">
+          <%= render Ui::ThemeSwitcherComponent.new(show_label: false) %>
+          <%= render Ui::LocaleSwitcherComponent.new(current_locale: I18n.locale, action: locale_preference_path, show_label: false) %>
+        </div>
+        <% if @show_auth %>
+          <% if @authenticated %>
+            <%= link_to t("marketing.nav.dashboard"), dashboard_path, class: "button button--primary" %>
+          <% else %>
+            <%= link_to t("marketing.nav.sign_in"), new_session_path, class: "button button--secondary" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</header>

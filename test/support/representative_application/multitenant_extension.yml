@@ -1,0 +1,28 @@
+schema_version: 1
+id: multitenant_extension
+tenants:
+  minimum: 2
+  cross_tenant_access: denied
+roles: [owner, administrator, member]
+permissions:
+  owner: [manage_members, manage_requests]
+  administrator: [manage_requests]
+  member: [read_requests]
+community:
+  operates_without_extensions: true
+  essential_capabilities_available: true
+extension:
+  id: service_request_labels
+  registered: true
+  trusted: true
+  tenant_scoped: true
+  lifecycle: [discovered, verified, loaded, ready, disabled]
+  failure_mode: isolated
+  may_disable_community: false
+evidence:
+  tenant_isolation: required
+  role_denial: required
+  community_only: required
+  extension_registration: required
+  extension_lifecycle: required
+  extension_failure_isolation: required

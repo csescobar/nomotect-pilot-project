@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+required=(KAMAL_IMAGE KAMAL_SERVER KAMAL_HOST KAMAL_REGISTRY_USERNAME KAMAL_REGISTRY_PASSWORD DATABASE_URL SECRET_KEY_BASE INSTALLATION_BOOTSTRAP_TOKEN)
+for name in "${required[@]}"; do
+  if [[ -z "${!name:-}" ]]; then
+    echo "kamal configuration error: ${name} is required" >&2
+    exit 1
+  fi
+done
+
+if [[ ${#SECRET_KEY_BASE} -lt 64 ]]; then
+  echo "kamal configuration error: SECRET_KEY_BASE must contain at least 64 characters" >&2
+  exit 1
+fi
+
+if [[ "$KAMAL_IMAGE" == http://* || "$KAMAL_IMAGE" == https://* ]]; then
+  echo "kamal configuration error: KAMAL_IMAGE must be a registry image path, not a URL" >&2
+  exit 1
+fi
+
+mkdir -p .kamal tmp/ci
+secrets_file=.kamal/secrets
+cleanup() {
+  rm -f "$secrets_file" tmp/ci/kamal-config.yml
+}
+trap cleanup EXIT
+
+cat > "$secrets_file" <<'SECRETS'
+KAMAL_REGISTRY_PASSWORD=$KAMAL_REGISTRY_PASSWORD
+DATABASE_URL=$DATABASE_URL
+SECRET_KEY_BASE=$SECRET_KEY_BASE
+INSTALLATION_BOOTSTRAP_TOKEN=$INSTALLATION_BOOTSTRAP_TOKEN
+SECRETS
+chmod 600 "$secrets_file"
+
+bundle exec kamal config > tmp/ci/kamal-config.yml
+
+grep -q ':roles:' tmp/ci/kamal-config.yml
+grep -q -- '- web' tmp/ci/kamal-config.yml
+grep -q ':primary_host:' tmp/ci/kamal-config.yml
+grep -q ':volume_args:' tmp/ci/kamal-config.yml
+grep -q "$KAMAL_IMAGE" tmp/ci/kamal-config.yml
+
+printf 'Kamal deployment contract validated\n'

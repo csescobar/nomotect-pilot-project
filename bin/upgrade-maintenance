@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "json"
+require_relative "../config/environment"
+
+control = Upgrades::MaintenanceControl.new
+result = case ARGV.fetch(0, "status")
+         when "enable" then control.activate!
+         when "disable" then control.deactivate!
+         when "status" then control.read
+         else abort "Usage: bin/upgrade-maintenance [enable|disable|status]"
+         end
+puts JSON.pretty_generate(result)

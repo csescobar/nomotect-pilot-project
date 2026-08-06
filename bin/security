@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+mkdir -p tmp/ci
+bin/brakeman --no-pager --format json --output tmp/ci/brakeman.json
+bin/bundler-audit check --update

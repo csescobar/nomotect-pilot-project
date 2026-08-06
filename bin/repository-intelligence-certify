@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+WORKDIR="$(mktemp -d)"
+mkdir -p "$ROOT/tmp/ci"
+exec > >(tee "$ROOT/tmp/ci/repository-intelligence-certification.log") 2>&1
+trap 'status=$?; if [[ -d "$WORKDIR/tmp/ci" ]]; then cp -f "$WORKDIR"/tmp/ci/* "$ROOT/tmp/ci/" 2>/dev/null || true; fi; rm -rf "$WORKDIR"; exit $status' EXIT
+
+export GITHUB_SHA="${GITHUB_SHA:-$(git -C "$ROOT" rev-parse HEAD)}"
+export RAILS_ENV="${RAILS_ENV:-test}"
+
+echo "[certification] creating clean worktree"
+tar \
+  --exclude=.git \
+  --exclude=tmp \
+  --exclude=log \
+  --exclude=storage \
+  -C "$ROOT" -cf - . | tar -C "$WORKDIR" -xf -
+
+cd "$WORKDIR"
+rm -rf docs/ai/generated tmp/ai
+mkdir -p tmp/ci
+
+echo "[certification] generating from a clean worktree"
+ruby bin/repository-intelligence generate
+echo "[certification] validating generated state"
+ruby bin/repository-intelligence validate
+echo "[certification] recording health and readiness"
+ruby bin/repository-intelligence health > tmp/ci/repository-health.json
+ruby bin/repository-intelligence readiness > tmp/ci/repository-readiness.json
+
+echo "[certification] checking deterministic regeneration"
+find docs/ai/generated -type f -print0 | sort -z | xargs -0 sha256sum > tmp/ci/first-generation.sha256
+ruby bin/repository-intelligence generate
+find docs/ai/generated -type f -print0 | sort -z | xargs -0 sha256sum > tmp/ci/second-generation.sha256
+diff -u tmp/ci/first-generation.sha256 tmp/ci/second-generation.sha256
+
+echo "[certification] executing MCP protocol journey"
+ruby -rjson -ropen3 -e '
+  requests = [
+    { jsonrpc: "2.0", id: 1, method: "initialize", params: {} },
+    { jsonrpc: "2.0", id: 2, method: "resources/list", params: {} },
+    { jsonrpc: "2.0", id: 3, method: "tools/list", params: {} },
+    { jsonrpc: "2.0", id: 4, method: "prompts/list", params: {} },
+    { jsonrpc: "2.0", id: 5, method: "tools/call", params: { name: "repository_health", arguments: {} } },
+    { jsonrpc: "2.0", id: 6, method: "tools/call", params: { name: "validate_playbook", arguments: { id: "repository-readiness" } } },
+    { jsonrpc: "2.0", id: 7, method: "tools/call", params: { name: "execute_playbook", arguments: { id: "repository-readiness", inputs: {} } } },
+    { jsonrpc: "2.0", id: 8, method: "tools/call", params: { name: "generate_artifacts", arguments: {} } }
+  ]
+  stdout, stderr, status = Open3.capture3("ruby", "bin/repository-intelligence", "mcp", stdin_data: requests.map { |request| JSON.generate(request) }.join("\n") + "\n")
+  warn stderr unless stderr.empty?
+  abort "MCP process failed" unless status.success?
+  responses = stdout.lines.map { |line| JSON.parse(line) }
+  File.write("tmp/ci/mcp-certification-responses.json", JSON.pretty_generate(responses) + "\n")
+  abort "MCP response count mismatch" unless responses.size == requests.size
+  abort "MCP initialize failed" unless responses[0].dig("result", "protocolVersion")
+  abort "MCP resources missing" if responses[1].dig("result", "resources").to_a.empty?
+  abort "MCP tools missing" if responses[2].dig("result", "tools").to_a.empty?
+  abort "MCP prompts missing" if responses[3].dig("result", "prompts").to_a.empty?
+  abort "health tool failed" unless responses[4].dig("result", "content", 0, "text")&.include?("status")
+  abort "playbook validation failed" unless responses[5]["result"]
+  abort "playbook execution failed" unless responses[6].dig("result", "content", 0, "text")&.include?("completed")
+  abort "write restriction failed" unless responses[7].dig("error", "message")&.include?("writes are disabled")
+'
+
+echo "Epic 8 Repository Intelligence certification passed."

@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nomotect.example/contracts/change-fragment.schema.json",
+  "title": "Release change fragment",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "category",
+    "summary",
+    "release_impact",
+    "contracts",
+    "migration",
+    "upgrade",
+    "security",
+    "privacy",
+    "accessibility"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "category": {
+      "enum": ["feature", "fix", "security", "deprecation", "removal", "documentation", "internal"]
+    },
+    "summary": { "type": "string", "minLength": 1 },
+    "release_impact": { "enum": ["none", "patch", "minor", "major"] },
+    "contracts": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "migration": { "$ref": "#/$defs/operatorAction" },
+    "upgrade": { "$ref": "#/$defs/operatorAction" },
+    "security": { "$ref": "#/$defs/assessment" },
+    "privacy": { "$ref": "#/$defs/assessment" },
+    "accessibility": { "$ref": "#/$defs/assessment" }
+  },
+  "$defs": {
+    "operatorAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required", "notes"],
+      "properties": {
+        "required": { "type": "boolean" },
+        "notes": { "type": ["string", "null"] }
+      }
+    },
+    "assessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["impact", "notes"],
+      "properties": {
+        "impact": { "enum": ["none", "reviewed", "action_required"] },
+        "notes": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

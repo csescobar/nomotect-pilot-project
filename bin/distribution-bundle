@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "json"
+require "optparse"
+require_relative "../config/environment"
+
+options = {}
+parser = OptionParser.new do |configuration|
+  configuration.banner = "Usage: bin/distribution-bundle [options]"
+  configuration.on("--release-directory PATH", "Versioned release documents") do |path|
+    options[:release_directory] = path
+  end
+  configuration.on("--evidence-directory PATH", "Successful packaging evidence") do |path|
+    options[:evidence_directory] = path
+  end
+  configuration.on("--source-commit SHA", "Approved main source commit") do |value|
+    options[:source_commit] = value
+  end
+  configuration.on("--output PATH", "New distribution bundle directory") do |path|
+    options[:output] = path
+  end
+end
+parser.parse!
+
+required = %i[release_directory evidence_directory source_commit output]
+abort parser.to_s unless ARGV.empty? && required.all? { |key| options[key].present? }
+
+begin
+  result = Distributions::BundleBuilder.new(**options.slice(*required)).build!
+  puts JSON.pretty_generate(result)
+rescue Distributions::BundleBuilder::InvalidBundle => error
+  abort "Distribution bundle preparation failed: #{error.message}"
+end

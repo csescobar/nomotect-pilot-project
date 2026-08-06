@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nomotect.example/contracts/extension-manifest.schema.json",
+  "title": "Platform Extension Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "extension",
+    "platform",
+    "capabilities",
+    "dependencies",
+    "components",
+    "security"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "extension": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version", "contract_version", "entrypoint"],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "version": { "$ref": "#/$defs/semanticVersion" },
+        "contract_version": { "type": "integer", "minimum": 1 },
+        "entrypoint": {
+          "type": "string",
+          "pattern": "^[a-z0-9_]+(/[a-z0-9_]+)*$"
+        }
+      }
+    },
+    "platform": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requirement"],
+      "properties": {
+        "requirement": { "type": "string", "minLength": 1 }
+      }
+    },
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provides", "requires"],
+      "properties": {
+        "provides": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/providedCapability" }
+        },
+        "requires": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/requiredCapability" }
+        }
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/extensionRequirement" }
+    },
+    "components": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["configuration", "migrations", "routes", "assets", "documentation"],
+      "properties": {
+        "configuration": { "$ref": "#/$defs/nullablePath" },
+        "migrations": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["namespace", "paths"],
+          "properties": {
+            "namespace": { "$ref": "#/$defs/identifier" },
+            "paths": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/relativePath" },
+              "uniqueItems": true
+            }
+          }
+        },
+        "routes": { "$ref": "#/$defs/namespacedComponent" },
+        "assets": { "$ref": "#/$defs/namespacedComponent" },
+        "documentation": { "$ref": "#/$defs/nullablePath" }
+      }
+    },
+    "security": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["trust"],
+      "properties": {
+        "trust": { "const": "trusted_in_process" }
+      }
+    }
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*([.-][a-z0-9]+)*$"
+    },
+    "semanticVersion": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(-[0-9A-Za-z.-]+)?(\\+[0-9A-Za-z.-]+)?$"
+    },
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(^|/)\\.\\.(/|$)).+$"
+    },
+    "nullablePath": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "#/$defs/relativePath" }
+      ]
+    },
+    "providedCapability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version"],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "version": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "requiredCapability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "requirement"],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "requirement": { "type": "string", "minLength": 1 }
+      }
+    },
+    "extensionRequirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "requirement"],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "requirement": { "type": "string", "minLength": 1 }
+      }
+    },
+    "namespacedComponent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["namespace"],
+      "properties": {
+        "namespace": { "$ref": "#/$defs/identifier" }
+      }
+    }
+  }
+}

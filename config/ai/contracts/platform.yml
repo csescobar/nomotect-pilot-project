@@ -1,0 +1,19 @@
+id: platform
+version: 1
+owns:
+  - repository_intelligence
+  - architecture_manifest
+  - governance_graph
+may_use:
+  - security_privacy
+  - multi_tenant_platform
+cannot_use:
+  - arbitrary_shell_execution
+  - unrestricted_network_access
+invariants:
+  - generated artifacts identify the source commit
+  - provider data retains provenance
+  - graph traversal is bounded
+  - MCP tools are allowlisted and read-only by default
+required_tests:
+  - repository_intelligence_test

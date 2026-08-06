@@ -1,0 +1,64 @@
+schema_version: 1
+id: service_request_workspace
+status: architecture_approved
+fixture_root: test/support/representative_application
+evidence_root: tmp/epic_10/representative_application
+domain:
+  name: service_requests
+  description: Multi-tenant service-request intake, assignment and resolution.
+required_locales:
+  - en
+  - pt-BR
+required_themes:
+  - light
+  - dark
+required_tenants: 2
+public_contracts:
+  - installation
+  - design_tokens
+  - themes
+  - internationalization
+  - domain_operations
+  - domain_queries
+  - authorization_policies
+  - domain_events
+  - grid
+  - saved_views
+  - exports
+  - background_jobs
+  - notifications
+  - files
+  - workflow
+  - audit
+  - multi_tenancy
+  - extensions
+  - operational_health
+required_journeys:
+  - clean_installation
+  - appearance_customization
+  - bilingual_operation
+  - service_request_lifecycle
+  - grid_saved_view_and_export
+  - idempotent_background_processing
+  - tenant_isolation
+  - community_only_operation
+  - sample_extension_lifecycle
+  - redacted_operational_evidence
+forbidden_dependencies:
+  - undocumented_internal_contracts
+  - protected_core_modification
+  - commercial_service_requirement
+  - automatic_telemetry
+  - maintainer_credentials
+  - production_data
+  - release_publication
+evidence:
+  credential_free: true
+  personal_data: false
+  source_commit_required: true
+manual_reviews:
+  - usability
+  - screen_reader
+  - representative_scope
+publication:
+  allowed: false

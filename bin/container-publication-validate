@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+workflow=.github/workflows/publish-container.yml
+required_files=(
+  Dockerfile
+  bin/package-certify
+  bin/packaging-manifest
+  bin/release-provenance
+  bin/kamal-validate
+  config/deploy.yml
+  "$workflow"
+  docs/deployment/container-registry.md
+  docs/deployment/kamal.md
+)
+
+for path in "${required_files[@]}"; do
+  test -f "$path" || {
+    echo "container publication error: missing ${path}" >&2
+    exit 1
+  }
+done
+
+if grep -R -n -E 'ghcr\.io/csescobar/nomotect-platform|https://github\.com/csescobar/nomotect-platform' \
+  Dockerfile bin/package-certify bin/packaging-manifest config/deploy.yml "$workflow"; then
+  echo "container publication error: container identity is coupled to the platform repository" >&2
+  exit 1
+fi
+
+grep -Fq 'REPOSITORY: ${{ github.repository }}' "$workflow"
+grep -Fq 'image_repository="${REPOSITORY,,}"' "$workflow"
+grep -Fq 'image_reference="ghcr.io/${image_repository}"' "$workflow"
+grep -Fq 'value=$(tr -d' "$workflow"
+grep -Fq 'OCI_VERSION=${{ steps.version.outputs.value }}' "$workflow"
+grep -Fq 'platforms: linux/amd64,linux/arm64' "$workflow"
+grep -Fq 'provenance: mode=max' "$workflow"
+grep -Fq 'sbom: true' "$workflow"
+grep -Fq 'subject-digest: ${{ steps.build.outputs.digest }}' "$workflow"
+grep -Fq 'Verify published image by digest' "$workflow"
+grep -Fq 'SOURCE_REPOSITORY_URL' bin/package-certify
+grep -Fq 'SOURCE_REPOSITORY_URL' bin/packaging-manifest
+grep -Fq 'source_version = ENV.fetch("SOURCE_VERSION")' bin/packaging-manifest
+grep -Fq 'SOURCE_VERSION="$source_version" ruby bin/release-provenance' bin/package-certify
+grep -Fq 'ARG OCI_SOURCE=local://repository' Dockerfile
+grep -Fq 'image: <%= ENV.fetch("KAMAL_IMAGE") %>' config/deploy.yml
+
+printf 'Portable container publication contract validated\n'

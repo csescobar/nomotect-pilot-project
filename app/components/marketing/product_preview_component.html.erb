@@ -1,0 +1,88 @@
+<section class="mkt-section mkt-preview-section" id="preview">
+  <div class="mkt-container">
+    <div class="mkt-preview-frame" aria-label="Service Desk Lite Product Preview">
+      <div class="mkt-preview-header">
+        <div class="mkt-preview-controls">
+          <span class="mkt-preview-dot mkt-preview-dot--red"></span>
+          <span class="mkt-preview-dot mkt-preview-dot--yellow"></span>
+          <span class="mkt-preview-dot mkt-preview-dot--green"></span>
+        </div>
+        <div class="mkt-preview-titlebar">
+          <%= image_tag "brand/Service Desk Lite_Arc02_Micro.svg", alt: "", height: 16, width: 16 %>
+          <span class="mkt-preview-url">app.nomotect.com / <%= t("marketing.preview.org") %></span>
+        </div>
+      </div>
+
+      <div class="mkt-preview-body">
+        <aside class="mkt-preview-sidebar">
+          <div class="mkt-preview-org-select">
+            <strong><%= t("marketing.preview.org") %></strong>
+          </div>
+          <nav class="mkt-preview-nav">
+            <a href="#preview" class="mkt-preview-nav-item mkt-preview-nav-item--active">
+              <span><%= t("marketing.preview.nav_customers") %></span>
+            </a>
+            <a href="#preview" class="mkt-preview-nav-item">
+              <span><%= t("marketing.preview.nav_invoices") %></span>
+            </a>
+            <a href="#preview" class="mkt-preview-nav-item">
+              <span><%= t("marketing.preview.nav_reports") %></span>
+            </a>
+            <a href="#preview" class="mkt-preview-nav-item">
+              <span><%= t("marketing.preview.nav_settings") %></span>
+            </a>
+          </nav>
+        </aside>
+
+        <main class="mkt-preview-main">
+          <div class="mkt-preview-toolbar">
+            <h2 class="mkt-preview-grid-title"><%= t("marketing.preview.grid_title") %></h2>
+            <div class="mkt-preview-toolbar-actions">
+              <span class="mkt-preview-pill"><%= t("marketing.preview.saved_view") %></span>
+              <button type="button" class="button button--secondary button--small"><%= t("marketing.preview.export_csv") %></button>
+            </div>
+          </div>
+
+          <div class="mkt-preview-table-container">
+            <table class="mkt-preview-table">
+              <thead>
+                <tr>
+                  <th><%= t("marketing.preview.col_name") %></th>
+                  <th><%= t("marketing.preview.col_org") %></th>
+                  <th><%= t("marketing.preview.col_plan") %></th>
+                  <th><%= t("marketing.preview.col_status") %></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Apex Logistics Ltd.</strong></td>
+                  <td><code>apex.logistics.io</code></td>
+                  <td>Enterprise</td>
+                  <td><span class="mkt-tag mkt-tag--success"><%= t("marketing.preview.status_active") %></span></td>
+                </tr>
+                <tr>
+                  <td><strong>Starlight Financial</strong></td>
+                  <td><code>starlight.fin.com</code></td>
+                  <td>Governance</td>
+                  <td><span class="mkt-tag mkt-tag--success"><%= t("marketing.preview.status_active") %></span></td>
+                </tr>
+                <tr>
+                  <td><strong>Horizon Health Systems</strong></td>
+                  <td><code>horizon.health.org</code></td>
+                  <td>Enterprise</td>
+                  <td><span class="mkt-tag mkt-tag--warning"><%= t("marketing.preview.status_review") %></span></td>
+                </tr>
+                <tr>
+                  <td><strong>Vanguard Robotics</strong></td>
+                  <td><code>vanguard.robotics.ai</code></td>
+                  <td>Standard</td>
+                  <td><span class="mkt-tag mkt-tag--success"><%= t("marketing.preview.status_active") %></span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+</section>

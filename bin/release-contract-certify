@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+version="$(tr -d '[:space:]' < VERSION)"
+[[ "$version" =~ ^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$ ]]
+ruby -rjson -e 'ARGV.each { |path| JSON.parse(File.read(path)) }' \
+  docs/contracts/change-fragment.schema.json \
+  docs/contracts/release-compatibility.schema.json \
+  docs/contracts/release-evidence.schema.json \
+  docs/contracts/release-metadata.schema.json \
+  config/ai/schemas/playbook.schema.json
+
+bundle exec rails test \
+  test/lib/platform/version_test.rb \
+  test/services/releases/change_fragment_test.rb \
+  test/services/releases/consistency_validator_test.rb \
+  test/services/releases/notes_generator_test.rb \
+  test/services/releases/preparation_test.rb \
+  test/services/releases/pull_request_validator_test.rb \
+  test/services/releases/release_readiness_playbook_test.rb \
+  test/services/upgrades/installed_state_detector_test.rb \
+  test/controllers/health_controller_test.rb
+
+grep -q 'VERSION is the canonical platform version' config/ai/contracts/releases.yml
+grep -q 'repository.contract' config/ai/playbooks/release_readiness.yml
+grep -q 'publication belong to Epic 9 Phase 6' docs/releases/architecture.md
+test -x bin/change-fragment-validate
+test -x bin/release
+test -x bin/release-consistency
+test -x bin/release-framework-certify
+test -x bin/release-notes
+test -x bin/release-provenance
+bundle exec ruby bin/release-notes verify
+grep -q 'gh pr create' .github/workflows/prepare-release.yml
+! grep -Eq 'gh release|git tag|docker push' .github/workflows/prepare-release.yml
+bash bin/release-framework-certify
+
+printf 'Release contracts and playbook foundation certified\n'

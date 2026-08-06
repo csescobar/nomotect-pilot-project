@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "json"
+require "optparse"
+require_relative "../config/environment"
+
+options = { format: "human" }
+OptionParser.new do |parser|
+  parser.banner = "Usage: ruby bin/operational-health inspect [--format human|json]"
+  parser.on("--format FORMAT", %w[human json]) { |format| options[:format] = format }
+end.parse!
+abort "Usage: ruby bin/operational-health inspect [--format human|json]" unless ARGV.shift == "inspect"
+
+snapshot = OperationalReadiness::OperationalHealthInspector.new(
+  registry: OperationalReadiness::DefaultHealthProviders.new.registry
+).call
+if options[:format] == "json"
+  puts JSON.pretty_generate(snapshot)
+else
+  puts "Operational health: #{snapshot.fetch('status')}"
+  snapshot.fetch("signals").each { |signal| puts "#{signal.fetch('status').upcase.ljust(10)} #{signal.fetch('id')}" }
+end
+exit({ "healthy" => 0, "degraded" => 1, "unhealthy" => 2, "unknown" => 3 }.fetch(snapshot.fetch("status")))

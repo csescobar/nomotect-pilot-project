@@ -1,0 +1,50 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "digest"
+require "fileutils"
+require "json"
+
+version = ENV.fetch("SOURCE_VERSION") { File.read("VERSION").strip }
+commit = ENV.fetch("SOURCE_COMMIT", ENV.fetch("GITHUB_SHA", "local"))
+manifest_path = ENV.fetch("PACKAGING_MANIFEST_PATH", "tmp/ci/packaging-manifest.json")
+output = ENV.fetch("RELEASE_PROVENANCE_PATH", "tmp/ci/release-provenance.json")
+
+digest = ->(path) { Digest::SHA256.file(path).hexdigest }
+statement = {
+  "_type" => "https://in-toto.io/Statement/v1",
+  "subject" => [
+    {
+      "name" => File.basename(manifest_path),
+      "digest" => { "sha256" => digest.call(manifest_path) }
+    }
+  ],
+  "predicateType" => "https://slsa.dev/provenance/v1",
+  "predicate" => {
+    "buildDefinition" => {
+      "buildType" => "https://nomotect.example/release-packaging/v1",
+      "externalParameters" => {
+        "platform_version" => version,
+        "source_commit" => commit
+      },
+      "resolvedDependencies" => [
+        {
+          "uri" => "file:tmp/ci/sbom.cdx.json",
+          "digest" => { "sha256" => digest.call("tmp/ci/sbom.cdx.json") }
+        },
+        {
+          "uri" => "file:tmp/ci/container-sbom.cdx.json",
+          "digest" => { "sha256" => digest.call("tmp/ci/container-sbom.cdx.json") }
+        }
+      ]
+    },
+    "runDetails" => {
+      "builder" => { "id" => "nomotect-platform/package-certify" },
+      "metadata" => { "invocationId" => commit }
+    }
+  }
+}
+
+FileUtils.mkdir_p(File.dirname(output))
+File.write(output, "#{JSON.pretty_generate(statement)}\n")
+puts "Release provenance written to #{output}"

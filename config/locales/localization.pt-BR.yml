@@ -1,0 +1,38 @@
+pt-BR:
+  localization:
+    label: "Idioma"
+    apply: "Aplicar"
+    updated: "Idioma alterado para %{locale_name}."
+    unsupported: "Este idioma não é suportado."
+  date:
+    month_names: [~, janeiro, fevereiro, março, abril, maio, junho, julho, agosto, setembro, outubro, novembro, dezembro]
+    abbr_month_names: [~, jan, fev, mar, abr, mai, jun, jul, ago, set, out, nov, dez]
+    formats:
+      short: "%d/%m/%Y"
+      long: "%-d de %B de %Y"
+  time:
+    formats:
+      short: "%d/%m/%Y %H:%M"
+      long: "%-d de %B de %Y às %H:%M %Z"
+  number:
+    format:
+      separator: ","
+      delimiter: "."
+    precision:
+      format:
+        separator: ","
+        delimiter: "."
+    currency:
+      format:
+        unit: "R$"
+        format: "%u %n"
+        separator: ","
+        delimiter: "."
+        precision: 2
+      units:
+        usd: "US$"
+        brl: "R$"
+    percentage:
+      format:
+        delimiter: "."
+        separator: ","

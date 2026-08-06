@@ -1,0 +1,47 @@
+en:
+  customers:
+    created: "Customer created."
+    updated: "Customer updated."
+    destroyed: "Customer deleted."
+    conflict: "This customer changed while you were editing. Review the latest values and try again."
+    delete_confirmation: "Delete this customer?"
+    index:
+      title: "Customers — %{organization}"
+      description: "Reference customer records scoped to this organization."
+    new:
+      title: "New customer"
+      description: "Create a customer through the domain operation contract."
+    edit:
+      title: "Edit %{name}"
+      description: "Optimistic locking protects concurrent changes."
+    show:
+      description: "Customer details and domain-event audit history."
+    empty:
+      title: "No customers yet"
+      description: "Create the first customer for this organization."
+    fields:
+      name: "Name"
+      email: "Email"
+      status: "Status"
+      notes: "Notes"
+    statuses:
+      active: "Active"
+      inactive: "Inactive"
+    actions:
+      new: "New customer"
+      view: "View customers"
+      save: "Save customer"
+      edit: "Edit customer"
+      delete: "Delete customer"
+    audit:
+      title: "Audit history"
+      empty:
+        title: "No audit events yet"
+        description: "Domain events for this customer will appear here."
+      events:
+        customer_created: "Customer created"
+        customer_updated: "Customer updated"
+        customer_deleted: "Customer deleted"
+    danger_zone:
+      title: "Danger zone"
+      description: "Deleting this customer is permanent and cannot be undone."

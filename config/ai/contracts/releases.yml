@@ -1,0 +1,50 @@
+id: releases
+version: 1
+owns:
+  - platform_version
+  - change_fragment
+  - release_impact
+  - release_readiness
+  - pull_request_release_validation
+  - deterministic_changelog
+  - release_notes
+  - migration_notes
+  - upgrade_notes
+  - release_preparation
+  - release_metadata
+  - release_fragment_archive
+  - release_compatibility
+  - release_evidence
+  - release_consistency
+  - end_to_end_release_certification
+may_use:
+  - repository_intelligence
+  - upgrade_manifest
+  - packaging_manifest
+  - sbom
+  - provenance
+cannot_use:
+  - arbitrary_shell_execution
+  - secret_persistence
+  - automatic_tag_publication
+  - automatic_release_publication
+invariants:
+  - VERSION is the canonical platform version
+  - release metadata is deterministic and credential-free
+  - behavior changes declare semantic release impact
+  - migrations and required upgrade actions are explicit
+  - release-relevant pull requests provide normalized change fragments
+  - generated release documents match normalized change fragments
+  - release preparation archives every consumed change fragment
+  - prepared release metadata binds source version target version impact and fragment digest
+  - tags notes compatibility SBOM packaging provenance and OCI labels agree on one version
+  - consistency validation is read-only and reports stable failure codes
+  - release preparation requires maintainer approval
+required_tests:
+  - platform_version_test
+  - releases_change_fragment_test
+  - releases_pull_request_validator_test
+  - releases_notes_generator_test
+  - releases_preparation_test
+  - releases_consistency_validator_test
+  - release_framework_certification_test

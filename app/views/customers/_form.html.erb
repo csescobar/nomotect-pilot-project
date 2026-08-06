@@ -1,0 +1,9 @@
+<%= form_with model: [ organization, customer ], builder: Ui::FormBuilder, html: { class: "showcase__form" } do |form| %>
+  <%= form.ui_error_summary %>
+  <%= form.hidden_field :lock_version %>
+  <%= form.ui_text_field :name, label: t("customers.fields.name"), required: true %>
+  <%= form.ui_email_field :email_address, label: t("customers.fields.email") %>
+  <%= form.ui_select :status, Customer::STATUSES.map { |status| [ t("customers.statuses.#{status}"), status ] }, label: t("customers.fields.status") %>
+  <%= form.ui_text_area :notes, label: t("customers.fields.notes"), rows: 6 %>
+  <%= form.ui_submit t("customers.actions.save") %>
+<% end %>

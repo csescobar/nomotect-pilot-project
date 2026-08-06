@@ -1,0 +1,68 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "json"
+require "optparse"
+require_relative "../config/environment"
+
+options = {
+  configuration: nil,
+  format: "human",
+  platform_version: Platform::Version.current.to_s
+}
+parser = OptionParser.new do |configuration|
+  configuration.banner = "Usage: bin/extensions [inspect|preflight] [options]"
+  configuration.on("--configuration PATH", "Extension configuration") { |path| options[:configuration] = path }
+  configuration.on("--platform-version VERSION", "Platform version to evaluate") do |version|
+    options[:platform_version] = version
+  end
+  configuration.on("--format FORMAT", %w[human json], "Output format") { |format| options[:format] = format }
+end
+parser.parse!
+
+command = ARGV.shift
+abort parser.to_s unless %w[inspect preflight].include?(command) && ARGV.empty?
+
+begin
+  configuration = if options[:configuration]
+    Extensions::Configuration.load(options.fetch(:configuration))
+  else
+    Extensions::Configuration.load_default
+  end
+  inspector = Extensions::Inspector.new(
+    configuration:,
+    platform_version: Platform::Version.new(options.fetch(:platform_version))
+  )
+  report = command == "inspect" ? inspector.inspect : inspector.preflight
+
+  if options.fetch(:format) == "json"
+    puts JSON.pretty_generate(report.to_h)
+  else
+    puts "Extension #{report.mode}: #{report.status}"
+    puts "Enabled: #{report.configuration.enabled.size}"
+    report.packages.each { |package| puts "FOUND [#{package.id}] #{package.version} (#{package.package_name})" }
+    report.blockers.each { |finding| puts "BLOCKER [#{finding.fetch(:code)}] #{finding.fetch(:message)}" }
+    report.warnings.each { |finding| puts "WARNING [#{finding.fetch(:code)}] #{finding.fetch(:message)}" }
+    puts "Load order: #{report.plan.load_order.join(', ')}" if report.plan && report.ready?
+  end
+
+  exit 2 if command == "preflight" && !report.ready?
+rescue Extensions::Configuration::InvalidConfiguration, Platform::Version::InvalidVersion, Errno::ENOENT => error
+  finding = {
+    code: "extension_configuration_invalid",
+    message: "Extension configuration or platform version is missing or invalid",
+    details: { error: error.class.name }
+  }
+  if options.fetch(:format) == "json"
+    puts JSON.pretty_generate(
+      schema_version: 1,
+      mode: command,
+      status: "blocked",
+      ready: false,
+      blockers: [ finding ]
+    )
+  else
+    warn "BLOCKER [extension_configuration_invalid] Extension configuration or platform version is missing or invalid"
+  end
+  exit 2
+end

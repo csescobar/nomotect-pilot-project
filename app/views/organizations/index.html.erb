@@ -1,0 +1,20 @@
+<% content_for :title, t("organizations.index.title") %>
+
+<%= render Ui::Layout::PageHeaderComponent.new(title: t("organizations.index.title"), description: t("organizations.index.description")) do %>
+  <%= link_to t("organizations.actions.new"), new_organization_path, class: "button button--primary" %>
+<% end %>
+
+<% if @organizations.any? %>
+  <div class="showcase__grid">
+    <% @organizations.each do |organization| %>
+      <%= render Ui::CardComponent.new do %>
+        <h2><%= link_to organization.name, organization %></h2>
+        <p><%= t("organizations.member_count", count: organization.memberships.size) %></p>
+      <% end %>
+    <% end %>
+  </div>
+<% else %>
+  <%= render Ui::EmptyStateComponent.new(title: t("organizations.empty.title"), description: t("organizations.empty.description")) do %>
+    <%= link_to t("organizations.actions.new"), new_organization_path, class: "button button--primary" %>
+  <% end %>
+<% end %>

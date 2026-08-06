@@ -1,0 +1,55 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "digest"
+require "fileutils"
+require "json"
+require "open3"
+
+image = ENV.fetch("IMAGE_NAME", ARGV.fetch(0, "rails-application:ci"))
+source_repository = ENV.fetch("SOURCE_REPOSITORY_URL", "local://repository")
+source_commit = ENV.fetch("SOURCE_COMMIT", "local")
+source_version = ENV.fetch("SOURCE_VERSION") { File.read("VERSION").strip }
+source_created = ENV.fetch("SOURCE_CREATED", "1970-01-01T00:00:00Z")
+output = ENV.fetch("PACKAGING_MANIFEST_PATH", "tmp/ci/packaging-manifest.json")
+
+stdout, stderr, status = Open3.capture3("docker", "image", "inspect", image)
+abort(stderr) unless status.success?
+inspect = JSON.parse(stdout).fetch(0)
+
+checksum = lambda do |path|
+  File.exist?(path) ? Digest::SHA256.file(path).hexdigest : nil
+end
+
+manifest = {
+  schema_version: 1,
+  source: {
+    repository: source_repository,
+    commit: source_commit,
+    version: source_version,
+    created: source_created,
+    dockerfile_sha256: checksum.call("Dockerfile"),
+    dependency_lock_sha256: checksum.call("Gemfile.lock")
+  },
+  image: {
+    reference: image,
+    id: inspect.fetch("Id"),
+    architecture: inspect.fetch("Architecture"),
+    os: inspect.fetch("Os"),
+    user: inspect.dig("Config", "User"),
+    healthcheck: inspect.dig("Config", "Healthcheck"),
+    labels: inspect.dig("Config", "Labels") || {}
+  },
+  evidence: {
+    application_sbom_sha256: checksum.call("tmp/ci/sbom.cdx.json"),
+    container_sbom_sha256: checksum.call("tmp/ci/container-sbom.cdx.json"),
+    container_build_log_sha256: checksum.call("tmp/ci/container-build.log"),
+    reproducibility_log_sha256: checksum.call("tmp/ci/reproducibility.log")
+  }
+}
+
+FileUtils.mkdir_p(File.dirname(output))
+json = JSON.pretty_generate(manifest) + "\n"
+File.write(output, json)
+File.write("#{output}.sha256", "#{Digest::SHA256.hexdigest(json)}  #{File.basename(output)}\n")
+puts "Packaging manifest written to #{output}"

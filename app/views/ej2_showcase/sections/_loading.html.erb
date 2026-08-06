@@ -1,0 +1,42 @@
+<%# ── EJ2 Loading Section ───────────────────────────────────────────────────────── %>
+<div class="ej2-showcase-section">
+  <header class="ej2-showcase-section__header">
+    <h2 class="ej2-showcase-section__title"><%= t("ej2_showcase.loading.title") %></h2>
+    <p class="ej2-showcase-section__desc"><%= t("ej2_showcase.loading.description") %></p>
+  </header>
+
+  <%# ── Spinner Overlay ─────────────────────────────────────────────────────── %>
+  <div class="ej2-showcase-card" id="ej2-loading-spinner">
+    <div class="ej2-showcase-card__header">
+      <h3 class="ej2-showcase-card__title"><%= t("ej2_showcase.loading.spinner.title") %></h3>
+      <p class="ej2-showcase-card__desc"><%= t("ej2_showcase.loading.spinner.description") %></p>
+    </div>
+    <div class="ej2-showcase-card__demo" data-controller="ej2-spinner" data-ej2-spinner-label-value="Loading execution details...">
+      <button type="button" class="e-btn e-primary" data-action="click->ej2-spinner#toggle">
+        <%= t("ej2_showcase.loading.spinner.toggle") %>
+      </button>
+
+      <div class="ej2-spinner-card-box ej2-spinner-target">
+        <div class="ej2-spinner-card-box__content">
+          <h4>Execution Payload #9042</h4>
+          <p>Processing multi-tenant deployment parameters for SA-EAST-1 cluster.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%# ── Skeleton Placeholders ────────────────────────────────────────────────── %>
+  <div class="ej2-showcase-card" id="ej2-loading-skeleton">
+    <div class="ej2-showcase-card__header">
+      <h3 class="ej2-showcase-card__title"><%= t("ej2_showcase.loading.skeleton.title") %></h3>
+      <p class="ej2-showcase-card__desc"><%= t("ej2_showcase.loading.skeleton.description") %></p>
+    </div>
+    <div class="ej2-showcase-card__demo">
+      <div class="ej2-skeleton-card">
+        <div class="ej2-skeleton ej2-skeleton--title"></div>
+        <div class="ej2-skeleton ej2-skeleton--text"></div>
+        <div class="ej2-skeleton ej2-skeleton--text ej2-skeleton--short"></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nomotect.example/schemas/installation-state-v1.json",
+  "title": "Installation State",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "environment", "state", "metadata"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "environment": { "type": "string", "minLength": 1 },
+    "state": {
+      "enum": ["not_started", "appearance", "database", "provisioning", "migrations", "platform_owner", "completed", "failed"]
+    },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "metadata": {
+      "type": "object",
+      "description": "Non-secret installation metadata only",
+      "not": {
+        "anyOf": [
+          { "required": ["password"] },
+          { "required": ["token"] },
+          { "required": ["database_url"] },
+          { "required": ["connection_string"] }
+        ]
+      }
+    }
+  }
+}

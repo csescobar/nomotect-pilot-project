@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ruby -rjson -e 'ARGV.each { |path| JSON.parse(File.read(path)) }' \
+  docs/contracts/extension-manifest.schema.json \
+  docs/contracts/extension-configuration.schema.json \
+  test/support/extension_fixtures/certification-audit/config/extension.schema.json \
+  config/ai/schemas/playbook.schema.json
+
+bundle exec rails test \
+  test/services/extensions/manifest_test.rb \
+  test/services/extensions/configuration_test.rb \
+  test/services/extensions/catalog_test.rb \
+  test/services/extensions/compatibility_planner_test.rb \
+  test/services/extensions/inspector_test.rb \
+  test/services/extensions/registry_test.rb \
+  test/services/extensions/loader_test.rb \
+  test/services/extensions/component_resolver_test.rb \
+  test/services/extensions/installed_state_test.rb \
+  test/services/extensions/lifecycle_test.rb \
+  test/controllers/health_controller_test.rb \
+  test/services/extensions/extension_readiness_playbook_test.rb \
+  test/integration/extension_framework_certification_test.rb
+
+preflight_output="$(bundle exec ruby bin/extensions preflight --platform-version 0.9.0 --format json)"
+grep -q '"ready": true' <<< "$preflight_output"
+
+grep -q 'additionalProperties": false' docs/contracts/extension-manifest.schema.json
+grep -q 'trusted_in_process' docs/contracts/extension-manifest.schema.json
+grep -q 'community core remains fully functional' config/ai/contracts/extensions.yml
+grep -q 'repository.contract' config/ai/playbooks/extension_readiness.yml
+grep -q 'trusted code, not sandboxed plugins' docs/extensions/architecture.md
+grep -q 'core never references enterprise constants' \
+  docs/decisions/0013-enterprise-extension-boundaries.md
+grep -q 'No extension entrypoint is required' docs/extensions/inspection.md
+grep -q 'Extensions.register' docs/extensions/authoring.md
+grep -q 'ready preflight report' app/services/extensions/loader.rb
+grep -q 'inside the package root' app/services/extensions/component_resolver.rb
+grep -q 'restart_required' app/services/extensions/lifecycle.rb
+grep -q 'extension_certification_matrix' config/ai/contracts/extensions.yml
+grep -q 'Replay and equivalence' docs/extensions/certification.md
+grep -q 'certification.audit' \
+  test/support/extension_fixtures/certification-audit/platform-extension.yml
+grep -q 'Install' docs/extensions/lifecycle-guide.md
+
+printf 'Extension platform contracts certified\n'

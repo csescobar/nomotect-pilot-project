@@ -1,0 +1,16 @@
+id: security_review
+version: 1
+title: Review a change for security and privacy risk
+inputs:
+  - change_scope
+steps:
+  - load_security_context
+  - run_impact_analysis
+  - identify_trust_boundaries
+  - verify_tenant_and_privacy_invariants
+  - run_security_regression_tests
+  - record_findings
+completion_gate:
+  - no_unresolved_high_severity_findings
+  - security_analysis_passes
+  - tests_pass

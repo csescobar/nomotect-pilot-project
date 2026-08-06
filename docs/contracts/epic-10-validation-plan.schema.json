@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nomotect.dev/contracts/epic-10-validation-plan.schema.json",
+  "title": "NomoTect Epic 10 Validation Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "owner", "phases"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "id": { "$ref": "#/$defs/id" },
+    "owner": { "type": "string", "minLength": 1 },
+    "phases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "objective", "owner", "evidence_required"],
+        "properties": {
+          "id": { "$ref": "#/$defs/id" },
+          "objective": { "type": "string", "minLength": 1 },
+          "owner": { "type": "string", "minLength": 1 },
+          "evidence_required": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" }
+  }
+}

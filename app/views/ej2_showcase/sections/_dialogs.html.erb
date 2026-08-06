@@ -1,0 +1,102 @@
+<%# ── EJ2 Dialogs Section ────────────────────────────────────────────────────── %>
+<div class="ej2-showcase-section">
+  <header class="ej2-showcase-section__header">
+    <h2 class="ej2-showcase-section__title"><%= t("ej2_showcase.dialogs.title") %></h2>
+    <p class="ej2-showcase-section__desc"><%= t("ej2_showcase.dialogs.description") %></p>
+  </header>
+
+  <%# ── Standard Confirmation Dialog ────────────────────────────────────────── %>
+  <div class="ej2-showcase-card" id="ej2-dialogs-confirmation">
+    <div class="ej2-showcase-card__header">
+      <h3 class="ej2-showcase-card__title"><%= t("ej2_showcase.dialogs.confirmation.title") %></h3>
+      <p class="ej2-showcase-card__desc"><%= t("ej2_showcase.dialogs.confirmation.description") %></p>
+    </div>
+    <div class="ej2-showcase-card__demo" data-controller="ej2-dialog" data-ej2-dialog-header-value="<%= t("ej2_showcase.dialogs.confirmation.header") %>">
+      <button type="button" class="btn btn--secondary" data-action="click->ej2-dialog#open">
+        <%= t("ej2_showcase.dialogs.confirmation.trigger") %>
+      </button>
+
+      <div class="ej2-dialog-container">
+        <div class="ej2-dialog-body">
+          <p><%= t("ej2_showcase.dialogs.confirmation.content") %></p>
+        </div>
+        <div class="e-footer-content">
+          <button type="button" class="e-btn e-primary" data-action="click->ej2-dialog#close">
+            <%= t("ej2_showcase.dialogs.confirmation.confirm_btn") %>
+          </button>
+          <button type="button" class="e-btn" data-action="click->ej2-dialog#close">
+            <%= t("ej2_showcase.dialogs.confirmation.cancel_btn") %>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%# ── Destructive Action Dialog ────────────────────────────────────────────── %>
+  <div class="ej2-showcase-card" id="ej2-dialogs-destructive">
+    <div class="ej2-showcase-card__header">
+      <h3 class="ej2-showcase-card__title"><%= t("ej2_showcase.dialogs.destructive.title") %></h3>
+      <p class="ej2-showcase-card__desc"><%= t("ej2_showcase.dialogs.destructive.description") %></p>
+    </div>
+    <div class="ej2-showcase-card__demo" data-controller="ej2-dialog" data-ej2-dialog-header-value="<%= t("ej2_showcase.dialogs.destructive.header") %>">
+      <button type="button" class="btn btn--danger" data-action="click->ej2-dialog#open">
+        <%= t("ej2_showcase.dialogs.destructive.trigger") %>
+      </button>
+
+      <div class="ej2-dialog-container">
+        <div class="ej2-dialog-body">
+          <div class="ej2-dialog-alert ej2-dialog-alert--danger">
+            <span class="ej2-dialog-alert__icon" aria-hidden="true">⚠️</span>
+            <p><%= t("ej2_showcase.dialogs.destructive.content") %></p>
+          </div>
+        </div>
+        <div class="e-footer-content">
+          <button type="button" class="e-btn e-danger" data-action="click->ej2-dialog#close">
+            <%= t("ej2_showcase.dialogs.destructive.delete_btn") %>
+          </button>
+          <button type="button" class="e-btn" data-action="click->ej2-dialog#close">
+            <%= t("ej2_showcase.dialogs.destructive.cancel_btn") %>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%# ── Custom Form Dialog ─────────────────────────────────────────────────── %>
+  <div class="ej2-showcase-card" id="ej2-dialogs-custom">
+    <div class="ej2-showcase-card__header">
+      <h3 class="ej2-showcase-card__title"><%= t("ej2_showcase.dialogs.custom.title") %></h3>
+      <p class="ej2-showcase-card__desc"><%= t("ej2_showcase.dialogs.custom.description") %></p>
+    </div>
+    <div class="ej2-showcase-card__demo" data-controller="ej2-dialog" data-ej2-dialog-header-value="<%= t("ej2_showcase.dialogs.custom.header") %>">
+      <button type="button" class="btn btn--primary" data-action="click->ej2-dialog#open">
+        <%= t("ej2_showcase.dialogs.custom.trigger") %>
+      </button>
+
+      <div class="ej2-dialog-container">
+        <div class="ej2-dialog-body">
+          <div class="ej2-form-group" data-controller="ej2-textbox" data-ej2-textbox-placeholder-value="Email Address">
+            <label for="dlg-email" class="ej2-form-group__label">Email Address</label>
+            <input id="dlg-email" type="text" value="member@acme.com">
+          </div>
+          <div class="ej2-form-group" data-controller="ej2-dropdown" data-ej2-dropdown-placeholder-value="Role" data-ej2-dropdown-items-value="<%= [
+            { value: "owner", text: "Owner" },
+            { value: "admin", text: "Admin" },
+            { value: "member", text: "Member" }
+          ].to_json %>">
+            <label for="dlg-role" class="ej2-form-group__label">Role</label>
+            <input id="dlg-role" type="text">
+          </div>
+        </div>
+        <div class="e-footer-content">
+          <button type="button" class="e-btn e-primary" data-action="click->ej2-dialog#close">
+            <%= t("ej2_showcase.dialogs.custom.save_btn") %>
+          </button>
+          <button type="button" class="e-btn" data-action="click->ej2-dialog#close">
+            <%= t("ej2_showcase.dialogs.custom.cancel_btn") %>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

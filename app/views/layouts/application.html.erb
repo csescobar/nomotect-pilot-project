@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
+  <head>
+    <title><%= content_for(:title) || platform_name %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= platform_favicon_tag %>
+    <script nonce="<%= content_security_policy_nonce %>">
+      (() => {
+        const preference = localStorage.getItem("nomotect-theme");
+        if (preference === "light" || preference === "dark") {
+          document.documentElement.dataset.theme = preference;
+        }
+      })();
+    </script>
+    <%= stylesheet_link_tag "design_tokens", "application", "syncfusion_ej2", "data-turbo-track": "reload", preload: false %>
+    <script nonce="<%= content_security_policy_nonce %>">
+      window.SYNCFUSION_LICENSE_KEY = "<%= Rails.application.config.syncfusion_license_key.to_s.html_safe %>";
+    </script>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <% if authenticated? %>
+      <% navigation_items = [
+        { label: t("layout.dashboard"), href: root_path, active: current_page?(root_path) },
+        { label: t("layout.organizations"), href: organizations_path, active: request.path.start_with?(organizations_path) },
+        { label: t("layout.grid_engine"), href: grid_path("organizations"), active: request.path.start_with?("/grids/") },
+        { label: t("layout.component_showcase"), href: component_showcase_path, active: current_page?(component_showcase_path) },
+        { label: t("layout.ej2_showcase"), href: ej2_showcase_path, active: request.path.start_with?("/ej2_showcase") }
+      ] %>
+      <% account_actions = capture do %>
+        <%= link_to t("preferences.title"), preferences_path, class: "account-menu__link" %>
+        <%= button_to t("authentication.sign_out"), session_path, method: :delete, class: "account-menu__sign-out" %>
+      <% end %>
+
+      <%= render Ui::Layout::ApplicationShellComponent.new(
+        navigation_items: navigation_items,
+        current_user: Current.user,
+        account_actions: account_actions
+      ) do %>
+        <%= yield %>
+      <% end %>
+    <% else %>
+      <header class="app-header">
+        <span class="app-header__brand"><%= platform_brand_tag(css_class: "app-header") %></span>
+        <div class="app-header__actions">
+          <%= render Ui::ThemeSwitcherComponent.new %>
+        </div>
+      </header>
+
+      <main class="app-main" id="main-content">
+        <%= yield %>
+      </main>
+    <% end %>
+
+    <%# Toast notification region — rendered outside the shell so it floats over all content %>
+    <div class="toast-region" aria-live="polite" aria-atomic="false" id="toast-region">
+      <% flash.each do |type, message| %>
+        <div class="toast toast--<%= type %>" role="status"
+             data-controller="toast"
+             data-toast-duration-value="4000">
+          <span class="toast__message"><%= message %></span>
+          <button type="button" class="toast__close button button--ghost button--small"
+                  data-action="toast#dismiss"
+                  aria-label="<%= t("layout.close_notification") %>">&#x2715;</button>
+        </div>
+      <% end %>
+    </div>
+  </body>
+</html>

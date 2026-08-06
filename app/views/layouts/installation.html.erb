@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
+  <head>
+    <title><%= t("installation.wizard.title", platform: platform_name) %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= platform_favicon_tag %>
+    <script nonce="<%= content_security_policy_nonce %>">
+      (() => {
+        const preference = localStorage.getItem("nomotect-theme");
+        if (preference === "light" || preference === "dark") {
+          document.documentElement.dataset.theme = preference;
+        }
+      })();
+    </script>
+    <%= stylesheet_link_tag "design_tokens", "application", "data-turbo-track": "reload", preload: false %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <div class="wizard-layout">
+      <header class="wizard-header">
+        <span class="wizard-header__brand"><%= platform_brand_tag(css_class: "wizard-header") %></span>
+        <div class="wizard-header__actions">
+          <%= render Ui::ThemeSwitcherComponent.new %>
+        </div>
+      </header>
+
+      <main class="wizard-body" id="main-content">
+        <%# Stepper — only shown when current_step is available %>
+        <% if defined?(@step) && @step %>
+          <%
+            steps = [
+              { key: "appearance",     label: t("installation.steps.appearance") },
+              { key: "database",       label: t("installation.steps.database") },
+              { key: "provisioning",   label: t("installation.steps.provisioning") },
+              { key: "migrations",     label: t("installation.steps.migrations") },
+              { key: "platform_owner", label: t("installation.steps.platform_owner") }
+            ]
+            step_keys = steps.map { |s| s[:key] }
+            current_index = step_keys.index(@step.name) || 0
+          %>
+          <nav aria-label="<%= t("installation.wizard.progress") %>" class="wizard-stepper">
+            <% steps.each_with_index do |step, idx| %>
+              <%
+                state = if idx < current_index
+                          "completed"
+                        elsif idx == current_index
+                          "active"
+                        else
+                          "pending"
+                        end
+              %>
+              <div class="wizard-stepper__step wizard-stepper__step--<%= state %>">
+                <%# connector before step (except first) %>
+                <% if idx > 0 %>
+                  <div class="wizard-stepper__connector<%= idx <= current_index ? " wizard-stepper__connector--done" : "" %>"></div>
+                <% end %>
+                <div class="wizard-stepper__indicator" aria-hidden="true">
+                  <% if state == "completed" %>
+                    &#x2713;
+                  <% else %>
+                    <%= idx + 1 %>
+                  <% end %>
+                </div>
+                <span class="wizard-stepper__label"><%= step[:label] %></span>
+              </div>
+            <% end %>
+          </nav>
+        <% end %>
+
+        <%= yield %>
+      </main>
+    </div>
+
+    <%# Toast region %>
+    <div class="toast-region" aria-live="polite" aria-atomic="false" id="toast-region">
+      <% flash.each do |type, message| %>
+        <div class="toast toast--<%= type %>" role="status"
+             data-controller="toast"
+             data-toast-duration-value="4000">
+          <span class="toast__message"><%= message %></span>
+          <button type="button" class="toast__close button button--ghost button--small"
+                  data-action="toast#dismiss"
+                  aria-label="<%= t("layout.close_notification") %>">&#x2715;</button>
+        </div>
+      <% end %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<footer class="mkt-footer">
+  <div class="mkt-container">
+    <div class="mkt-footer__top">
+      <div class="mkt-footer__brand-col">
+        <%= image_tag "brand/Service Desk Lite_Lockup_Horizontal.svg", alt: "Service Desk Lite", class: "mkt-footer__logo mkt-footer__logo--light", height: 48, width: 192 %>
+        <%= image_tag "brand/Service Desk Lite_Lockup_Horizontal_Dark.svg", alt: "Service Desk Lite", class: "mkt-footer__logo mkt-footer__logo--dark", height: 48, width: 192 %>
+      </div>
+
+      <div class="mkt-footer__links-grid">
+        <div class="mkt-footer__col">
+          <h4><%= t("marketing.footer.platform_col") %></h4>
+          <ul>
+            <li><a href="#capabilities"><%= t("marketing.nav.capabilities") %></a></li>
+            <li><a href="#architecture"><%= t("marketing.nav.architecture") %></a></li>
+            <li><a href="#lifecycle"><%= t("marketing.footer.status") %></a></li>
+          </ul>
+        </div>
+        <div class="mkt-footer__col">
+          <h4><%= t("marketing.footer.community_col") %></h4>
+          <ul>
+            <li><a href="https://github.com/csescobar/nomotect-platform" target="_blank" rel="noopener"><%= t("marketing.nav.github") %></a></li>
+            <li><a href="#open-source"><%= t("marketing.open_source.license_title") %></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mkt-footer__bottom">
+      <p><%= t("marketing.footer.copy") %></p>
+    </div>
+  </div>
+</footer>

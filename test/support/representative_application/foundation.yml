@@ -1,0 +1,45 @@
+schema_version: 1
+id: service_request_workspace_foundation
+architecture_id: service_request_workspace
+tenants:
+  - id: acme_operations
+    name: Acme Operations
+    locale: en
+    theme: light
+  - id: aurora_servicos
+    name: Aurora Serviços
+    locale: pt-BR
+    theme: dark
+actors:
+  - id: acme_owner
+    tenant_id: acme_operations
+    role: owner
+  - id: acme_member
+    tenant_id: acme_operations
+    role: member
+  - id: aurora_owner
+    tenant_id: aurora_servicos
+    role: owner
+service_requests:
+  - id: acme_network_access
+    tenant_id: acme_operations
+    title: Request network access
+    status: submitted
+    assignee_id: acme_member
+  - id: aurora_acesso_sistema
+    tenant_id: aurora_servicos
+    title: Solicitar acesso ao sistema
+    status: triaged
+    assignee_id: aurora_owner
+dependencies:
+  - domain_operations
+  - domain_queries
+  - authorization_policies
+  - domain_events
+  - multi_tenancy
+  - audit
+evidence:
+  deterministic: true
+  credential_free: true
+  personal_data: false
+  source_commit_required: true

@@ -1,0 +1,33 @@
+schema_version: 1
+
+extension:
+  id: certification.audit
+  version: 1.0.0
+  contract_version: 1
+  entrypoint: certification/audit
+
+platform:
+  requirement: ">= 0.8.0, < 1.0.0"
+
+capabilities:
+  provides:
+    - id: certification.audit-events
+      version: 1
+  requires: []
+
+dependencies: []
+
+components:
+  configuration: config/extension.schema.json
+  migrations:
+    namespace: certification.audit
+    paths:
+      - db/migrate
+  routes:
+    namespace: certification.audit
+  assets:
+    namespace: certification.audit
+  documentation: docs/index.md
+
+security:
+  trust: trusted_in_process

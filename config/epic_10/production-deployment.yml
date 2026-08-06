@@ -1,0 +1,34 @@
+schema_version: 1
+id: representative_production_deployment
+profile: production_like
+required_checks:
+  - configuration_guard
+  - secret_reference_only
+  - non_root_runtime
+  - health_endpoint
+  - application_replacement
+  - persistent_files
+  - background_job_idempotency
+  - credential_free_export
+  - structured_logs
+  - audit_evidence
+  - operational_health
+observations:
+  configuration_guard: passed
+  secret_reference_only: passed
+  non_root_runtime: passed
+  health_endpoint: passed
+  application_replacement: passed
+  persistent_files: passed
+  background_job_idempotency: passed
+  credential_free_export: passed
+  structured_logs: passed
+  audit_evidence: passed
+  operational_health: passed
+evidence:
+  deterministic: true
+  credential_free: true
+  production_data: false
+  source_commit_required: true
+publication:
+  allowed: false

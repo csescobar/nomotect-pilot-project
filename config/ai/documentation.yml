@@ -1,0 +1,161 @@
+schema_version: 1
+documents:
+  - path: docs/operators/handbook.md
+    owners:
+      - "@csescobar"
+    review_by: "2027-01-31"
+    contracts:
+      - operational_readiness
+      - extensions
+      - upgrades
+      - distributions
+      - releases
+    source_paths:
+      - config/ai/contracts/operational_readiness.yml
+      - config/ai/contracts/extensions.yml
+      - config/ai/contracts/upgrades.yml
+      - config/ai/contracts/distributions.yml
+      - config/ai/contracts/releases.yml
+  - path: docs/operators/compatibility-and-lifecycle.md
+    owners:
+      - "@csescobar"
+    review_by: "2027-01-31"
+    contracts:
+      - extensions
+      - upgrades
+      - releases
+    source_paths:
+      - .ruby-version
+      - Gemfile.lock
+      - config/ai/contracts/extensions.yml
+      - config/ai/contracts/upgrades.yml
+      - config/ai/contracts/releases.yml
+  - path: docs/examples/README.md
+    owners:
+      - "@csescobar"
+    review_by: "2027-01-31"
+    contracts:
+      - operational_readiness
+      - extensions
+      - upgrades
+    source_paths:
+      - docs/examples/extension-manifest.yml
+      - docs/examples/upgrade-manifest.json
+      - docs/examples/backup-manifest.json
+  - path: docs/operations/disaster-recovery.md
+    owners:
+      - "@csescobar"
+    review_by: "2027-01-31"
+    contracts:
+      - operational_readiness
+    source_paths:
+      - config/ai/contracts/operational_readiness.yml
+      - config/operations/disaster-recovery.example.json
+  - path: docs/extensions/lifecycle-guide.md
+    owners:
+      - "@csescobar"
+    review_by: "2027-01-31"
+    contracts:
+      - extensions
+    source_paths:
+      - config/ai/contracts/extensions.yml
+      - docs/contracts/extension-manifest.schema.json
+  - path: docs/upgrades/architecture.md
+    owners:
+      - "@csescobar"
+    review_by: "2027-01-31"
+    contracts:
+      - upgrades
+    source_paths:
+      - config/ai/contracts/upgrades.yml
+      - docs/contracts/upgrade-manifest.schema.json
+  - path: docs/certifications/epic-9.md
+    owners:
+      - "@csescobar"
+    review_by: "2027-01-31"
+    contracts:
+      - operational_readiness
+      - extensions
+      - upgrades
+      - distributions
+      - releases
+    source_paths:
+      - config/epic_9/certification.yml
+      - lib/epic_9/certification.rb
+      - docs/roadmap/roadmap.md
+  - path: docs/validation/architecture.md
+    owners:
+      - "@csescobar"
+    review_by: "2027-01-31"
+    contracts:
+      - epic_10_validation
+    source_paths:
+      - config/ai/contracts/epic_10_validation.yml
+      - docs/contracts/epic-10-validation-plan.schema.json
+      - docs/contracts/epic-10-finding.schema.json
+      - docs/contracts/epic-10-certification.schema.json
+      - app/services/epic_10/contract_validator.rb
+      - app/services/epic_10/release_baseline.rb
+      - app/services/epic_10/rc_preparation.rb
+      - docs/contracts/epic-10-rc-plan.schema.json
+      - config/epic_10/release-baseline.yml
+      - docs/contracts/epic-10-release-baseline.schema.json
+  - path: docs/validation/release-baseline.md
+    owners:
+      - "@csescobar"
+    review_by: "2027-01-31"
+    contracts:
+      - epic_10_validation
+    source_paths:
+      - .ruby-version
+      - Gemfile.lock
+      - .github/workflows/ci.yml
+      - config/epic_10/release-baseline.yml
+      - docs/contracts/epic-10-release-baseline.schema.json
+      - app/services/epic_10/release_baseline.rb
+  - path: docs/validation/rc-preparation.md
+    owners:
+      - "@csescobar"
+    review_by: "2027-01-31"
+    contracts:
+      - epic_10_validation
+      - releases
+    source_paths:
+      - VERSION
+      - CHANGELOG.md
+      - config/epic_10/release-baseline.yml
+      - docs/contracts/epic-10-rc-plan.schema.json
+      - app/services/epic_10/rc_preparation.rb
+      - bin/epic-10-rc-plan
+  - path: docs/validation/threat-model.md
+    owners:
+      - "@csescobar"
+    review_by: "2027-01-31"
+    contracts:
+      - epic_10_validation
+    source_paths:
+      - config/ai/contracts/epic_10_validation.yml
+      - app/services/epic_10/contract_validator.rb
+      - app/services/epic_10/release_baseline.rb
+      - app/services/epic_10/rc_preparation.rb
+  - path: docs/validation/representative-application.md
+    owners:
+      - "@csescobar"
+    review_by: "2027-01-31"
+    contracts:
+      - epic_10_validation
+      - representative_application
+    source_paths:
+      - config/ai/contracts/epic_10_validation.yml
+      - config/ai/contracts/representative_application.yml
+      - config/epic_10/representative-application.yml
+      - app/services/epic_10/representative_application.rb
+      - test/support/representative_application/foundation.yml
+      - test/services/epic_10/representative_application_test.rb
+      - app/services/epic_10/representative_application_journey.rb
+      - test/support/representative_application/design_i18n_grid.yml
+      - test/services/epic_10/representative_application_journey_test.rb
+      - app/services/epic_10/domain_services_journey.rb
+      - test/support/representative_application/domain_services.yml
+      - test/services/epic_10/domain_services_journey_test.rb
+      - docs/roadmap/epic-10-plan.md

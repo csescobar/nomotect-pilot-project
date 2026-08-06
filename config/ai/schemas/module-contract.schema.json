@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nomotect.example/schemas/module-contract.schema.json",
+  "title": "Repository Intelligence Module Contract",
+  "type": "object",
+  "required": ["id", "version", "owns", "may_use", "cannot_use", "invariants", "required_tests"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+    "version": {"type": "integer", "minimum": 1},
+    "owns": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "may_use": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "cannot_use": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "invariants": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "required_tests": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+  }
+}

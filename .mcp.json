@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "nomotect-repository-intelligence": {
+      "command": "ruby",
+      "args": [
+        "bin/nomotect-mcp"
+      ],
+      "env": {
+        "MCP_ALLOW_WRITES": "false",
+        "CODE_GRAPH_PROVIDER": "null"
+      }
+    }
+  }
+}

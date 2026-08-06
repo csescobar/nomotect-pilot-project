@@ -1,0 +1,3 @@
+<% content_for :title, t("customers.edit.title", name: @customer.name) %>
+<%= render Ui::Layout::PageHeaderComponent.new(title: t("customers.edit.title", name: @customer.name), description: t("customers.edit.description")) %>
+<%= render "form", organization: @organization, customer: @customer %>

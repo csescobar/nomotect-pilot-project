@@ -1,0 +1,65 @@
+<section class="mkt-section" id="architecture">
+  <div class="mkt-container">
+    <div class="mkt-section-header">
+      <h2 class="mkt-section-title"><%= t("marketing.architecture.heading") %></h2>
+    </div>
+
+    <div class="mkt-layers">
+      <div class="mkt-layer mkt-layer--presentation">
+        <div class="mkt-layer__header">
+          <span class="mkt-layer__tag">Layer 1</span>
+          <h3 class="mkt-layer__title"><%= t("marketing.architecture.layer_1_title") %></h3>
+        </div>
+        <p class="mkt-layer__desc"><%= t("marketing.architecture.layer_1_desc") %></p>
+        <div class="mkt-layer__stack">
+          <code>ViewComponent</code>
+          <code>Hotwire</code>
+          <code>Design Tokens</code>
+          <code>Rails I18n</code>
+        </div>
+      </div>
+
+      <div class="mkt-layer mkt-layer--application">
+        <div class="mkt-layer__header">
+          <span class="mkt-layer__tag">Layer 2</span>
+          <h3 class="mkt-layer__title"><%= t("marketing.architecture.layer_2_title") %></h3>
+        </div>
+        <p class="mkt-layer__desc"><%= t("marketing.architecture.layer_2_desc") %></p>
+        <div class="mkt-layer__stack">
+          <code>ApplicationController</code>
+          <code>Authentication</code>
+          <code>Authorization</code>
+          <code>Event Bus</code>
+        </div>
+      </div>
+
+      <div class="mkt-layer mkt-layer--domain">
+        <div class="mkt-layer__header">
+          <span class="mkt-layer__tag">Layer 3</span>
+          <h3 class="mkt-layer__title"><%= t("marketing.architecture.layer_3_title") %></h3>
+        </div>
+        <p class="mkt-layer__desc"><%= t("marketing.architecture.layer_3_desc") %></p>
+        <div class="mkt-layer__stack">
+          <code>Entities</code>
+          <code>Invariants</code>
+          <code>Grid Engine</code>
+          <code>Domain Events</code>
+        </div>
+      </div>
+
+      <div class="mkt-layer mkt-layer--infrastructure">
+        <div class="mkt-layer__header">
+          <span class="mkt-layer__tag">Layer 4</span>
+          <h3 class="mkt-layer__title"><%= t("marketing.architecture.layer_4_title") %></h3>
+        </div>
+        <p class="mkt-layer__desc"><%= t("marketing.architecture.layer_4_desc") %></p>
+        <div class="mkt-layer__stack">
+          <code>ActiveRecord</code>
+          <code>PostgreSQL</code>
+          <code>MCP Stdio Server</code>
+          <code>Repository Intelligence</code>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

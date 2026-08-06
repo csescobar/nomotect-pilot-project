@@ -1,0 +1,65 @@
+<%# ── EJ2 Toolbar Section ────────────────────────────────────────────────────────── %>
+<div class="ej2-showcase-section">
+  <header class="ej2-showcase-section__header">
+    <h2 class="ej2-showcase-section__title"><%= t("ej2_showcase.toolbar.title") %></h2>
+    <p class="ej2-showcase-section__desc"><%= t("ej2_showcase.toolbar.description") %></p>
+  </header>
+
+  <%# ── Standard Action Toolbar ─────────────────────────────────────────────── %>
+  <div class="ej2-showcase-card" id="ej2-toolbar-standard">
+    <div class="ej2-showcase-card__header">
+      <h3 class="ej2-showcase-card__title"><%= t("ej2_showcase.toolbar.standard.title") %></h3>
+      <p class="ej2-showcase-card__desc"><%= t("ej2_showcase.toolbar.standard.description") %></p>
+    </div>
+    <div class="ej2-showcase-card__demo" data-controller="ej2-toolbar">
+      <div class="ej2-toolbar-element">
+        <div>
+          <button type="button" class="e-tbar-btn e-btn e-primary">
+            <span class="e-tbar-btn-text"><%= t("ej2_showcase.toolbar.standard.new_record") %></span>
+          </button>
+          <div class="e-separator"></div>
+          <button type="button" class="e-tbar-btn e-btn">
+            <span class="e-tbar-btn-text"><%= t("ej2_showcase.toolbar.standard.filter") %></span>
+          </button>
+          <button type="button" class="e-tbar-btn e-btn">
+            <span class="e-tbar-btn-text"><%= t("ej2_showcase.toolbar.standard.export") %></span>
+          </button>
+          <div class="e-separator"></div>
+          <button type="button" class="e-tbar-btn e-btn">
+            <span class="e-tbar-btn-text"><%= t("ej2_showcase.toolbar.standard.refresh") %></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%# ── Responsive Overflow Popup Toolbar ────────────────────────────────────── %>
+  <div class="ej2-showcase-card" id="ej2-toolbar-overflow">
+    <div class="ej2-showcase-card__header">
+      <h3 class="ej2-showcase-card__title"><%= t("ej2_showcase.toolbar.overflow.title") %></h3>
+      <p class="ej2-showcase-card__desc"><%= t("ej2_showcase.toolbar.overflow.description") %></p>
+    </div>
+    <div class="ej2-showcase-card__demo" data-controller="ej2-toolbar" data-ej2-toolbar-overflow-mode-value="Popup">
+      <div class="ej2-toolbar-element">
+        <div>
+          <button type="button" class="e-tbar-btn e-btn e-primary">
+            <span class="e-tbar-btn-text"><%= t("ej2_showcase.toolbar.overflow.action1") %></span>
+          </button>
+          <button type="button" class="e-tbar-btn e-btn">
+            <span class="e-tbar-btn-text"><%= t("ej2_showcase.toolbar.overflow.action2") %></span>
+          </button>
+          <div class="e-separator"></div>
+          <button type="button" class="e-tbar-btn e-btn">
+            <span class="e-tbar-btn-text"><%= t("ej2_showcase.toolbar.overflow.action3") %></span>
+          </button>
+          <button type="button" class="e-tbar-btn e-btn">
+            <span class="e-tbar-btn-text"><%= t("ej2_showcase.toolbar.overflow.action4") %></span>
+          </button>
+          <button type="button" class="e-tbar-btn e-btn">
+            <span class="e-tbar-btn-text"><%= t("ej2_showcase.toolbar.overflow.action5") %></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nomotect.example/contracts/release-compatibility.schema.json",
+  "title": "Release compatibility data",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "source_version", "platform_version", "contracts"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "source_version": { "type": "string" },
+    "platform_version": { "type": "string" },
+    "contracts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "change_fragment",
+        "installed_platform_state",
+        "release_metadata",
+        "upgrade_manifest"
+      ],
+      "properties": {
+        "change_fragment": { "type": "integer", "minimum": 1 },
+        "installed_platform_state": { "type": "integer", "minimum": 1 },
+        "release_metadata": { "type": "integer", "minimum": 1 },
+        "upgrade_manifest": { "type": "integer", "minimum": 1 }
+      }
+    }
+  }
+}

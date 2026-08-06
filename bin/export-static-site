@@ -1,0 +1,128 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "fileutils"
+require "pathname"
+require_relative "../config/environment"
+
+PUBLIC_SITE_URL = "https://csescobar.github.io/nomotect-platform/"
+
+root = Pathname.new(File.expand_path("..", __dir__))
+output_dir = root.join("public_site")
+FileUtils.rm_rf(output_dir)
+FileUtils.mkdir_p(output_dir.join("assets"))
+
+# Run assets:precompile if needed to generate all digested assets in public/assets
+begin
+  require "rake"
+  Rails.application.load_tasks
+  Rake::Task["assets:precompile"].invoke
+rescue StandardError => e
+  warn "Precompile notice: #{e.message}"
+end
+
+# Copy digested public/assets into public_site/assets
+if root.join("public/assets").exist?
+  FileUtils.cp_r(Dir.glob(root.join("public/assets/*")), output_dir.join("assets"))
+end
+
+# Copy raw app/assets for fallback matching
+if root.join("app/assets/images/brand").exist?
+  FileUtils.mkdir_p(output_dir.join("assets/brand"))
+  FileUtils.cp_r(Dir.glob(root.join("app/assets/images/brand/*")), output_dir.join("assets/brand")) rescue nil
+end
+
+if root.join("app/assets/stylesheets").exist?
+  FileUtils.cp_r(Dir.glob(root.join("app/assets/stylesheets/*.css")), output_dir.join("assets")) rescue nil
+end
+
+if root.join("app/assets/fonts").exist?
+  FileUtils.mkdir_p(output_dir.join("assets/fonts"))
+  FileUtils.cp_r(Dir.glob(root.join("app/assets/fonts/*")), output_dir.join("assets/fonts")) rescue nil
+end
+
+# Copy crawl and browser-discovery assets.
+%w[favicon.svg sitemap.xml robots.txt].each do |filename|
+  source = root.join("public", filename)
+  FileUtils.cp(source, output_dir.join(filename)) if source.exist?
+end
+
+social_preview_source = root.join("public/social-preview.png")
+social_preview_url = nil
+if social_preview_source.exist?
+  FileUtils.cp(social_preview_source, output_dir.join("social-preview.png"))
+  social_preview_url = "#{PUBLIC_SITE_URL}social-preview.png"
+end
+
+# Render marketing page HTML with show_auth: false (no sign in button)
+html = MarketingController.renderer.render(
+  template: "marketing/show",
+  layout: "marketing",
+  assigns: {
+    show_auth: false,
+    static_export: true,
+    social_preview_url: social_preview_url
+  }
+)
+
+# Convert all absolute asset links to repository-relative GitHub Pages links.
+html.gsub!(%r{href="/assets/}, 'href="./assets/')
+html.gsub!(%r{src="/assets/}, 'src="./assets/')
+html.gsub!(%r{href="/installation/branding/favicon[^"]*"}, 'href="./favicon.svg"')
+html.gsub!(%r{href="/favicon\.(?:ico|svg)[^"]*"}, 'href="./favicon.svg"')
+html.gsub!(%r{href="/"(?=[\s>])}, 'href="#"')
+html.gsub!(%r{<form[^>]*locale-switcher[^>]*>.*?</form>}m, "")
+
+# Inject static script for theme switching and mobile navigation toggle
+script = <<~HTML
+  <script>
+    (function() {
+      const STORAGE_KEY = "nomotect-theme";
+      const ALLOWED = ["light", "dark"];
+      function apply(pref) {
+        const theme = ALLOWED.includes(pref) ? pref : "light";
+        localStorage.setItem(STORAGE_KEY, theme);
+        document.documentElement.dataset.theme = theme;
+        return theme;
+      }
+      const initialPref = apply(localStorage.getItem(STORAGE_KEY) || "light");
+
+      document.addEventListener("DOMContentLoaded", function() {
+        const select = document.getElementById("theme-preference");
+        if (select) {
+          select.value = initialPref;
+          select.addEventListener("change", function(e) { apply(e.target.value); });
+        }
+        const toggle = document.querySelector('[data-action="marketing-nav#toggle"]');
+        const menu = document.querySelector('[data-marketing-nav-target="menu"]');
+        if (toggle && menu) {
+          toggle.addEventListener("click", function() {
+            const exp = toggle.getAttribute("aria-expanded") === "true";
+            toggle.setAttribute("aria-expanded", !exp);
+            menu.classList.toggle("is-active");
+          });
+        }
+      });
+    })();
+  </script>
+HTML
+
+html.sub!("</head>", "#{script}\n</head>")
+output_dir.join("index.html").write(html)
+
+required_files = %w[index.html favicon.svg sitemap.xml robots.txt]
+missing_files = required_files.reject { |filename| output_dir.join(filename).exist? }
+raise "Static export missing required files: #{missing_files.join(", ")}" if missing_files.any?
+
+required_markup = [
+  'href="./favicon.svg"',
+  'rel="canonical"',
+  'name="robots"',
+  'name="google-site-verification" content="6UWm4w467BVq1xz_vHgalqyWI6kIasR1itiYNhD6XvQ"',
+  'property="og:title"',
+  'name="twitter:card"'
+]
+missing_markup = required_markup.reject { |fragment| html.include?(fragment) }
+raise "Static export missing required discovery metadata: #{missing_markup.join(", ")}" if missing_markup.any?
+
+puts "Exported static site to #{output_dir}"

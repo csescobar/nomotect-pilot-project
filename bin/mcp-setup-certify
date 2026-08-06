@@ -1,0 +1,109 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "fileutils"
+require "json"
+require "open3"
+require "pathname"
+require "time"
+require "timeout"
+
+ROOT = Pathname(__dir__).join("..").expand_path
+OUTPUT = ROOT.join("tmp/ci/mcp-bootstrap-certification.json")
+CONFIG_PATHS = [ ROOT.join(".mcp.json"), ROOT.join(".agents/mcp_config.json") ].freeze
+SERVER_NAME = "nomotect-repository-intelligence"
+
+report = {
+  schema_version: 1, certification: "mcp-first-local-handshake",
+  client_target: "antigravity-cli", server: SERVER_NAME, status: "FAILED",
+  writes_enabled: false, generated_at: Time.now.utc.iso8601,
+  configurations: [], resources: [], tools: [], invocations: [], failures: [], next_state: "BLOCKED"
+}
+
+begin
+  CONFIG_PATHS.each do |path|
+    server = JSON.parse(path.read).fetch("mcpServers").fetch(SERVER_NAME)
+    serialized = JSON.generate(server)
+    raise "#{path.relative_path_from(ROOT)} contains a personal absolute path" if serialized.match?(%r{/(home|Users)/})
+    unless server.dig("env", "MCP_ALLOW_WRITES") == "false"
+      raise "#{path.relative_path_from(ROOT)} does not fail closed"
+    end
+    unless serialized.include?("bin/nomotect-mcp")
+      raise "#{path.relative_path_from(ROOT)} does not use the portable wrapper"
+    end
+
+    report[:configurations] << {
+      path: path.relative_path_from(ROOT).to_s, portable: true,
+      credentials_present: false, writes_enabled: false
+    }
+  end
+
+  environment = { "MCP_ALLOW_WRITES" => "false", "CODE_GRAPH_PROVIDER" => "null" }
+  command = ROOT.join("bin/nomotect-mcp").to_s
+  Open3.popen3(environment, command, chdir: ROOT.to_s) do |stdin, stdout, stderr, wait_thread|
+    stderr_output = +""
+    stderr_reader = Thread.new { stderr.each_line { |line| stderr_output << line } }
+    request_id = 0
+    invoke = lambda do |method, params = {}|
+      request_id += 1
+      stdin.puts(JSON.generate(jsonrpc: "2.0", id: request_id, method:, params:))
+      stdin.flush
+      line = Timeout.timeout(15) { stdout.gets }
+      response = JSON.parse(line || raise("MCP server closed before responding to #{method}"))
+      operation = params[:name] || params["name"] || method
+      report[:invocations] << {
+        operation:, status: response["error"] ? "error" : "passed",
+        error: response.dig("error", "message")
+      }.compact
+      response
+    end
+
+    initialized = invoke.call("initialize")
+    raise "MCP initialization failed" unless initialized.dig("result", "protocolVersion")
+
+    resources = invoke.call("resources/list").dig("result", "resources").to_a
+    tools = invoke.call("tools/list").dig("result", "tools").to_a
+    raise "MCP resources are missing" if resources.empty?
+    raise "MCP tools are missing" if tools.empty?
+    report[:resources] = resources.map { |resource| resource.fetch("uri") }
+    report[:tools] = tools.map { |tool| tool.fetch("name") }
+
+    statistics = invoke.call("resources/read", uri: "platform://statistics")
+    raise "Repository statistics resource failed" unless statistics.dig("result", "contents", 0, "text")
+    raise "graph_statistics failed" unless invoke.call("tools/call", name: "graph_statistics", arguments: {})["result"]
+    raise "describe_module failed" unless invoke.call(
+      "tools/call", name: "describe_module", arguments: { id: "component:Application" }
+    )["result"]
+    raise "describe_contract failed" unless invoke.call(
+      "tools/call", name: "describe_contract", arguments: { id: "platform" }
+    )["result"]
+    raise "impact_analysis failed" unless invoke.call(
+      "tools/call", name: "impact_analysis", arguments: { id: "component:Application", depth: 2 }
+    )["result"]
+
+    denied_write = invoke.call("tools/call", name: "generate_artifacts", arguments: {})
+    unless denied_write.dig("error", "message")&.include?("writes are disabled")
+      raise "MCP generated-file write was not rejected"
+    end
+
+    stdin.close
+    stderr_reader.join
+    raise "MCP process failed: #{stderr_output.strip}" unless wait_thread.value.success?
+  end
+
+  report[:status] = "PASSED"
+  report[:next_state] = "RESTART_REQUIRED"
+rescue StandardError => error
+  report[:failures] << { stage: "local_handshake", error: error.to_s }
+ensure
+  FileUtils.mkdir_p(OUTPUT.dirname)
+  OUTPUT.write(JSON.pretty_generate(report) + "\n")
+end
+
+if report[:status] == "PASSED"
+  puts "MCP bootstrap certification passed. Restart Antigravity CLI before repository discovery."
+  puts "Evidence: #{OUTPUT.relative_path_from(ROOT)}"
+else
+  warn "MCP bootstrap certification failed. Evidence: #{OUTPUT.relative_path_from(ROOT)}"
+  exit 1
+end

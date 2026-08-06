@@ -1,0 +1,32 @@
+<%# ── EJ2 Data Grid Section ──────────────────────────────────────────────────────── %>
+<div class="ej2-showcase-section">
+  <header class="ej2-showcase-section__header">
+    <h2 class="ej2-showcase-section__title"><%= t("ej2_showcase.grid.title") %></h2>
+    <p class="ej2-showcase-section__desc"><%= t("ej2_showcase.grid.description") %></p>
+  </header>
+
+  <div class="ej2-showcase-card" id="ej2-grid-showcase">
+    <div class="ej2-showcase-card__header">
+      <h3 class="ej2-showcase-card__title"><%= t("ej2_showcase.grid.showcase.title") %></h3>
+      <p class="ej2-showcase-card__desc"><%= t("ej2_showcase.grid.showcase.description") %></p>
+    </div>
+    <div class="ej2-showcase-card__demo"
+         data-controller="ej2-grid"
+         data-ej2-grid-columns-value="<%= [
+           { field: "id", headerText: "Execution ID", width: 130, type: "string" },
+           { field: "organization", headerText: "Organization", width: 180, type: "string" },
+           { field: "status", headerText: "Status", width: 130, type: "string" },
+           { field: "region", headerText: "Region", width: 140, type: "string" },
+           { field: "date", headerText: "Created At", width: 150, type: "string" }
+         ].to_json %>"
+         data-ej2-grid-data-value="<%= [
+           { id: "EXEC-9041", organization: "Acme Corp", status: "Active", region: "us-east-1", date: "2026-08-05" },
+           { id: "EXEC-9042", organization: "Stark Industries", status: "Active", region: "sa-east-1", date: "2026-08-04" },
+           { id: "EXEC-9043", organization: "Wayne Enterprises", status: "Under Review", region: "eu-west-1", date: "2026-08-03" },
+           { id: "EXEC-9044", organization: "Cyberdyne Systems", status: "Risk / Error", region: "us-west-2", date: "2026-08-02" },
+           { id: "EXEC-9045", organization: "Umbrella Corp", status: "Active", region: "ap-northeast-1", date: "2026-08-01" }
+         ].to_json %>">
+      <div class="ej2-grid-container"></div>
+    </div>
+  </div>
+</div>

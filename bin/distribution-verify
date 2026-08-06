@@ -1,0 +1,59 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "json"
+require "optparse"
+require_relative "../config/environment"
+
+options = { channel_states: [] }
+parser = OptionParser.new do |configuration|
+  configuration.banner = "Usage: bin/distribution-verify [options]"
+  configuration.on("--manifest PATH", "Approved distribution manifest") { |path| options[:manifest] = path }
+  configuration.on("--artifact-directory PATH", "Published artifact bundle") do |path|
+    options[:artifact_directory] = path
+  end
+  configuration.on("--channel-state PATH", "Observed channel state") do |path|
+    options[:channel_states] << path
+  end
+  configuration.on("--repository OWNER/REPOSITORY", "Active GitHub repository") do |value|
+    options[:repository] = value
+  end
+  configuration.on("--image-digest SHA256", "Published GHCR digest") { |value| options[:image_digest] = value }
+  configuration.on("--output PATH", "Publication evidence output") { |path| options[:output] = path }
+end
+parser.parse!
+
+required = %i[manifest artifact_directory repository image_digest output]
+abort parser.to_s unless ARGV.empty? && required.all? { |key| options[key].present? }
+
+begin
+  manifest = Distributions::Manifest.load(options.fetch(:manifest))
+  release_plan = Distributions::GithubReleasePlan.new(
+    manifest: manifest,
+    artifact_directory: options.fetch(:artifact_directory)
+  )
+  ghcr_plan = Distributions::GhcrPromotionPlan.new(
+    manifest: manifest,
+    repository: options.fetch(:repository),
+    digest: options.fetch(:image_digest)
+  )
+  states = options.fetch(:channel_states).map { |path| Distributions::ChannelState.load(path) }
+  verifier = Distributions::Verifier.new(
+    manifest: manifest,
+    repository: options.fetch(:repository),
+    github_release_plan: release_plan,
+    ghcr_plan: ghcr_plan,
+    channel_states: states
+  )
+  evidence = verifier.verify
+  output = Pathname(options.fetch(:output))
+  output.dirname.mkpath
+  output.write("#{JSON.pretty_generate(evidence)}\n")
+  puts JSON.pretty_generate(evidence)
+  exit 2 unless verifier.ready?
+rescue Distributions::Manifest::InvalidManifest,
+  Distributions::ChannelState::InvalidState,
+  Distributions::GithubReleasePlan::InvalidBundle,
+  Distributions::GhcrPromotionPlan::InvalidPromotion => error
+  abort "Distribution verification input is invalid: #{error.message}"
+end

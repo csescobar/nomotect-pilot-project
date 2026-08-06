@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ruby -rjson -e 'ARGV.each { |path| JSON.parse(File.read(path)) }' \
+  docs/contracts/upgrade-manifest.schema.json \
+  docs/contracts/upgrade-history.schema.json \
+  docs/contracts/upgrade-recovery.schema.json \
+  docs/contracts/installed-platform-state.schema.json \
+  docs/contracts/backup-evidence.schema.json
+
+bundle exec rails test \
+  test/services/upgrades/version_test.rb \
+  test/services/upgrades/manifest_test.rb \
+  test/services/upgrades/planner_test.rb \
+  test/services/upgrades/installed_state_detector_test.rb \
+  test/services/upgrades/inspector_test.rb \
+  test/services/upgrades/backup_and_maintenance_test.rb \
+  test/services/upgrades/executor_test.rb \
+  test/services/upgrades/post_upgrade_verifier_test.rb \
+  test/services/upgrades/recovery_advisor_test.rb \
+  test/integration/upgrade_framework_certification_test.rb
+
+grep -q 'additionalProperties": false' docs/contracts/upgrade-manifest.schema.json
+grep -q 'recovery_required' docs/contracts/upgrade-history.schema.json
+grep -q 'manifest_digest' docs/contracts/upgrade-history.schema.json
+grep -q 'forward_recovery' docs/contracts/upgrade-recovery.schema.json
+grep -q 'pending_migrations' docs/contracts/installed-platform-state.schema.json
+grep -q 'pending_extension_migrations' app/services/upgrades/inspector.rb
+grep -q 'does not execute arbitrary shell commands' docs/upgrades/architecture.md
+grep -q 'does not automate application, database' docs/upgrades/recovery-and-certification.md
+grep -q 'inspection and preflight are read-only' config/ai/contracts/upgrades.yml
+test -x bin/upgrade
+test -x bin/upgrade-maintenance
+test -x bin/upgrade-recovery
+
+printf 'Upgrade framework contracts and recovery certified\n'

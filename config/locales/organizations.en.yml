@@ -1,0 +1,72 @@
+en:
+  layout:
+    organizations: "Organizations"
+  organizations:
+    created: "Organization created."
+    updated: "Organization updated."
+    destroyed: "Organization deleted."
+    member_count:
+      one: "1 member"
+      other: "%{count} members"
+    delete_confirmation: "Delete this organization and all of its memberships?"
+    index:
+      title: "Organizations"
+      description: "Manage the workspaces where people and product data are organized."
+    new:
+      title: "Create organization"
+      description: "Create a workspace and become its first owner."
+    edit:
+      title: "Edit %{name}"
+      description: "Update the organization identity."
+    show:
+      description: "Organization membership and access overview."
+      members: "Members"
+    empty:
+      title: "No organizations yet"
+      description: "Create the first organization to begin collaborating."
+    fields:
+      name: "Organization name"
+    actions:
+      new: "New organization"
+      save: "Save organization"
+      edit: "Edit organization"
+      delete: "Delete organization"
+    danger_zone:
+      title: "Danger zone"
+      description: "Deleting this organization also removes its memberships and cannot be undone."
+    roles:
+      owner: "Owner"
+      admin: "Administrator"
+      member: "Member"
+  memberships:
+    updated: "Member role updated."
+    destroyed: "Member removed."
+    change_role: "Change role for %{email}"
+    remove_confirmation: "Remove %{email} from this organization?"
+    actions:
+      update: "Update role"
+      remove: "Remove member"
+  organization_invitations:
+    title: "Invite people"
+    pending: "Pending invitations"
+    created: "Invitation created."
+    accepted: "Invitation accepted."
+    revoked: "Invitation revoked."
+    invalid: "This invitation is invalid or expired."
+    email_mismatch: "Sign in with the email address that received this invitation."
+    fields:
+      email: "Email address"
+      role: "Role"
+    actions:
+      invite: "Create invitation"
+      revoke: "Revoke invitation"
+      accept_link: "Open acceptance link"
+  activerecord:
+    errors:
+      models:
+        membership:
+          attributes:
+            role:
+              last_owner: "cannot be changed because the organization must retain an owner"
+            base:
+              last_owner: "The last owner cannot be removed"

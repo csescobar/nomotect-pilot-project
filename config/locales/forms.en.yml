@@ -1,0 +1,6 @@
+en:
+  forms:
+    actions:
+      submit: Save
+    errors:
+      summary_title: Please correct the following errors

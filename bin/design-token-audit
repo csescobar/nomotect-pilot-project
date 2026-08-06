@@ -1,0 +1,44 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "set"
+require "yaml"
+
+root = File.expand_path("..", __dir__)
+stylesheets = Dir[File.join(root, "app/assets/stylesheets/**/*.css")]
+stylesheets.reject! { |path| path.end_with?("/design_tokens.css") }
+
+literal_pattern = /#[0-9a-fA-F]{3,8}\b|(?:rgb|rgba|hsl|hsla)\s*\(/
+violations = stylesheets.flat_map do |path|
+  File.readlines(path).filter_map.with_index(1) do |line, number|
+    next unless line.match?(literal_pattern)
+
+    "#{path.delete_prefix("#{root}/")}:#{number}: #{line.strip}"
+  end
+end
+
+token_document = YAML.safe_load_file(
+  File.join(root, "config/design_tokens/tokens.yml"),
+  permitted_classes: [],
+  permitted_symbols: [],
+  aliases: false
+)
+canonical_variables = [token_document.fetch("base"), *token_document.fetch("themes").values]
+  .flat_map(&:keys)
+  .map { |name| "--#{name.tr('.', '-')}" }
+  .to_set
+stylesheet_source = stylesheets.map { |path| File.read(path) }.join("\n")
+local_variables = stylesheet_source.scan(/^\s*(--[a-z0-9-]+)\s*:/).flatten.to_set
+used_variables = stylesheet_source.scan(/var\((--[a-z0-9-]+)/).flatten.to_set
+undefined_variables = used_variables - canonical_variables - local_variables
+undefined_variables.sort.each do |name|
+  violations << "undefined custom property #{name}"
+end
+
+if violations.any?
+  warn "Stylesheet color literals bypass the canonical design-token contract:"
+  violations.each { |violation| warn "  #{violation}" }
+  exit 1
+end
+
+puts "Design-token stylesheet consumption validated"

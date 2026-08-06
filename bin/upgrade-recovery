@@ -1,0 +1,41 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "json"
+require "optparse"
+require_relative "../config/environment"
+
+options = {
+  state: Rails.root.join("var/upgrade/execution.json").to_s,
+  format: "human"
+}
+parser = OptionParser.new do |configuration|
+  configuration.banner = "Usage: bin/upgrade-recovery --manifest PATH [--state PATH] [--format human|json]"
+  configuration.on("--manifest PATH", "Target upgrade manifest") { |path| options[:manifest] = path }
+  configuration.on("--state PATH", "Persisted execution state") { |path| options[:state] = path }
+  configuration.on("--format FORMAT", %w[human json], "Output format") { |format| options[:format] = format }
+end
+parser.parse!
+abort parser.to_s unless options[:manifest]
+
+begin
+  manifest = Upgrades::Manifest.load(options.fetch(:manifest))
+  state = JSON.parse(File.read(options.fetch(:state)))
+  guidance = Upgrades::RecoveryAdvisor.new(manifest: manifest, execution_state: state).call
+
+  if options.fetch(:format) == "json"
+    puts JSON.pretty_generate(guidance)
+  else
+    puts "Recovery: #{guidance.fetch('classification')}"
+    puts "Failure: #{guidance.fetch('failure_code')}"
+    puts guidance.fetch("summary")
+    guidance.fetch("actions").each do |action|
+      puts "#{action.fetch('order')}. #{action.fetch('instruction')}"
+    end
+  end
+rescue Upgrades::Manifest::InvalidManifest, JSON::ParserError, Errno::ENOENT
+  warn "RECOVERY [recovery_input_invalid] Manifest or execution state is missing or invalid"
+  exit 2
+rescue Upgrades::RecoveryAdvisor::NoRecoveryRequired
+  puts "Recovery guidance is not required for this completed execution."
+end

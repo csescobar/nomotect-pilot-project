@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nomotect.example/contracts/distribution-manifest.schema.json",
+  "title": "Approved platform distribution manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "release",
+    "repository",
+    "channels",
+    "artifacts",
+    "policy",
+    "recovery"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "release": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "tag",
+        "commit",
+        "release_metadata_digest",
+        "compatibility_digest"
+      ],
+      "properties": {
+        "version": { "$ref": "#/$defs/semanticVersion" },
+        "tag": {
+          "type": "string",
+          "pattern": "^v(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(-[0-9A-Za-z.-]+)?(\\+[0-9A-Za-z.-]+)?$"
+        },
+        "commit": { "$ref": "#/$defs/commit" },
+        "release_metadata_digest": { "$ref": "#/$defs/digest" },
+        "compatibility_digest": { "$ref": "#/$defs/digest" }
+      }
+    },
+    "repository": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["identity", "source_branch"],
+      "properties": {
+        "identity": { "const": "repository_context" },
+        "source_branch": { "const": "main" }
+      }
+    },
+    "channels": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "oneOf": [
+          { "$ref": "#/$defs/githubRelease" },
+          { "$ref": "#/$defs/ghcr" }
+        ]
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "minItems": 11,
+      "maxItems": 11,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "application_sbom",
+          "application_starter_tar",
+          "application_starter_zip",
+          "checksums",
+          "compatibility",
+          "container_sbom",
+          "migration_notes",
+          "packaging_manifest",
+          "provenance",
+          "release_notes",
+          "upgrade_notes"
+        ]
+      }
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "approval_environment",
+        "release_requires_approval",
+        "overwrite"
+      ],
+      "properties": {
+        "approval_environment": { "const": "release" },
+        "release_requires_approval": { "const": true },
+        "overwrite": { "const": false }
+      }
+    },
+    "recovery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["strategy", "partial_publication"],
+      "properties": {
+        "strategy": { "const": "resume_forward" },
+        "partial_publication": { "const": "operator_review" }
+      }
+    }
+  },
+  "$defs": {
+    "semanticVersion": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(-[0-9A-Za-z.-]+)?(\\+[0-9A-Za-z.-]+)?$"
+    },
+    "commit": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "githubRelease": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "enabled", "prerelease"],
+      "properties": {
+        "id": { "const": "github_release" },
+        "enabled": { "const": true },
+        "prerelease": { "type": "boolean" }
+      }
+    },
+    "ghcr": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "enabled",
+        "semantic_tags",
+        "architectures",
+        "rebuild",
+        "allow_latest"
+      ],
+      "properties": {
+        "id": { "const": "ghcr" },
+        "enabled": { "const": true },
+        "semantic_tags": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": { "enum": ["full", "minor"] }
+        },
+        "architectures": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": { "enum": ["linux/amd64", "linux/arm64"] }
+        },
+        "rebuild": { "const": false },
+        "allow_latest": { "const": false }
+      }
+    }
+  }
+}

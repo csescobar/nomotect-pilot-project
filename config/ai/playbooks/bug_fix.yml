@@ -1,0 +1,19 @@
+id: bug_fix
+version: 1
+title: Diagnose and correct a platform defect
+inputs:
+  - observed_behavior
+  - affected_area
+steps:
+  - reproduce_the_failure
+  - load_repository_context
+  - run_impact_analysis
+  - identify_root_cause
+  - implement_smallest_safe_fix
+  - add_regression_test
+  - run_required_validators
+completion_gate:
+  - regression_test_passes
+  - full_test_suite_passes
+  - architecture_valid
+  - final_ci_green

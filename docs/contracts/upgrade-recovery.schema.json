@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nomotect.example/contracts/upgrade-recovery.schema.json",
+  "title": "Upgrade recovery guidance",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "manifest_id",
+    "classification",
+    "failure_code",
+    "summary",
+    "execution_status",
+    "failed_operation_id",
+    "rollback",
+    "actions"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "manifest_id": { "type": "string", "minLength": 1 },
+    "classification": {
+      "enum": ["retryable", "forward_recovery", "operator_intervention"]
+    },
+    "failure_code": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+    "summary": { "type": "string", "minLength": 1 },
+    "execution_status": {
+      "type": ["string", "null"],
+      "enum": ["running", "failed", "completed", null]
+    },
+    "failed_operation_id": { "type": ["string", "null"] },
+    "rollback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["automatic", "reason"],
+      "properties": {
+        "automatic": { "const": false },
+        "reason": { "type": "string", "minLength": 1 }
+      }
+    },
+    "actions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["order", "instruction"],
+        "properties": {
+          "order": { "type": "integer", "minimum": 1 },
+          "instruction": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nomotect.example/contracts/channel-state.schema.json",
+  "title": "Read-only distribution channel observation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "channel",
+    "repository",
+    "version",
+    "tag",
+    "status",
+    "immutable_reference",
+    "observed_commit",
+    "findings"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "channel": { "enum": ["github_release", "ghcr"] },
+    "repository": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(-[0-9A-Za-z.-]+)?(\\+[0-9A-Za-z.-]+)?$"
+    },
+    "tag": {
+      "type": "string",
+      "pattern": "^v(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(-[0-9A-Za-z.-]+)?(\\+[0-9A-Za-z.-]+)?$"
+    },
+    "status": {
+      "enum": ["absent", "available", "conflict", "partial", "unavailable"]
+    },
+    "immutable_reference": {
+      "type": ["string", "null"]
+    },
+    "observed_commit": {
+      "oneOf": [
+        { "type": "null" },
+        { "type": "string", "pattern": "^[a-f0-9]{40}$" }
+      ]
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["code", "severity"],
+        "properties": {
+          "code": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]+$"
+          },
+          "severity": { "enum": ["warning", "blocker"] }
+        }
+      }
+    }
+  }
+}

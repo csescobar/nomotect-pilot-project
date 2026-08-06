@@ -1,0 +1,5524 @@
+{
+  "schema_version": "1.0",
+  "nodes": [
+    {
+      "id": "component:Application",
+      "type": "component",
+      "name": "Application",
+      "path": "app/components/application_component.rb",
+      "properties": {
+        "sha256": "bae1ce099d5b8dac42b5909f422a522e858abb13b96301b24eb20d2e439a9004",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "component:Marketing::ApplicationCategory",
+      "type": "component",
+      "name": "Marketing::ApplicationCategory",
+      "path": "app/components/marketing/application_category_component.rb",
+      "properties": {
+        "sha256": "c8fc599df331e29b3f18d796ec09623728d415f76d1ca6292a9e10d642e50fc0",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "component:Marketing::ArchitectureLayers",
+      "type": "component",
+      "name": "Marketing::ArchitectureLayers",
+      "path": "app/components/marketing/architecture_layers_component.rb",
+      "properties": {
+        "sha256": "8c889800c2e8fce5c68dcd1eb0ce18d3b67f10c5ecc033891b4dc46882aeb965",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "component:Marketing::CallToAction",
+      "type": "component",
+      "name": "Marketing::CallToAction",
+      "path": "app/components/marketing/call_to_action_component.rb",
+      "properties": {
+        "sha256": "4146863ad0343fdd763c13a0bd758912856457dd66c57d723f3ac9bb841fe444",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "component:Marketing::Capability",
+      "type": "component",
+      "name": "Marketing::Capability",
+      "path": "app/components/marketing/capability_component.rb",
+      "properties": {
+        "sha256": "8d9c082bef091f6b75ac57b8ff4b60a2739cbe56a3e115e03f610f7919e76e7a",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "component:Marketing::EngineeringFlow",
+      "type": "component",
+      "name": "Marketing::EngineeringFlow",
+      "path": "app/components/marketing/engineering_flow_component.rb",
+      "properties": {
+        "sha256": "e48001a1a6cbeb09562858fa7736a83afea40971ffe85b2346aa05dafb91ee0e",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "component:Marketing::Footer",
+      "type": "component",
+      "name": "Marketing::Footer",
+      "path": "app/components/marketing/footer_component.rb",
+      "properties": {
+        "sha256": "f678e8987c73884564d474504a1dc4d1102adb7482186aab6b8431daf79d40be",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "component:Marketing::Header",
+      "type": "component",
+      "name": "Marketing::Header",
+      "path": "app/components/marketing/header_component.rb",
+      "properties": {
+        "sha256": "583067ce5833c48da5f99ead8bfaa657648be83696826cac3ca6fd266af399cf",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "component:Marketing::Hero",
+      "type": "component",
+      "name": "Marketing::Hero",
+      "path": "app/components/marketing/hero_component.rb",
+      "properties": {
+        "sha256": "7ea0a2401c1fd544d5e3d4be6b80e9ec0661b8a140c1957c2bf9d97c6f5555e2",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "component:Marketing::Lifecycle",
+      "type": "component",
+      "name": "Marketing::Lifecycle",
+      "path": "app/components/marketing/lifecycle_component.rb",
+      "properties": {
+        "sha256": "26657727efe071ebe06bad7c87fc6c1edaa56d22d7f7dc368d3c58d6b7b98b1f",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "component:Marketing::ProductPreview",
+      "type": "component",
+      "name": "Marketing::ProductPreview",
+      "path": "app/components/marketing/product_preview_component.rb",
+      "properties": {
+        "sha256": "ce16a1a73240ee783cdcc0b046898e95eacb000a67a5752e38290901dc0dc4f4",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "component:Marketing::TechnologyStack",
+      "type": "component",
+      "name": "Marketing::TechnologyStack",
+      "path": "app/components/marketing/technology_stack_component.rb",
+      "properties": {
+        "sha256": "81506428e13793943106aa6497546b8d69413124b22050c9416ad1aa81b8fed9",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "component:Ui::Alert",
+      "type": "component",
+      "name": "Ui::Alert",
+      "path": "app/components/ui/alert_component.rb",
+      "properties": {
+        "sha256": "959822e07e0d4c3e6311d6ca73515472adc473d58ab59c498e6baafe3e1a011f",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "component:Ui::Badge",
+      "type": "component",
+      "name": "Ui::Badge",
+      "path": "app/components/ui/badge_component.rb",
+      "properties": {
+        "sha256": "e0b49c5280c64975c1d3dc142c3e499e48e540bb3fddb5c5d71b684bb45eecfd",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "component:Ui::Base",
+      "type": "component",
+      "name": "Ui::Base",
+      "path": "app/components/ui/base_component.rb",
+      "properties": {
+        "sha256": "e0462b8d62d3ed9a179cf070cf7b80ddf159d6ef2a05301706d50053165763f3",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "component:Ui::Button",
+      "type": "component",
+      "name": "Ui::Button",
+      "path": "app/components/ui/button_component.rb",
+      "properties": {
+        "sha256": "dac313bfc027e314b880409f87091588d9f2458058be4c8afa2ba31dfa10e8dc",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "component:Ui::Card",
+      "type": "component",
+      "name": "Ui::Card",
+      "path": "app/components/ui/card_component.rb",
+      "properties": {
+        "sha256": "53b5b508e88b75ffd57b7facc2bf537aa2b3cf75a54380781dcc4f2e3b8d931f",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "component:Ui::DangerZone",
+      "type": "component",
+      "name": "Ui::DangerZone",
+      "path": "app/components/ui/danger_zone_component.rb",
+      "properties": {
+        "sha256": "2dae8c9ba478a94de3a5ac989d093f6699045ce37bf49dfdf50be2d90af9f0ce",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "component:Ui::Divider",
+      "type": "component",
+      "name": "Ui::Divider",
+      "path": "app/components/ui/divider_component.rb",
+      "properties": {
+        "sha256": "8e050f13e2502d2f5476a920422ccc04db5bf7cbf2cc013d27dd8665a203f8aa",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "component:Ui::EmptyState",
+      "type": "component",
+      "name": "Ui::EmptyState",
+      "path": "app/components/ui/empty_state_component.rb",
+      "properties": {
+        "sha256": "11ab02324215abb06b97be828af0cae81ad46d84a7a1878f35f9b7edb3f52977",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "component:Ui::Forms::Checkbox",
+      "type": "component",
+      "name": "Ui::Forms::Checkbox",
+      "path": "app/components/ui/forms/checkbox_component.rb",
+      "properties": {
+        "sha256": "9cd67f80888d6a1a9daa595a6bc311ea6936b5f138507379b728396519baa33d",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "component:Ui::Forms::ErrorSummary",
+      "type": "component",
+      "name": "Ui::Forms::ErrorSummary",
+      "path": "app/components/ui/forms/error_summary_component.rb",
+      "properties": {
+        "sha256": "aa14d6a9f5d6c8a507190bb6685cee4218cb6c07d20ae2b80dc46e0ec297875d",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "component:Ui::Forms::Field",
+      "type": "component",
+      "name": "Ui::Forms::Field",
+      "path": "app/components/ui/forms/field_component.rb",
+      "properties": {
+        "sha256": "7d66586bc20bc17f88a3462768a5392086606543ced7d9aaabda63b2f1af725e",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "component:Ui::Forms::RadioGroup",
+      "type": "component",
+      "name": "Ui::Forms::RadioGroup",
+      "path": "app/components/ui/forms/radio_group_component.rb",
+      "properties": {
+        "sha256": "2296cd2d61341bcebd833d71117a5400fd8bce7f72c46b0c56d4b736b5b37c9c",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "component:Ui::Layout::ApplicationShell",
+      "type": "component",
+      "name": "Ui::Layout::ApplicationShell",
+      "path": "app/components/ui/layout/application_shell_component.rb",
+      "properties": {
+        "sha256": "a4700b6317350e6098bf81d2c2fd74a248d3962af140e00c90442642a737dd33",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "component:Ui::Layout::Breadcrumbs",
+      "type": "component",
+      "name": "Ui::Layout::Breadcrumbs",
+      "path": "app/components/ui/layout/breadcrumbs_component.rb",
+      "properties": {
+        "sha256": "a6c277401f84cdae6e951b83b2dae7dde8c9f8003d7aeccb520e99549818ebc8",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "component:Ui::Layout::Navigation",
+      "type": "component",
+      "name": "Ui::Layout::Navigation",
+      "path": "app/components/ui/layout/navigation_component.rb",
+      "properties": {
+        "sha256": "96810a132e9fe31fc00f4040ef2a8746040767bffec36baa191f9325645f198e",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "component:Ui::Layout::PageHeader",
+      "type": "component",
+      "name": "Ui::Layout::PageHeader",
+      "path": "app/components/ui/layout/page_header_component.rb",
+      "properties": {
+        "sha256": "e1c09db8f559202257eb1e8ec91c0de60a1f08eec1d5ee3dfb37ce8e43443dd3",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "component:Ui::LocaleSwitcher",
+      "type": "component",
+      "name": "Ui::LocaleSwitcher",
+      "path": "app/components/ui/locale_switcher_component.rb",
+      "properties": {
+        "sha256": "348d75b2257c1ed91f620408a18afdabe1ea5dc4fb1b33bf2030c3bc9f487582",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "component:Ui::ThemeSwitcher",
+      "type": "component",
+      "name": "Ui::ThemeSwitcher",
+      "path": "app/components/ui/theme_switcher_component.rb",
+      "properties": {
+        "sha256": "f65541d49907d201f696234b0bf8c55496446947202390b3d2b09e7bb46f38df",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "controller:Application",
+      "type": "controller",
+      "name": "Application",
+      "path": "app/controllers/application_controller.rb",
+      "properties": {
+        "sha256": "eb4d09a789bf00841041268a7c1b8d445ebc9a4c3a47fd8d4935b905a900c220",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "controller:ComponentShowcase",
+      "type": "controller",
+      "name": "ComponentShowcase",
+      "path": "app/controllers/component_showcase_controller.rb",
+      "properties": {
+        "sha256": "16afefed85b7ddfa0027f28dd724fdd20ca04f9ee7669c617633cbd9b844b986",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "controller:Customers",
+      "type": "controller",
+      "name": "Customers",
+      "path": "app/controllers/customers_controller.rb",
+      "properties": {
+        "sha256": "71a6bfc6ad263a28c8e792c94ae485db396cf60a0b1259d4592bc1ee4b60a87a",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "controller:Dashboards",
+      "type": "controller",
+      "name": "Dashboards",
+      "path": "app/controllers/dashboards_controller.rb",
+      "properties": {
+        "sha256": "4295090d17fe8b5da4a73d4010e670aee4f5100400b9ace3c32c7d8ce802d32c",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "controller:Ej2Showcase",
+      "type": "controller",
+      "name": "Ej2Showcase",
+      "path": "app/controllers/ej2_showcase_controller.rb",
+      "properties": {
+        "sha256": "11bcae99a93b77a2ed7914a9b3d3ade60fb27084b1f412937c44633ed7ff8b06",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "controller:GridSavedViews",
+      "type": "controller",
+      "name": "GridSavedViews",
+      "path": "app/controllers/grid_saved_views_controller.rb",
+      "properties": {
+        "sha256": "8355b49a378da0e2dbaa5161f7430703a9ce3402c9a76de5cb5d000859fa7f09",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "controller:Grids",
+      "type": "controller",
+      "name": "Grids",
+      "path": "app/controllers/grids_controller.rb",
+      "properties": {
+        "sha256": "8a475516ffd8babd2d3729ff3413cf0dab1afca3c02c0fdd36170b2205fe1297",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "controller:Health",
+      "type": "controller",
+      "name": "Health",
+      "path": "app/controllers/health_controller.rb",
+      "properties": {
+        "sha256": "e5b146bf8204c5d877c3e39b6730c2406c0be1bd02163264481e63e92e1a713f",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "controller:Home",
+      "type": "controller",
+      "name": "Home",
+      "path": "app/controllers/home_controller.rb",
+      "properties": {
+        "sha256": "fcb3f9556075572378727aec4e4d266f3e4fc1329f58485f4eee80bd77285065",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "controller:Installation::Base",
+      "type": "controller",
+      "name": "Installation::Base",
+      "path": "app/controllers/installation/base_controller.rb",
+      "properties": {
+        "sha256": "6961d022d08dfa37072bd02c8729021de11af1fc47f6d930ea99a4ba1019d6b8",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "controller:Installation::Steps",
+      "type": "controller",
+      "name": "Installation::Steps",
+      "path": "app/controllers/installation/steps_controller.rb",
+      "properties": {
+        "sha256": "48f21b35796dc4a137d8743e732b86e349ac38cf35788f2b9ac02536a47dcb6a",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "controller:LocalePreferences",
+      "type": "controller",
+      "name": "LocalePreferences",
+      "path": "app/controllers/locale_preferences_controller.rb",
+      "properties": {
+        "sha256": "1db89640a3c128b9e26b204b0e94db1a31aa921507123ec9ae57ac6143f3c3fe",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "controller:Marketing",
+      "type": "controller",
+      "name": "Marketing",
+      "path": "app/controllers/marketing_controller.rb",
+      "properties": {
+        "sha256": "d339e1f6e55667e247cd8dafd21381af6dbb1a82b20a696b61dfad5cf2e1d696",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "controller:Memberships",
+      "type": "controller",
+      "name": "Memberships",
+      "path": "app/controllers/memberships_controller.rb",
+      "properties": {
+        "sha256": "1e1db4005dfac509dc01ebeedf2541b9cced6f80b2ddfbaf22d0a2691781e658",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "controller:OrganizationInvitations",
+      "type": "controller",
+      "name": "OrganizationInvitations",
+      "path": "app/controllers/organization_invitations_controller.rb",
+      "properties": {
+        "sha256": "336d26aa4061316fce65679855ff8654d694a3314645c074d28d73e03ac214b8",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "controller:Organizations",
+      "type": "controller",
+      "name": "Organizations",
+      "path": "app/controllers/organizations_controller.rb",
+      "properties": {
+        "sha256": "5d444ebbcb03e6ea882ae2e5124135066155efa01ab7e334ee6f35e3ea6f2611",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "controller:Passwords",
+      "type": "controller",
+      "name": "Passwords",
+      "path": "app/controllers/passwords_controller.rb",
+      "properties": {
+        "sha256": "aa44674278c026e5a5e7cc02d74f441b09e326f9dc495b607e0195d4cac99214",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "controller:Preferences",
+      "type": "controller",
+      "name": "Preferences",
+      "path": "app/controllers/preferences_controller.rb",
+      "properties": {
+        "sha256": "961e97f3a474689a89a467d5dae00746c6540283597c8f47a67f03965bd3f080",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "controller:PrivacyRequests",
+      "type": "controller",
+      "name": "PrivacyRequests",
+      "path": "app/controllers/privacy_requests_controller.rb",
+      "properties": {
+        "sha256": "ba925ded877ca4e8bb43b7632c49bb19bc8b302c71ad87ef2909bed7c2344a4d",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "controller:Sessions",
+      "type": "controller",
+      "name": "Sessions",
+      "path": "app/controllers/sessions_controller.rb",
+      "properties": {
+        "sha256": "9e62a598553073a962143890b878a41e72792806274af9e8daad5f7b8a295d9f",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "controller:StoredFiles",
+      "type": "controller",
+      "name": "StoredFiles",
+      "path": "app/controllers/stored_files_controller.rb",
+      "properties": {
+        "sha256": "1d73826c77f6a6bc5adc7688d38cb01ada1d54bfd2dca397c1814ffb0fc9b5b6",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "controller:TenantSelections",
+      "type": "controller",
+      "name": "TenantSelections",
+      "path": "app/controllers/tenant_selections_controller.rb",
+      "properties": {
+        "sha256": "c1876a4d7f7437f395e4ce2dfa5fe99fb1d5dff56d670c856ad6d203c9eac83d",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Adoption::Clean-starter-onboarding",
+      "type": "document",
+      "name": "Adoption::Clean-starter-onboarding",
+      "path": "docs/adoption/clean-starter-onboarding.md",
+      "properties": {
+        "sha256": "a5c0f00c8da42d7d6bed53fb3f14471165dd25ae52698ef3284f8fe7144580e2",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Adoption::Phase-4b-grid-ux-baseline",
+      "type": "document",
+      "name": "Adoption::Phase-4b-grid-ux-baseline",
+      "path": "docs/adoption/phase-4b-grid-ux-baseline.md",
+      "properties": {
+        "sha256": "ba6686b4b02831d43ce1513454361770b835090bb1843304eb7e41fa2adb916d",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Ai::Ai-first-roadmap",
+      "type": "document",
+      "name": "Ai::Ai-first-roadmap",
+      "path": "docs/ai/ai-first-roadmap.md",
+      "properties": {
+        "sha256": "8978410f4f0462fbc081a288160bffc31db39f2d2f1ccc0e138900d17fdf0b25",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Ai::Browser-support-matrix",
+      "type": "document",
+      "name": "Ai::Browser-support-matrix",
+      "path": "docs/ai/browser-support-matrix.md",
+      "properties": {
+        "sha256": "4b9513ac5eca5415a6a218a551b5072c503e7364882ffaeebaa7d5ff2efa232c",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Ai::Commands::Readme",
+      "type": "document",
+      "name": "Ai::Commands::Readme",
+      "path": "docs/ai/commands/README.md",
+      "properties": {
+        "sha256": "91deb3efac41260733121258232573c3f5ed7c500b2f7eb73ba5580c281f0843",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Ai::Contribution-boundaries",
+      "type": "document",
+      "name": "Ai::Contribution-boundaries",
+      "path": "docs/ai/contribution-boundaries.md",
+      "properties": {
+        "sha256": "e51c52e8b658f685b80ed36cc2086e6f5a71a9cd705c7d00e0ea1604fe64b376",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Ai::Epic-8-delivery-evidence",
+      "type": "document",
+      "name": "Ai::Epic-8-delivery-evidence",
+      "path": "docs/ai/epic-8-delivery-evidence.md",
+      "properties": {
+        "sha256": "bd9f23177a55739444f6b15990e7e1958da83e13447256636ef6d112e4b680f6",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Ai::Executable-playbooks",
+      "type": "document",
+      "name": "Ai::Executable-playbooks",
+      "path": "docs/ai/executable-playbooks.md",
+      "properties": {
+        "sha256": "a7e0ffb665565d627447bf64144e9432ae63c60081838598ba721ae147350c6d",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Ai::Mcp-expanded-interface",
+      "type": "document",
+      "name": "Ai::Mcp-expanded-interface",
+      "path": "docs/ai/mcp-expanded-interface.md",
+      "properties": {
+        "sha256": "92d6f4e2cc90ee75a4220aead7b573d11ca1dbe5a2fd4cf5eb81a40ba4384d1b",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Ai::Mcp-setup",
+      "type": "document",
+      "name": "Ai::Mcp-setup",
+      "path": "docs/ai/mcp-setup.md",
+      "properties": {
+        "sha256": "b4f3c47d06e82eb06bcc6c0d09b2e9b3c2dd910b86ac3d0d81bef39364486a4a",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Ai::Module-contract-specification",
+      "type": "document",
+      "name": "Ai::Module-contract-specification",
+      "path": "docs/ai/module-contract-specification.md",
+      "properties": {
+        "sha256": "870c19780c982ab2c5751870800442df1986e12aaeb32d440c4d6207563c2413",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Ai::Phase8-pilot-plan",
+      "type": "document",
+      "name": "Ai::Phase8-pilot-plan",
+      "path": "docs/ai/phase8-pilot-plan.md",
+      "properties": {
+        "sha256": "e2ba9d7f567ed2c9bc366c1ac6c30069e68321dc60254c798530159803b41b69",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Ai::Readme",
+      "type": "document",
+      "name": "Ai::Readme",
+      "path": "docs/ai/README.md",
+      "properties": {
+        "sha256": "3533b593e26a059a318a829fe68f57ac31b37223ecb8c4b6cf54bf99d86f52f2",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Ai::Repository-health",
+      "type": "document",
+      "name": "Ai::Repository-health",
+      "path": "docs/ai/repository-health.md",
+      "properties": {
+        "sha256": "e1f076cc9975368909cb8cfc6c92b26911ce537ff274dee17758c7ce1d37f753",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Ai::Repository-intelligence-api",
+      "type": "document",
+      "name": "Ai::Repository-intelligence-api",
+      "path": "docs/ai/repository-intelligence-api.md",
+      "properties": {
+        "sha256": "1333c8689ca8e8ac741ef1cb070617eafae56f7b9433f3682f50217763531dea",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Ai::Templates::AiContext",
+      "type": "document",
+      "name": "Ai::Templates::AiContext",
+      "path": "docs/ai/templates/AI_CONTEXT.md",
+      "properties": {
+        "sha256": "74d5c7fb1abd08260cfd5c835a1324e1fa8d4105860779c6e44f0cda83e32527",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Architecture::Agents",
+      "type": "document",
+      "name": "Architecture::Agents",
+      "path": "docs/architecture/AGENTS.md",
+      "properties": {
+        "sha256": "744151f82fc68ac1ff99e6d678d518614801cc47c3c4c86a624cbb16bea29941",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Architecture::Application-layer",
+      "type": "document",
+      "name": "Architecture::Application-layer",
+      "path": "docs/architecture/application-layer.md",
+      "properties": {
+        "sha256": "dd9dc0e756954b868c300fba22c434aec31858ec6bf12daca075dd9d197077ac",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Architecture::Architecture-principles",
+      "type": "document",
+      "name": "Architecture::Architecture-principles",
+      "path": "docs/architecture/architecture-principles.md",
+      "properties": {
+        "sha256": "a292bac0f4273b0217bb91c15328dcf15ed31b6968919380159b3f09e128250c",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Architecture::Decisions::0001-use-rails-hotwire",
+      "type": "document",
+      "name": "Architecture::Decisions::0001-use-rails-hotwire",
+      "path": "docs/architecture/decisions/0001-use-rails-hotwire.md",
+      "properties": {
+        "sha256": "824970a74182faec1330b74ca2d981061bafcf12a37e2e17bc8477f60010e85f",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Architecture::Decisions::0002-use-modular-monolith",
+      "type": "document",
+      "name": "Architecture::Decisions::0002-use-modular-monolith",
+      "path": "docs/architecture/decisions/0002-use-modular-monolith.md",
+      "properties": {
+        "sha256": "95493df1dae191eebd0b99ef1c7cff94cd4ae5fb5a228d0320f362520750b2b5",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Architecture::Decisions::0003-federated-repository-intelligence",
+      "type": "document",
+      "name": "Architecture::Decisions::0003-federated-repository-intelligence",
+      "path": "docs/architecture/decisions/0003-federated-repository-intelligence.md",
+      "properties": {
+        "sha256": "d87c61546f15fb139a31cd916559149eb731089a561cde4abd5ca7b9291aacfa",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Architecture::Decisions::0003-use-design-tokens",
+      "type": "document",
+      "name": "Architecture::Decisions::0003-use-design-tokens",
+      "path": "docs/architecture/decisions/0003-use-design-tokens.md",
+      "properties": {
+        "sha256": "f3edba2e0d22dc849a503bd7f4a479b8783353f050fced6fb0f13819656d8625",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Architecture::Decisions::0004-use-grid-core-with-adapters",
+      "type": "document",
+      "name": "Architecture::Decisions::0004-use-grid-core-with-adapters",
+      "path": "docs/architecture/decisions/0004-use-grid-core-with-adapters.md",
+      "properties": {
+        "sha256": "5215a2f8ae3b6bbd777946c8fda319c7bd0aa012d666c17b7cd426cfa5b47db2",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Architecture::Decisions::0005-use-application-layer-boundary",
+      "type": "document",
+      "name": "Architecture::Decisions::0005-use-application-layer-boundary",
+      "path": "docs/architecture/decisions/0005-use-application-layer-boundary.md",
+      "properties": {
+        "sha256": "cb224d02b54e1f1442b0a1da8e4938de8bb2d1b3e006f89a4571615e6b2da2ec",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Architecture::Decisions::0006-seal-application-role-and-grid-registries",
+      "type": "document",
+      "name": "Architecture::Decisions::0006-seal-application-role-and-grid-registries",
+      "path": "docs/architecture/decisions/0006-seal-application-role-and-grid-registries.md",
+      "properties": {
+        "sha256": "901123018be7c39f8eb45bb463211d8def6960631139b43d45a8db531a0ca5bd",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Architecture::Decisions::0007-load-application-owned-extension-packages",
+      "type": "document",
+      "name": "Architecture::Decisions::0007-load-application-owned-extension-packages",
+      "path": "docs/architecture/decisions/0007-load-application-owned-extension-packages.md",
+      "properties": {
+        "sha256": "e2ad822fe1028ad45e696511b42ba73eb4c4c2214416208ba48d2fac52306bfd",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Architecture::Dependency-rules",
+      "type": "document",
+      "name": "Architecture::Dependency-rules",
+      "path": "docs/architecture/dependency-rules.md",
+      "properties": {
+        "sha256": "19ad654b03e0be7a1e41b7abd48d00175a1a3f662d5784863e747cc5ff3c1514",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Architecture::Engineering-decision-tree",
+      "type": "document",
+      "name": "Architecture::Engineering-decision-tree",
+      "path": "docs/architecture/engineering-decision-tree.md",
+      "properties": {
+        "sha256": "1e49431e482e836c45c610edd4d57899c4a3d39c67e8be1ef21b3f35342fc0c4",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Architecture::Module-catalog",
+      "type": "document",
+      "name": "Architecture::Module-catalog",
+      "path": "docs/architecture/module-catalog.md",
+      "properties": {
+        "sha256": "5f7d4b712110b5195100fa3f2ff9cbdab345bc8d1e0b9d5d1b05485ef886d978",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Architecture::Multi-tenant-context",
+      "type": "document",
+      "name": "Architecture::Multi-tenant-context",
+      "path": "docs/architecture/multi-tenant-context.md",
+      "properties": {
+        "sha256": "9c0f0e17d4ed4b39fe766e7dda4db326cd77f77effaaa35eb137848852e5eb53",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Architecture::Platform-architecture",
+      "type": "document",
+      "name": "Architecture::Platform-architecture",
+      "path": "docs/architecture/platform-architecture.md",
+      "properties": {
+        "sha256": "d5e6884a6e9a1d069a0947c15e8c0468d69e6da72301953bb33ba2e22437dbb0",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Architecture::Product-vision",
+      "type": "document",
+      "name": "Architecture::Product-vision",
+      "path": "docs/architecture/product-vision.md",
+      "properties": {
+        "sha256": "57aa73929985934886ddfcbc71bbb0dd7954285fdee4d4e843293c7df626b1d7",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Architecture::Ubiquitous-language",
+      "type": "document",
+      "name": "Architecture::Ubiquitous-language",
+      "path": "docs/architecture/ubiquitous-language.md",
+      "properties": {
+        "sha256": "741b29421d9239532088f8c1106d776658ee3e881676e1ab990728e50e7eab9c",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Certifications::Epic-9",
+      "type": "document",
+      "name": "Certifications::Epic-9",
+      "path": "docs/certifications/epic-9.md",
+      "properties": {
+        "sha256": "b93aeacdd9dd15f01770a5054ab6fdaff7ce64bfa7a57e20e651293c44bc5ab6",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Commercial-readiness::Certification",
+      "type": "document",
+      "name": "Commercial-readiness::Certification",
+      "path": "docs/commercial-readiness/certification.md",
+      "properties": {
+        "sha256": "1615b56f9995c2d7004a8cde0c1c6d914a210863307a065930b7cdb484d03e39",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Commercial-readiness::Editions-and-entitlements",
+      "type": "document",
+      "name": "Commercial-readiness::Editions-and-entitlements",
+      "path": "docs/commercial-readiness/editions-and-entitlements.md",
+      "properties": {
+        "sha256": "285ba625a41f60cb7e739b7b9843ad210f957d99d8ac6c63a10b6d6731bbee17",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Commercial-readiness::Opt-in-telemetry",
+      "type": "document",
+      "name": "Commercial-readiness::Opt-in-telemetry",
+      "path": "docs/commercial-readiness/opt-in-telemetry.md",
+      "properties": {
+        "sha256": "004198c210b9600a7190198dcdc5c643441bc3d2500815175ec43b09ef2ebd01",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Commercial-readiness::Support-consent",
+      "type": "document",
+      "name": "Commercial-readiness::Support-consent",
+      "path": "docs/commercial-readiness/support-consent.md",
+      "properties": {
+        "sha256": "d929ac076effc211d0552260315b6fd47b8db5df9f8c5da3e3d4c9235b0b2f3a",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Commercial-readiness::Support-identifiers",
+      "type": "document",
+      "name": "Commercial-readiness::Support-identifiers",
+      "path": "docs/commercial-readiness/support-identifiers.md",
+      "properties": {
+        "sha256": "90b90733c03fc98555cf07c23927262fd6a44b2f629eab98f35474818924e114",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Decisions::0004-apache-2-license",
+      "type": "document",
+      "name": "Decisions::0004-apache-2-license",
+      "path": "docs/decisions/0004-apache-2-license.md",
+      "properties": {
+        "sha256": "b166ade01d67aed0c4c3238618e946a5a3096c45ae32e77b84af3f12778a547c",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Decisions::0005-ai-native-positioning",
+      "type": "document",
+      "name": "Decisions::0005-ai-native-positioning",
+      "path": "docs/decisions/0005-ai-native-positioning.md",
+      "properties": {
+        "sha256": "808251eed03da628b4edef6424c1cbbbc6dadd90040e711e446a4eb3941314f8",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Decisions::0006-modular-monolith",
+      "type": "document",
+      "name": "Decisions::0006-modular-monolith",
+      "path": "docs/decisions/0006-modular-monolith.md",
+      "properties": {
+        "sha256": "a4611246ba3aecda3424ff2f11ce7f7933818c5788452df0e2d8fa2b11d99702",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Decisions::0007-rails-authentication",
+      "type": "document",
+      "name": "Decisions::0007-rails-authentication",
+      "path": "docs/decisions/0007-rails-authentication.md",
+      "properties": {
+        "sha256": "a86ba76f95be7345d91c54ac0ede54a448ad1cc9c48531a336902a173a1de69f",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Decisions::0008-supported-runtime-versions",
+      "type": "document",
+      "name": "Decisions::0008-supported-runtime-versions",
+      "path": "docs/decisions/0008-supported-runtime-versions.md",
+      "properties": {
+        "sha256": "ef3cfdae0f33db79a7e77602bfcf612b19eef42dcacd2fd2d17bb367890d96d6",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Decisions::0009-javascript-strategy",
+      "type": "document",
+      "name": "Decisions::0009-javascript-strategy",
+      "path": "docs/decisions/0009-javascript-strategy.md",
+      "properties": {
+        "sha256": "c749b07127f2f2f3b3685f1b1906d5ed578cd32ade6a3d85011af7207cbbec70",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Decisions::0010-testing-strategy",
+      "type": "document",
+      "name": "Decisions::0010-testing-strategy",
+      "path": "docs/decisions/0010-testing-strategy.md",
+      "properties": {
+        "sha256": "249132969e6de428606e1ecb2631bc4a5e9ce718458de67b84cb6c245a483e12",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Decisions::0011-css-strategy",
+      "type": "document",
+      "name": "Decisions::0011-css-strategy",
+      "path": "docs/decisions/0011-css-strategy.md",
+      "properties": {
+        "sha256": "22bc4c770cbafaf9ae739857f4aa573bcd145424bcc60c6b677ad7f3bde69f40",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Decisions::0012-design-token-architecture",
+      "type": "document",
+      "name": "Decisions::0012-design-token-architecture",
+      "path": "docs/decisions/0012-design-token-architecture.md",
+      "properties": {
+        "sha256": "1958a4c4bdacaafdb066ccd1ff21c7b80741732988382c82920b5dc0a887e06c",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Decisions::0013-enterprise-extension-boundaries",
+      "type": "document",
+      "name": "Decisions::0013-enterprise-extension-boundaries",
+      "path": "docs/decisions/0013-enterprise-extension-boundaries.md",
+      "properties": {
+        "sha256": "90c7fa4bb79d6e300c0652266fc6c3a2e19d292057ffc0106cd0e3f3d2f3045a",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Decisions::0014-supported-distribution-channels",
+      "type": "document",
+      "name": "Decisions::0014-supported-distribution-channels",
+      "path": "docs/decisions/0014-supported-distribution-channels.md",
+      "properties": {
+        "sha256": "1d1f5761be455062424b91042d7b5ff5a7db78039959c03ca978b99fa61d59b7",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Decisions::0015-syncfusion-ej2-ui-library",
+      "type": "document",
+      "name": "Decisions::0015-syncfusion-ej2-ui-library",
+      "path": "docs/decisions/0015-syncfusion-ej2-ui-library.md",
+      "properties": {
+        "sha256": "da81a2942f836b60e3ec0b52c523536227545c354f50b6fe3942b8f7c65e41c9",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Deployment::Container-registry",
+      "type": "document",
+      "name": "Deployment::Container-registry",
+      "path": "docs/deployment/container-registry.md",
+      "properties": {
+        "sha256": "beebfee7ff29033b368eb0ddcfedf365619d4de08668f272c1e16e2df0e93e3d",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Deployment::Kamal",
+      "type": "document",
+      "name": "Deployment::Kamal",
+      "path": "docs/deployment/kamal.md",
+      "properties": {
+        "sha256": "09c85871eded86faac262b4ef3be3658dd983835e2ea9a1d3136468224f43116",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Deployment::Private-vps",
+      "type": "document",
+      "name": "Deployment::Private-vps",
+      "path": "docs/deployment/private-vps.md",
+      "properties": {
+        "sha256": "ffbf90674b3b40037a833bb117b1e7bc6a8b2f4a94424e799fcf68416bff1d48",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Deployment::Render",
+      "type": "document",
+      "name": "Deployment::Render",
+      "path": "docs/deployment/render.md",
+      "properties": {
+        "sha256": "a85e202a5af444c789bf569c0f71fb44a3adf05ed21bcf6ce33cd6eb27c7c650",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Deployment::Render-visual-validation",
+      "type": "document",
+      "name": "Deployment::Render-visual-validation",
+      "path": "docs/deployment/render-visual-validation.md",
+      "properties": {
+        "sha256": "f7b01b416e97d2e4cf01289fd37dadae06722a54301766743355ea531c35e394",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Design-system::Application-shell",
+      "type": "document",
+      "name": "Design-system::Application-shell",
+      "path": "docs/design-system/application-shell.md",
+      "properties": {
+        "sha256": "02ad6c903d97d76ae9540cd9faa71dafb24356e4063d559d09f03db4e5430bfa",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Design-system::Component-contract",
+      "type": "document",
+      "name": "Design-system::Component-contract",
+      "path": "docs/design-system/component-contract.md",
+      "properties": {
+        "sha256": "c9593e11ead8fbef022dd9564b2851077292154335b24d71e64bc924493d2e7b",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Design-system::Component-showcase",
+      "type": "document",
+      "name": "Design-system::Component-showcase",
+      "path": "docs/design-system/component-showcase.md",
+      "properties": {
+        "sha256": "16a2014eafd9aa523670fc53817ce8f795537c109a14632b9be05ccd3fa754f9",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Design-system::Forms",
+      "type": "document",
+      "name": "Design-system::Forms",
+      "path": "docs/design-system/forms.md",
+      "properties": {
+        "sha256": "bff5796d138eb6a20fcf991248dfab64ea1af77a7868dbcf87ab376f4bcc7d99",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Design-system::Localization",
+      "type": "document",
+      "name": "Design-system::Localization",
+      "path": "docs/design-system/localization.md",
+      "properties": {
+        "sha256": "41514346d95e9c275e56901f856a672fcb2307f4e00b71168fb57d877d9addd4",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Design-system::Overview",
+      "type": "document",
+      "name": "Design-system::Overview",
+      "path": "docs/design-system/overview.md",
+      "properties": {
+        "sha256": "f84363fbf223e121115d4127a089ad9f268789e5610cd92d422109c1bc266765",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Design-system::Token-integrity",
+      "type": "document",
+      "name": "Design-system::Token-integrity",
+      "path": "docs/design-system/token-integrity.md",
+      "properties": {
+        "sha256": "ad8fc4982bcd1100aecb7e22b7881cfd120959610d2840dd4b8713fd2d7cd353",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Distribution::Application-starter",
+      "type": "document",
+      "name": "Distribution::Application-starter",
+      "path": "docs/distribution/application-starter.md",
+      "properties": {
+        "sha256": "195891fdbc0a8db2f8f75d0de0a1317cb244f05f3cf45253162cb7ec96eb5fe5",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Distribution::Architecture",
+      "type": "document",
+      "name": "Distribution::Architecture",
+      "path": "docs/distribution/architecture.md",
+      "properties": {
+        "sha256": "2179850058cc5f455936f4efd0f709f379712ababe5a007fa2e465ad10867ba2",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Distribution::Channel-policy",
+      "type": "document",
+      "name": "Distribution::Channel-policy",
+      "path": "docs/distribution/channel-policy.md",
+      "properties": {
+        "sha256": "35186804c453dfcee73ed1fcca17054792a6e52d4ee0ea176f9f94b93a6ab623",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Distribution::Failure-codes",
+      "type": "document",
+      "name": "Distribution::Failure-codes",
+      "path": "docs/distribution/failure-codes.md",
+      "properties": {
+        "sha256": "bc2d528d8fa9e6b88e7c76cf9c9395dd6870e816d68c5332a74e47d30dbdfcd2",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Distribution::Ghcr",
+      "type": "document",
+      "name": "Distribution::Ghcr",
+      "path": "docs/distribution/ghcr.md",
+      "properties": {
+        "sha256": "ff36811e9b99a81024775504a49d139a0e28a75c1355a1f53c6aec1073e1e0ce",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Distribution::Github-releases",
+      "type": "document",
+      "name": "Distribution::Github-releases",
+      "path": "docs/distribution/github-releases.md",
+      "properties": {
+        "sha256": "f3607ba85ae664ecfbc8529644a8f06928f5e1ad206471b626c8e50c317ec196",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Distribution::Inspection",
+      "type": "document",
+      "name": "Distribution::Inspection",
+      "path": "docs/distribution/inspection.md",
+      "properties": {
+        "sha256": "0eddf91f958d8cedbf5fbc07adf362d1bdaff4e0329aea478e4be63fe946a17d",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Distribution::Operations",
+      "type": "document",
+      "name": "Distribution::Operations",
+      "path": "docs/distribution/operations.md",
+      "properties": {
+        "sha256": "c8d18496a823089c097d3ba41f9611a39779a2745c924e694272f34b3e570c52",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Distribution::Verification",
+      "type": "document",
+      "name": "Distribution::Verification",
+      "path": "docs/distribution/verification.md",
+      "properties": {
+        "sha256": "d09bbf13160fc0bb1dee6a099a2850babb6a4a244e87c40bba876d921572ec15",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Examples::Readme",
+      "type": "document",
+      "name": "Examples::Readme",
+      "path": "docs/examples/README.md",
+      "properties": {
+        "sha256": "d7293dd67cc61317ad7514febf60b070d6272a45377b9d74e05d9bde67949272",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Extensions::Architecture",
+      "type": "document",
+      "name": "Extensions::Architecture",
+      "path": "docs/extensions/architecture.md",
+      "properties": {
+        "sha256": "20e08a279df0c80b1cf7e4cca560dfdc866bc280a665cbb2b0583dc29f8bac90",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Extensions::Authoring",
+      "type": "document",
+      "name": "Extensions::Authoring",
+      "path": "docs/extensions/authoring.md",
+      "properties": {
+        "sha256": "8903981d7bc21920a6e509c3f03eb7184829ed49d8395448a12ffd678372c9c8",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Extensions::Certification",
+      "type": "document",
+      "name": "Extensions::Certification",
+      "path": "docs/extensions/certification.md",
+      "properties": {
+        "sha256": "f07c80cb3cfbaa1ca66835193ef33309ab098bc347eb78511976ee6970e59645",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Extensions::Components-and-upgrades",
+      "type": "document",
+      "name": "Extensions::Components-and-upgrades",
+      "path": "docs/extensions/components-and-upgrades.md",
+      "properties": {
+        "sha256": "1ec72ffbb9c502a633a1a22b85b83cef5e2239603c28c14c937e94443a2c5365",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Extensions::Inspection",
+      "type": "document",
+      "name": "Extensions::Inspection",
+      "path": "docs/extensions/inspection.md",
+      "properties": {
+        "sha256": "c5dc8d3fa37fe980820e219e0ebac7299a43615c504b2ee8fb12a15640dd47f0",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Extensions::Lifecycle-guide",
+      "type": "document",
+      "name": "Extensions::Lifecycle-guide",
+      "path": "docs/extensions/lifecycle-guide.md",
+      "properties": {
+        "sha256": "49a452e3c2ca2724f323007a9205e38d650e40414dddf88cb7dfb20e85766508",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Extensions::Operations",
+      "type": "document",
+      "name": "Extensions::Operations",
+      "path": "docs/extensions/operations.md",
+      "properties": {
+        "sha256": "5136b6211865a72fd99f118f741f7f099796322321af44a14d1eeb61cee06c50",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Governance::Coding-standards",
+      "type": "document",
+      "name": "Governance::Coding-standards",
+      "path": "docs/governance/coding-standards.md",
+      "properties": {
+        "sha256": "00e909383f7b5afe73d084f63b4a8b0055cb14468858613eba66b6a7b7e110e6",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Governance::Contribution-model",
+      "type": "document",
+      "name": "Governance::Contribution-model",
+      "path": "docs/governance/contribution-model.md",
+      "properties": {
+        "sha256": "457083c9c6844cc80d63badf7c4934a84fd42f712ac266baad06111314449271",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Governance::Definition-of-done",
+      "type": "document",
+      "name": "Governance::Definition-of-done",
+      "path": "docs/governance/definition-of-done.md",
+      "properties": {
+        "sha256": "461518f8404f6428f8fb79219bf6a8fc978cffb40a0eccb26a4cf1b7099cf96c",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Governance::Documentation-standards",
+      "type": "document",
+      "name": "Governance::Documentation-standards",
+      "path": "docs/governance/documentation-standards.md",
+      "properties": {
+        "sha256": "0d4f98e08cac0e1c339826df0d0f233588e371fcc119fa180ef848006e554c5b",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Governance::Governance-model",
+      "type": "document",
+      "name": "Governance::Governance-model",
+      "path": "docs/governance/governance-model.md",
+      "properties": {
+        "sha256": "08898ff74bf5118c2332a3d84cff61f44755f26f8a46e8a65b13659526e3784e",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Governance::Platform-maturity-model",
+      "type": "document",
+      "name": "Governance::Platform-maturity-model",
+      "path": "docs/governance/platform-maturity-model.md",
+      "properties": {
+        "sha256": "9b856e7ce51e82963944ad4eb35daa950c484cb7089b35fd9620c613ac603898",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Governance::Privacy-lgpd",
+      "type": "document",
+      "name": "Governance::Privacy-lgpd",
+      "path": "docs/governance/privacy-lgpd.md",
+      "properties": {
+        "sha256": "b0c24876fc6e9a74d140918b52677d9ab78aa2f2ee60a9209c5b019932db6bd4",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Governance::Release-process",
+      "type": "document",
+      "name": "Governance::Release-process",
+      "path": "docs/governance/release-process.md",
+      "properties": {
+        "sha256": "9793dc1572bb4cfae1c254866d4dd91a99c75698b0e9deac0fea20ea40beec79",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Governance::Rfc-process",
+      "type": "document",
+      "name": "Governance::Rfc-process",
+      "path": "docs/governance/rfc-process.md",
+      "properties": {
+        "sha256": "f8ab4a06986ae731b937273443efee59f570fe02ac12f33e7b776e8a03807d99",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Governance::Versioning",
+      "type": "document",
+      "name": "Governance::Versioning",
+      "path": "docs/governance/versioning.md",
+      "properties": {
+        "sha256": "7f872e6e69171ec0e94a09e1241f88990876a9a1f658232d35bb7cc81acce7db",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Grid::Architecture",
+      "type": "document",
+      "name": "Grid::Architecture",
+      "path": "docs/grid/architecture.md",
+      "properties": {
+        "sha256": "b808a05ee22e2e0e46e833e10c52ec1b2128f461c53490e0236a09507ccb7a71",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:I18n::Strategy",
+      "type": "document",
+      "name": "I18n::Strategy",
+      "path": "docs/i18n/strategy.md",
+      "properties": {
+        "sha256": "2ec90f039e907bfb1baabf4063897a3480ae57b3989f18151c8717652b22c6cb",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Installation::Architecture",
+      "type": "document",
+      "name": "Installation::Architecture",
+      "path": "docs/installation/architecture.md",
+      "properties": {
+        "sha256": "fe44f882b23ea71a3bbd50cdabd0cc6501b2993209c4a7aaae796e570d4463b7",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Installation::Database-provisioning",
+      "type": "document",
+      "name": "Installation::Database-provisioning",
+      "path": "docs/installation/database-provisioning.md",
+      "properties": {
+        "sha256": "87b8079bead0ce987c2e043b53d5a146ede430f659c2e99f40d60b9f4d2f1ab3",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Installation::Dev-containers",
+      "type": "document",
+      "name": "Installation::Dev-containers",
+      "path": "docs/installation/dev-containers.md",
+      "properties": {
+        "sha256": "4f1c4ddbfe3ccdb170e17149a047003a413adee51b9a4fe4df0ed848bf32bd49",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Installation::Migrations",
+      "type": "document",
+      "name": "Installation::Migrations",
+      "path": "docs/installation/migrations.md",
+      "properties": {
+        "sha256": "5a4cf9e87507d414bf1b53fd332f2d5c09c795f023cd461feb2f3ad1fda549c0",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Installation::Platform-owner-completion",
+      "type": "document",
+      "name": "Installation::Platform-owner-completion",
+      "path": "docs/installation/platform-owner-completion.md",
+      "properties": {
+        "sha256": "fc0f04090a43f9e2fd70645e68efd2e3564ab4916df995a0361f8d8681f06389",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Modules::Ai-infrastructure::AiContext",
+      "type": "document",
+      "name": "Modules::Ai-infrastructure::AiContext",
+      "path": "docs/modules/ai-infrastructure/AI_CONTEXT.md",
+      "properties": {
+        "sha256": "1e2d8ad45003c4fd730bf35026038f7ea049b0bb5f2226775c793025de067b48",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Modules::Ai-infrastructure::Mcp-server",
+      "type": "document",
+      "name": "Modules::Ai-infrastructure::Mcp-server",
+      "path": "docs/modules/ai-infrastructure/mcp-server.md",
+      "properties": {
+        "sha256": "4e31295e1a12fd5ad1ca6ec49597f07b85154df85b6b37d27ce60b177bd58fc7",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Modules::Customers::AiContext",
+      "type": "document",
+      "name": "Modules::Customers::AiContext",
+      "path": "docs/modules/customers/AI_CONTEXT.md",
+      "properties": {
+        "sha256": "359b755e7fdcfb4a28a9ded3e987488173dcb41967744aa8f22f6d3f175a72a5",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Modules::Design-system::AiContext",
+      "type": "document",
+      "name": "Modules::Design-system::AiContext",
+      "path": "docs/modules/design-system/AI_CONTEXT.md",
+      "properties": {
+        "sha256": "88374db693f21727dcc0b2241979d5001a53c63e6538a49e7d8e14613ead8c76",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Modules::Design-system::Forms::AiContext",
+      "type": "document",
+      "name": "Modules::Design-system::Forms::AiContext",
+      "path": "docs/modules/design-system/forms/AI_CONTEXT.md",
+      "properties": {
+        "sha256": "dbb9714c060ba1325746c36c6fbe6cf09ac6592c84d3855d4b56d3a8235b4681",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Modules::Design-system::Layout::AiContext",
+      "type": "document",
+      "name": "Modules::Design-system::Layout::AiContext",
+      "path": "docs/modules/design-system/layout/AI_CONTEXT.md",
+      "properties": {
+        "sha256": "9d83e18e7bb862628faef41f0aac79d6dd966a4440de4f1cb51be39e23adce47",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Modules::Design-system::Showcase::AiContext",
+      "type": "document",
+      "name": "Modules::Design-system::Showcase::AiContext",
+      "path": "docs/modules/design-system/showcase/AI_CONTEXT.md",
+      "properties": {
+        "sha256": "66a27f6f45e96dbaa45a9e8db0729edaa3f483df0b5abd64bd6f2ef5ef941084",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Modules::EnterpriseServices::AiContext",
+      "type": "document",
+      "name": "Modules::EnterpriseServices::AiContext",
+      "path": "docs/modules/enterprise_services/AI_CONTEXT.md",
+      "properties": {
+        "sha256": "0c665917916a9bace934cda23ed8d073f74af5662f67e86aa07a5d9580efc643",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Modules::EnterpriseServices::Notifications",
+      "type": "document",
+      "name": "Modules::EnterpriseServices::Notifications",
+      "path": "docs/modules/enterprise_services/notifications.md",
+      "properties": {
+        "sha256": "cfc38a84eb99c58443a53c025db3c84dc17af52dda036ce59e1492c93e2574a7",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Modules::EnterpriseServices::Tenant-safety-certification",
+      "type": "document",
+      "name": "Modules::EnterpriseServices::Tenant-safety-certification",
+      "path": "docs/modules/enterprise_services/tenant-safety-certification.md",
+      "properties": {
+        "sha256": "b12126d564dd6dd5c1c86a0df9f17822aa26e7e4187a7de9c5d9cea06436159c",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Modules::EnterpriseServices::Tenant-scoped-files",
+      "type": "document",
+      "name": "Modules::EnterpriseServices::Tenant-scoped-files",
+      "path": "docs/modules/enterprise_services/tenant-scoped-files.md",
+      "properties": {
+        "sha256": "0e9e6129b403535abdc8590dcb1ab8075823a9bf282dff1b1501e20ab61a1b98",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Modules::GridEngine::AiContext",
+      "type": "document",
+      "name": "Modules::GridEngine::AiContext",
+      "path": "docs/modules/grid_engine/AI_CONTEXT.md",
+      "properties": {
+        "sha256": "9871b83d843d6943cfae026f03a52df4baa4f55f73930bc642ae0671c2a90971",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Modules::Localization::AiContext",
+      "type": "document",
+      "name": "Modules::Localization::AiContext",
+      "path": "docs/modules/localization/AI_CONTEXT.md",
+      "properties": {
+        "sha256": "6e3e42218803062ebbf93ba1fe5c32ffb25bc05cf5e5862a46f46a9feb889e05",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Modules::MultiTenant::AiContext",
+      "type": "document",
+      "name": "Modules::MultiTenant::AiContext",
+      "path": "docs/modules/multi_tenant/AI_CONTEXT.md",
+      "properties": {
+        "sha256": "573a179d48361fb9037fc9e21f6fa013730d40e2fc34180057dedaac0bc80e75",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Modules::MultiTenant::Epic6CompletionEvidence",
+      "type": "document",
+      "name": "Modules::MultiTenant::Epic6CompletionEvidence",
+      "path": "docs/modules/multi_tenant/EPIC_6_COMPLETION_EVIDENCE.md",
+      "properties": {
+        "sha256": "e1e54fe7834b501ac5f63089dff39e4dcaac38a8f4567b36e4dfdc0fd53cb7dc",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Modules::MultiTenant::Epic6GapAudit",
+      "type": "document",
+      "name": "Modules::MultiTenant::Epic6GapAudit",
+      "path": "docs/modules/multi_tenant/EPIC_6_GAP_AUDIT.md",
+      "properties": {
+        "sha256": "2c32bdd57d6142b17c218cfd1d1c4a16f3daf4cf76b99f7221aaff389cace7f8",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Modules::Organizations::AiContext",
+      "type": "document",
+      "name": "Modules::Organizations::AiContext",
+      "path": "docs/modules/organizations/AI_CONTEXT.md",
+      "properties": {
+        "sha256": "3243c90642e514125e45ef701af61626463bc2b72589a626f78d9abe38d56d15",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Modules::Platform-core::AiContext",
+      "type": "document",
+      "name": "Modules::Platform-core::AiContext",
+      "path": "docs/modules/platform-core/AI_CONTEXT.md",
+      "properties": {
+        "sha256": "44631cd6d493a88f249cf29e81e5955e216adb8603309d82b9716404a5bd6094",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Modules::Security-privacy::AiContext",
+      "type": "document",
+      "name": "Modules::Security-privacy::AiContext",
+      "path": "docs/modules/security-privacy/AI_CONTEXT.md",
+      "properties": {
+        "sha256": "2ca553806e17c2c8d36e01a8753e4da76967416ffbe0d8934a623065a45761f5",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Operations::Architecture",
+      "type": "document",
+      "name": "Operations::Architecture",
+      "path": "docs/operations/architecture.md",
+      "properties": {
+        "sha256": "10e13426653f2766e36c21c7d9bb0574380d499dfdaeafd1bd05dc229073bec7",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Operations::Disaster-recovery",
+      "type": "document",
+      "name": "Operations::Disaster-recovery",
+      "path": "docs/operations/disaster-recovery.md",
+      "properties": {
+        "sha256": "f9ae06ad76e2577bd70d44c30202498941bfd11c5c3ebe6ec88f9c1e754d20f5",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Operations::Resilience-certification",
+      "type": "document",
+      "name": "Operations::Resilience-certification",
+      "path": "docs/operations/resilience-certification.md",
+      "properties": {
+        "sha256": "911c3cb30ed3e2571d3e706e09fe675b6f69a8c7d16b31e6eb8cf703d340aaed",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Operators::Compatibility-and-lifecycle",
+      "type": "document",
+      "name": "Operators::Compatibility-and-lifecycle",
+      "path": "docs/operators/compatibility-and-lifecycle.md",
+      "properties": {
+        "sha256": "efe11d442edd302ec84f039fa8a5dfec257985ee1751d5dae623c57a7c83d56b",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Operators::Handbook",
+      "type": "document",
+      "name": "Operators::Handbook",
+      "path": "docs/operators/handbook.md",
+      "properties": {
+        "sha256": "20251b67016dd3b309b783f1f7696c08eb0b06e11c88e413552e656e75985490",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Packaging::Container-baseline",
+      "type": "document",
+      "name": "Packaging::Container-baseline",
+      "path": "docs/packaging/container-baseline.md",
+      "properties": {
+        "sha256": "becdd113b7da1190b005c8d8c1cc323364ec76f84a3e18ed96574c4769ad287a",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Releases::0.8.0::Migration-notes",
+      "type": "document",
+      "name": "Releases::0.8.0::Migration-notes",
+      "path": "docs/releases/0.8.0/migration-notes.md",
+      "properties": {
+        "sha256": "885e8935f871a7f5811a24ebac2ed215a65667d532237be26deb052740552f1d",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Releases::0.8.0::Release-notes",
+      "type": "document",
+      "name": "Releases::0.8.0::Release-notes",
+      "path": "docs/releases/0.8.0/release-notes.md",
+      "properties": {
+        "sha256": "26603eb102b953fd26098e373012b79b1bef3eb582af9f4ddcdb85a4c7b81fef",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Releases::0.8.0::Upgrade-notes",
+      "type": "document",
+      "name": "Releases::0.8.0::Upgrade-notes",
+      "path": "docs/releases/0.8.0/upgrade-notes.md",
+      "properties": {
+        "sha256": "1ee98754fd3848efdc687b5ceadc21757917243dcdd27a2a8aad460d81dd2321",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Releases::0.9.0::Migration-notes",
+      "type": "document",
+      "name": "Releases::0.9.0::Migration-notes",
+      "path": "docs/releases/0.9.0/migration-notes.md",
+      "properties": {
+        "sha256": "41f5b00de29b1bf81cbb7a04a40c72d8c39954b1b6a9aa6f1d56536967ce9cc8",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Releases::0.9.0::Release-notes",
+      "type": "document",
+      "name": "Releases::0.9.0::Release-notes",
+      "path": "docs/releases/0.9.0/release-notes.md",
+      "properties": {
+        "sha256": "ce3b549061665afa10bf79e459cba5529c0fa0260c62d8589db0973c274e57e8",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Releases::0.9.0::Upgrade-notes",
+      "type": "document",
+      "name": "Releases::0.9.0::Upgrade-notes",
+      "path": "docs/releases/0.9.0/upgrade-notes.md",
+      "properties": {
+        "sha256": "f0fa90a35857f69be4be35381f21500d066d91a8f92dcc1d8323235d4cfe16c3",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Releases::Architecture",
+      "type": "document",
+      "name": "Releases::Architecture",
+      "path": "docs/releases/architecture.md",
+      "properties": {
+        "sha256": "486fe5a0bf7bceb6e1c25b5b8f32620d84d13416db3e6df0180d85183ad3c3a0",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Releases::Consistency",
+      "type": "document",
+      "name": "Releases::Consistency",
+      "path": "docs/releases/consistency.md",
+      "properties": {
+        "sha256": "36a2e2eb3c817f3246164521353482703151877a26369bafb6e7753ec8eb26dd",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Releases::Generated::Migration-notes",
+      "type": "document",
+      "name": "Releases::Generated::Migration-notes",
+      "path": "docs/releases/generated/migration-notes.md",
+      "properties": {
+        "sha256": "7858a680cda42b53269f527bafc8a5aeb58071f69f5e82fc8a16fe7336c2aa6c",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Releases::Generated::Unreleased",
+      "type": "document",
+      "name": "Releases::Generated::Unreleased",
+      "path": "docs/releases/generated/unreleased.md",
+      "properties": {
+        "sha256": "3a782342ca195cade89cdc83925a3e2b4763c751659586a2a4e3c988df588e65",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Releases::Generated::Upgrade-notes",
+      "type": "document",
+      "name": "Releases::Generated::Upgrade-notes",
+      "path": "docs/releases/generated/upgrade-notes.md",
+      "properties": {
+        "sha256": "0b5c2c10ceaa59fe0e4ea1f87c51b21c2d2b16bc14753de8566d38414be32643",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:RepositoryIntelligence::Documentation-governance",
+      "type": "document",
+      "name": "RepositoryIntelligence::Documentation-governance",
+      "path": "docs/repository_intelligence/documentation-governance.md",
+      "properties": {
+        "sha256": "e9a661b175b76b30799e4ee0ac6722616926a02d56cd87cad2105cbf0cb78cee",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Roadmap::Adoption-validation-improvements",
+      "type": "document",
+      "name": "Roadmap::Adoption-validation-improvements",
+      "path": "docs/roadmap/adoption-validation-improvements.md",
+      "properties": {
+        "sha256": "ccfdf1fa11dd5221ac511d07dc1e84d0fdb65803a16cb015772446a927a19ccb",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Roadmap::Epic-10-plan",
+      "type": "document",
+      "name": "Roadmap::Epic-10-plan",
+      "path": "docs/roadmap/epic-10-plan.md",
+      "properties": {
+        "sha256": "03c902b9c37a5f35f3e6f72c11b898e92383ce647b008bed1aa11230013d095a",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Roadmap::Roadmap",
+      "type": "document",
+      "name": "Roadmap::Roadmap",
+      "path": "docs/roadmap/roadmap.md",
+      "properties": {
+        "sha256": "2569cdadf9985cf5232741b314930a52109c0e8803c4ccb51382e17dcb1cc5d6",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Security::Dependency-and-supply-chain-policy",
+      "type": "document",
+      "name": "Security::Dependency-and-supply-chain-policy",
+      "path": "docs/security/dependency-and-supply-chain-policy.md",
+      "properties": {
+        "sha256": "6cbd0e63b7d520972c11a0d1786160e9a2f76114dc65883db9561bbf1ebccc54",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Security::Epic-7-threat-model",
+      "type": "document",
+      "name": "Security::Epic-7-threat-model",
+      "path": "docs/security/epic-7-threat-model.md",
+      "properties": {
+        "sha256": "b1f1114ccd72a9514d8c0ad8c289e80e5cd79d2d30ce4da51ae2b1326a69fc38",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Security::Security-baseline",
+      "type": "document",
+      "name": "Security::Security-baseline",
+      "path": "docs/security/security-baseline.md",
+      "properties": {
+        "sha256": "2e2a184239146a03c9fcf900d67efb4ca74fa8d7948e63beca3fd9e52aaa8b3e",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Security::Security-operations",
+      "type": "document",
+      "name": "Security::Security-operations",
+      "path": "docs/security/security-operations.md",
+      "properties": {
+        "sha256": "190371cc501ef826b3d3fff99941c45fd6f813be12d46e3bafc785ed6cfaaa65",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Security::Threat-model",
+      "type": "document",
+      "name": "Security::Threat-model",
+      "path": "docs/security/threat-model.md",
+      "properties": {
+        "sha256": "ef8047e7704b1d9ee05dddd9a8084619f9fee1d4f2f221920f6fe5a897301e83",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Upgrades::Architecture",
+      "type": "document",
+      "name": "Upgrades::Architecture",
+      "path": "docs/upgrades/architecture.md",
+      "properties": {
+        "sha256": "da22ebbbfcf2eafd3f82f99f6d0c2efa5c20231bbf787dfa9f1ea54303682210",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Upgrades::Backup-and-maintenance",
+      "type": "document",
+      "name": "Upgrades::Backup-and-maintenance",
+      "path": "docs/upgrades/backup-and-maintenance.md",
+      "properties": {
+        "sha256": "26519d67baf76bfbfa17cedc749031d48b9c45a0e850aee9a1520963d4dc8e17",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Upgrades::Execution-engine",
+      "type": "document",
+      "name": "Upgrades::Execution-engine",
+      "path": "docs/upgrades/execution-engine.md",
+      "properties": {
+        "sha256": "843f1b8962fff17b7424c336a0781678e48cf7084895d8d7ab57e6ba4601e60f",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Upgrades::Inspection-and-preflight",
+      "type": "document",
+      "name": "Upgrades::Inspection-and-preflight",
+      "path": "docs/upgrades/inspection-and-preflight.md",
+      "properties": {
+        "sha256": "f5ab1c95d377d180f018295deb33599777d2c17481884a396443e4d37e789a27",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Upgrades::Post-upgrade-verification",
+      "type": "document",
+      "name": "Upgrades::Post-upgrade-verification",
+      "path": "docs/upgrades/post-upgrade-verification.md",
+      "properties": {
+        "sha256": "a9ee2e5f8124728e13cc60be49c983571a05443f44431ac881a333acf330ebe2",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Upgrades::Recovery-and-certification",
+      "type": "document",
+      "name": "Upgrades::Recovery-and-certification",
+      "path": "docs/upgrades/recovery-and-certification.md",
+      "properties": {
+        "sha256": "e325947071070483ea9dc21846f8f9e95c01414afca19564e3fcdd27f3213229",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Validation::Architecture",
+      "type": "document",
+      "name": "Validation::Architecture",
+      "path": "docs/validation/architecture.md",
+      "properties": {
+        "sha256": "fdbb16235be96e4fcde879768b2656eac066b73ecd2508069889c3668a2272d0",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Validation::Findings::Bug-001-ruby-version-mismatch",
+      "type": "document",
+      "name": "Validation::Findings::Bug-001-ruby-version-mismatch",
+      "path": "docs/validation/findings/BUG-001-ruby-version-mismatch.md",
+      "properties": {
+        "sha256": "b7fdfd3c9898fd1f758c1c734cbe8207af2fd69b46754b5ad985531b392aee19",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Validation::Findings::Bug-002-bin-ci-executable-permission",
+      "type": "document",
+      "name": "Validation::Findings::Bug-002-bin-ci-executable-permission",
+      "path": "docs/validation/findings/BUG-002-bin-ci-executable-permission.md",
+      "properties": {
+        "sha256": "b0864b478c1542cbb2e54918eeb7a28888e9246ec842361a097240938547082e",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Validation::Findings::Bug-003-postgresql-prerequisite-check",
+      "type": "document",
+      "name": "Validation::Findings::Bug-003-postgresql-prerequisite-check",
+      "path": "docs/validation/findings/BUG-003-postgresql-prerequisite-check.md",
+      "properties": {
+        "sha256": "5800071895bb72d01de3e19db074da0e1757f14edcd2be52f7be17381f931dfb",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Validation::Findings::Issue-001-dx-bootstrap-frictions",
+      "type": "document",
+      "name": "Validation::Findings::Issue-001-dx-bootstrap-frictions",
+      "path": "docs/validation/findings/ISSUE-001-dx-bootstrap-frictions.md",
+      "properties": {
+        "sha256": "91d800042c2837dd0e68b70c644037535a2989e2c1f984348eb049fbf2d6b96e",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Validation::Findings::Proposal-bootstrap-frictions",
+      "type": "document",
+      "name": "Validation::Findings::Proposal-bootstrap-frictions",
+      "path": "docs/validation/findings/PROPOSAL-BOOTSTRAP-FRICTIONS.md",
+      "properties": {
+        "sha256": "afe6ec15f22c2848c715f727d99c2cb9739ef0e905f89b3322ad4f445d426ea7",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Validation::Rc-preparation",
+      "type": "document",
+      "name": "Validation::Rc-preparation",
+      "path": "docs/validation/rc-preparation.md",
+      "properties": {
+        "sha256": "45bb91f9637ba58a479edb598e97d17716220d618104c5a8aa34f9edab8dbade",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Validation::Release-baseline",
+      "type": "document",
+      "name": "Validation::Release-baseline",
+      "path": "docs/validation/release-baseline.md",
+      "properties": {
+        "sha256": "e9752569cf24f2ccb4ab553710c88c3fdfad9f4a17a0df3d9edda1804c0128f4",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Validation::Representative-application",
+      "type": "document",
+      "name": "Validation::Representative-application",
+      "path": "docs/validation/representative-application.md",
+      "properties": {
+        "sha256": "24708f19776f77e500f75ae1be17ef5ce04bec2bae56a9a6605540fa7ecccf2c",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "document:Validation::Threat-model",
+      "type": "document",
+      "name": "Validation::Threat-model",
+      "path": "docs/validation/threat-model.md",
+      "properties": {
+        "sha256": "f86fbb870ad917d2d176c5c9d891d20fe2d12665f9860c2081e4094f8b0a5794",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "job:Application",
+      "type": "job",
+      "name": "Application",
+      "path": "app/jobs/application_job.rb",
+      "properties": {
+        "sha256": "8aeadb0d8085f274750ae6a680b4b1341ea871657939d9443b8b0dc3cf487b44",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "job:CustomerExport",
+      "type": "job",
+      "name": "CustomerExport",
+      "path": "app/jobs/customer_export_job.rb",
+      "properties": {
+        "sha256": "b13a618d16c607e5840e4e2dd0e5b863b321ae7d6c3b7e241ffaf98dd701c768",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "job:CustomerImport",
+      "type": "job",
+      "name": "CustomerImport",
+      "path": "app/jobs/customer_import_job.rb",
+      "properties": {
+        "sha256": "f16a178e7f52a7c6d44f021d1bb2dc7eb442a311c1fb4a90b3c8c080da4474b3",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "job:NotificationDelivery",
+      "type": "job",
+      "name": "NotificationDelivery",
+      "path": "app/jobs/notification_delivery_job.rb",
+      "properties": {
+        "sha256": "30763c03b994d311c06b7a44fd4f87202e2b3a67a5a5e2f18353f49e57be0f09",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "job:PrivacyRequest",
+      "type": "job",
+      "name": "PrivacyRequest",
+      "path": "app/jobs/privacy_request_job.rb",
+      "properties": {
+        "sha256": "2db739925985b85134a3bfa59e329e7e813250be2c7bb88bc0912997a5e25a2c",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "job:RetentionEnforcement",
+      "type": "job",
+      "name": "RetentionEnforcement",
+      "path": "app/jobs/retention_enforcement_job.rb",
+      "properties": {
+        "sha256": "2f76f2f9e7e8124efe3a01680498893a66fec03449be9fce27e0433871fdbcaa",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "job:WebhookDelivery",
+      "type": "job",
+      "name": "WebhookDelivery",
+      "path": "app/jobs/webhook_delivery_job.rb",
+      "properties": {
+        "sha256": "75a497a771adbbb66421583bfe527a7f52c6ea0ccf8911437f17aa988b8f2a94",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "model:ApplicationRecord",
+      "type": "model",
+      "name": "ApplicationRecord",
+      "path": "app/models/application_record.rb",
+      "properties": {
+        "sha256": "12bf7d0eaefce4d50e0719991e19b48a36a7865aeb7ac745980584806155fdc1",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "model:Concerns::DomainModel",
+      "type": "model",
+      "name": "Concerns::DomainModel",
+      "path": "app/models/concerns/domain_model.rb",
+      "properties": {
+        "sha256": "b549d5f083a383914e06ee73f455fed7951110696031782dcf1162438692f702",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "model:Current",
+      "type": "model",
+      "name": "Current",
+      "path": "app/models/current.rb",
+      "properties": {
+        "sha256": "2e431f16835241e38691e2bb59c8cd2357641323e5aeb596e1bf5cabb9d8cbe8",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "model:Customer",
+      "type": "model",
+      "name": "Customer",
+      "path": "app/models/customer.rb",
+      "properties": {
+        "sha256": "14e668bc42557ffbefffb64cc88b8fce5d3e963faf5d6eb1349f0ece1f52ad12",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "model:DomainEvent",
+      "type": "model",
+      "name": "DomainEvent",
+      "path": "app/models/domain_event.rb",
+      "properties": {
+        "sha256": "c93f14ede3646b8d3dff8ad931960d81314c64eedb2646ba9503e8c2c8d7e9d3",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "model:FeatureFlag",
+      "type": "model",
+      "name": "FeatureFlag",
+      "path": "app/models/feature_flag.rb",
+      "properties": {
+        "sha256": "a375936f47470023ad446b681d46180d9114d140b242ff835cd1d319481e0a34",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "model:GridSavedView",
+      "type": "model",
+      "name": "GridSavedView",
+      "path": "app/models/grid_saved_view.rb",
+      "properties": {
+        "sha256": "d91de8e02ee1f3438ca34b804d72ff9d76a1ceb1d012ade5a58ee9ff23b66d29",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "model:IdempotencyRecord",
+      "type": "model",
+      "name": "IdempotencyRecord",
+      "path": "app/models/idempotency_record.rb",
+      "properties": {
+        "sha256": "192d57e7e815b8c39c90015e1bbc68e469f41a4dce6474c3a36b56d35e03739e",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "model:ImportRun",
+      "type": "model",
+      "name": "ImportRun",
+      "path": "app/models/import_run.rb",
+      "properties": {
+        "sha256": "b5fc35e65b93b1b147dc80c695f7e6b1cca5e07975d61ae28f319b9431c2479c",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "model:Membership",
+      "type": "model",
+      "name": "Membership",
+      "path": "app/models/membership.rb",
+      "properties": {
+        "sha256": "40a1e34046f06db647a8ee3ac6c5be15d15f290db1a23e0761590a9f21572872",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "model:Notification",
+      "type": "model",
+      "name": "Notification",
+      "path": "app/models/notification.rb",
+      "properties": {
+        "sha256": "07e0a6802794b68afb05d3959f9835f6f582192dc637570de090562bf291a32e",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "model:Organization",
+      "type": "model",
+      "name": "Organization",
+      "path": "app/models/organization.rb",
+      "properties": {
+        "sha256": "8f95334b90394c09173e973badcdbeffa1679351385adbf7971a9094c5ba1a5f",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "model:OrganizationInvitation",
+      "type": "model",
+      "name": "OrganizationInvitation",
+      "path": "app/models/organization_invitation.rb",
+      "properties": {
+        "sha256": "19abd5a26f572ddba9b5142f90355baad4cae6a71cd1a953cf50477e41e37d7b",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "model:PlatformRole",
+      "type": "model",
+      "name": "PlatformRole",
+      "path": "app/models/platform_role.rb",
+      "properties": {
+        "sha256": "caf0506b2f73c4e17092b4fc137c29c9a66de48c24b9e88ac465e5648cb111a2",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "model:PrivacyPreference",
+      "type": "model",
+      "name": "PrivacyPreference",
+      "path": "app/models/privacy_preference.rb",
+      "properties": {
+        "sha256": "1df2fa84f6f9f36982859ed98d89999ef18444c38cb08df26e0d7bd79be28deb",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "model:PrivacyRequest",
+      "type": "model",
+      "name": "PrivacyRequest",
+      "path": "app/models/privacy_request.rb",
+      "properties": {
+        "sha256": "983021bbd56d766b62a02c330c663b938b890069cb4498a4bfc8ec3b75839d9f",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "model:RetentionPolicy",
+      "type": "model",
+      "name": "RetentionPolicy",
+      "path": "app/models/retention_policy.rb",
+      "properties": {
+        "sha256": "aa41ed8ac0234adff7125e4eb82dc407adca8a05815bc57e278e00f73cdbe998",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "model:Session",
+      "type": "model",
+      "name": "Session",
+      "path": "app/models/session.rb",
+      "properties": {
+        "sha256": "d42f041794fb671153eaccc0a987a5cad7077f228d06eaaf75aa308e68ecc6d5",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "model:StoredFile",
+      "type": "model",
+      "name": "StoredFile",
+      "path": "app/models/stored_file.rb",
+      "properties": {
+        "sha256": "1225801f0b3121c53a80fd63f03ee5c39c6e23ca60097d627a98947d5a46bd3b",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "model:User",
+      "type": "model",
+      "name": "User",
+      "path": "app/models/user.rb",
+      "properties": {
+        "sha256": "c9f7770653a152ccf27c177083e8c8adc4793ca93a0534f587aebc375f9e2fdc",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "model:WebhookEndpoint",
+      "type": "model",
+      "name": "WebhookEndpoint",
+      "path": "app/models/webhook_endpoint.rb",
+      "properties": {
+        "sha256": "03aabbbd52c9e3b2a47a767c8881d9ab929252cf116f805b0739eec1d5315dc6",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "policy:Application",
+      "type": "policy",
+      "name": "Application",
+      "path": "app/policies/application_policy.rb",
+      "properties": {
+        "sha256": "651b5222018602a6e18398024e00a02b34ea57eb6f4ff0662f52d4c86cca768b",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "policy:Customer",
+      "type": "policy",
+      "name": "Customer",
+      "path": "app/policies/customer_policy.rb",
+      "properties": {
+        "sha256": "b2d994e5cc85856b58a5ee0cbd3316b5a8e2768ddba760b2eddc2c2e0d932ec3",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "policy:Organization",
+      "type": "policy",
+      "name": "Organization",
+      "path": "app/policies/organization_policy.rb",
+      "properties": {
+        "sha256": "a0fcbfc8a9540b4634b3df8ffcc193c347c79de810980b232ad4385ccf81513e",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "policy:StoredFile",
+      "type": "policy",
+      "name": "StoredFile",
+      "path": "app/policies/stored_file_policy.rb",
+      "properties": {
+        "sha256": "4a772abde9ac43c78fa1a9749152830a99a0e470f5c3159ae96b6a4d867a9db0",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Components::MarketingComponents",
+      "type": "test",
+      "name": "Components::MarketingComponents",
+      "path": "test/components/marketing_components_test.rb",
+      "properties": {
+        "sha256": "3a2efc1caf6c64b647f3953db9362e52ffc213545f5b5288fecea250a9d41e62",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Components::Ui::ButtonComponent",
+      "type": "test",
+      "name": "Components::Ui::ButtonComponent",
+      "path": "test/components/ui/button_component_test.rb",
+      "properties": {
+        "sha256": "8bb13fd11326e0e2509ae92e988eede71e09abbd7ab77ec169a485a4f4e47675",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Components::Ui::CoreComponents",
+      "type": "test",
+      "name": "Components::Ui::CoreComponents",
+      "path": "test/components/ui/core_components_test.rb",
+      "properties": {
+        "sha256": "9f5b2e5afc324602646d99ea2b98258ea3e6aec04d55cc66c170d04a7e485f12",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Components::Ui::DangerZoneComponent",
+      "type": "test",
+      "name": "Components::Ui::DangerZoneComponent",
+      "path": "test/components/ui/danger_zone_component_test.rb",
+      "properties": {
+        "sha256": "962345bc73731932dbed8aafc317c0e4dd1b60ce1b2d341a1af2973eba4bf77f",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Components::Ui::Forms::FormComponents",
+      "type": "test",
+      "name": "Components::Ui::Forms::FormComponents",
+      "path": "test/components/ui/forms/form_components_test.rb",
+      "properties": {
+        "sha256": "2690fd53d09a36d3542f081f4089e12d31592463c55e591282e8216a37004f6e",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Components::Ui::Layout::ApplicationShellComponent",
+      "type": "test",
+      "name": "Components::Ui::Layout::ApplicationShellComponent",
+      "path": "test/components/ui/layout/application_shell_component_test.rb",
+      "properties": {
+        "sha256": "85b61a64b4b99d04c85e0e7917911c1ea70dcaff94afddf9599f24827da258c7",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Components::Ui::LocaleSwitcherComponent",
+      "type": "test",
+      "name": "Components::Ui::LocaleSwitcherComponent",
+      "path": "test/components/ui/locale_switcher_component_test.rb",
+      "properties": {
+        "sha256": "0782c61e1ca49b34f3750a15562467b725fe67b4b1ded91f44a8f4ceddcece1e",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Components::Ui::ThemeSwitcherComponent",
+      "type": "test",
+      "name": "Components::Ui::ThemeSwitcherComponent",
+      "path": "test/components/ui/theme_switcher_component_test.rb",
+      "properties": {
+        "sha256": "83d63a6db101fe9b3bed58c844df2fd3b7804441a75e1ba35b48f5672eeed7c5",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Controllers::ComponentShowcaseController",
+      "type": "test",
+      "name": "Controllers::ComponentShowcaseController",
+      "path": "test/controllers/component_showcase_controller_test.rb",
+      "properties": {
+        "sha256": "2b441e820165976f8dbe79362f6ffd4032fe1be5a52f94d5cba0181b275154c9",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Controllers::CustomersController",
+      "type": "test",
+      "name": "Controllers::CustomersController",
+      "path": "test/controllers/customers_controller_test.rb",
+      "properties": {
+        "sha256": "dbcc0679762f532a048871a9b42398962fdf82376f55600edc91319afd5b7afb",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Controllers::DashboardsController",
+      "type": "test",
+      "name": "Controllers::DashboardsController",
+      "path": "test/controllers/dashboards_controller_test.rb",
+      "properties": {
+        "sha256": "cdd64a679a07cb1885f2ec1d255382483a0850464e6573eaa332b0865870f0cc",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Controllers::Ej2ShowcaseController",
+      "type": "test",
+      "name": "Controllers::Ej2ShowcaseController",
+      "path": "test/controllers/ej2_showcase_controller_test.rb",
+      "properties": {
+        "sha256": "f2434983c3d46899dd0708c8a15214aa9fda9fe6fe66c8912adb15b546bf273c",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Controllers::GridsController",
+      "type": "test",
+      "name": "Controllers::GridsController",
+      "path": "test/controllers/grids_controller_test.rb",
+      "properties": {
+        "sha256": "9ac7f5b7e8cf51db36a48869428cfeef6a47bd037077552ce8ce7665ab312514",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Controllers::GridsControllerSyncfusion",
+      "type": "test",
+      "name": "Controllers::GridsControllerSyncfusion",
+      "path": "test/controllers/grids_controller_syncfusion_test.rb",
+      "properties": {
+        "sha256": "cff8cd3970be44fda69304d198fd4ac3ca9e681a735569df6e915304d450af4b",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Controllers::HealthController",
+      "type": "test",
+      "name": "Controllers::HealthController",
+      "path": "test/controllers/health_controller_test.rb",
+      "properties": {
+        "sha256": "f1631c4f540e688df5369df3365e3e1719ef13114a61796c08956179a72a50dc",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Controllers::HomeController",
+      "type": "test",
+      "name": "Controllers::HomeController",
+      "path": "test/controllers/home_controller_test.rb",
+      "properties": {
+        "sha256": "adb5fcf24c4caa4f86e88e95e25fc0a1eb1fd221af1b730b61d42a5e1489a040",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Controllers::Installation::StepsController",
+      "type": "test",
+      "name": "Controllers::Installation::StepsController",
+      "path": "test/controllers/installation/steps_controller_test.rb",
+      "properties": {
+        "sha256": "05c4f0f89bcd9f7f06ac2d7e683792e7f35f8039e119d0f8f0315e1e6c6bfa2a",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Controllers::LocalePreferencesController",
+      "type": "test",
+      "name": "Controllers::LocalePreferencesController",
+      "path": "test/controllers/locale_preferences_controller_test.rb",
+      "properties": {
+        "sha256": "92cc5c043ed12d094078683e29ddf965168c5904e956da8bec269a5b7cc80556",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Controllers::MarketingController",
+      "type": "test",
+      "name": "Controllers::MarketingController",
+      "path": "test/controllers/marketing_controller_test.rb",
+      "properties": {
+        "sha256": "341f51cd0e6f4eceabdd8b675f2b72e060aa6245c24803958cfe57fa3f42bcfc",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Controllers::OrganizationMemberAdministration",
+      "type": "test",
+      "name": "Controllers::OrganizationMemberAdministration",
+      "path": "test/controllers/organization_member_administration_test.rb",
+      "properties": {
+        "sha256": "7fae61b764c2049bbaa5887083b7b5ee2a14263ff1e5f7c3075822224f4f6cfa",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Controllers::OrganizationsController",
+      "type": "test",
+      "name": "Controllers::OrganizationsController",
+      "path": "test/controllers/organizations_controller_test.rb",
+      "properties": {
+        "sha256": "27db3a1b82abdf4c31a85034d4aaa8bc26649808e3d17c8f49ba1904805cc038",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Controllers::PreferencesController",
+      "type": "test",
+      "name": "Controllers::PreferencesController",
+      "path": "test/controllers/preferences_controller_test.rb",
+      "properties": {
+        "sha256": "cebe70559fd5be26316d53d74ef9213b1e637b7ed99310fb04bb28d6563910bd",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Controllers::StoredFilesController",
+      "type": "test",
+      "name": "Controllers::StoredFilesController",
+      "path": "test/controllers/stored_files_controller_test.rb",
+      "properties": {
+        "sha256": "27a255246eed70bd31f08b5a803917512ea10ab1ccc56f86758fb904aa8c6598",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Controllers::TenantSelectionsController",
+      "type": "test",
+      "name": "Controllers::TenantSelectionsController",
+      "path": "test/controllers/tenant_selections_controller_test.rb",
+      "properties": {
+        "sha256": "78467a606ab6cc88970645e7d02762d4cb490cbd6dda411c917af9fc53174266",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Helpers::LocalizationHelper",
+      "type": "test",
+      "name": "Helpers::LocalizationHelper",
+      "path": "test/helpers/localization_helper_test.rb",
+      "properties": {
+        "sha256": "a485809a09bae47408d4b2174bdf91732a96e92b11625b2828207722939d7584",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Integration::ApplicationExtensionSample",
+      "type": "test",
+      "name": "Integration::ApplicationExtensionSample",
+      "path": "test/integration/application_extension_sample_test.rb",
+      "properties": {
+        "sha256": "b83833fd63342b2e5b8bc5812b87c4138b0426641c9c87b38801b7d51ce7b33f",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Integration::ApplicationLayerBootstrap",
+      "type": "test",
+      "name": "Integration::ApplicationLayerBootstrap",
+      "path": "test/integration/application_layer_bootstrap_test.rb",
+      "properties": {
+        "sha256": "5941504acefbbc9a9071f817fd37433805f63713a398585b00159b30f588a193",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Integration::CommercialReadinessCertification",
+      "type": "test",
+      "name": "Integration::CommercialReadinessCertification",
+      "path": "test/integration/commercial_readiness_certification_test.rb",
+      "properties": {
+        "sha256": "88d00fa4d682639a36b99456d270271e56e06dbe975daab97e0e3740534176c8",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Integration::CompatibilityLifecycleDocumentation",
+      "type": "test",
+      "name": "Integration::CompatibilityLifecycleDocumentation",
+      "path": "test/integration/compatibility_lifecycle_documentation_test.rb",
+      "properties": {
+        "sha256": "a990bf848f066d6c6aaac499c790c4b31395a16f22fc53bca6c0a691145b6668",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Integration::DistributionCertification",
+      "type": "test",
+      "name": "Integration::DistributionCertification",
+      "path": "test/integration/distribution_certification_test.rb",
+      "properties": {
+        "sha256": "0ff2b557ba44c4aa88b808844d9dd74dd06c26a7f8fc1c5d6e531318e49464be",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Integration::DistributionObservationWorkflow",
+      "type": "test",
+      "name": "Integration::DistributionObservationWorkflow",
+      "path": "test/integration/distribution_observation_workflow_test.rb",
+      "properties": {
+        "sha256": "a45ade1376ee31235df619df6900ec1d676e85087beae000df927132f4158522",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Integration::ExtensionFrameworkCertification",
+      "type": "test",
+      "name": "Integration::ExtensionFrameworkCertification",
+      "path": "test/integration/extension_framework_certification_test.rb",
+      "properties": {
+        "sha256": "334d355e2028581bd3749da5c5008aa28ec7528315eadee772fb96741ec683e9",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Integration::OperationalExamplesCertification",
+      "type": "test",
+      "name": "Integration::OperationalExamplesCertification",
+      "path": "test/integration/operational_examples_certification_test.rb",
+      "properties": {
+        "sha256": "0a09f6a06563d6765c68903e98deaa2049fcba3e213fd85da48881f933cfaba9",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Integration::OperationalHealthCertification",
+      "type": "test",
+      "name": "Integration::OperationalHealthCertification",
+      "path": "test/integration/operational_health_certification_test.rb",
+      "properties": {
+        "sha256": "551e6dd0e31eece5e7b671eeed7a0b52e4c668a9b9a235c5aa4fae88beae53e5",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Integration::OperationalRestoreCertification",
+      "type": "test",
+      "name": "Integration::OperationalRestoreCertification",
+      "path": "test/integration/operational_restore_certification_test.rb",
+      "properties": {
+        "sha256": "7d89ac14d5881fbe7f25df1f711edaceac3d54d4499f02ad2a9df0f62a676fa1",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Integration::OperatorGuidesCertification",
+      "type": "test",
+      "name": "Integration::OperatorGuidesCertification",
+      "path": "test/integration/operator_guides_certification_test.rb",
+      "properties": {
+        "sha256": "27a36bd03e3488a83aee68e412bba8c8c9631afa73b75a2df4d22b25c187273c",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Integration::ReleaseFrameworkCertification",
+      "type": "test",
+      "name": "Integration::ReleaseFrameworkCertification",
+      "path": "test/integration/release_framework_certification_test.rb",
+      "properties": {
+        "sha256": "8107f5738590efdf2fe3b1381873a6dc8de4c9ce0c6741d0288a1ad4ce961fc4",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Integration::RepositoryIntelligenceCertification",
+      "type": "test",
+      "name": "Integration::RepositoryIntelligenceCertification",
+      "path": "test/integration/repository_intelligence_certification_test.rb",
+      "properties": {
+        "sha256": "756630f45aba6e7e93a2fa3a554da656fc453db97a568c42b6e535d74027f82a",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Integration::ResilienceCertification",
+      "type": "test",
+      "name": "Integration::ResilienceCertification",
+      "path": "test/integration/resilience_certification_test.rb",
+      "properties": {
+        "sha256": "c6e7c7d2a7ba5d39ba8837eeb395595171fd8721676ea31789ec80cd42ce4952",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Integration::SupportBundleCertification",
+      "type": "test",
+      "name": "Integration::SupportBundleCertification",
+      "path": "test/integration/support_bundle_certification_test.rb",
+      "properties": {
+        "sha256": "df89d4b7617b951cdbabc7f5b4a58d01cfc2827bcbc68d3b984b8f3f35aa10fd",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Integration::UpgradeFrameworkCertification",
+      "type": "test",
+      "name": "Integration::UpgradeFrameworkCertification",
+      "path": "test/integration/upgrade_framework_certification_test.rb",
+      "properties": {
+        "sha256": "eed55a59534261ee8d0dc3ef9e9d80de092d21698575bdcc14d1134ed98c5d77",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Lib::ApplicationRegistrations",
+      "type": "test",
+      "name": "Lib::ApplicationRegistrations",
+      "path": "test/lib/application_registrations_test.rb",
+      "properties": {
+        "sha256": "b61726e80a9f2083ac5611366cdf786c0bcd4a93a922729f760c281faf597f98",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Lib::ApplicationStarter",
+      "type": "test",
+      "name": "Lib::ApplicationStarter",
+      "path": "test/lib/application_starter_test.rb",
+      "properties": {
+        "sha256": "3bf8205e2db1f47c05bc29f6da2aa73732ddef0ca7a424fc420ee3ab4a5e8eac",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Lib::CleanStarterOnboarding",
+      "type": "test",
+      "name": "Lib::CleanStarterOnboarding",
+      "path": "test/lib/clean_starter_onboarding_test.rb",
+      "properties": {
+        "sha256": "8b4fc0a3ce4b29dde57979889d6dc89c9d0099f46438cfeb6027b465369e30af",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Lib::ContainerEnvironmentValidator",
+      "type": "test",
+      "name": "Lib::ContainerEnvironmentValidator",
+      "path": "test/lib/container_environment_validator_test.rb",
+      "properties": {
+        "sha256": "f50b705bdf6e61afe793f21f30f1c55532a83ca0bacc869efe5ed9679f4062e1",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Lib::DesignTokens::Compiler",
+      "type": "test",
+      "name": "Lib::DesignTokens::Compiler",
+      "path": "test/lib/design_tokens/compiler_test.rb",
+      "properties": {
+        "sha256": "fa1623004499f39a84b6fc9b94a60adf2e237c39214c6fcb177c1ba8d0857865",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Lib::Epic9Certification",
+      "type": "test",
+      "name": "Lib::Epic9Certification",
+      "path": "test/lib/epic_9_certification_test.rb",
+      "properties": {
+        "sha256": "a9add47fdb16ad0a03585723c5c7c111cbe8baacb858d69c3d21b84a0310843b",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Lib::GridEngine::HtmlRenderer",
+      "type": "test",
+      "name": "Lib::GridEngine::HtmlRenderer",
+      "path": "test/lib/grid_engine/html_renderer_test.rb",
+      "properties": {
+        "sha256": "bd8c9bbafde616c2cbf43999d6d59d3c4710e4e0cf612dabf277df843938990f",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Lib::GridEngine::Query",
+      "type": "test",
+      "name": "Lib::GridEngine::Query",
+      "path": "test/lib/grid_engine/query_test.rb",
+      "properties": {
+        "sha256": "2a1f9a88f4a5fd041ad5928f70a55a35c60d842dab89fdc711fd7ce024baf84c",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Lib::GridEngine::SyncfusionAdapter",
+      "type": "test",
+      "name": "Lib::GridEngine::SyncfusionAdapter",
+      "path": "test/lib/grid_engine/syncfusion_adapter_test.rb",
+      "properties": {
+        "sha256": "dad14aa36145bdeebbc19fa778223eba64d83a2854c6469c87499fc76ea0174e",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Lib::GridEngine::Types",
+      "type": "test",
+      "name": "Lib::GridEngine::Types",
+      "path": "test/lib/grid_engine/types_test.rb",
+      "properties": {
+        "sha256": "d3b06fc23df9b636530caf1b4f7d16dfa4c4e853ba596c5e1ad63c442ce43951",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Lib::Localization::SupportedLocales",
+      "type": "test",
+      "name": "Lib::Localization::SupportedLocales",
+      "path": "test/lib/localization/supported_locales_test.rb",
+      "properties": {
+        "sha256": "8d09b20647e12d056d135db2e68b7adc065980162e836d0f7afc89f1eb8155af",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Lib::McpBootstrap",
+      "type": "test",
+      "name": "Lib::McpBootstrap",
+      "path": "test/lib/mcp_bootstrap_test.rb",
+      "properties": {
+        "sha256": "af5c0591b3e375aa8b9837b4210a185e137c3afdc2b1aa06a47efb4bae70a707",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Lib::Platform::Version",
+      "type": "test",
+      "name": "Lib::Platform::Version",
+      "path": "test/lib/platform/version_test.rb",
+      "properties": {
+        "sha256": "163d224a1ba7a6f084bd60b93d2f1c76a0e68fe20df5dee3e2452c535b4e64d5",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Lib::RepositoryIntelligence",
+      "type": "test",
+      "name": "Lib::RepositoryIntelligence",
+      "path": "test/lib/repository_intelligence_test.rb",
+      "properties": {
+        "sha256": "42f3d394fb3874987630691777acd3e123f64b1a15b4892465d356c65323b105",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Lib::RepositoryIntelligenceAiArtifact",
+      "type": "test",
+      "name": "Lib::RepositoryIntelligenceAiArtifact",
+      "path": "test/lib/repository_intelligence_ai_artifact_test.rb",
+      "properties": {
+        "sha256": "2d3147951a48097a2b07a0df0d7d885f14e2b5edad973d797298712c4538c026",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Lib::RepositoryIntelligenceDocumentationGovernance",
+      "type": "test",
+      "name": "Lib::RepositoryIntelligenceDocumentationGovernance",
+      "path": "test/lib/repository_intelligence_documentation_governance_test.rb",
+      "properties": {
+        "sha256": "419004ed2fa9f34b428151b731424ca4b3e5a6ab397f38143ba72485f6b4e3e6",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Lib::RepositoryIntelligenceHealth",
+      "type": "test",
+      "name": "Lib::RepositoryIntelligenceHealth",
+      "path": "test/lib/repository_intelligence_health_test.rb",
+      "properties": {
+        "sha256": "24a17b96bae97bddeb75503eaaedd45b534b931002d43c51ee415eeccadb8f48",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Lib::RepositoryIntelligencePlaybookExecutor",
+      "type": "test",
+      "name": "Lib::RepositoryIntelligencePlaybookExecutor",
+      "path": "test/lib/repository_intelligence_playbook_executor_test.rb",
+      "properties": {
+        "sha256": "61186b2f294374a41a78b7463b2b0b7e9efbc6a502e48c337b76ce22712a000b",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Lib::RepositoryIntelligenceStorage",
+      "type": "test",
+      "name": "Lib::RepositoryIntelligenceStorage",
+      "path": "test/lib/repository_intelligence_storage_test.rb",
+      "properties": {
+        "sha256": "a6205973208c99078dde2772e75f86b5f5c5e782f6ba624692ba470e9b4de428",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Models::Customer",
+      "type": "test",
+      "name": "Models::Customer",
+      "path": "test/models/customer_test.rb",
+      "properties": {
+        "sha256": "190bdb7a05f092a32214fca259750050fd0ef1eca79e6a08d1ca0409df05a904",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Models::GridSavedView",
+      "type": "test",
+      "name": "Models::GridSavedView",
+      "path": "test/models/grid_saved_view_test.rb",
+      "properties": {
+        "sha256": "d3fd59ea4c2ed34f257424c37eda6c16039875276f636c3f69fcd59a04dcbc71",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Models::Organization",
+      "type": "test",
+      "name": "Models::Organization",
+      "path": "test/models/organization_test.rb",
+      "properties": {
+        "sha256": "00d7ab156d2e44308d1945a1e315b957c796732daba5ceee0ecc3f7dbae23611",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Models::OrganizationInvitation",
+      "type": "test",
+      "name": "Models::OrganizationInvitation",
+      "path": "test/models/organization_invitation_test.rb",
+      "properties": {
+        "sha256": "d522aa3a5f01feecd652a1d8c5ac6ea8c044fb65d91a445badb6d268de07943b",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Models::PlatformRole",
+      "type": "test",
+      "name": "Models::PlatformRole",
+      "path": "test/models/platform_role_test.rb",
+      "properties": {
+        "sha256": "a58fab32fa4c759b5a2fbd20b005a7f66477d60675de48f57c4153cb58a71f89",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Models::User",
+      "type": "test",
+      "name": "Models::User",
+      "path": "test/models/user_test.rb",
+      "properties": {
+        "sha256": "4df734dd235474afcd9872f07133cd63cccd0de786692bd800f58aa8b0aedf4c",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Models::UserLocalization",
+      "type": "test",
+      "name": "Models::UserLocalization",
+      "path": "test/models/user_localization_test.rb",
+      "properties": {
+        "sha256": "3c821d4e341266bf43cb924ef6e9a9d81d42fad95d0de5ec793b1be375cd9aa7",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Operations::CustomersOperations",
+      "type": "test",
+      "name": "Operations::CustomersOperations",
+      "path": "test/operations/customers_operations_test.rb",
+      "properties": {
+        "sha256": "3a217bc8425a6fd4ab4c7d1061c039921b13d2dc1c91eba31cc66233db1e39aa",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Requests::SecurityHeaders",
+      "type": "test",
+      "name": "Requests::SecurityHeaders",
+      "path": "test/requests/security_headers_test.rb",
+      "properties": {
+        "sha256": "045dd31d82b29b56c647d93f156c1fff03f5c11a2103230db3803d7a541972d7",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::ApplicationLayer::Certification",
+      "type": "test",
+      "name": "Services::ApplicationLayer::Certification",
+      "path": "test/services/application_layer/certification_test.rb",
+      "properties": {
+        "sha256": "7606c0bf59df8be6503ccde4c6411c3ec57391efe9c8146c080b98e0d763a4ef",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::CommercialReadiness::EntitlementResolver",
+      "type": "test",
+      "name": "Services::CommercialReadiness::EntitlementResolver",
+      "path": "test/services/commercial_readiness/entitlement_resolver_test.rb",
+      "properties": {
+        "sha256": "405619dda8e23d3b6bbb28530aff4753cf7216b981e36ca7fe69bba4defd3a46",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::CommercialReadiness::SupportConsent",
+      "type": "test",
+      "name": "Services::CommercialReadiness::SupportConsent",
+      "path": "test/services/commercial_readiness/support_consent_test.rb",
+      "properties": {
+        "sha256": "754c49611caf9b5453ec5dbee2a54806e6f5bc56015b5d1c677c209c658b980d",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::CommercialReadiness::SupportIdentity",
+      "type": "test",
+      "name": "Services::CommercialReadiness::SupportIdentity",
+      "path": "test/services/commercial_readiness/support_identity_test.rb",
+      "properties": {
+        "sha256": "14172739ba2387fa2a9b7e8802e3d37bf46152d80410de781d303e02e6bee07e",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::CommercialReadiness::TelemetryPolicy",
+      "type": "test",
+      "name": "Services::CommercialReadiness::TelemetryPolicy",
+      "path": "test/services/commercial_readiness/telemetry_policy_test.rb",
+      "properties": {
+        "sha256": "f5b384215f616ca514c77303984d7a2d7b848b3647ca27365c491317d235637e",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Distributions::ChannelObserver",
+      "type": "test",
+      "name": "Services::Distributions::ChannelObserver",
+      "path": "test/services/distributions/channel_observer_test.rb",
+      "properties": {
+        "sha256": "091911b9835ba7311262d5fc1f1655aa8dacdddcfc04f9a2e649ff5eea34eede",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Distributions::ChannelState",
+      "type": "test",
+      "name": "Services::Distributions::ChannelState",
+      "path": "test/services/distributions/channel_state_test.rb",
+      "properties": {
+        "sha256": "d063b52fd6baf111934646e5ad876f68f26fbc2ca1d49475ac310101317d9ea0",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Distributions::GhcrPromotionPlan",
+      "type": "test",
+      "name": "Services::Distributions::GhcrPromotionPlan",
+      "path": "test/services/distributions/ghcr_promotion_plan_test.rb",
+      "properties": {
+        "sha256": "91cd8506a1bf1fe74c1142b9e0a68a86373f9b9dd22e578f422bc7950f7b5640",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Distributions::GithubReleasePlan",
+      "type": "test",
+      "name": "Services::Distributions::GithubReleasePlan",
+      "path": "test/services/distributions/github_release_plan_test.rb",
+      "properties": {
+        "sha256": "9f065c5d52f1be1bbdad7209e926de278e09a1d0a4711f39ee2fe06dde1628e7",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Distributions::Inspector",
+      "type": "test",
+      "name": "Services::Distributions::Inspector",
+      "path": "test/services/distributions/inspector_test.rb",
+      "properties": {
+        "sha256": "5190ed5b74eb580839817b5e5099c6c5b7bc15ab77cf8df5e7aede2d0ea3127d",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Distributions::Manifest",
+      "type": "test",
+      "name": "Services::Distributions::Manifest",
+      "path": "test/services/distributions/manifest_test.rb",
+      "properties": {
+        "sha256": "eda3e4a29f73f4ecc4ca906e06c311651eb684b56782685f4b108392cd627690",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Distributions::Verifier",
+      "type": "test",
+      "name": "Services::Distributions::Verifier",
+      "path": "test/services/distributions/verifier_test.rb",
+      "properties": {
+        "sha256": "772c631346369b3f3996f139547dc864fed2cca2d97ebccecbaee5dcbd0b9372",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::EnterpriseServices",
+      "type": "test",
+      "name": "Services::EnterpriseServices",
+      "path": "test/services/enterprise_services_test.rb",
+      "properties": {
+        "sha256": "6ddf9208213dad6a1d5ce961daa36c27123c180921f8ebe42169e9df1c70b74f",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Epic10::AccessibilityCertification",
+      "type": "test",
+      "name": "Services::Epic10::AccessibilityCertification",
+      "path": "test/services/epic_10/accessibility_certification_test.rb",
+      "properties": {
+        "sha256": "3a59f98f845faf71839733ad79d7438724675f355a9a0ea78e9c8a624129e8cb",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Epic10::AiReadinessCertification",
+      "type": "test",
+      "name": "Services::Epic10::AiReadinessCertification",
+      "path": "test/services/epic_10/ai_readiness_certification_test.rb",
+      "properties": {
+        "sha256": "55760709a110e0c00a01342eb3b676f292a19afb1ebad3c74efcd7e81ce6076a",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Epic10::ContractValidator",
+      "type": "test",
+      "name": "Services::Epic10::ContractValidator",
+      "path": "test/services/epic_10/contract_validator_test.rb",
+      "properties": {
+        "sha256": "c5fc0351f6cfb49fbe85b3cc615f0a908301018fc7fdde9c055d690a025feb6b",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Epic10::DomainServicesJourney",
+      "type": "test",
+      "name": "Services::Epic10::DomainServicesJourney",
+      "path": "test/services/epic_10/domain_services_journey_test.rb",
+      "properties": {
+        "sha256": "e013613319d42a44a10e2ce3162318f9e041e53bf63af3b52ca83b9e8ad9c168",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Epic10::FunctionalFrameworkCertification",
+      "type": "test",
+      "name": "Services::Epic10::FunctionalFrameworkCertification",
+      "path": "test/services/epic_10/functional_framework_certification_test.rb",
+      "properties": {
+        "sha256": "832106c9bca0df246b5dd39b2ab8e2923c31fac5139fe3fce7426a857a0a5519",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Epic10::MultitenantExtensionJourney",
+      "type": "test",
+      "name": "Services::Epic10::MultitenantExtensionJourney",
+      "path": "test/services/epic_10/multitenant_extension_journey_test.rb",
+      "properties": {
+        "sha256": "92c81784ab01b6a97226edfffdf2d00c9b52f1172eadcca44b7ca148e0124db8",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Epic10::OperationalResilienceCertification",
+      "type": "test",
+      "name": "Services::Epic10::OperationalResilienceCertification",
+      "path": "test/services/epic_10/operational_resilience_certification_test.rb",
+      "properties": {
+        "sha256": "a60d3903689c7c843ce3d7072996ace56d0914b14e926403654b8cfd35628adb",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Epic10::PerformanceCompatibilityCertification",
+      "type": "test",
+      "name": "Services::Epic10::PerformanceCompatibilityCertification",
+      "path": "test/services/epic_10/performance_compatibility_certification_test.rb",
+      "properties": {
+        "sha256": "4976346555ffccda867d31fb5cc2cdfed7f4d02f487b2229e67776e4fbf85df4",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Epic10::ProductionDeploymentCertification",
+      "type": "test",
+      "name": "Services::Epic10::ProductionDeploymentCertification",
+      "path": "test/services/epic_10/production_deployment_certification_test.rb",
+      "properties": {
+        "sha256": "923118d5c1105041b53987bc7e923d266df2f1fed2262f3d6fcef2794e7bdea2",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Epic10::RcPreparation",
+      "type": "test",
+      "name": "Services::Epic10::RcPreparation",
+      "path": "test/services/epic_10/rc_preparation_test.rb",
+      "properties": {
+        "sha256": "c76b4fe634a4b5e66802eb5e3531e6c4997fc3b5ca2161fafea3b5852ce73213",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Epic10::RcUpgradeCertification",
+      "type": "test",
+      "name": "Services::Epic10::RcUpgradeCertification",
+      "path": "test/services/epic_10/rc_upgrade_certification_test.rb",
+      "properties": {
+        "sha256": "f97a422759688db3d2dbbb2b3c3d99594e4b8073cd646f4d4cf72910f161897c",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Epic10::RcUpgradeFixture",
+      "type": "test",
+      "name": "Services::Epic10::RcUpgradeFixture",
+      "path": "test/services/epic_10/rc_upgrade_fixture_test.rb",
+      "properties": {
+        "sha256": "e027724ffb576cadabe1a9383a16be12ed10df19a809143cefe008b90f743f10",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Epic10::ReleaseBaseline",
+      "type": "test",
+      "name": "Services::Epic10::ReleaseBaseline",
+      "path": "test/services/epic_10/release_baseline_test.rb",
+      "properties": {
+        "sha256": "04a57c2d5aca05c3f774f1114a6d9fe1e0c967abecdf0bfbef6c9198ee2abd95",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Epic10::RepresentativeApplication",
+      "type": "test",
+      "name": "Services::Epic10::RepresentativeApplication",
+      "path": "test/services/epic_10/representative_application_test.rb",
+      "properties": {
+        "sha256": "820fab12b74858abe7caa7cb132c80f519daeeef79128a629c041f397057cf7e",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Epic10::RepresentativeApplicationCertification",
+      "type": "test",
+      "name": "Services::Epic10::RepresentativeApplicationCertification",
+      "path": "test/services/epic_10/representative_application_certification_test.rb",
+      "properties": {
+        "sha256": "8a85db13fcf6a6f478f0ab9d4280a12e442c61cb00db5a99e199f958679d7cb2",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Epic10::RepresentativeApplicationJourney",
+      "type": "test",
+      "name": "Services::Epic10::RepresentativeApplicationJourney",
+      "path": "test/services/epic_10/representative_application_journey_test.rb",
+      "properties": {
+        "sha256": "d12b47172c6dba2104000eeda29dc10782dc216b173450d96db945d365a74c60",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Epic10::SecurityPrivacyIsolationCertification",
+      "type": "test",
+      "name": "Services::Epic10::SecurityPrivacyIsolationCertification",
+      "path": "test/services/epic_10/security_privacy_isolation_certification_test.rb",
+      "properties": {
+        "sha256": "b3acec17e767631c6a7fb06309d526122c8696269eaf7133a58e89dc638fb712",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Extensions::Catalog",
+      "type": "test",
+      "name": "Services::Extensions::Catalog",
+      "path": "test/services/extensions/catalog_test.rb",
+      "properties": {
+        "sha256": "3488c91d32b6f6247562970cf2681ac4792f4535045744d0a214ca197a8911fe",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Extensions::CompatibilityPlanner",
+      "type": "test",
+      "name": "Services::Extensions::CompatibilityPlanner",
+      "path": "test/services/extensions/compatibility_planner_test.rb",
+      "properties": {
+        "sha256": "4de73255b6bdf31cd4f727be41f8cb04bdd1a0298a1750ada4c6d5114ca45462",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Extensions::ComponentResolver",
+      "type": "test",
+      "name": "Services::Extensions::ComponentResolver",
+      "path": "test/services/extensions/component_resolver_test.rb",
+      "properties": {
+        "sha256": "c5fac7be27683c4fef310f7fe647a582113786ab15c034e63348fb1421d3c112",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Extensions::Configuration",
+      "type": "test",
+      "name": "Services::Extensions::Configuration",
+      "path": "test/services/extensions/configuration_test.rb",
+      "properties": {
+        "sha256": "a3d099e7b1e39b70ba0c5520cfdc65d316c3b6369182c596d86c7a59e6078124",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Extensions::ExtensionReadinessPlaybook",
+      "type": "test",
+      "name": "Services::Extensions::ExtensionReadinessPlaybook",
+      "path": "test/services/extensions/extension_readiness_playbook_test.rb",
+      "properties": {
+        "sha256": "ae3f87109a61d1872897c3ea993da8060806033e562854ec06b4721732dcdff7",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Extensions::Inspector",
+      "type": "test",
+      "name": "Services::Extensions::Inspector",
+      "path": "test/services/extensions/inspector_test.rb",
+      "properties": {
+        "sha256": "44ad114edd65ed7b98951d354e34eab862316f655b8dabb23e1a9ed1662118d1",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Extensions::InstalledState",
+      "type": "test",
+      "name": "Services::Extensions::InstalledState",
+      "path": "test/services/extensions/installed_state_test.rb",
+      "properties": {
+        "sha256": "4d646f3fe1be5f474c93089646d85182bb174c218573c1f608f90d26513d9aa0",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Extensions::Lifecycle",
+      "type": "test",
+      "name": "Services::Extensions::Lifecycle",
+      "path": "test/services/extensions/lifecycle_test.rb",
+      "properties": {
+        "sha256": "1224ab8cc59297152fcbafecc11937a96e3cd7419c5ce01e2a371da2498853c0",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Extensions::Loader",
+      "type": "test",
+      "name": "Services::Extensions::Loader",
+      "path": "test/services/extensions/loader_test.rb",
+      "properties": {
+        "sha256": "ad967b24f0dc5e6e2fbb85f6a90a61eb97b0e6a281380ada108407ed515082e0",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Extensions::Manifest",
+      "type": "test",
+      "name": "Services::Extensions::Manifest",
+      "path": "test/services/extensions/manifest_test.rb",
+      "properties": {
+        "sha256": "0b239a119d70b9c4a7694a5a84a6db9c818f8f326c7edf57948e243233abd8cc",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Extensions::Registry",
+      "type": "test",
+      "name": "Services::Extensions::Registry",
+      "path": "test/services/extensions/registry_test.rb",
+      "properties": {
+        "sha256": "b68dff5cb05474864e3ad57bd8ed268f9ea974c2891123f3cbe22d7fb63c0469",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Installation::DatabaseConfiguration",
+      "type": "test",
+      "name": "Services::Installation::DatabaseConfiguration",
+      "path": "test/services/installation/database_configuration_test.rb",
+      "properties": {
+        "sha256": "3a6f1f8b412ef54afe5b9a12486b27a21f58c196bd61c315059a6d9ae6164d11",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Installation::DatabaseProvisioner",
+      "type": "test",
+      "name": "Services::Installation::DatabaseProvisioner",
+      "path": "test/services/installation/database_provisioner_test.rb",
+      "properties": {
+        "sha256": "0e3dec92c7fc980c4da2d9e2a94d976e9debf2a8192511fa5a2de134bddd67fd",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Installation::PlatformOwnerCreator",
+      "type": "test",
+      "name": "Services::Installation::PlatformOwnerCreator",
+      "path": "test/services/installation/platform_owner_creator_test.rb",
+      "properties": {
+        "sha256": "a0ddba31e3b037f32a516566f816b5843f8372fdfe675c9263e6eea86ffb445d",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Installation::RuntimeDatabaseConfiguration",
+      "type": "test",
+      "name": "Services::Installation::RuntimeDatabaseConfiguration",
+      "path": "test/services/installation/runtime_database_configuration_test.rb",
+      "properties": {
+        "sha256": "f9aff355d08438d1c1465f2fca8cbda3e4f5c24028332ef9643b5995681c8482",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Installation::StateMachine",
+      "type": "test",
+      "name": "Services::Installation::StateMachine",
+      "path": "test/services/installation/state_machine_test.rb",
+      "properties": {
+        "sha256": "5a5e9711cf3ead5d44dd543609cf7656cb61b561424b077c9ada03cd72426770",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::OperationalReadiness::BackupManifest",
+      "type": "test",
+      "name": "Services::OperationalReadiness::BackupManifest",
+      "path": "test/services/operational_readiness/backup_manifest_test.rb",
+      "properties": {
+        "sha256": "bdaf235f8fd9337cb01d28f47f2ec01ad896b4b622679ef4b84cd1c5b91c1822",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::OperationalReadiness::DiagnosticRedactor",
+      "type": "test",
+      "name": "Services::OperationalReadiness::DiagnosticRedactor",
+      "path": "test/services/operational_readiness/diagnostic_redactor_test.rb",
+      "properties": {
+        "sha256": "094c186caffb9caace5612b64697d3fc1ab676c944c54f31a5b4e28d26d94879",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::OperationalReadiness::DisasterRecoveryPolicy",
+      "type": "test",
+      "name": "Services::OperationalReadiness::DisasterRecoveryPolicy",
+      "path": "test/services/operational_readiness/disaster_recovery_policy_test.rb",
+      "properties": {
+        "sha256": "f555db6779840fdf4c886b02e5e779a6fef098123c5a72b368ea5a4e864b5e1d",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::OperationalReadiness::OperationalHealthInspector",
+      "type": "test",
+      "name": "Services::OperationalReadiness::OperationalHealthInspector",
+      "path": "test/services/operational_readiness/operational_health_inspector_test.rb",
+      "properties": {
+        "sha256": "339b0f4840811fc9fea5e748c996136d1105b5db2ff7c4bc88c6ffff50defc47",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::OperationalReadiness::RestorePlan",
+      "type": "test",
+      "name": "Services::OperationalReadiness::RestorePlan",
+      "path": "test/services/operational_readiness/restore_plan_test.rb",
+      "properties": {
+        "sha256": "00b59e1f892f62720ae4e066b713a059c4e9f7b58c989e2404144f91bde013c4",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::OperationalReadiness::SupportBundleBuilder",
+      "type": "test",
+      "name": "Services::OperationalReadiness::SupportBundleBuilder",
+      "path": "test/services/operational_readiness/support_bundle_builder_test.rb",
+      "properties": {
+        "sha256": "cf78e4a1bea5643490d566099ca44c3d91fb04a337a6dc13a0373dc86f256ed1",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Releases::ChangeFragment",
+      "type": "test",
+      "name": "Services::Releases::ChangeFragment",
+      "path": "test/services/releases/change_fragment_test.rb",
+      "properties": {
+        "sha256": "32996cad6832450b4958cb1b4db9773b47d6275dc00deabacc2e40d59376b277",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Releases::ConsistencyValidator",
+      "type": "test",
+      "name": "Services::Releases::ConsistencyValidator",
+      "path": "test/services/releases/consistency_validator_test.rb",
+      "properties": {
+        "sha256": "85af254aa53a98b0e2d5da3f3d4cb16c01de695f5fbe44ecb6e872bcd35ce362",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Releases::NotesGenerator",
+      "type": "test",
+      "name": "Services::Releases::NotesGenerator",
+      "path": "test/services/releases/notes_generator_test.rb",
+      "properties": {
+        "sha256": "6353af7933dbe904ecd44001b442055a5d270138662a1e688d126b069d520c9a",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Releases::PerformanceBenchmark",
+      "type": "test",
+      "name": "Services::Releases::PerformanceBenchmark",
+      "path": "test/services/releases/performance_benchmark_test.rb",
+      "properties": {
+        "sha256": "cca2b4c58151b0b01afd6aac372c4c6e501f64b8df9108601165dd61d3eb5dd7",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Releases::Preparation",
+      "type": "test",
+      "name": "Services::Releases::Preparation",
+      "path": "test/services/releases/preparation_test.rb",
+      "properties": {
+        "sha256": "9f6592f56d958e2314fb5dcc68218d0d66a1e33826be001c1a65e53005fb4620",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Releases::PullRequestValidator",
+      "type": "test",
+      "name": "Services::Releases::PullRequestValidator",
+      "path": "test/services/releases/pull_request_validator_test.rb",
+      "properties": {
+        "sha256": "7c312477530cbf009c7961e8881f473c49b59fbc79d6f86f6a1d54cddf080e23",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Releases::ReleaseReadinessPlaybook",
+      "type": "test",
+      "name": "Services::Releases::ReleaseReadinessPlaybook",
+      "path": "test/services/releases/release_readiness_playbook_test.rb",
+      "properties": {
+        "sha256": "fd47a64dab8b8a19542e24aa77b9c90ad0eb10fa2e03f417320c79cc30fe4d73",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::SecurityPrivacy",
+      "type": "test",
+      "name": "Services::SecurityPrivacy",
+      "path": "test/services/security_privacy_test.rb",
+      "properties": {
+        "sha256": "153ee1bf42f655393eb002d49515082642f2fcaad8c95d053439d98c7bced16e",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Upgrades::BackupAndMaintenance",
+      "type": "test",
+      "name": "Services::Upgrades::BackupAndMaintenance",
+      "path": "test/services/upgrades/backup_and_maintenance_test.rb",
+      "properties": {
+        "sha256": "7ba639754fca0d60fbd7a424c8d273251f138686bd016518eff01fa4b7696bfe",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Upgrades::Executor",
+      "type": "test",
+      "name": "Services::Upgrades::Executor",
+      "path": "test/services/upgrades/executor_test.rb",
+      "properties": {
+        "sha256": "57a06d03b7327419c3d68e9ca5d85acc38fc0c899cc251140274c69fa4b14263",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Upgrades::Inspector",
+      "type": "test",
+      "name": "Services::Upgrades::Inspector",
+      "path": "test/services/upgrades/inspector_test.rb",
+      "properties": {
+        "sha256": "0dbe9f5059948706174407b1ce6d036e62cf8a532a043c98b9258fe1a94d24fb",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Upgrades::InstalledStateDetector",
+      "type": "test",
+      "name": "Services::Upgrades::InstalledStateDetector",
+      "path": "test/services/upgrades/installed_state_detector_test.rb",
+      "properties": {
+        "sha256": "e52205ee159010de571f1f117f7f8cf427e03dd0198768090ae9b8d1d1e2ad93",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Upgrades::Manifest",
+      "type": "test",
+      "name": "Services::Upgrades::Manifest",
+      "path": "test/services/upgrades/manifest_test.rb",
+      "properties": {
+        "sha256": "3929730a14c8e685c42a592a08a73f4d0222e3edee903ee63baf34f25d041aed",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Upgrades::Planner",
+      "type": "test",
+      "name": "Services::Upgrades::Planner",
+      "path": "test/services/upgrades/planner_test.rb",
+      "properties": {
+        "sha256": "cfd10030c42d625485e723420e3f22003d6e1187c3745ce2c40c619bb598bd3d",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Upgrades::PostUpgradeVerifier",
+      "type": "test",
+      "name": "Services::Upgrades::PostUpgradeVerifier",
+      "path": "test/services/upgrades/post_upgrade_verifier_test.rb",
+      "properties": {
+        "sha256": "4ff7ecf29f53e2624fda8a3f7a5b6ab464e1bbbbf5f1faf88aa1f0f977408018",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Upgrades::RecoveryAdvisor",
+      "type": "test",
+      "name": "Services::Upgrades::RecoveryAdvisor",
+      "path": "test/services/upgrades/recovery_advisor_test.rb",
+      "properties": {
+        "sha256": "dd94045e895c366945be78420c927d87422f9929ab7cf5c48b6e61b167a364fb",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::Upgrades::Version",
+      "type": "test",
+      "name": "Services::Upgrades::Version",
+      "path": "test/services/upgrades/version_test.rb",
+      "properties": {
+        "sha256": "a12897d1da661df6da37be5b2f3a52719237cfbb2ea954f28d380662ad25c637",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:Services::VisualValidation::EnvironmentPreparer",
+      "type": "test",
+      "name": "Services::VisualValidation::EnvironmentPreparer",
+      "path": "test/services/visual_validation/environment_preparer_test.rb",
+      "properties": {
+        "sha256": "22f6c03bc2190f39cd9d4473eea822cb0f7992f8a8307afcf518158f501810b3",
+        "source": "platform"
+      }
+    },
+    {
+      "id": "test:System::Ej2ShowcaseSystem",
+      "type": "test",
+      "name": "System::Ej2ShowcaseSystem",
+      "path": "test/system/ej2_showcase_system_test.rb",
+      "properties": {
+        "sha256": "d882c97793c3310cd460a5139bfd04a14067f4fb3087507bc862cd6b091c8047",
+        "source": "platform"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:Application",
+      "to": "document:Architecture::Application-layer",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "component:Application",
+      "to": "document:Architecture::Decisions::0005-use-application-layer-boundary",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "component:Application",
+      "to": "document:Architecture::Decisions::0006-seal-application-role-and-grid-registries",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "component:Application",
+      "to": "document:Architecture::Decisions::0007-load-application-owned-extension-packages",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "component:Application",
+      "to": "document:Design-system::Application-shell",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "component:Application",
+      "to": "document:Distribution::Application-starter",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "component:Application",
+      "to": "document:Validation::Representative-application",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "component:Application",
+      "to": "test:Components::Ui::Layout::ApplicationShellComponent",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "component:Application",
+      "to": "test:Integration::ApplicationExtensionSample",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "component:Application",
+      "to": "test:Integration::ApplicationLayerBootstrap",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "component:Application",
+      "to": "test:Lib::ApplicationRegistrations",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "component:Application",
+      "to": "test:Lib::ApplicationStarter",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "component:Application",
+      "to": "test:Services::ApplicationLayer::Certification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "component:Application",
+      "to": "test:Services::Epic10::RepresentativeApplication",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "component:Application",
+      "to": "test:Services::Epic10::RepresentativeApplicationCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "component:Application",
+      "to": "test:Services::Epic10::RepresentativeApplicationJourney",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "component:Marketing::Header",
+      "to": "test:Requests::SecurityHeaders",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "component:Marketing::Lifecycle",
+      "to": "document:Extensions::Lifecycle-guide",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "component:Marketing::Lifecycle",
+      "to": "document:Operators::Compatibility-and-lifecycle",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "component:Marketing::Lifecycle",
+      "to": "test:Integration::CompatibilityLifecycleDocumentation",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "component:Marketing::Lifecycle",
+      "to": "test:Services::Extensions::Lifecycle",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "component:Ui::Base",
+      "to": "document:Adoption::Phase-4b-grid-ux-baseline",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "component:Ui::Base",
+      "to": "document:Installation::Database-provisioning",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "component:Ui::Base",
+      "to": "document:Packaging::Container-baseline",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "component:Ui::Base",
+      "to": "document:Security::Security-baseline",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "component:Ui::Base",
+      "to": "document:Validation::Release-baseline",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "component:Ui::Base",
+      "to": "test:Services::Epic10::ReleaseBaseline",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "component:Ui::Button",
+      "to": "test:Components::Ui::ButtonComponent",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "component:Ui::DangerZone",
+      "to": "test:Components::Ui::DangerZoneComponent",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "component:Ui::Layout::ApplicationShell",
+      "to": "test:Components::Ui::Layout::ApplicationShellComponent",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "component:Ui::LocaleSwitcher",
+      "to": "test:Components::Ui::LocaleSwitcherComponent",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "component:Ui::ThemeSwitcher",
+      "to": "test:Components::Ui::ThemeSwitcherComponent",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Application",
+      "to": "document:Architecture::Application-layer",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Application",
+      "to": "document:Architecture::Decisions::0005-use-application-layer-boundary",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Application",
+      "to": "document:Architecture::Decisions::0006-seal-application-role-and-grid-registries",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Application",
+      "to": "document:Architecture::Decisions::0007-load-application-owned-extension-packages",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Application",
+      "to": "document:Design-system::Application-shell",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Application",
+      "to": "document:Distribution::Application-starter",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Application",
+      "to": "document:Validation::Representative-application",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Application",
+      "to": "test:Components::Ui::Layout::ApplicationShellComponent",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Application",
+      "to": "test:Integration::ApplicationExtensionSample",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Application",
+      "to": "test:Integration::ApplicationLayerBootstrap",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Application",
+      "to": "test:Lib::ApplicationRegistrations",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Application",
+      "to": "test:Lib::ApplicationStarter",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Application",
+      "to": "test:Services::ApplicationLayer::Certification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Application",
+      "to": "test:Services::Epic10::RepresentativeApplication",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Application",
+      "to": "test:Services::Epic10::RepresentativeApplicationCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Application",
+      "to": "test:Services::Epic10::RepresentativeApplicationJourney",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:ComponentShowcase",
+      "to": "test:Controllers::ComponentShowcaseController",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Customers",
+      "to": "document:Modules::Customers::AiContext",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Customers",
+      "to": "test:Controllers::CustomersController",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Customers",
+      "to": "test:Operations::CustomersOperations",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Dashboards",
+      "to": "test:Controllers::DashboardsController",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Ej2Showcase",
+      "to": "test:Controllers::Ej2ShowcaseController",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Ej2Showcase",
+      "to": "test:System::Ej2ShowcaseSystem",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Grids",
+      "to": "test:Controllers::GridsController",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Grids",
+      "to": "test:Controllers::GridsControllerSyncfusion",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Health",
+      "to": "document:Ai::Repository-health",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Health",
+      "to": "test:Controllers::HealthController",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Health",
+      "to": "test:Integration::OperationalHealthCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Health",
+      "to": "test:Lib::RepositoryIntelligenceHealth",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Health",
+      "to": "test:Services::OperationalReadiness::OperationalHealthInspector",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Home",
+      "to": "test:Controllers::HomeController",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Installation::Base",
+      "to": "document:Adoption::Phase-4b-grid-ux-baseline",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Installation::Base",
+      "to": "document:Installation::Database-provisioning",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Installation::Base",
+      "to": "document:Packaging::Container-baseline",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Installation::Base",
+      "to": "document:Security::Security-baseline",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Installation::Base",
+      "to": "document:Validation::Release-baseline",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Installation::Base",
+      "to": "test:Services::Epic10::ReleaseBaseline",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Installation::Steps",
+      "to": "test:Controllers::Installation::StepsController",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:LocalePreferences",
+      "to": "test:Controllers::LocalePreferencesController",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Marketing",
+      "to": "test:Components::MarketingComponents",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Marketing",
+      "to": "test:Controllers::MarketingController",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Organizations",
+      "to": "document:Modules::Organizations::AiContext",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Organizations",
+      "to": "test:Controllers::OrganizationsController",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Preferences",
+      "to": "test:Controllers::LocalePreferencesController",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:Preferences",
+      "to": "test:Controllers::PreferencesController",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:StoredFiles",
+      "to": "test:Controllers::StoredFilesController",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "controller:TenantSelections",
+      "to": "test:Controllers::TenantSelectionsController",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Ai::Commands::Readme",
+      "to": "document:Examples::Readme",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Ai::Readme",
+      "to": "document:Ai::Commands::Readme",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Ai::Readme",
+      "to": "document:Examples::Readme",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Architecture::Application-layer",
+      "to": "document:Architecture::Decisions::0005-use-application-layer-boundary",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Commercial-readiness::Certification",
+      "to": "document:Extensions::Certification",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Commercial-readiness::Certification",
+      "to": "document:Modules::EnterpriseServices::Tenant-safety-certification",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Commercial-readiness::Certification",
+      "to": "document:Operations::Resilience-certification",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Commercial-readiness::Certification",
+      "to": "document:Upgrades::Recovery-and-certification",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Commercial-readiness::Certification",
+      "to": "test:Integration::CommercialReadinessCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Commercial-readiness::Certification",
+      "to": "test:Integration::DistributionCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Commercial-readiness::Certification",
+      "to": "test:Integration::ExtensionFrameworkCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Commercial-readiness::Certification",
+      "to": "test:Integration::OperationalExamplesCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Commercial-readiness::Certification",
+      "to": "test:Integration::OperationalHealthCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Commercial-readiness::Certification",
+      "to": "test:Integration::OperationalRestoreCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Commercial-readiness::Certification",
+      "to": "test:Integration::OperatorGuidesCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Commercial-readiness::Certification",
+      "to": "test:Integration::ReleaseFrameworkCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Commercial-readiness::Certification",
+      "to": "test:Integration::RepositoryIntelligenceCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Commercial-readiness::Certification",
+      "to": "test:Integration::ResilienceCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Commercial-readiness::Certification",
+      "to": "test:Integration::SupportBundleCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Commercial-readiness::Certification",
+      "to": "test:Integration::UpgradeFrameworkCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Commercial-readiness::Certification",
+      "to": "test:Lib::Epic9Certification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Commercial-readiness::Certification",
+      "to": "test:Services::ApplicationLayer::Certification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Commercial-readiness::Certification",
+      "to": "test:Services::Epic10::AccessibilityCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Commercial-readiness::Certification",
+      "to": "test:Services::Epic10::AiReadinessCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Commercial-readiness::Certification",
+      "to": "test:Services::Epic10::FunctionalFrameworkCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Commercial-readiness::Certification",
+      "to": "test:Services::Epic10::OperationalResilienceCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Commercial-readiness::Certification",
+      "to": "test:Services::Epic10::PerformanceCompatibilityCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Commercial-readiness::Certification",
+      "to": "test:Services::Epic10::ProductionDeploymentCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Commercial-readiness::Certification",
+      "to": "test:Services::Epic10::RcUpgradeCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Commercial-readiness::Certification",
+      "to": "test:Services::Epic10::RepresentativeApplicationCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Commercial-readiness::Certification",
+      "to": "test:Services::Epic10::SecurityPrivacyIsolationCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Deployment::Render",
+      "to": "test:Lib::GridEngine::HtmlRenderer",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Design-system::Forms",
+      "to": "document:Modules::Design-system::Forms::AiContext",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Design-system::Forms",
+      "to": "test:Components::Ui::Forms::FormComponents",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Design-system::Localization",
+      "to": "document:Modules::Localization::AiContext",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Design-system::Localization",
+      "to": "test:Helpers::LocalizationHelper",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Design-system::Localization",
+      "to": "test:Lib::Localization::SupportedLocales",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Design-system::Localization",
+      "to": "test:Models::UserLocalization",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Distribution::Architecture",
+      "to": "document:Extensions::Architecture",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Distribution::Architecture",
+      "to": "document:Grid::Architecture",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Distribution::Architecture",
+      "to": "document:Installation::Architecture",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Distribution::Architecture",
+      "to": "document:Operations::Architecture",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Distribution::Architecture",
+      "to": "document:Releases::Architecture",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Distribution::Architecture",
+      "to": "document:Upgrades::Architecture",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Distribution::Architecture",
+      "to": "document:Validation::Architecture",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Distribution::Ghcr",
+      "to": "test:Services::Distributions::GhcrPromotionPlan",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Distribution::Inspection",
+      "to": "document:Extensions::Inspection",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Distribution::Inspection",
+      "to": "document:Upgrades::Inspection-and-preflight",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Distribution::Operations",
+      "to": "document:Extensions::Operations",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Distribution::Operations",
+      "to": "document:Operations::Architecture",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Distribution::Operations",
+      "to": "document:Operations::Disaster-recovery",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Distribution::Operations",
+      "to": "document:Operations::Resilience-certification",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Distribution::Operations",
+      "to": "document:Security::Security-operations",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Distribution::Operations",
+      "to": "test:Operations::CustomersOperations",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Distribution::Verification",
+      "to": "document:Upgrades::Post-upgrade-verification",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Architecture",
+      "to": "document:Grid::Architecture",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Architecture",
+      "to": "document:Installation::Architecture",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Architecture",
+      "to": "document:Operations::Architecture",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Architecture",
+      "to": "document:Releases::Architecture",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Architecture",
+      "to": "document:Upgrades::Architecture",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Architecture",
+      "to": "document:Validation::Architecture",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Certification",
+      "to": "document:Modules::EnterpriseServices::Tenant-safety-certification",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Certification",
+      "to": "document:Operations::Resilience-certification",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Certification",
+      "to": "document:Upgrades::Recovery-and-certification",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Certification",
+      "to": "test:Integration::CommercialReadinessCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Certification",
+      "to": "test:Integration::DistributionCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Certification",
+      "to": "test:Integration::ExtensionFrameworkCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Certification",
+      "to": "test:Integration::OperationalExamplesCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Certification",
+      "to": "test:Integration::OperationalHealthCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Certification",
+      "to": "test:Integration::OperationalRestoreCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Certification",
+      "to": "test:Integration::OperatorGuidesCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Certification",
+      "to": "test:Integration::ReleaseFrameworkCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Certification",
+      "to": "test:Integration::RepositoryIntelligenceCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Certification",
+      "to": "test:Integration::ResilienceCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Certification",
+      "to": "test:Integration::SupportBundleCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Certification",
+      "to": "test:Integration::UpgradeFrameworkCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Certification",
+      "to": "test:Lib::Epic9Certification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Certification",
+      "to": "test:Services::ApplicationLayer::Certification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Certification",
+      "to": "test:Services::Epic10::AccessibilityCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Certification",
+      "to": "test:Services::Epic10::AiReadinessCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Certification",
+      "to": "test:Services::Epic10::FunctionalFrameworkCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Certification",
+      "to": "test:Services::Epic10::OperationalResilienceCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Certification",
+      "to": "test:Services::Epic10::PerformanceCompatibilityCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Certification",
+      "to": "test:Services::Epic10::ProductionDeploymentCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Certification",
+      "to": "test:Services::Epic10::RcUpgradeCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Certification",
+      "to": "test:Services::Epic10::RepresentativeApplicationCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Certification",
+      "to": "test:Services::Epic10::SecurityPrivacyIsolationCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Inspection",
+      "to": "document:Upgrades::Inspection-and-preflight",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Operations",
+      "to": "document:Operations::Architecture",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Operations",
+      "to": "document:Operations::Disaster-recovery",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Operations",
+      "to": "document:Operations::Resilience-certification",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Operations",
+      "to": "document:Security::Security-operations",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Extensions::Operations",
+      "to": "test:Operations::CustomersOperations",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Grid::Architecture",
+      "to": "document:Installation::Architecture",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Grid::Architecture",
+      "to": "document:Operations::Architecture",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Grid::Architecture",
+      "to": "document:Releases::Architecture",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Grid::Architecture",
+      "to": "document:Upgrades::Architecture",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Grid::Architecture",
+      "to": "document:Validation::Architecture",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Installation::Architecture",
+      "to": "document:Operations::Architecture",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Installation::Architecture",
+      "to": "document:Releases::Architecture",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Installation::Architecture",
+      "to": "document:Upgrades::Architecture",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Installation::Architecture",
+      "to": "document:Validation::Architecture",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Operations::Architecture",
+      "to": "document:Releases::Architecture",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Operations::Architecture",
+      "to": "document:Upgrades::Architecture",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Operations::Architecture",
+      "to": "document:Validation::Architecture",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Releases::0.8.0::Migration-notes",
+      "to": "document:Releases::0.9.0::Migration-notes",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Releases::0.8.0::Migration-notes",
+      "to": "document:Releases::Generated::Migration-notes",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Releases::0.8.0::Release-notes",
+      "to": "document:Releases::0.9.0::Release-notes",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Releases::0.8.0::Upgrade-notes",
+      "to": "document:Releases::0.9.0::Upgrade-notes",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Releases::0.8.0::Upgrade-notes",
+      "to": "document:Releases::Generated::Upgrade-notes",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Releases::0.9.0::Migration-notes",
+      "to": "document:Releases::Generated::Migration-notes",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Releases::0.9.0::Upgrade-notes",
+      "to": "document:Releases::Generated::Upgrade-notes",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Releases::Architecture",
+      "to": "document:Upgrades::Architecture",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Releases::Architecture",
+      "to": "document:Validation::Architecture",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Releases::Consistency",
+      "to": "test:Services::Releases::ConsistencyValidator",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Security::Threat-model",
+      "to": "document:Validation::Threat-model",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "document:Upgrades::Architecture",
+      "to": "document:Validation::Architecture",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "job:Application",
+      "to": "document:Architecture::Application-layer",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "job:Application",
+      "to": "document:Architecture::Decisions::0005-use-application-layer-boundary",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "job:Application",
+      "to": "document:Architecture::Decisions::0006-seal-application-role-and-grid-registries",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "job:Application",
+      "to": "document:Architecture::Decisions::0007-load-application-owned-extension-packages",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "job:Application",
+      "to": "document:Design-system::Application-shell",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "job:Application",
+      "to": "document:Distribution::Application-starter",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "job:Application",
+      "to": "document:Validation::Representative-application",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "job:Application",
+      "to": "test:Components::Ui::Layout::ApplicationShellComponent",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "job:Application",
+      "to": "test:Integration::ApplicationExtensionSample",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "job:Application",
+      "to": "test:Integration::ApplicationLayerBootstrap",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "job:Application",
+      "to": "test:Lib::ApplicationRegistrations",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "job:Application",
+      "to": "test:Lib::ApplicationStarter",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "job:Application",
+      "to": "test:Services::ApplicationLayer::Certification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "job:Application",
+      "to": "test:Services::Epic10::RepresentativeApplication",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "job:Application",
+      "to": "test:Services::Epic10::RepresentativeApplicationCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "job:Application",
+      "to": "test:Services::Epic10::RepresentativeApplicationJourney",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "model:Customer",
+      "to": "document:Modules::Customers::AiContext",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "model:Customer",
+      "to": "test:Controllers::CustomersController",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "model:Customer",
+      "to": "test:Models::Customer",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "model:Customer",
+      "to": "test:Operations::CustomersOperations",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "model:GridSavedView",
+      "to": "test:Models::GridSavedView",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "model:Notification",
+      "to": "document:Modules::EnterpriseServices::Notifications",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "model:Organization",
+      "to": "document:Modules::Organizations::AiContext",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "model:Organization",
+      "to": "test:Controllers::OrganizationMemberAdministration",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "model:Organization",
+      "to": "test:Controllers::OrganizationsController",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "model:Organization",
+      "to": "test:Models::Organization",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "model:Organization",
+      "to": "test:Models::OrganizationInvitation",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "model:OrganizationInvitation",
+      "to": "test:Models::OrganizationInvitation",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "model:PlatformRole",
+      "to": "test:Models::PlatformRole",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "model:StoredFile",
+      "to": "test:Controllers::StoredFilesController",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "model:User",
+      "to": "test:Models::User",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "model:User",
+      "to": "test:Models::UserLocalization",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "policy:Application",
+      "to": "document:Architecture::Application-layer",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "policy:Application",
+      "to": "document:Architecture::Decisions::0005-use-application-layer-boundary",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "policy:Application",
+      "to": "document:Architecture::Decisions::0006-seal-application-role-and-grid-registries",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "policy:Application",
+      "to": "document:Architecture::Decisions::0007-load-application-owned-extension-packages",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "policy:Application",
+      "to": "document:Design-system::Application-shell",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "policy:Application",
+      "to": "document:Distribution::Application-starter",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "policy:Application",
+      "to": "document:Validation::Representative-application",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "policy:Application",
+      "to": "test:Components::Ui::Layout::ApplicationShellComponent",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "policy:Application",
+      "to": "test:Integration::ApplicationExtensionSample",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "policy:Application",
+      "to": "test:Integration::ApplicationLayerBootstrap",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "policy:Application",
+      "to": "test:Lib::ApplicationRegistrations",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "policy:Application",
+      "to": "test:Lib::ApplicationStarter",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "policy:Application",
+      "to": "test:Services::ApplicationLayer::Certification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "policy:Application",
+      "to": "test:Services::Epic10::RepresentativeApplication",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "policy:Application",
+      "to": "test:Services::Epic10::RepresentativeApplicationCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "policy:Application",
+      "to": "test:Services::Epic10::RepresentativeApplicationJourney",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "policy:Customer",
+      "to": "document:Modules::Customers::AiContext",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "policy:Customer",
+      "to": "test:Controllers::CustomersController",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "policy:Customer",
+      "to": "test:Models::Customer",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "policy:Customer",
+      "to": "test:Operations::CustomersOperations",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "policy:Organization",
+      "to": "document:Modules::Organizations::AiContext",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "policy:Organization",
+      "to": "test:Controllers::OrganizationMemberAdministration",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "policy:Organization",
+      "to": "test:Controllers::OrganizationsController",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "policy:Organization",
+      "to": "test:Models::Organization",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "policy:Organization",
+      "to": "test:Models::OrganizationInvitation",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "policy:StoredFile",
+      "to": "test:Controllers::StoredFilesController",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "test:Integration::ResilienceCertification",
+      "to": "test:Services::Epic10::OperationalResilienceCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "test:Lib::Platform::Version",
+      "to": "test:Services::Upgrades::Version",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "test:Models::Customer",
+      "to": "test:Operations::CustomersOperations",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "test:Services::ApplicationLayer::Certification",
+      "to": "test:Services::Epic10::AccessibilityCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "test:Services::ApplicationLayer::Certification",
+      "to": "test:Services::Epic10::AiReadinessCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "test:Services::ApplicationLayer::Certification",
+      "to": "test:Services::Epic10::FunctionalFrameworkCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "test:Services::ApplicationLayer::Certification",
+      "to": "test:Services::Epic10::OperationalResilienceCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "test:Services::ApplicationLayer::Certification",
+      "to": "test:Services::Epic10::PerformanceCompatibilityCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "test:Services::ApplicationLayer::Certification",
+      "to": "test:Services::Epic10::ProductionDeploymentCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "test:Services::ApplicationLayer::Certification",
+      "to": "test:Services::Epic10::RcUpgradeCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "test:Services::ApplicationLayer::Certification",
+      "to": "test:Services::Epic10::RepresentativeApplicationCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "test:Services::ApplicationLayer::Certification",
+      "to": "test:Services::Epic10::SecurityPrivacyIsolationCertification",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "test:Services::Distributions::Inspector",
+      "to": "test:Services::Extensions::Inspector",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "test:Services::Distributions::Inspector",
+      "to": "test:Services::OperationalReadiness::OperationalHealthInspector",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "test:Services::Distributions::Inspector",
+      "to": "test:Services::Upgrades::Inspector",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "test:Services::Distributions::Manifest",
+      "to": "test:Services::Extensions::Manifest",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "test:Services::Distributions::Manifest",
+      "to": "test:Services::OperationalReadiness::BackupManifest",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "test:Services::Distributions::Manifest",
+      "to": "test:Services::Upgrades::Manifest",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "test:Services::Distributions::Verifier",
+      "to": "test:Services::Upgrades::PostUpgradeVerifier",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "test:Services::Extensions::Configuration",
+      "to": "test:Services::Installation::DatabaseConfiguration",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "test:Services::Extensions::Configuration",
+      "to": "test:Services::Installation::RuntimeDatabaseConfiguration",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "test:Services::Extensions::Inspector",
+      "to": "test:Services::OperationalReadiness::OperationalHealthInspector",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "test:Services::Extensions::Inspector",
+      "to": "test:Services::Upgrades::Inspector",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "test:Services::Extensions::InstalledState",
+      "to": "test:Services::Upgrades::InstalledStateDetector",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "test:Services::Extensions::Manifest",
+      "to": "test:Services::OperationalReadiness::BackupManifest",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "test:Services::Extensions::Manifest",
+      "to": "test:Services::Upgrades::Manifest",
+      "type": "TESTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "test:Services::Installation::DatabaseConfiguration",
+      "to": "test:Services::Installation::RuntimeDatabaseConfiguration",
+      "type": "TESTED_BY",
+      "properties": {}
+    }
+  ],
+  "repository_commit": "c04584c3e56b173a3e2c3c87f92efe5bfb8ecee1"
+}

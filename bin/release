@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "json"
+require_relative "../config/environment"
+
+command = ARGV.shift
+if command == "publish"
+  load File.expand_path("distribution", __dir__)
+  exit
+end
+
+target_version = ARGV.shift
+apply = ARGV.delete("--apply")
+abort "Usage: bin/release prepare TARGET_VERSION [--apply] | bin/release publish [inspect|preflight] [options]" unless
+  command == "prepare" && target_version && ARGV.empty?
+
+preparation = Releases::Preparation.new(target_version:)
+result = apply ? preparation.apply! : preparation.plan
+puts JSON.pretty_generate(result)

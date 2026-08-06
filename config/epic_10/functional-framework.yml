@@ -1,0 +1,39 @@
+schema_version: 1
+id: epic_10_functional_framework
+required_areas:
+  - id: installation_configuration
+    positive_evidence: installation_completion_certification
+    negative_evidence: installer_replay_denied
+  - id: design_system
+    positive_evidence: light_dark_generation
+    negative_evidence: invalid_token_rejected
+  - id: internationalization
+    positive_evidence: en_pt_br_resolution
+    negative_evidence: unsupported_locale_fallback
+  - id: grid
+    positive_evidence: typed_filter_sort_export
+    negative_evidence: unsupported_operator_rejected
+  - id: domain_services
+    positive_evidence: policy_event_job_file_audit
+    negative_evidence: invalid_transition_denied
+  - id: tenant_isolation
+    positive_evidence: tenant_scoped_membership
+    negative_evidence: cross_tenant_access_denied
+  - id: extensions
+    positive_evidence: registered_sample_extension
+    negative_evidence: incompatible_extension_isolated
+  - id: repository_intelligence
+    positive_evidence: generation_validation_impact
+    negative_evidence: unknown_contract_reported
+findings:
+  - id: functional-negative-paths
+    severity: low
+    status: resolved
+    resolution: All declared negative paths are enforced by executable certification.
+evidence:
+  deterministic: true
+  credential_free: true
+  public_contracts_only: true
+  source_commit_required: true
+publication:
+  allowed: false

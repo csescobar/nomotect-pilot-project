@@ -1,0 +1,46 @@
+databases:
+  - name: nomotect-platform-db
+    databaseName: nomotect
+    user: nomotect
+    plan: basic-256mb
+    region: oregon
+    storageAutoscalingEnabled: true
+
+services:
+  - type: web
+    name: nomotect-platform
+    runtime: docker
+    plan: starter
+    region: oregon
+    autoDeployTrigger: checksPass
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    dockerCommand: bash bin/render-start
+    preDeployCommand: bundle exec rails db:migrate
+    healthCheckPath: /health
+    maxShutdownDelaySeconds: 30
+    disk:
+      name: platform-persistence
+      mountPath: /rails/storage
+      sizeGB: 10
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: nomotect-platform-db
+          property: connectionString
+      - key: SECRET_KEY_BASE
+        sync: false
+      - key: INSTALLATION_BOOTSTRAP_TOKEN
+        sync: false
+      - key: RAILS_ENV
+        value: production
+      - key: RAILS_LOG_TO_STDOUT
+        value: "true"
+      - key: RAILS_SERVE_STATIC_FILES
+        value: "true"
+      - key: INSTALLATION_ENABLED
+        value: "true"
+      - key: RUN_DB_PREPARE
+        value: "false"
+      - key: RENDER_PERSISTENCE_ROOT
+        value: /rails/storage

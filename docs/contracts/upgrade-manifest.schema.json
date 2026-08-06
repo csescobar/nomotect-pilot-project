@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rails-application.example/schemas/upgrade-manifest-v1.json",
+  "title": "Upgrade Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "source", "target", "compatibility", "backup", "operations", "deprecations"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "id": { "type": "string", "minLength": 1 },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requirement"],
+      "properties": { "requirement": { "type": "string", "minLength": 1 } }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["version"],
+      "properties": { "version": { "type": "string", "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(-[0-9A-Za-z.-]+)?(\\+[0-9A-Za-z.-]+)?$" } }
+    },
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rails", "ruby", "postgresql", "contracts"],
+      "properties": {
+        "rails": { "type": "string", "minLength": 1 },
+        "ruby": { "type": "string", "minLength": 1 },
+        "postgresql": { "type": "string", "minLength": 1 },
+        "contracts": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": { "type": "integer", "minimum": 1 }
+        }
+      }
+    },
+    "backup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required", "evidence"],
+      "properties": {
+        "required": { "type": "boolean" },
+        "evidence": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true }
+      }
+    },
+    "operations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "type", "description", "reversible", "requires"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "type": { "enum": ["database", "configuration", "generated_artifacts", "operator_action", "validation"] },
+          "description": { "type": "string", "minLength": 1 },
+          "reversible": { "type": "boolean" },
+          "requires": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true }
+        }
+      }
+    },
+    "deprecations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["contract", "remove_in", "replacement"],
+        "properties": {
+          "contract": { "type": "string", "minLength": 1 },
+          "remove_in": { "type": "string", "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(-[0-9A-Za-z.-]+)?(\\+[0-9A-Za-z.-]+)?$" },
+          "replacement": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+required=(KAMAL_SERVER KAMAL_HOST KAMAL_REGISTRY_USERNAME KAMAL_REGISTRY_PASSWORD DATABASE_URL SECRET_KEY_BASE INSTALLATION_BOOTSTRAP_TOKEN)
+for name in "${required[@]}"; do
+  if [[ -z "${!name:-}" ]]; then
+    echo "VPS preflight error: ${name} is required" >&2
+    exit 1
+  fi
+done
+
+if [[ ${#SECRET_KEY_BASE} -lt 64 ]]; then
+  echo "VPS preflight error: SECRET_KEY_BASE must contain at least 64 characters" >&2
+  exit 1
+fi
+
+for command in ruby bundle ssh docker; do
+  command -v "$command" >/dev/null 2>&1 || {
+    echo "VPS preflight error: ${command} is required on the operator workstation" >&2
+    exit 1
+  }
+done
+
+bash bin/kamal-validate >/dev/null
+
+if [[ "${VPS_PREFLIGHT_SKIP_REMOTE:-false}" == "true" ]]; then
+  echo "Private VPS contract validated; remote checks skipped"
+  exit 0
+fi
+
+ssh_user="${KAMAL_SSH_USER:-deploy}"
+ssh_target="${ssh_user}@${KAMAL_SERVER}"
+ssh_options=(-o BatchMode=yes -o ConnectTimeout=10)
+
+ssh "${ssh_options[@]}" "$ssh_target" "docker version >/dev/null"
+ssh "${ssh_options[@]}" "$ssh_target" "test -w '${KAMAL_STORAGE_PATH:-/var/lib/nomotect-platform/storage}'"
+ssh "${ssh_options[@]}" "$ssh_target" "test -w '${KAMAL_INSTALLATION_PATH:-/var/lib/nomotect-platform/installation}'"
+
+printf 'Private VPS preflight passed for %s\n' "$KAMAL_SERVER"

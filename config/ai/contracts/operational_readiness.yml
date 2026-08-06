@@ -1,0 +1,67 @@
+id: operational_readiness
+version: 1
+owns:
+  - operational_backup_manifest
+  - restore_plan
+  - restore_safety_gate
+  - restore_adapter_registry
+  - restore_execution
+  - restore_certification
+  - support_bundle_manifest
+  - diagnostic_redaction
+  - diagnostic_collector_registry
+  - support_bundle_builder
+  - operational_health_snapshot
+  - health_provider_registry
+  - operational_health_inspector
+  - disaster_recovery_policy
+  - resilience_scenario_registry
+  - resilience_certification_report
+  - backup_component_inventory
+  - restore_verification_requirements
+may_use:
+  - platform_version
+  - database_schema
+  - installation_state
+  - generated_artifacts
+  - persistent_files
+  - backup_evidence
+cannot_use:
+  - persisted_credentials
+  - embedded_secrets
+  - automatic_destructive_restore
+  - provider_specific_assumptions
+invariants:
+  - operational manifests are credential-free
+  - every backup set covers PostgreSQL, persistent files, generated configuration and installation metadata
+  - every component is checksum-bound
+  - restore dependencies are explicit and ordered
+  - restore execution requires a later provider adapter and operator-controlled safety gate
+  - restore execution requires maintenance mode, drained work and explicit operator confirmation
+  - every component checksum is verified before its adapter executes
+  - post-restore certification fails closed unless every required check passes
+  - support bundles contain only explicitly registered structured collectors
+  - diagnostic values are redacted before they are written
+  - support bundle entries and total output are size bounded
+  - support bundle files are checksum-bound and written with restricted permissions
+  - support bundles are never uploaded automatically
+  - operational health providers are explicit, isolated and time bounded
+  - health findings use stable codes without raw exception messages
+  - required and optional dependencies affect aggregate health differently
+  - operational health covers installation, deployment, jobs, storage and integrations
+  - disaster recovery objectives, roles and scenarios are explicit
+  - restore and return to service require human approval
+  - fault injection is limited to production-like temporary fixtures
+  - every required resilience scenario must pass before certification
+  - verification covers database schema, installation contract, generated artifacts and application health
+required_tests:
+  - operational_backup_manifest_test
+  - operational_restore_plan_test
+  - operational_restore_certification_test
+  - diagnostic_redactor_test
+  - support_bundle_builder_test
+  - support_bundle_certification_test
+  - operational_health_inspector_test
+  - operational_health_certification_test
+  - disaster_recovery_policy_test
+  - resilience_certification_test

@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "json"
+require "optparse"
+require_relative "../config/environment"
+
+options = {}
+parser = OptionParser.new do |configuration|
+  configuration.banner = "Usage: bin/epic-10-rc-plan --target-version VERSION --source-commit SHA"
+  configuration.on("--target-version VERSION", "Epic 10 release candidate version") { |value| options[:target_version] = value }
+  configuration.on("--source-commit SHA", "Exact source commit") { |value| options[:source_commit] = value }
+end
+parser.parse!
+
+abort parser.to_s unless ARGV.empty? && options.values_at(:target_version, :source_commit).all?(&:present?)
+
+begin
+  plan = Epic10::RcPreparation.new(**options).plan
+  puts JSON.pretty_generate(plan)
+rescue Epic10::RcPreparation::InvalidPreparation, Platform::Version::InvalidVersion => error
+  abort "Epic 10 RC planning failed: #{error.message}"
+end

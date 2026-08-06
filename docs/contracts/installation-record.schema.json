@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nomotect.example/contracts/installation-record.schema.json",
+  "title": "Installation Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract_version", "environment", "schema_version", "status"],
+  "properties": {
+    "contract_version": { "const": 1 },
+    "environment": { "type": "string", "minLength": 1 },
+    "schema_version": { "type": "string", "pattern": "^[0-9]+$" },
+    "status": { "enum": ["migrated", "owner_created", "completed"] },
+    "metadata": { "type": "object" }
+  }
+}

@@ -1,0 +1,60 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "json"
+require "optparse"
+require_relative "../config/environment"
+
+options = {}
+parser = OptionParser.new do |configuration|
+  configuration.banner = "Usage: bin/distribution-observe [options]"
+  configuration.on("--manifest PATH", "Approved distribution manifest") { |path| options[:manifest] = path }
+  configuration.on("--repository OWNER/REPOSITORY", "Active GitHub repository") do |value|
+    options[:repository] = value
+  end
+  configuration.on("--image-digest SHA256", "Approved immutable GHCR digest") do |value|
+    options[:image_digest] = value
+  end
+  configuration.on("--github-observation PATH", "Credential-free GitHub provider observation") do |path|
+    options[:github_observation] = path
+  end
+  configuration.on("--ghcr-observation PATH", "Credential-free GHCR provider observation") do |path|
+    options[:ghcr_observation] = path
+  end
+  configuration.on("--output DIRECTORY", "Channel-state output directory") { |path| options[:output] = path }
+end
+parser.parse!
+
+required = %i[
+  manifest repository image_digest github_observation ghcr_observation output
+]
+abort parser.to_s unless ARGV.empty? && required.all? { |key| options[key].present? }
+
+begin
+  manifest = Distributions::Manifest.load(options.fetch(:manifest))
+  observer = Distributions::ChannelObserver.new(
+    manifest: manifest,
+    repository: options.fetch(:repository),
+    image_digest: options.fetch(:image_digest)
+  )
+  observations = {
+    "github-release-state.json" => observer.github_release(
+      JSON.parse(File.read(options.fetch(:github_observation)))
+    ),
+    "ghcr-state.json" => observer.ghcr(
+      JSON.parse(File.read(options.fetch(:ghcr_observation)))
+    )
+  }
+  output = Pathname(options.fetch(:output))
+  output.mkpath
+  observations.each do |filename, state|
+    output.join(filename).write("#{JSON.pretty_generate(state.data)}\n")
+  end
+rescue Distributions::Manifest::InvalidManifest,
+  Distributions::GhcrPromotionPlan::InvalidPromotion,
+  Distributions::ChannelObserver::InvalidObservation,
+  Distributions::ChannelState::InvalidState,
+  JSON::ParserError,
+  Errno::ENOENT => error
+  abort "Distribution observation input is invalid: #{error.message}"
+end

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nomotect.dev/contracts/support-identity.schema.json",
+  "title": "NomoTect Support Identity",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "installation_id", "support_id", "customer_id", "rotated_at"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "installation_id": { "$ref": "#/$defs/opaqueIdentifier" },
+    "support_id": {
+      "oneOf": [{ "$ref": "#/$defs/opaqueIdentifier" }, { "type": "null" }]
+    },
+    "customer_id": {
+      "oneOf": [{ "$ref": "#/$defs/opaqueIdentifier" }, { "type": "null" }]
+    },
+    "rotated_at": {
+      "oneOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }]
+    }
+  },
+  "$defs": {
+    "opaqueIdentifier": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
+    }
+  }
+}

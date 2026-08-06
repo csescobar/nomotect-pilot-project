@@ -1,0 +1,45 @@
+en:
+  layout:
+    grid_engine: "Grid Engine"
+  grid_engine:
+    organizations:
+      title: "Organizations Grid"
+      description: "Filter, sort, personalize, save, and export organizations you can access."
+      columns:
+        name: "Name"
+        slug: "Slug"
+        created_at: "Created at"
+    controls:
+      title: "Grid controls"
+      name_filter: "Name contains"
+      sort_direction: "Sort direction"
+      columns: "Visible columns"
+    sort:
+      asc: "Ascending"
+      desc: "Descending"
+    actions:
+      apply: "Apply"
+      export: "Export CSV"
+      save_view: "Save view"
+      delete: "Delete"
+    saved_views:
+      title: "Saved Views"
+      user_views: "My Views"
+      system_default: "System Default"
+      default_tag: "Default"
+      actions_group: "Actions"
+      save_current: "Save Current View..."
+      reset: "Reset to Default"
+      modal_title: "Save Current View"
+      name_label: "View Name"
+      name_placeholder: "e.g. Active Organizations"
+      set_as_default: "Set as default view"
+      name: "View name"
+      make_default: "Use as my default view"
+      default: "Default"
+      created: "Grid view saved."
+      updated: "Grid view updated."
+      destroyed: "Grid view deleted."
+    results:
+      one: "1 result"
+      other: "%{count} results"

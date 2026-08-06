@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nomotect.example/contracts/extension-configuration.schema.json",
+  "title": "Platform Extension Configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "extensions"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "extensions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "package", "enabled", "required"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9]*([.-][a-z0-9]+)*$"
+          },
+          "package": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9]*([.-][a-z0-9]+)*$"
+          },
+          "enabled": { "type": "boolean" },
+          "required": { "type": "boolean" }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": { "required": { "const": true } },
+              "required": ["required"]
+            },
+            "then": {
+              "properties": { "enabled": { "const": true } }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative "../config/environment"
+
+test = Rails.root.join("test/integration/resilience_certification_test.rb")
+exec Gem.ruby, Rails.root.join("bin/rails").to_s, "test", test.to_s

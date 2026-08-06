@@ -1,0 +1,75 @@
+id: representative_application
+version: 1
+owns:
+  - representative_application_fixture
+  - public_contract_allowlist
+  - required_capability_journeys
+  - deterministic_fixture_evidence
+  - design_i18n_grid_journey
+  - domain_services_journey
+  - multitenant_extension_journey
+  - representative_application_findings
+  - representative_application_certification
+  - representative_application_rc_upgrade_fixtures
+  - representative_application_rc_upgrade_certification
+  - functional_framework_certification
+  - production_deployment_certification
+  - operational_resilience_certification
+  - accessibility_certification
+  - security_privacy_isolation_certification
+  - performance_compatibility_certification
+  - ai_readiness_certification
+may_use:
+  - epic_10_validation
+  - installation
+  - design_tokens
+  - themes
+  - internationalization
+  - domain_operations
+  - domain_queries
+  - authorization_policies
+  - domain_events
+  - grid
+  - saved_views
+  - exports
+  - background_jobs
+  - notifications
+  - files
+  - workflow
+  - audit
+  - multi_tenancy
+  - extensions
+  - operational_health
+  - upgrades
+cannot_use:
+  - undocumented_internal_contracts
+  - protected_core_modification
+  - mandatory_commercial_services
+  - automatic_telemetry
+  - maintainer_credentials
+  - production_data
+  - release_publication
+invariants:
+  - fixture journeys use documented public contracts only
+  - fixture operation remains community complete
+  - fixture evidence is deterministic and credential free
+  - tenant isolation is exercised with at least two organizations
+  - Light and Dark themes are required
+  - English and Brazilian Portuguese journeys are required
+  - automated certification does not replace required manual reviews
+  - representative application work cannot authorize publication
+required_tests:
+  - representative_application_test
+  - representative_application_journey_test
+  - domain_services_journey_test
+  - multitenant_extension_journey_test
+  - representative_application_certification_test
+  - rc_upgrade_fixture_test
+  - rc_upgrade_certification_test
+  - functional_framework_certification_test
+  - production_deployment_certification_test
+  - operational_resilience_certification_test
+  - accessibility_certification_test
+  - security_privacy_isolation_certification_test
+  - performance_compatibility_certification_test
+  - ai_readiness_certification_test

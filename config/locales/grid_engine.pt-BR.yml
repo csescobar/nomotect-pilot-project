@@ -1,0 +1,45 @@
+pt-BR:
+  layout:
+    grid_engine: "Motor de grades"
+  grid_engine:
+    organizations:
+      title: "Grade de Organizações"
+      description: "Filtre, ordene, personalize, salve e exporte as organizações às quais você tem acesso."
+      columns:
+        name: "Nome"
+        slug: "Identificador"
+        created_at: "Criada em"
+    controls:
+      title: "Controles da grade"
+      name_filter: "Nome contém"
+      sort_direction: "Direção da ordenação"
+      columns: "Colunas visíveis"
+    sort:
+      asc: "Crescente"
+      desc: "Decrescente"
+    actions:
+      apply: "Aplicar"
+      export: "Exportar CSV"
+      save_view: "Salvar visão"
+      delete: "Excluir"
+    saved_views:
+      title: "Visões Salvas"
+      user_views: "Minhas Visões"
+      system_default: "Padrão do Sistema"
+      default_tag: "Padrão"
+      actions_group: "Ações"
+      save_current: "Salvar Visão Atual..."
+      reset: "Redefinir para Padrão"
+      modal_title: "Salvar Visão Atual"
+      name_label: "Nome da Visão"
+      name_placeholder: "ex: Organizações Ativas"
+      set_as_default: "Definir como visão padrão"
+      name: "Nome da visão"
+      make_default: "Usar como minha visão padrão"
+      default: "Padrão"
+      created: "Visão da grade salva."
+      updated: "Visão da grade atualizada."
+      destroyed: "Visão da grade excluída."
+    results:
+      one: "1 resultado"
+      other: "%{count} resultados"

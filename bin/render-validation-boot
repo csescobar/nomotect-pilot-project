@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ "${VISUAL_VALIDATION_ENABLED:-false}" != "true" ]]; then
+  echo "visual validation boot requires VISUAL_VALIDATION_ENABLED=true" >&2
+  exit 1
+fi
+
+: "${VISUAL_VALIDATION_EMAIL:?VISUAL_VALIDATION_EMAIL is required}"
+: "${VISUAL_VALIDATION_PASSWORD:?VISUAL_VALIDATION_PASSWORD is required}"
+
+bundle exec rails db:prepare
+bundle exec rails runner "VisualValidation::EnvironmentPreparer.new.prepare!"
+
+exec bundle exec puma -C config/puma.rb

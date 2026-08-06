@@ -1,0 +1,56 @@
+# Generated Impact Index
+
+- `controller:Application`: component:Application, component:Ui::Layout::ApplicationShell, controller:Application, document:Architecture::Application-layer, document:Architecture::Decisions::0005-use-application-layer-boundary, document:Architecture::Decisions::0006-seal-application-role-and-grid-registries, document:Architecture::Decisions::0007-load-application-owned-extension-packages, document:Commercial-readiness::Certification, document:Design-system::Application-shell, document:Distribution::Application-starter, document:Extensions::Certification, document:Validation::Representative-application, job:Application, policy:Application, test:Components::Ui::Layout::ApplicationShellComponent, test:Integration::ApplicationExtensionSample, test:Integration::ApplicationLayerBootstrap, test:Lib::ApplicationRegistrations, test:Lib::ApplicationStarter, test:Services::ApplicationLayer::Certification, test:Services::Epic10::AccessibilityCertification, test:Services::Epic10::AiReadinessCertification, test:Services::Epic10::FunctionalFrameworkCertification, test:Services::Epic10::OperationalResilienceCertification, test:Services::Epic10::PerformanceCompatibilityCertification, test:Services::Epic10::ProductionDeploymentCertification, test:Services::Epic10::RcUpgradeCertification, test:Services::Epic10::RepresentativeApplication, test:Services::Epic10::RepresentativeApplicationCertification, test:Services::Epic10::RepresentativeApplicationJourney, test:Services::Epic10::SecurityPrivacyIsolationCertification
+- `controller:ComponentShowcase`: controller:ComponentShowcase, test:Controllers::ComponentShowcaseController
+- `controller:Customers`: controller:Customers, document:Distribution::Operations, document:Extensions::Operations, document:Modules::Customers::AiContext, model:Customer, policy:Customer, test:Controllers::CustomersController, test:Models::Customer, test:Operations::CustomersOperations
+- `controller:Dashboards`: controller:Dashboards, test:Controllers::DashboardsController
+- `controller:Ej2Showcase`: controller:Ej2Showcase, test:Controllers::Ej2ShowcaseController, test:System::Ej2ShowcaseSystem
+- `controller:GridSavedViews`: controller:GridSavedViews
+- `controller:Grids`: controller:Grids, test:Controllers::GridsController, test:Controllers::GridsControllerSyncfusion
+- `controller:Health`: controller:Health, document:Ai::Repository-health, document:Commercial-readiness::Certification, document:Extensions::Certification, test:Controllers::HealthController, test:Integration::OperationalHealthCertification, test:Lib::RepositoryIntelligenceHealth, test:Services::Distributions::Inspector, test:Services::Extensions::Inspector, test:Services::OperationalReadiness::OperationalHealthInspector
+- `controller:Home`: controller:Home, test:Controllers::HomeController
+- `controller:Installation::Base`: component:Ui::Base, controller:Installation::Base, document:Adoption::Phase-4b-grid-ux-baseline, document:Installation::Database-provisioning, document:Packaging::Container-baseline, document:Security::Security-baseline, document:Validation::Release-baseline, test:Services::Epic10::ReleaseBaseline
+- `controller:Installation::Steps`: controller:Installation::Steps, test:Controllers::Installation::StepsController
+- `controller:LocalePreferences`: controller:LocalePreferences, controller:Preferences, test:Controllers::LocalePreferencesController
+- `controller:Marketing`: controller:Marketing, test:Components::MarketingComponents, test:Controllers::MarketingController
+- `controller:Memberships`: controller:Memberships
+- `controller:OrganizationInvitations`: controller:OrganizationInvitations
+- `controller:Organizations`: controller:Organizations, document:Modules::Organizations::AiContext, model:Organization, policy:Organization, test:Controllers::OrganizationsController
+- `controller:Passwords`: controller:Passwords
+- `controller:Preferences`: controller:LocalePreferences, controller:Preferences, test:Controllers::LocalePreferencesController, test:Controllers::PreferencesController
+- `controller:PrivacyRequests`: controller:PrivacyRequests
+- `controller:Sessions`: controller:Sessions
+- `controller:StoredFiles`: controller:StoredFiles, model:StoredFile, policy:StoredFile, test:Controllers::StoredFilesController
+- `controller:TenantSelections`: controller:TenantSelections, test:Controllers::TenantSelectionsController
+- `job:Application`: component:Application, component:Ui::Layout::ApplicationShell, controller:Application, document:Architecture::Application-layer, document:Architecture::Decisions::0005-use-application-layer-boundary, document:Architecture::Decisions::0006-seal-application-role-and-grid-registries, document:Architecture::Decisions::0007-load-application-owned-extension-packages, document:Commercial-readiness::Certification, document:Design-system::Application-shell, document:Distribution::Application-starter, document:Extensions::Certification, document:Validation::Representative-application, job:Application, policy:Application, test:Components::Ui::Layout::ApplicationShellComponent, test:Integration::ApplicationExtensionSample, test:Integration::ApplicationLayerBootstrap, test:Lib::ApplicationRegistrations, test:Lib::ApplicationStarter, test:Services::ApplicationLayer::Certification, test:Services::Epic10::AccessibilityCertification, test:Services::Epic10::AiReadinessCertification, test:Services::Epic10::FunctionalFrameworkCertification, test:Services::Epic10::OperationalResilienceCertification, test:Services::Epic10::PerformanceCompatibilityCertification, test:Services::Epic10::ProductionDeploymentCertification, test:Services::Epic10::RcUpgradeCertification, test:Services::Epic10::RepresentativeApplication, test:Services::Epic10::RepresentativeApplicationCertification, test:Services::Epic10::RepresentativeApplicationJourney, test:Services::Epic10::SecurityPrivacyIsolationCertification
+- `job:CustomerExport`: job:CustomerExport
+- `job:CustomerImport`: job:CustomerImport
+- `job:NotificationDelivery`: job:NotificationDelivery
+- `job:PrivacyRequest`: job:PrivacyRequest
+- `job:RetentionEnforcement`: job:RetentionEnforcement
+- `job:WebhookDelivery`: job:WebhookDelivery
+- `model:ApplicationRecord`: model:ApplicationRecord
+- `model:Concerns::DomainModel`: model:Concerns::DomainModel
+- `model:Current`: model:Current
+- `model:Customer`: controller:Customers, document:Distribution::Operations, document:Extensions::Operations, document:Modules::Customers::AiContext, model:Customer, policy:Customer, test:Controllers::CustomersController, test:Models::Customer, test:Operations::CustomersOperations
+- `model:DomainEvent`: model:DomainEvent
+- `model:FeatureFlag`: model:FeatureFlag
+- `model:GridSavedView`: model:GridSavedView, test:Models::GridSavedView
+- `model:IdempotencyRecord`: model:IdempotencyRecord
+- `model:ImportRun`: model:ImportRun
+- `model:Membership`: model:Membership
+- `model:Notification`: document:Modules::EnterpriseServices::Notifications, model:Notification
+- `model:Organization`: controller:Organizations, document:Modules::Organizations::AiContext, model:Organization, model:OrganizationInvitation, policy:Organization, test:Controllers::OrganizationMemberAdministration, test:Controllers::OrganizationsController, test:Models::Organization, test:Models::OrganizationInvitation
+- `model:OrganizationInvitation`: model:Organization, model:OrganizationInvitation, policy:Organization, test:Models::OrganizationInvitation
+- `model:PlatformRole`: model:PlatformRole, test:Models::PlatformRole
+- `model:PrivacyPreference`: model:PrivacyPreference
+- `model:PrivacyRequest`: model:PrivacyRequest
+- `model:RetentionPolicy`: model:RetentionPolicy
+- `model:Session`: model:Session
+- `model:StoredFile`: controller:StoredFiles, model:StoredFile, policy:StoredFile, test:Controllers::StoredFilesController
+- `model:User`: document:Design-system::Localization, model:User, test:Models::User, test:Models::UserLocalization
+- `model:WebhookEndpoint`: model:WebhookEndpoint
+- `policy:Application`: component:Application, component:Ui::Layout::ApplicationShell, controller:Application, document:Architecture::Application-layer, document:Architecture::Decisions::0005-use-application-layer-boundary, document:Architecture::Decisions::0006-seal-application-role-and-grid-registries, document:Architecture::Decisions::0007-load-application-owned-extension-packages, document:Commercial-readiness::Certification, document:Design-system::Application-shell, document:Distribution::Application-starter, document:Extensions::Certification, document:Validation::Representative-application, job:Application, policy:Application, test:Components::Ui::Layout::ApplicationShellComponent, test:Integration::ApplicationExtensionSample, test:Integration::ApplicationLayerBootstrap, test:Lib::ApplicationRegistrations, test:Lib::ApplicationStarter, test:Services::ApplicationLayer::Certification, test:Services::Epic10::AccessibilityCertification, test:Services::Epic10::AiReadinessCertification, test:Services::Epic10::FunctionalFrameworkCertification, test:Services::Epic10::OperationalResilienceCertification, test:Services::Epic10::PerformanceCompatibilityCertification, test:Services::Epic10::ProductionDeploymentCertification, test:Services::Epic10::RcUpgradeCertification, test:Services::Epic10::RepresentativeApplication, test:Services::Epic10::RepresentativeApplicationCertification, test:Services::Epic10::RepresentativeApplicationJourney, test:Services::Epic10::SecurityPrivacyIsolationCertification
+- `policy:Customer`: controller:Customers, document:Distribution::Operations, document:Extensions::Operations, document:Modules::Customers::AiContext, model:Customer, policy:Customer, test:Controllers::CustomersController, test:Models::Customer, test:Operations::CustomersOperations
+- `policy:Organization`: controller:Organizations, document:Modules::Organizations::AiContext, model:Organization, model:OrganizationInvitation, policy:Organization, test:Controllers::OrganizationMemberAdministration, test:Controllers::OrganizationsController, test:Models::Organization, test:Models::OrganizationInvitation
+- `policy:StoredFile`: controller:StoredFiles, model:StoredFile, policy:StoredFile, test:Controllers::StoredFilesController

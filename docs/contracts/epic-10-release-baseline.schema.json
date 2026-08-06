@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nomotect.dev/contracts/epic-10-release-baseline.schema.json",
+  "title": "NomoTect Epic 10 Release Baseline",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "runtimes", "browsers", "containers", "deployments", "thresholds"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "runtimes": { "$ref": "#/$defs/environments" },
+    "browsers": { "$ref": "#/$defs/environments" },
+    "containers": { "$ref": "#/$defs/environments" },
+    "deployments": { "$ref": "#/$defs/environments" },
+    "thresholds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["accessibility", "security", "privacy", "performance", "compatibility", "reliability", "ai_readiness"],
+      "properties": {
+        "accessibility": { "$ref": "#/$defs/metrics" },
+        "security": { "$ref": "#/$defs/metrics" },
+        "privacy": { "$ref": "#/$defs/metrics" },
+        "performance": { "$ref": "#/$defs/metrics" },
+        "compatibility": { "$ref": "#/$defs/metrics" },
+        "reliability": { "$ref": "#/$defs/metrics" },
+        "ai_readiness": { "$ref": "#/$defs/metrics" }
+      }
+    }
+  },
+  "$defs": {
+    "identifier": { "type": "string", "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$" },
+    "environments": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "version", "support_level", "evidence", "manual_required"],
+        "properties": {
+          "name": { "$ref": "#/$defs/identifier" },
+          "version": { "type": "string", "minLength": 1 },
+          "support_level": { "enum": ["certified", "documented", "manual"] },
+          "evidence": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+          "manual_required": { "type": "boolean" }
+        }
+      }
+    },
+    "metrics": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "comparator", "target", "unit", "evidence_required"],
+        "properties": {
+          "id": { "$ref": "#/$defs/identifier" },
+          "comparator": { "enum": ["lte", "gte", "eq"] },
+          "target": { "type": ["number", "boolean"] },
+          "unit": { "type": "string", "minLength": 1 },
+          "evidence_required": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+        }
+      }
+    }
+  }
+}

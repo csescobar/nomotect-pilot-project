@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+mkdir -p tmp/ci
+if (( $# > 0 )); then
+  targets=("$@")
+else
+  targets=(test)
+  [[ -d application/test ]] && targets+=(application/test)
+fi
+
+ruby bin/rails test "${targets[@]}" 2>&1 | tee tmp/ci/test-report.txt

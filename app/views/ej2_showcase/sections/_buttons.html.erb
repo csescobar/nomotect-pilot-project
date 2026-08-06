@@ -1,0 +1,68 @@
+<%# ── EJ2 Buttons Section ────────────────────────────────────────────────────────── %>
+<div class="ej2-showcase-section">
+  <header class="ej2-showcase-section__header">
+    <h2 class="ej2-showcase-section__title"><%= t("ej2_showcase.buttons.title") %></h2>
+    <p class="ej2-showcase-section__desc"><%= t("ej2_showcase.buttons.description") %></p>
+  </header>
+
+  <%# ── Button Variants ──────────────────────────────────────────────────────── %>
+  <div class="ej2-showcase-card" id="ej2-buttons-variants">
+    <div class="ej2-showcase-card__header">
+      <h3 class="ej2-showcase-card__title"><%= t("ej2_showcase.buttons.variants.title") %></h3>
+      <p class="ej2-showcase-card__desc"><%= t("ej2_showcase.buttons.variants.description") %></p>
+    </div>
+    <div class="ej2-showcase-card__demo">
+      <div class="ej2-button-group">
+        <div data-controller="ej2-button" data-ej2-button-is-primary-value="true">
+          <button type="button" class="e-btn e-primary">
+            <%= t("ej2_showcase.buttons.variants.primary") %>
+          </button>
+        </div>
+        <div data-controller="ej2-button">
+          <button type="button" class="e-btn">
+            <%= t("ej2_showcase.buttons.variants.secondary") %>
+          </button>
+        </div>
+        <div data-controller="ej2-button">
+          <button type="button" class="e-btn e-danger">
+            <%= t("ej2_showcase.buttons.variants.destructive") %>
+          </button>
+        </div>
+        <div data-controller="ej2-button">
+          <button type="button" class="e-btn e-outline">
+            <%= t("ej2_showcase.buttons.variants.outline") %>
+          </button>
+        </div>
+        <div data-controller="ej2-button">
+          <button type="button" class="e-btn e-flat">
+            <%= t("ej2_showcase.buttons.variants.ghost") %>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%# ── Button States & Indicators ────────────────────────────────────────────── %>
+  <div class="ej2-showcase-card" id="ej2-buttons-states">
+    <div class="ej2-showcase-card__header">
+      <h3 class="ej2-showcase-card__title"><%= t("ej2_showcase.buttons.states.title") %></h3>
+      <p class="ej2-showcase-card__desc"><%= t("ej2_showcase.buttons.states.description") %></p>
+    </div>
+    <div class="ej2-showcase-card__demo">
+      <div class="ej2-button-group">
+        <div data-controller="ej2-button" data-ej2-button-disabled-value="true">
+          <button type="button" class="e-btn" disabled>
+            <%= t("ej2_showcase.buttons.states.disabled") %>
+          </button>
+        </div>
+
+        <div data-controller="ej2-button">
+          <button type="button" class="e-btn e-primary" data-action="click->ej2-button#toggleLoading">
+            <span class="ej2-btn-spinner" aria-hidden="true">⏳</span>
+            <span><%= t("ej2_showcase.buttons.states.trigger_loading") %></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

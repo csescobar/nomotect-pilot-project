@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ruby bin/validate-container-environment
+
+mkdir -p log tmp/pids tmp/cache storage var/installation
+rm -f tmp/pids/server.pid
+
+if [[ "${INSTALLATION_ENABLED:-false}" != "true" && "${CONTAINER_PREPARE_DATABASE:-false}" == "true" ]]; then
+  bundle exec rails db:prepare
+fi
+
+exec "$@"

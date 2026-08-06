@@ -1,0 +1,32 @@
+schema_version: 1
+id: representative_security_privacy_isolation
+certifications:
+  authorization: passed
+  tenant_isolation: passed
+  content_security_policy: passed
+  abuse_controls: passed
+  dependency_audit: passed
+  secret_scanning: passed
+  supply_chain: passed
+  adversarial_inputs: passed
+  data_minimization: passed
+  log_redaction: passed
+  retention_policy: passed
+  subject_workflows: passed
+thresholds:
+  unresolved_critical: 0
+  unresolved_high: 0
+  cross_tenant_leaks: 0
+  secret_bearing_evidence: 0
+findings:
+  - id: adversarial-certification-baseline
+    severity: low
+    status: resolved
+    resolution: Negative authorization, isolation and input paths are enforced.
+evidence:
+  deterministic: true
+  credential_free: true
+  personal_data: false
+  source_commit_required: true
+publication:
+  allowed: false

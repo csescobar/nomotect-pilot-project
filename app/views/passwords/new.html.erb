@@ -1,0 +1,14 @@
+<% content_for :title, t("passwords.reset") %>
+
+<section class="card auth-card">
+  <h1><%= t("passwords.reset") %></h1>
+
+  <%= form_with url: passwords_path do |form| %>
+    <div class="field">
+      <%= form.label :email_address, t("authentication.email") %>
+      <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username" %>
+    </div>
+
+    <%= form.submit t("passwords.send_instructions"), class: "button button--primary" %>
+  <% end %>
+</section>

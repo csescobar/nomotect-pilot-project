@@ -1,0 +1,88 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "json"
+require "open3"
+require "optparse"
+require_relative "../config/environment"
+
+options = { format: "human" }
+parser = OptionParser.new do |configuration|
+  configuration.banner = "Usage: bin/ghcr-promote [plan|apply] [options]"
+  configuration.on("--manifest PATH", "Approved distribution manifest") { |path| options[:manifest] = path }
+  configuration.on("--repository OWNER/REPOSITORY", "Active GitHub repository") do |value|
+    options[:repository] = value
+  end
+  configuration.on("--digest SHA256", "Existing multi-platform image digest") do |value|
+    options[:digest] = value
+  end
+  configuration.on("--format FORMAT", %w[human json], "Output format") { |value| options[:format] = value }
+end
+parser.parse!
+
+command = ARGV.shift
+abort parser.to_s unless
+  %w[plan apply].include?(command) &&
+  ARGV.empty? &&
+  %i[manifest repository digest].all? { |key| options[key].present? }
+
+begin
+  manifest = Distributions::Manifest.load(options.fetch(:manifest))
+  plan = Distributions::GhcrPromotionPlan.new(
+    manifest: manifest,
+    repository: options.fetch(:repository),
+    digest: options.fetch(:digest)
+  )
+
+  if command == "plan"
+    puts(options.fetch(:format) == "json" ? JSON.pretty_generate(plan.to_h) : plan.semantic_tags.join("\n"))
+    exit
+  end
+
+  abort "GHCR promotion requires the protected release environment" unless
+    ENV["DISTRIBUTION_APPROVED"] == "true"
+  abort "GHCR promotion is restricted to GitHub Actions" unless ENV["GITHUB_ACTIONS"] == "true"
+  abort "GHCR promotion requires main" unless ENV["GITHUB_REF_NAME"] == "main"
+  abort "GHCR source commit does not match the approved manifest" unless
+    ENV["DISTRIBUTION_SOURCE_COMMIT"] == plan.manifest.commit &&
+    ENV["GITHUB_SHA"] == plan.manifest.commit
+  abort "repository does not match GITHUB_REPOSITORY" unless
+    options.fetch(:repository) == ENV["GITHUB_REPOSITORY"]
+
+  source_output, _, source_status = Open3.capture3(
+    "docker", "buildx", "imagetools", "inspect", plan.commit_tag
+  )
+  abort "commit-addressable GHCR image is unavailable" unless source_status.success?
+  abort "commit-addressable GHCR image digest does not match" unless source_output.include?(plan.digest)
+
+  _, _, digest_status = Open3.capture3(
+    "docker", "buildx", "imagetools", "inspect", plan.immutable_reference
+  )
+  abort "immutable GHCR image is unavailable" unless digest_status.success?
+
+  plan.semantic_tags.each do |tag|
+    exists = system(
+      "docker", "buildx", "imagetools", "inspect", tag,
+      out: File::NULL,
+      err: File::NULL
+    )
+    abort "semantic GHCR tag already exists: #{tag}" if exists
+  end
+
+  arguments = [ "docker", "buildx", "imagetools", "create" ]
+  plan.semantic_tags.each { |tag| arguments.concat([ "--tag", tag ]) }
+  arguments << plan.immutable_reference
+  _, _, status = Open3.capture3(*arguments)
+  abort "GHCR semantic promotion failed" unless status.success?
+
+  plan.semantic_tags.each do |tag|
+    output, _, verification = Open3.capture3("docker", "buildx", "imagetools", "inspect", tag)
+    abort "GHCR semantic promotion verification failed" unless
+      verification.success? && output.include?(plan.digest)
+  end
+
+  puts JSON.pretty_generate(plan.to_h)
+rescue Distributions::Manifest::InvalidManifest,
+  Distributions::GhcrPromotionPlan::InvalidPromotion => error
+  abort "GHCR promotion input is invalid: #{error.message}"
+end

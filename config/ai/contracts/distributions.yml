@@ -1,0 +1,76 @@
+id: distributions
+version: 1
+owns:
+  - distribution_manifest
+  - publication_evidence
+  - distribution_channel_state
+  - distribution_channel_policy
+  - publication_status
+  - publication_failure_code
+  - publication_recovery_policy
+  - distribution_inspection
+  - distribution_preflight
+  - github_release_publication
+  - distribution_artifact_bundle
+  - ghcr_semantic_promotion
+  - distribution_verification
+  - artifact_attestation
+  - distribution_bundle_preparation
+  - distribution_certification
+  - distribution_operations
+  - distribution_channel_observation
+may_use:
+  - platform_version
+  - release_metadata
+  - release_evidence
+  - release_consistency
+  - packaging_manifest
+  - sbom
+  - provenance
+  - repository_intelligence
+cannot_use:
+  - enterprise_repository_credentials
+  - proprietary_extension_artifacts
+  - arbitrary_distribution_channel
+  - automatic_publication_without_approval
+  - mutable_release_overwrite
+  - container_rebuild_during_release
+  - latest_tag_before_stable_release
+  - secret_persistence
+invariants:
+  - GitHub Releases and GHCR are the only supported baseline channels
+  - repository and package identity derive from the active GitHub repository context
+  - every publication binds one semantic version tag source commit and manifest digest
+  - GitHub Release and GHCR evidence refer to the same approved source commit
+  - semantic GHCR tags promote an existing commit-addressable image without rebuilding
+  - release publication requires approval through the protected release environment
+  - publication never overwrites an existing immutable tag release or image digest
+  - pre-stable releases never publish the latest image tag
+  - artifacts include checksums SBOMs provenance compatibility and operator notes
+  - publication evidence contains no credentials tokens or proprietary artifacts
+  - partial publication stops for operator review and resumes forward
+  - inspection and preflight are read-only and repeatable
+  - preflight blocks unavailable conflicting partial or replayed channel state
+  - GitHub Release publication consumes a checksum-verified artifact bundle
+  - GitHub Release publication targets the exact approved main commit
+  - GitHub Release publication requires the protected release environment
+  - GHCR semantic tags resolve to the existing commit-addressable image digest
+  - GHCR promotion performs no container rebuild and creates no latest tag
+  - release artifacts receive GitHub artifact attestations before publication
+  - post-publication verification is read-only and binds both channels to canonical release evidence
+  - verification evidence derives from a successful main run for the approved source commit
+  - channel observations derive from the approved distribution bundle and use read-only provider access
+  - provider credentials and raw responses are excluded from channel-state artifacts
+  - distribution bundles derive from successful packaging evidence for the same current main commit
+  - bundle preparation has read-only repository permissions and cannot publish channel state
+  - production-like certification covers preparation preflight plans verification and replay protection
+  - the complete Apache licensed community platform remains independently distributable
+required_tests:
+  - distributions_manifest_test
+  - distributions_channel_state_test
+  - distributions_inspector_test
+  - distributions_github_release_plan_test
+  - distributions_ghcr_promotion_plan_test
+  - distributions_verifier_test
+  - distribution_certification_test
+  - distribution_contract_certification

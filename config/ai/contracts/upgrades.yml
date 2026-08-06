@@ -1,0 +1,44 @@
+id: upgrades
+version: 1
+owns:
+  - upgrade_manifest
+  - installed_platform_state
+  - upgrade_inspection
+  - upgrade_preflight
+  - upgrade_history
+  - backup_evidence
+  - maintenance_control
+  - execution_safety_gate
+  - resumable_upgrade_execution
+  - upgrade_operation_registry
+  - post_upgrade_verification
+  - replay_safe_upgrade_history
+  - recovery_guidance
+  - end_to_end_upgrade_certification
+may_use:
+  - installation_state
+  - deployment_manifest
+  - database_schema
+  - generated_artifacts
+  - extension_installed_state
+cannot_use:
+  - arbitrary_shell_execution
+  - secret_persistence
+  - state_mutation_during_inspection
+  - automatic_database_rollback
+invariants:
+  - inspection and preflight are read-only
+  - compatibility evaluation fails closed when required observations are unavailable
+  - pending extension migrations and incompatible extension state block preflight
+  - reports contain stable blocker and warning codes
+  - persisted operational evidence is credential-free
+  - recovery guidance never mutates execution or installed state
+  - irreversible operations require forward recovery
+required_tests:
+  - upgrades_installed_state_detector_test
+  - upgrades_inspector_test
+  - upgrades_backup_and_maintenance_test
+  - upgrades_executor_test
+  - upgrades_post_upgrade_verifier_test
+  - upgrades_recovery_advisor_test
+  - upgrade_framework_certification_test

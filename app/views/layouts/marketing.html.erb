@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
+  <head>
+    <%
+      page_title = content_for(:title) || t("marketing.meta.title")
+      page_description = content_for(:meta_description) || t("marketing.meta.description")
+      public_site_url = "https://csescobar.github.io/nomotect-platform/"
+      page_url = @static_export ? public_site_url : request.original_url.split("?").first
+      open_graph_locale = I18n.locale.to_s == "pt-BR" ? "pt_BR" : "en_US"
+    %>
+    <title><%= page_title %></title>
+    <meta name="description" content="<%= page_description %>">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <meta name="google-site-verification" content="6UWm4w467BVq1xz_vHgalqyWI6kIasR1itiYNhD6XvQ">
+    <meta name="theme-color" content="#0B1220">
+    <link rel="canonical" href="<%= page_url %>">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Service Desk Lite">
+    <meta property="og:locale" content="<%= open_graph_locale %>">
+    <meta property="og:url" content="<%= page_url %>">
+    <meta property="og:title" content="<%= page_title %>">
+    <meta property="og:description" content="<%= page_description %>">
+    <% if @social_preview_url.present? %>
+      <meta property="og:image" content="<%= @social_preview_url %>">
+      <meta property="og:image:width" content="1280">
+      <meta property="og:image:height" content="640">
+      <meta property="og:image:alt" content="Service Desk Lite — Build with structure. Evolve with confidence.">
+    <% end %>
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<%= page_title %>">
+    <meta name="twitter:description" content="<%= page_description %>">
+    <% if @social_preview_url.present? %>
+      <meta name="twitter:image" content="<%= @social_preview_url %>">
+      <meta name="twitter:image:alt" content="Service Desk Lite — Build with structure. Evolve with confidence.">
+    <% end %>
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= platform_favicon_tag %>
+    <script nonce="<%= content_security_policy_nonce %>">
+      (() => {
+        const preference = localStorage.getItem("nomotect-theme");
+        if (preference === "light" || preference === "dark") {
+          document.documentElement.dataset.theme = preference;
+        }
+      })();
+    </script>
+    <%= stylesheet_link_tag "design_tokens", "application", "marketing", "data-turbo-track": "reload", preload: false %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body class="marketing-body">
+    <a href="#main-content" class="skip-link"><%= t("layout.skip_to_content") %></a>
+
+    <%= yield %>
+
+    <div class="toast-region" aria-live="polite" aria-atomic="false" id="toast-region">
+      <% flash.each do |type, message| %>
+        <div class="toast toast--<%= type %>" role="status"
+             data-controller="toast"
+             data-toast-duration-value="4000">
+          <span class="toast__message"><%= message %></span>
+          <button type="button" class="toast__close button button--ghost button--small"
+                  data-action="toast#dismiss"
+                  aria-label="<%= t("layout.close_notification") %>">&#x2715;</button>
+        </div>
+      <% end %>
+    </div>
+  </body>
+</html>

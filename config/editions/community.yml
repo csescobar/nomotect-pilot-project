@@ -1,0 +1,17 @@
+schema_version: 1
+id: community
+capabilities:
+  - installation
+  - authentication
+  - authorization
+  - tenancy
+  - design_system
+  - grid_engine
+  - domain_framework
+  - enterprise_services
+  - repository_intelligence
+  - extensions
+  - upgrades
+  - releases
+  - distribution
+  - operational_readiness

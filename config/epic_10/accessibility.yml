@@ -1,0 +1,31 @@
+schema_version: 1
+id: representative_accessibility
+automated_checks:
+  semantic_structure: passed
+  keyboard_operation: passed
+  focus_management: passed
+  accessible_names: passed
+  status_announcements: passed
+  contrast_light: passed
+  contrast_dark: passed
+  browser_journeys: passed
+thresholds:
+  critical_violations: 0
+  keyboard_blockers: 0
+supported_themes:
+  - light
+  - dark
+supported_locales:
+  - en
+  - pt-BR
+manual_reviews:
+  screen_reader:
+    required: true
+    approved: false
+    authority: human
+evidence:
+  deterministic: true
+  credential_free: true
+  source_commit_required: true
+publication:
+  allowed: false

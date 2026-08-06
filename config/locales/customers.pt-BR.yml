@@ -1,0 +1,47 @@
+pt-BR:
+  customers:
+    created: "Cliente criado."
+    updated: "Cliente atualizado."
+    destroyed: "Cliente excluído."
+    conflict: "Este cliente foi alterado enquanto você editava. Revise os valores atuais e tente novamente."
+    delete_confirmation: "Excluir este cliente?"
+    index:
+      title: "Clientes — %{organization}"
+      description: "Registros de clientes de referência limitados a esta organização."
+    new:
+      title: "Novo cliente"
+      description: "Crie um cliente por meio do contrato de operação de domínio."
+    edit:
+      title: "Editar %{name}"
+      description: "O bloqueio otimista protege alterações simultâneas."
+    show:
+      description: "Detalhes do cliente e histórico de auditoria por eventos de domínio."
+    empty:
+      title: "Nenhum cliente ainda"
+      description: "Crie o primeiro cliente desta organização."
+    fields:
+      name: "Nome"
+      email: "E-mail"
+      status: "Status"
+      notes: "Observações"
+    statuses:
+      active: "Ativo"
+      inactive: "Inativo"
+    actions:
+      new: "Novo cliente"
+      view: "Ver clientes"
+      save: "Salvar cliente"
+      edit: "Editar cliente"
+      delete: "Excluir cliente"
+    audit:
+      title: "Histórico de auditoria"
+      empty:
+        title: "Nenhum evento de auditoria"
+        description: "Os eventos de domínio deste cliente aparecerão aqui."
+      events:
+        customer_created: "Cliente criado"
+        customer_updated: "Cliente atualizado"
+        customer_deleted: "Cliente excluído"
+    danger_zone:
+      title: "Zona de perigo"
+      description: "A exclusão deste cliente é permanente e não pode ser desfeita."

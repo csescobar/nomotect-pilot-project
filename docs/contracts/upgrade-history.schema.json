@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rails-application.example/schemas/upgrade-history-v1.json",
+  "title": "Upgrade History Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "upgrade_id", "manifest_digest", "source_version", "target_version", "status", "started_at", "completed_at", "operations", "evidence"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "upgrade_id": { "type": "string", "minLength": 1 },
+    "manifest_digest": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "source_version": { "type": "string", "minLength": 1 },
+    "target_version": { "type": "string", "minLength": 1 },
+    "status": { "enum": ["planned", "blocked", "running", "completed", "failed", "recovery_required"] },
+    "started_at": { "type": "string", "format": "date-time" },
+    "completed_at": { "type": ["string", "null"], "format": "date-time" },
+    "operations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "status"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "status": { "enum": ["pending", "running", "completed", "failed", "skipped"] },
+          "message": { "type": "string" }
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["database_schema", "installation_contract", "generated_artifacts_current", "application_healthy", "backup_evidence_ids"],
+      "properties": {
+        "database_schema": { "type": "string", "pattern": "^[0-9]+$" },
+        "installation_contract": { "type": "integer", "minimum": 1 },
+        "generated_artifacts_current": { "const": true },
+        "application_healthy": { "const": true },
+        "backup_evidence_ids": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true }
+      },
+      "description": "Credential-free post-upgrade evidence only"
+    }
+  }
+}

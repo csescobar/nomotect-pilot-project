@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+require "bundler"
+require "digest"
+require "json"
+require "fileutils"
+require "time"
+
+platform_version = File.read("VERSION").strip
+lockfile = Bundler::LockfileParser.new(Bundler.read_file("Gemfile.lock"))
+components = lockfile.specs.sort_by(&:name).map do |spec|
+  {
+    type: "library",
+    name: spec.name,
+    version: spec.version.to_s,
+    purl: "pkg:gem/#{spec.name}@#{spec.version}"
+  }
+end
+
+bom = {
+  bomFormat: "CycloneDX",
+  specVersion: "1.5",
+  serialNumber: "urn:uuid:#{Digest::SHA256.hexdigest(ENV.fetch('GITHUB_SHA', 'local'))[0, 32]}",
+  version: 1,
+  metadata: {
+    timestamp: Time.now.utc.iso8601,
+    component: {
+      type: "application",
+      name: "nomotect-platform",
+      version: platform_version
+    },
+    properties: [
+      { name: "source.commit", value: ENV.fetch("GITHUB_SHA", "local") },
+      { name: "platform.version", value: platform_version }
+    ]
+  },
+  components: components
+}
+
+FileUtils.mkdir_p("tmp/ci")
+json = JSON.pretty_generate(bom)
+File.write("tmp/ci/sbom.cdx.json", json)
+File.write("tmp/ci/sbom.cdx.json.sha256", "#{Digest::SHA256.hexdigest(json)}  sbom.cdx.json\n")

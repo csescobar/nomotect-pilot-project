@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ruby -rjson -e 'ARGV.each { |path| JSON.parse(File.read(path)) }' \
+  docs/contracts/release-compatibility.schema.json \
+  docs/contracts/release-evidence.schema.json \
+  docs/contracts/release-metadata.schema.json
+
+bundle exec rails test \
+  test/services/releases/consistency_validator_test.rb \
+  test/integration/release_framework_certification_test.rb
+
+bundle exec ruby bin/release-notes verify
+bash bin/container-publication-validate
+
+grep -q 'platform.version' bin/sbom
+grep -q 'platform.version' bin/container-sbom
+grep -q 'source_version = ENV.fetch("SOURCE_VERSION")' bin/packaging-manifest
+grep -q 'org.opencontainers.image.version' bin/package-certify
+grep -q '"platform_version" => version' bin/release-provenance
+
+printf 'Release framework consistency certified\n'

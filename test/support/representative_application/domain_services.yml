@@ -1,0 +1,44 @@
+schema_version: 1
+id: domain_services
+aggregate: service_request
+states: [submitted, triaged, in_progress, resolved]
+transitions:
+  - from: submitted
+    to: triaged
+    operation: triage
+    policy: manage_requests
+    event: service_request_triaged
+  - from: triaged
+    to: in_progress
+    operation: start
+    policy: manage_requests
+    event: service_request_started
+  - from: in_progress
+    to: resolved
+    operation: resolve
+    policy: manage_requests
+    event: service_request_resolved
+queries: [list_requests, find_request]
+services:
+  background_job:
+    idempotent: true
+    retry_safe: true
+  notification:
+    tenant_scoped: true
+  file:
+    tenant_scoped: true
+    checksum_required: true
+  audit:
+    actor_required: true
+    tenant_required: true
+  feature_flag:
+    default_enabled: false
+evidence:
+  operation: required
+  query: required
+  policy_denial: required
+  domain_event: required
+  idempotent_job: required
+  notification: required
+  file_checksum: required
+  audit: required

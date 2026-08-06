@@ -1,0 +1,3 @@
+<% content_for :title, t("organizations.new.title") %>
+<%= render Ui::Layout::PageHeaderComponent.new(title: t("organizations.new.title"), description: t("organizations.new.description")) %>
+<%= render "form", organization: @organization %>

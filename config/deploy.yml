@@ -1,0 +1,60 @@
+# Kamal 2 deployment profile.
+# Required operator environment: KAMAL_IMAGE, KAMAL_SERVER, KAMAL_HOST, KAMAL_REGISTRY_USERNAME.
+service: <%= ENV.fetch("KAMAL_SERVICE", "rails-application") %>
+image: <%= ENV.fetch("KAMAL_IMAGE") %>
+
+servers:
+  web:
+    hosts:
+      - <%= ENV.fetch("KAMAL_SERVER") %>
+
+proxy:
+  ssl: true
+  host: <%= ENV.fetch("KAMAL_HOST") %>
+  app_port: 3000
+  forward_headers: true
+  healthcheck:
+    path: /health
+    interval: 2
+    timeout: 3
+
+registry:
+  server: <%= ENV.fetch("KAMAL_REGISTRY_SERVER", "ghcr.io") %>
+  username: <%= ENV.fetch("KAMAL_REGISTRY_USERNAME") %>
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+builder:
+  arch: <%= ENV.fetch("KAMAL_ARCH", "amd64") %>
+
+ssh:
+  user: <%= ENV.fetch("KAMAL_SSH_USER", "deploy") %>
+
+volumes:
+  - <%= ENV.fetch("KAMAL_STORAGE_PATH", "/var/lib/rails-application/storage") %>:/rails/storage
+  - <%= ENV.fetch("KAMAL_INSTALLATION_PATH", "/var/lib/rails-application/installation") %>:/rails/var/installation
+
+env:
+  clear:
+    RAILS_ENV: production
+    RAILS_LOG_TO_STDOUT: "true"
+    RAILS_SERVE_STATIC_FILES: "true"
+    INSTALLATION_ENABLED: "true"
+    RUN_DB_PREPARE: "false"
+  secret:
+    - DATABASE_URL
+    - SECRET_KEY_BASE
+    - INSTALLATION_BOOTSTRAP_TOKEN
+
+deploy_timeout: 60
+drain_timeout: 30
+readiness_delay: 5
+
+labels:
+  org.opencontainers.image.source: <%= ENV.fetch("KAMAL_SOURCE", "local://repository") %>
+
+boot:
+  limit: 1
+  wait: 5
+
+retain_containers: 3

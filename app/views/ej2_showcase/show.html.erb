@@ -1,0 +1,59 @@
+<% content_for :title, t("ej2_showcase.title") %>
+
+<%= render Ui::Layout::PageHeaderComponent.new(
+  title: t("ej2_showcase.title"),
+  description: t("ej2_showcase.description")
+) %>
+
+<div class="ej2-showcase" data-controller="ej2-showcase">
+  <%# ── Sidebar Navigation ─────────────────────────────────────────────────── %>
+  <nav class="ej2-showcase__sidebar" aria-label="<%= t('ej2_showcase.title') %>">
+    <ul class="ej2-showcase__nav" role="list">
+      <% [
+        { key: "forms",   icon: "📝" },
+        { key: "buttons", icon: "🔘" },
+        { key: "dialogs", icon: "💬" },
+        { key: "cards",   icon: "🗂️" },
+        { key: "toolbar", icon: "🔧" },
+        { key: "grid",    icon: "📊" },
+        { key: "toasts",  icon: "🔔" },
+        { key: "loading", icon: "⏳" }
+      ].each do |item| %>
+        <li>
+          <a
+            href="<%= ej2_showcase_path(section: item[:key]) %>"
+            class="ej2-showcase__nav-link <%= @active_section == item[:key] ? "is-active" : "" %>"
+            aria-current="<%= @active_section == item[:key] ? "page" : nil %>"
+          >
+            <span class="ej2-showcase__nav-icon" aria-hidden="true"><%= item[:icon] %></span>
+            <span><%= t("ej2_showcase.nav.#{item[:key]}") %></span>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+
+  <%# ── Main Content ────────────────────────────────────────────────────────── %>
+  <main class="ej2-showcase__content" id="ej2-showcase-content">
+    <% case @active_section %>
+    <% when "forms" %>
+      <%= render "ej2_showcase/sections/forms" %>
+    <% when "buttons" %>
+      <%= render "ej2_showcase/sections/buttons" %>
+    <% when "dialogs" %>
+      <%= render "ej2_showcase/sections/dialogs" %>
+    <% when "cards" %>
+      <%= render "ej2_showcase/sections/cards" %>
+    <% when "toolbar" %>
+      <%= render "ej2_showcase/sections/toolbar" %>
+    <% when "grid" %>
+      <%= render "ej2_showcase/sections/grid" %>
+    <% when "toasts" %>
+      <%= render "ej2_showcase/sections/toasts" %>
+    <% when "loading" %>
+      <%= render "ej2_showcase/sections/loading" %>
+    <% else %>
+      <%= render "ej2_showcase/sections/forms" %>
+    <% end %>
+  </main>
+</div>

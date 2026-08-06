@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nomotect.dev/contracts/support-consent.schema.json",
+  "title": "NomoTect Support Consent",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "support_id", "scopes", "granted_at", "expires_at", "revoked_at"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "support_id": { "type": "string", "format": "uuid" },
+    "scopes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "enum": ["diagnostics", "operational_health", "redacted_configuration"] }
+    },
+    "granted_at": { "type": "string", "format": "date-time" },
+    "expires_at": { "type": "string", "format": "date-time" },
+    "revoked_at": {
+      "oneOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }]
+    }
+  }
+}

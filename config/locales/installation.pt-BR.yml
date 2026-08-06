@@ -1,0 +1,60 @@
+pt-BR:
+  installation:
+    wizard:
+      title: "Assistente de configuração — %{platform}"
+      progress: "Progresso da instalação"
+    steps:
+      appearance: "Aparência"
+      database: "Banco de dados"
+      provisioning: "Provisionamento"
+      migrations: "Migrações"
+      platform_owner: "Administrador da plataforma"
+    appearance:
+      subtitle: "Configure o nome da plataforma, idioma e ativos de marca."
+      application_name: "Nome da plataforma"
+      default_locale: "Idioma padrão"
+      supported_locales: "Idiomas suportados"
+      trademark_mode: "Exibição da marca no cabeçalho"
+      trademark_name_only: "Somente nome"
+      trademark_image_only: "Somente imagem do logotipo"
+      trademark_image_and_name: "Imagem do logotipo e nome"
+      logo: "Logotipo (completo)"
+      logo_help: "Tamanho recomendado: 200 × 60 px. PNG, JPG ou SVG, máx. 2 MB."
+      compact_logo: "Logotipo (compacto / ícone)"
+      compact_logo_help: "Tamanho recomendado: 64 × 64 px. PNG, JPG, SVG ou ICO, máx. 2 MB."
+      favicon: "Favicon"
+      favicon_help: "Tamanho recomendado: 32 × 32 px. PNG, ICO ou SVG, máx. 2 MB."
+      current_logo: "Logotipo atual"
+      current_compact_logo: "Logotipo compacto atual"
+      current_favicon: "Favicon atual"
+      design_tokens: "YAML do design system"
+      save_and_continue: "Salvar aparência e continuar"
+    database:
+      subtitle: "As credenciais administrativas são limitadas à requisição e nunca são persistidas."
+      host: "Host"
+      port: "Porta"
+      maintenance_database: "Banco de manutenção"
+      admin_username: "Usuário administrativo"
+      admin_password: "Senha administrativa"
+      application_database: "Banco da aplicação"
+      application_username: "Role da aplicação"
+      sslmode: "Modo SSL"
+      test_connection: "Testar conexão"
+      provision: "Provisionar banco de dados"
+    provisioning:
+      subtitle: "A role de execução e o banco de dados estão prontos. Execute as migrações para criar o schema da aplicação."
+      run_migrations: "Executar migrações"
+    migrations:
+      subtitle: "As migrações do banco de dados estão em execução. Repetir é seguro se a execução for interrompida."
+    platform_owner:
+      subtitle: "Crie o administrador global da plataforma e a organização inicial."
+      organization_name: "Nome da organização inicial"
+      email: "E-mail do administrador da plataforma"
+      password: "Senha"
+      password_confirmation: "Confirmar senha"
+      submit: "Criar administrador e concluir instalação"
+    complete:
+      title: "Instalação concluída"
+      body: "Sua plataforma foi configurada. Você já pode fazer login."
+    log:
+      title: "Log de instalação"

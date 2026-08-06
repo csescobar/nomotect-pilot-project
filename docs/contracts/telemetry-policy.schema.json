@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nomotect.dev/contracts/telemetry-policy.schema.json",
+  "title": "NomoTect Telemetry Policy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "enabled", "categories", "updated_at"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "enabled": { "type": "boolean" },
+    "categories": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "enum": ["capability_usage", "operational_health"] }
+    },
+    "updated_at": {
+      "oneOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }]
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "enabled": { "const": false } } },
+      "then": { "properties": { "categories": { "maxItems": 0 } } }
+    }
+  ]
+}

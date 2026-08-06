@@ -1,0 +1,183 @@
+pt-BR:
+  application:
+    name: Service Desk Lite
+  layout:
+    dashboard: Painel
+    organizations: Organizações
+    grid_engine: Motor de Grid
+    component_showcase: Showcase de Componentes
+    close_notification: Fechar notificação
+    skip_to_content: Ir para o conteúdo principal
+  marketing:
+    meta:
+      title: "Service Desk Lite — Plataforma de Aplicações Corporativas IA-Nativa"
+      description: "Uma plataforma open-source e IA-nativa para construir aplicações corporativas seguras, governadas, acessíveis e sustentáveis com Ruby on Rails e Hotwire."
+    nav:
+      platform: "Plataforma"
+      capabilities: "Recursos"
+      architecture: "Arquitetura"
+      documentation: "Documentação"
+      community: "Comunidade"
+      github: "GitHub"
+      explore_platform: "Explorar Plataforma"
+      sign_in: "Entrar"
+      dashboard: "Ir para o Painel"
+    hero:
+      eyebrow: "Plataforma de aplicações corporativas IA-nativa"
+      headline_1: "Construa com estrutura."
+      headline_2: "Evolua com confiança."
+      description: "Uma fundação IA-nativa para construir aplicações de negócios seguras, governadas e de fácil manutenção com Ruby on Rails e Hotwire."
+      primary_cta: "Explorar a plataforma"
+      secondary_cta: "Ver no GitHub"
+      principle_1: "Núcleo comunitário open-source"
+      principle_2: "Licenciado sob Apache 2.0"
+      principle_3: "Arquitetura IA neutra a fornecedores"
+    preview:
+      title: "Interface de Aplicação Interativa & Data Grid Corporativo"
+      org: "Acme Global Enterprise"
+      search_placeholder: "Buscar clientes, faturas, logs de auditoria..."
+      nav_customers: "Clientes"
+      nav_invoices: "Faturas"
+      nav_reports: "Relatórios"
+      nav_settings: "Configurações"
+      grid_title: "Clientes da Organização"
+      filter_status: "Filtrar por Status"
+      saved_view: "Visão Padrão"
+      export_csv: "Exportar CSV"
+      col_name: "Cliente"
+      col_org: "Domínio"
+      col_plan: "Plano"
+      col_status: "Status"
+      col_actions: "Ações"
+      status_active: "Ativo"
+      status_pending: "Pendente"
+      status_review: "Em Análise"
+    capabilities:
+      heading: "Uma fundação para aplicações corporativas sérias."
+      intro: "Construído para gerenciar a complexidade de domínios corporativos enquanto permanece ágil para evoluir. O Service Desk Lite fornece contratos explícitos e recursos reutilizáveis que tornam o desenvolvimento de grande escala previsível."
+      foundation_title: "Fundação da Aplicação"
+      foundation_desc: "Ruby 3.4, Rails 8, Hotwire, ViewComponent e Propshaft fornecendo convenções modulares estruturadas."
+      design_system_title: "Design System"
+      design_system_desc: "Tokens canônicos, temas claro e escuro, acessibilidade estrita e zero código utilitário de terceiros."
+      data_grid_title: "Data Grid Corporativo"
+      data_grid_desc: "Grid DSL com filtragem composta, visões salvas pelo usuário, paginação de servidor e exportações em CSV/JSON."
+      architecture_title: "Arquitetura de Domínio"
+      architecture_desc: "Contratos explícitos de módulo, camadas limpas, dependências voltadas para dentro e isolamento de contexto."
+      multitenancy_title: "Serviços Multi-tenant"
+      multitenancy_desc: "Fronteiras de tenant, escopo de membros, troca de organização e isolamento estrito de dados."
+      security_title: "Segurança & Privacidade"
+      security_desc: "Autorização negada por padrão, cabeçalhos CSP estritos, eventos de auditoria estruturados e conformidade."
+    ai_section:
+      heading: "IA-nativa por arquitetura, não por marketing"
+      description: "Humanos e agentes de código podem entender e estender o Service Desk Lite com segurança sem conhecimento não documentado, ferramentas proprietárias de memória ou dependência de um único fornecedor de IA."
+      step_1_title: "Contrato de Módulo"
+      step_1_desc: "Fronteira de interface legível por máquina"
+      step_2_title: "Contexto de IA"
+      step_2_desc: "Fatos estruturados de domínio e governança"
+      step_3_title: "Playbook de Engenharia"
+      step_3_desc: "Fluxo de trabalho passo a passo determinístico"
+      step_4_title: "Validação Determinística"
+      step_4_desc: "Verificação automatizada em relação aos contratos"
+      step_5_title: "Revisão Humana"
+      step_5_desc: "Responsabilidade final e decisão de merge"
+    architecture:
+      heading: "Convenções onde ajudam. Fronteiras explícitas onde importam."
+      layer_1_title: "Camada de Apresentação"
+      layer_1_desc: "ViewComponents, aprimoramento progressivo Hotwire, tokens de design e Rails I18n."
+      layer_2_title: "Camada de Aplicação"
+      layer_2_desc: "Controladores, manipuladores de comandos, políticas de autorização e barramento de eventos."
+      layer_3_title: "Camada de Domínio"
+      layer_3_desc: "Entidades, invariantes agregadas, especificações de domínio e eventos de negócios."
+      layer_4_title: "Camada de Infraestrutura"
+      layer_4_desc: "Adaptadores ActiveRecord, inteligência de repositório, servidor MCP e observabilidade."
+    lifecycle:
+      heading: "Construído para evoluir além do primeiro lançamento"
+      stage_1: "Instalar"
+      stage_2: "Personalizar"
+      stage_3: "Construir"
+      stage_4: "Governar"
+      stage_5: "Operar"
+      stage_6: "Atualizar"
+      stage_7: "Estender"
+      status_stable: "[Estável]"
+      status_core: "[Núcleo]"
+      status_active: "[Ativo]"
+    open_source:
+      heading: "Um núcleo comunitário aberto para aplicações reais"
+      license_title: "Licença Apache 2.0"
+      license_desc: "Núcleo comunitário completo com licenciamento open-source amigável para uso comercial."
+      neutral_title: "IA Neutra a Fornecedores"
+      neutral_desc: "Adaptadores de servidor MCP independentes e padrões abertos de contexto de IA."
+      stack_heading: "Fundação da Stack Tecnológica"
+    target_apps:
+      heading: "Projetado para software operacional de longa duração"
+      cat_1_title: "Sistemas administrativos e operacionais"
+      cat_1_desc: "Portais corporativos internos, motores de processamento e painéis operacionais."
+      cat_2_title: "Plataformas de governança, risco e conformidade"
+      cat_2_desc: "Trilhas de auditoria, motores de aplicação de políticas e suítes de relatórios regulatórios."
+      cat_3_title: "Aplicações de fluxo de trabalho e aprovação"
+      cat_3_desc: "Roteamento de solicitações em múltiplas etapas, matrizes de aprovação e máquinas de estado."
+      cat_4_title: "Gestão de documentos e registros"
+      cat_4_desc: "Arquivamento estruturado de registros, versionamento, controle de acesso e retenção."
+      cat_5_title: "Aplicações de negócios multi-tenant"
+      cat_5_desc: "Produtos SaaS que exigem isolamento estrito de organização e papéis de membros."
+      cat_6_title: "Ferramentas corporativas internas"
+      cat_6_desc: "Ferramentas internas sob medida projetadas para substituir planilhas legadas fragmentadas."
+    cta:
+      heading: "Construa a aplicação de negócios. Mantenha a arquitetura."
+      read_docs: "Ler a documentação"
+      view_repo: "Ver o repositório"
+    footer:
+      platform_col: "Plataforma"
+      capabilities_col: "Recursos"
+      architecture_col: "Arquitetura"
+      security_col: "Segurança"
+      docs_col: "Documentação"
+      community_col: "Comunidade"
+      privacy_policy: "Política de Privacidade"
+      terms_of_service: "Termos de Serviço"
+      status: "Status do Sistema"
+      copy: "© 2026 Service Desk Lite. Evolução governada. Open-source sob a Licença Apache 2.0."
+  theme:
+    label: Tema
+    light: Claro
+    dark: Escuro
+  tenant_selection:
+    updated: Organização ativa atualizada.
+  privacy_requests:
+    rate_limited: Muitas solicitações de privacidade. Tente novamente mais tarde.
+    accepted: Sua solicitação de privacidade foi aceita para processamento.
+    export: Exportar meus dados
+    anonymize: Anonimizar meus dados pessoais
+  authentication:
+    required: Entre na sua conta para continuar.
+    sign_in: Entrar
+    sign_out: Sair
+    email: Endereço de e-mail
+    password: Senha
+    invalid_credentials: O endereço de e-mail ou a senha está incorreto.
+    try_later: Muitas tentativas. Tente novamente mais tarde.
+  passwords:
+    forgot: Esqueceu sua senha?
+    reset: Redefinir sua senha
+    send_instructions: Enviar instruções
+    instructions_sent: Se a conta existir, as instruções foram enviadas.
+    choose_new: Escolha uma nova senha
+    confirm: Confirme a senha
+    update: Atualizar senha
+    updated: Sua senha foi atualizada. Entre novamente.
+    invalid_token: O link de redefinição é inválido ou expirou.
+    mailer:
+      subject: Instruções para redefinir a senha
+      heading: Redefina sua senha
+      instructions: Use o link abaixo para escolher uma nova senha.
+      action: Escolher uma nova senha
+      expiration: Este link expira em 20 minutes.
+  home:
+    title: Painel Service Desk Lite
+    heading: Início da Aplicação Service Desk Lite
+    description: O núcleo executável da plataforma, autenticação, contexto de requisição, health checks, contrato de autorização, ViewComponent e Hotwire estão ativos.
+    primary_action: Verificar saúde do serviço
+  errors:
+    not_found: O recurso solicitado não foi encontrado.
+    forbidden: Você não tem autorização para executar esta ação.

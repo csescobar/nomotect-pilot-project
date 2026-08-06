@@ -1,0 +1,72 @@
+pt-BR:
+  layout:
+    organizations: "Organizações"
+  organizations:
+    created: "Organização criada."
+    updated: "Organização atualizada."
+    destroyed: "Organização excluída."
+    member_count:
+      one: "1 membro"
+      other: "%{count} membros"
+    delete_confirmation: "Excluir esta organização e todas as suas associações?"
+    index:
+      title: "Organizações"
+      description: "Gerencie os espaços de trabalho onde pessoas e dados do produto são organizados."
+    new:
+      title: "Criar organização"
+      description: "Crie um espaço de trabalho e torne-se seu primeiro proprietário."
+    edit:
+      title: "Editar %{name}"
+      description: "Atualize a identidade da organização."
+    show:
+      description: "Visão geral dos membros e acessos da organização."
+      members: "Membros"
+    empty:
+      title: "Nenhuma organização ainda"
+      description: "Crie a primeira organização para começar a colaborar."
+    fields:
+      name: "Nome da organização"
+    actions:
+      new: "Nova organização"
+      save: "Salvar organização"
+      edit: "Editar organização"
+      delete: "Excluir organização"
+    danger_zone:
+      title: "Zona de perigo"
+      description: "A exclusão desta organização também remove seus membros e não pode ser desfeita."
+    roles:
+      owner: "Proprietário"
+      admin: "Administrador"
+      member: "Membro"
+  memberships:
+    updated: "Função do membro atualizada."
+    destroyed: "Membro removido."
+    change_role: "Alterar função de %{email}"
+    remove_confirmation: "Remover %{email} desta organização?"
+    actions:
+      update: "Atualizar função"
+      remove: "Remover membro"
+  organization_invitations:
+    title: "Convidar pessoas"
+    pending: "Convites pendentes"
+    created: "Convite criado."
+    accepted: "Convite aceito."
+    revoked: "Convite revogado."
+    invalid: "Este convite é inválido ou expirou."
+    email_mismatch: "Entre com o endereço de e-mail que recebeu este convite."
+    fields:
+      email: "Endereço de e-mail"
+      role: "Função"
+    actions:
+      invite: "Criar convite"
+      revoke: "Revogar convite"
+      accept_link: "Abrir link de aceitação"
+  activerecord:
+    errors:
+      models:
+        membership:
+          attributes:
+            role:
+              last_owner: "não pode ser alterada porque a organização precisa manter um proprietário"
+            base:
+              last_owner: "O último proprietário não pode ser removido"

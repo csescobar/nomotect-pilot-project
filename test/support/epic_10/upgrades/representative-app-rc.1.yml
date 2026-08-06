@@ -1,0 +1,12 @@
+schema_version: 1
+candidate: 1.0.0-rc.1
+application_id: service_request_workspace
+state:
+  database_revision: 1
+  configuration_revision: 1
+  generated_artifacts_revision: 1
+  extension_api: 1
+evidence:
+  deterministic: true
+  credential_free: true
+  source_commit_required: true

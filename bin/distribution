@@ -1,0 +1,112 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "json"
+require "open3"
+require "optparse"
+require_relative "../config/environment"
+
+options = {
+  channel_states: [],
+  format: "human",
+  repository: ENV["GITHUB_REPOSITORY"],
+  source_branch: ENV["GITHUB_REF_NAME"],
+  source_commit: ENV["GITHUB_SHA"]
+}
+parser = OptionParser.new do |configuration|
+  configuration.banner = "Usage: bin/distribution [inspect|preflight] [options]"
+  configuration.on("--manifest PATH", "Approved distribution manifest") do |path|
+    options[:manifest] = path
+  end
+  configuration.on("--release-metadata PATH", "Prepared release metadata") do |path|
+    options[:release_metadata] = path
+  end
+  configuration.on("--compatibility PATH", "Prepared compatibility data") do |path|
+    options[:compatibility] = path
+  end
+  configuration.on("--channel-state PATH", "Read-only channel observation") do |path|
+    options[:channel_states] << path
+  end
+  configuration.on("--repository OWNER/REPOSITORY", "Repository identity") do |value|
+    options[:repository] = value
+  end
+  configuration.on("--source-commit SHA", "Approved source commit") do |value|
+    options[:source_commit] = value
+  end
+  configuration.on("--source-branch BRANCH", "Approved source branch") do |value|
+    options[:source_branch] = value
+  end
+  configuration.on("--format FORMAT", %w[human json], "Output format") do |format|
+    options[:format] = format
+  end
+end
+parser.parse!
+
+command = ARGV.shift
+required = %i[manifest release_metadata compatibility repository]
+abort parser.to_s unless
+  %w[inspect preflight].include?(command) &&
+  ARGV.empty? &&
+  required.all? { |key| options[key].present? }
+
+options[:source_commit] = Open3.capture2("git", "rev-parse", "HEAD").first.strip if
+  options[:source_commit].blank?
+options[:source_branch] = Open3.capture2("git", "branch", "--show-current").first.strip if
+  options[:source_branch].blank?
+
+begin
+  manifest = Distributions::Manifest.load(options.fetch(:manifest))
+  release_metadata = JSON.parse(File.read(options.fetch(:release_metadata)))
+  compatibility = JSON.parse(File.read(options.fetch(:compatibility)))
+  channel_states = options.fetch(:channel_states).map { |path| Distributions::ChannelState.load(path) }
+  inspector = Distributions::Inspector.new(
+    manifest: manifest,
+    release_metadata: release_metadata,
+    compatibility: compatibility,
+    repository: options.fetch(:repository),
+    source_commit: options.fetch(:source_commit),
+    source_branch: options.fetch(:source_branch),
+    channel_states: channel_states
+  )
+  report = command == "inspect" ? inspector.inspect : inspector.preflight
+
+  if options.fetch(:format) == "json"
+    puts JSON.pretty_generate(report.to_h)
+  else
+    puts "Distribution #{report.mode}: #{report.status}"
+    puts "Release: #{manifest.tag} (#{report.source_commit})"
+    puts "Repository: #{report.repository}"
+    report.blockers.each do |finding|
+      puts "BLOCKER [#{finding.fetch(:code)}] #{finding.fetch(:message)}"
+    end
+    report.warnings.each do |finding|
+      puts "WARNING [#{finding.fetch(:code)}] #{finding.fetch(:message)}"
+    end
+    report.operator_actions.each do |finding|
+      puts "ACTION [#{finding.fetch(:code)}] #{finding.fetch(:message)}"
+    end
+  end
+
+  exit 2 if command == "preflight" && !report.ready?
+rescue Distributions::Manifest::InvalidManifest,
+  Distributions::ChannelState::InvalidState,
+  JSON::ParserError,
+  Errno::ENOENT => error
+  finding = {
+    code: "manifest_invalid",
+    message: "Distribution input is missing or invalid",
+    details: { error: error.class.name }
+  }
+  if options.fetch(:format) == "json"
+    puts JSON.pretty_generate(
+      schema_version: 1,
+      mode: command,
+      status: "blocked",
+      ready: false,
+      blockers: [ finding ]
+    )
+  else
+    warn "BLOCKER [manifest_invalid] Distribution input is missing or invalid"
+  end
+  exit 2
+end

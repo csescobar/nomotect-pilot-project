@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nomotect.dev/contracts/epic-10-certification.schema.json",
+  "title": "NomoTect Epic 10 Certification",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "commit", "status", "checked_at", "phases", "findings"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "id": { "$ref": "#/$defs/id" },
+    "commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+    "status": { "enum": ["passed", "failed", "blocked"] },
+    "checked_at": { "type": "string", "format": "date-time" },
+    "phases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "status", "evidence"],
+        "properties": {
+          "id": { "$ref": "#/$defs/id" },
+          "status": { "enum": ["pending", "in_progress", "complete", "blocked"] },
+          "evidence": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "severity", "status"],
+        "properties": {
+          "id": { "$ref": "#/$defs/id" },
+          "severity": { "enum": ["critical", "high", "medium", "low"] },
+          "status": { "enum": ["open", "resolved", "accepted"] }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" }
+  }
+}

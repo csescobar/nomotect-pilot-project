@@ -1,0 +1,36 @@
+schema_version: 1
+epic: 9
+status: certified
+stable_release_authorized: false
+certified_on: "2026-07-31"
+gates:
+  - id: cross_cutting_contracts
+    status: passed
+    evidence: "Installation, upgrade, deployment and capability contracts are registered and validated by Repository Intelligence."
+  - id: installation
+    status: passed
+    evidence: "Protected, resumable first-run provisioning is certified by PRs 37 through 42."
+  - id: packaging
+    status: passed
+    evidence: "Reproducible OCI, Compose, development-container and deployment profiles are certified by PRs 44 through 49."
+  - id: upgrades
+    status: passed
+    evidence: "Compatibility, backup, execution, history and recovery flows are certified by PRs 50 through 55."
+  - id: releases
+    status: passed
+    evidence: "Versioning, change fragments, release notes and cross-artifact consistency are certified by PRs 56 through 60."
+  - id: extensions
+    status: passed
+    evidence: "Extension contracts, loading, isolation, lifecycle and production-like fixtures are certified by PRs 61 through 66."
+  - id: distribution
+    status: passed
+    evidence: "GitHub Release and GHCR publication, evidence and verification are certified by PRs 67 through 73."
+  - id: operational_readiness
+    status: passed
+    evidence: "Backup, restore, diagnostics, health, recovery and resilience are certified by PRs 126 through 131."
+  - id: commercial_readiness
+    status: passed
+    evidence: "Neutral entitlements, support identity, telemetry, consent and community fail-safe behavior are certified by PRs 132 through 136."
+  - id: documentation
+    status: passed
+    evidence: "Operator guides, lifecycle policy, tested examples and documentation governance are certified by PRs 137 through 140."

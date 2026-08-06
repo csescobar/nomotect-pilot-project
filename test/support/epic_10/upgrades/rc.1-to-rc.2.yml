@@ -1,0 +1,49 @@
+schema_version: 1
+id: representative-app-rc1-to-rc2
+source:
+  requirement: "= 1.0.0-rc.1"
+target:
+  version: 1.0.0-rc.2
+compatibility:
+  rails: "~> 8.1.0"
+  ruby: "~> 4.0.0"
+  postgresql: ">= 16.0.0, < 19.0.0"
+  contracts:
+    installation-state: 1
+    upgrade-history: 1
+backup:
+  required: true
+  evidence:
+    - database_backup_id
+    - files_backup_id
+operations:
+  - id: verify-backup
+    type: validation
+    description: Verify credential-free backup evidence
+    reversible: true
+    requires: []
+  - id: migrate-service-requests
+    type: database
+    description: Apply the representative application schema transition
+    reversible: false
+    requires:
+      - verify-backup
+  - id: update-configuration
+    type: configuration
+    description: Update the representative application configuration
+    reversible: true
+    requires:
+      - migrate-service-requests
+  - id: regenerate-artifacts
+    type: generated_artifacts
+    description: Regenerate governed application artifacts
+    reversible: true
+    requires:
+      - update-configuration
+  - id: verify-target
+    type: validation
+    description: Verify the target candidate state
+    reversible: true
+    requires:
+      - regenerate-artifacts
+deprecations: []

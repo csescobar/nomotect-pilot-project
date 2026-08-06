@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Rails Hotwire Platform design tokens",
+  "type": "object",
+  "required": [
+    "version",
+    "base",
+    "themes"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "integer",
+      "const": 1
+    },
+    "base": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": false,
+      "patternProperties": {
+        "^[a-z][a-z0-9]*(\\.[a-z0-9][a-z0-9-]*)+$": {
+          "type": "string"
+        }
+      }
+    },
+    "themes": {
+      "type": "object",
+      "required": [
+        "light",
+        "dark"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "light": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[a-z][a-z0-9]*(\\.[a-z0-9][a-z0-9-]*)+$": {
+              "type": "string"
+            }
+          }
+        },
+        "dark": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[a-z][a-z0-9]*(\\.[a-z0-9][a-z0-9-]*)+$": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

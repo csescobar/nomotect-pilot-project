@@ -1,0 +1,6 @@
+pt-BR:
+  forms:
+    actions:
+      submit: Salvar
+    errors:
+      summary_title: Corrija os seguintes erros

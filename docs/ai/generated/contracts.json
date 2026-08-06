@@ -1,0 +1,556 @@
+[
+  {
+    "id": "application_layer",
+    "version": 1,
+    "owns": [
+      "application_source_boundary",
+      "application_bootstrap",
+      "application_role_registration",
+      "application_grid_registration",
+      "application_policy_view_integration",
+      "application_extension_packages",
+      "application_layer_certification"
+    ],
+    "may_use": [
+      "authorization_policies",
+      "grid",
+      "extensions",
+      "multi_tenancy"
+    ],
+    "cannot_use": [
+      "undocumented_internal_contracts",
+      "protected_core_modification",
+      "arbitrary_executable_path_discovery",
+      "implicit_administrative_permissions",
+      "unscoped_grid_relations"
+    ],
+    "invariants": [
+      "product-specific behavior remains below application",
+      "shared platform code never references product-specific constants",
+      "custom roles declare explicit permissions and never replace protected roles",
+      "every application grid registration includes an authorized scope",
+      "controller authorization remains mandatory even when views hide denied actions",
+      "application extensions are disabled by default and preserve community fallback",
+      "application extension paths remain bounded to fixed roots",
+      "certification evidence is deterministic credential free and cannot authorize publication"
+    ],
+    "required_tests": [
+      "application_layer_bootstrap_test",
+      "application_registrations_test",
+      "application_extension_sample_test",
+      "application_layer_certification_test",
+      "application_layer_contract_workflow"
+    ]
+  },
+  {
+    "id": "distributions",
+    "version": 1,
+    "owns": [
+      "distribution_manifest",
+      "publication_evidence",
+      "distribution_channel_state",
+      "distribution_channel_policy",
+      "publication_status",
+      "publication_failure_code",
+      "publication_recovery_policy",
+      "distribution_inspection",
+      "distribution_preflight",
+      "github_release_publication",
+      "distribution_artifact_bundle",
+      "ghcr_semantic_promotion",
+      "distribution_verification",
+      "artifact_attestation",
+      "distribution_bundle_preparation",
+      "distribution_certification",
+      "distribution_operations",
+      "distribution_channel_observation"
+    ],
+    "may_use": [
+      "platform_version",
+      "release_metadata",
+      "release_evidence",
+      "release_consistency",
+      "packaging_manifest",
+      "sbom",
+      "provenance",
+      "repository_intelligence"
+    ],
+    "cannot_use": [
+      "enterprise_repository_credentials",
+      "proprietary_extension_artifacts",
+      "arbitrary_distribution_channel",
+      "automatic_publication_without_approval",
+      "mutable_release_overwrite",
+      "container_rebuild_during_release",
+      "latest_tag_before_stable_release",
+      "secret_persistence"
+    ],
+    "invariants": [
+      "GitHub Releases and GHCR are the only supported baseline channels",
+      "repository and package identity derive from the active GitHub repository context",
+      "every publication binds one semantic version tag source commit and manifest digest",
+      "GitHub Release and GHCR evidence refer to the same approved source commit",
+      "semantic GHCR tags promote an existing commit-addressable image without rebuilding",
+      "release publication requires approval through the protected release environment",
+      "publication never overwrites an existing immutable tag release or image digest",
+      "pre-stable releases never publish the latest image tag",
+      "artifacts include checksums SBOMs provenance compatibility and operator notes",
+      "publication evidence contains no credentials tokens or proprietary artifacts",
+      "partial publication stops for operator review and resumes forward",
+      "inspection and preflight are read-only and repeatable",
+      "preflight blocks unavailable conflicting partial or replayed channel state",
+      "GitHub Release publication consumes a checksum-verified artifact bundle",
+      "GitHub Release publication targets the exact approved main commit",
+      "GitHub Release publication requires the protected release environment",
+      "GHCR semantic tags resolve to the existing commit-addressable image digest",
+      "GHCR promotion performs no container rebuild and creates no latest tag",
+      "release artifacts receive GitHub artifact attestations before publication",
+      "post-publication verification is read-only and binds both channels to canonical release evidence",
+      "verification evidence derives from a successful main run for the approved source commit",
+      "channel observations derive from the approved distribution bundle and use read-only provider access",
+      "provider credentials and raw responses are excluded from channel-state artifacts",
+      "distribution bundles derive from successful packaging evidence for the same current main commit",
+      "bundle preparation has read-only repository permissions and cannot publish channel state",
+      "production-like certification covers preparation preflight plans verification and replay protection",
+      "the complete Apache licensed community platform remains independently distributable"
+    ],
+    "required_tests": [
+      "distributions_manifest_test",
+      "distributions_channel_state_test",
+      "distributions_inspector_test",
+      "distributions_github_release_plan_test",
+      "distributions_ghcr_promotion_plan_test",
+      "distributions_verifier_test",
+      "distribution_certification_test",
+      "distribution_contract_certification"
+    ]
+  },
+  {
+    "id": "epic_10_validation",
+    "version": 1,
+    "owns": [
+      "validation_plan",
+      "governed_finding",
+      "validation_certification",
+      "release_blocker_policy",
+      "expiring_risk_acceptance",
+      "supported_environment_matrix",
+      "measurable_release_thresholds",
+      "deterministic_rc_plan",
+      "protected_rc_approval_boundary",
+      "representative_application_architecture",
+      "representative_application_public_contract_boundary"
+    ],
+    "may_use": [
+      "repository_intelligence",
+      "release_evidence",
+      "operational_readiness",
+      "compatibility_metadata",
+      "runtime_and_packaging_evidence",
+      "documented_platform_contracts"
+    ],
+    "cannot_use": [
+      "release_candidate_publication_during_planning",
+      "automatic_release_publication",
+      "silent_risk_acceptance",
+      "secret_bearing_evidence",
+      "undocumented_internal_contracts",
+      "protected_core_modification",
+      "mandatory_commercial_services"
+    ],
+    "invariants": [
+      "validation contracts reject unknown fields",
+      "critical and high findings cannot be accepted as residual risk",
+      "accepted findings require explicit human approval and expiry",
+      "passed certification requires every recorded phase to be complete",
+      "passed certification rejects unresolved critical and high findings",
+      "certification evidence is bound to a full source commit",
+      "supported environments cite repository evidence and declare manual validation",
+      "every quality category defines measurable targets and required evidence",
+      "RC plans bind versioned inputs to a full source commit",
+      "RC planning cannot approve or publish its own output",
+      "representative application journeys use documented public contracts only",
+      "representative application evidence is deterministic and credential free",
+      "representative application architecture cannot authorize publication"
+    ],
+    "required_tests": [
+      "epic_10_contract_validator_test",
+      "epic_10_release_baseline_test",
+      "epic_10_rc_preparation_test"
+    ]
+  },
+  {
+    "id": "extensions",
+    "version": 1,
+    "owns": [
+      "community_enterprise_boundary",
+      "extension_manifest",
+      "extension_configuration",
+      "extension_identity",
+      "extension_capability",
+      "extension_dependency",
+      "extension_component_declaration",
+      "extension_package_discovery",
+      "extension_compatibility_preflight",
+      "extension_dependency_order",
+      "extension_inspection_report",
+      "extension_registration_sdk",
+      "extension_registry",
+      "trusted_extension_loader",
+      "extension_component_resolver",
+      "extension_installed_state",
+      "extension_lifecycle",
+      "extension_readiness_gate",
+      "extension_certification_fixture",
+      "extension_certification_matrix",
+      "extension_lifecycle_documentation",
+      "application_extension_configuration",
+      "application_extension_package"
+    ],
+    "may_use": [
+      "platform_version",
+      "repository_intelligence",
+      "installed_platform_state",
+      "upgrade_manifest"
+    ],
+    "cannot_use": [
+      "proprietary_implementation_constants",
+      "arbitrary_remote_download",
+      "secret_persistence",
+      "automatic_code_execution_before_validation",
+      "runtime_installation",
+      "hot_unloading",
+      "compatibility_override",
+      "monkey_patch_registration",
+      "global_mutation_outside_registration_context"
+    ],
+    "invariants": [
+      "the community core remains fully functional without extensions",
+      "enterprise implementations remain in separately licensed repositories",
+      "extension manifests are validated before entrypoint execution",
+      "the complete enabled extension graph is compatible before any entrypoint executes",
+      "inspection and preflight never require an extension entrypoint",
+      "compatible load order is deterministic and dependency-first",
+      "only a ready preflight plan can reach extension entrypoint execution",
+      "extension registration is explicit atomic and limited to manifest declarations",
+      "the registry is sealed after successful dependency-ordered loading",
+      "loader failures expose stable codes and exception classes without internal messages",
+      "required extension failures deny readiness and normal application traffic",
+      "optional extensions are skipped only before execution and only for fully scoped findings",
+      "any entrypoint failure requires process replacement before retry",
+      "extension configuration contains no credentials or runtime secrets",
+      "application extension packages resolve only below the fixed application extensions root",
+      "component paths remain inside the extension package root",
+      "component real paths cannot escape the package root through symbolic links",
+      "extension upgrade observations never execute entrypoints or migrations",
+      "extensions are trusted in-process code and are not security sandboxes",
+      "production-like certification covers the extension-free core and adversarial extension states",
+      "repeated preflight is equivalent and one loader instance executes each entrypoint at most once"
+    ],
+    "required_tests": [
+      "extensions_manifest_test",
+      "extensions_configuration_test",
+      "extensions_catalog_test",
+      "extensions_compatibility_planner_test",
+      "extensions_inspector_test",
+      "extensions_registry_test",
+      "extensions_loader_test",
+      "extensions_component_resolver_test",
+      "extensions_installed_state_test",
+      "extensions_lifecycle_test",
+      "extension_health_controller_test",
+      "extension_framework_certification_test",
+      "extension_readiness_playbook_test"
+    ]
+  },
+  {
+    "id": "operational_readiness",
+    "version": 1,
+    "owns": [
+      "operational_backup_manifest",
+      "restore_plan",
+      "restore_safety_gate",
+      "restore_adapter_registry",
+      "restore_execution",
+      "restore_certification",
+      "support_bundle_manifest",
+      "diagnostic_redaction",
+      "diagnostic_collector_registry",
+      "support_bundle_builder",
+      "operational_health_snapshot",
+      "health_provider_registry",
+      "operational_health_inspector",
+      "disaster_recovery_policy",
+      "resilience_scenario_registry",
+      "resilience_certification_report",
+      "backup_component_inventory",
+      "restore_verification_requirements"
+    ],
+    "may_use": [
+      "platform_version",
+      "database_schema",
+      "installation_state",
+      "generated_artifacts",
+      "persistent_files",
+      "backup_evidence"
+    ],
+    "cannot_use": [
+      "persisted_credentials",
+      "embedded_secrets",
+      "automatic_destructive_restore",
+      "provider_specific_assumptions"
+    ],
+    "invariants": [
+      "operational manifests are credential-free",
+      "every backup set covers PostgreSQL, persistent files, generated configuration and installation metadata",
+      "every component is checksum-bound",
+      "restore dependencies are explicit and ordered",
+      "restore execution requires a later provider adapter and operator-controlled safety gate",
+      "restore execution requires maintenance mode, drained work and explicit operator confirmation",
+      "every component checksum is verified before its adapter executes",
+      "post-restore certification fails closed unless every required check passes",
+      "support bundles contain only explicitly registered structured collectors",
+      "diagnostic values are redacted before they are written",
+      "support bundle entries and total output are size bounded",
+      "support bundle files are checksum-bound and written with restricted permissions",
+      "support bundles are never uploaded automatically",
+      "operational health providers are explicit, isolated and time bounded",
+      "health findings use stable codes without raw exception messages",
+      "required and optional dependencies affect aggregate health differently",
+      "operational health covers installation, deployment, jobs, storage and integrations",
+      "disaster recovery objectives, roles and scenarios are explicit",
+      "restore and return to service require human approval",
+      "fault injection is limited to production-like temporary fixtures",
+      "every required resilience scenario must pass before certification",
+      "verification covers database schema, installation contract, generated artifacts and application health"
+    ],
+    "required_tests": [
+      "operational_backup_manifest_test",
+      "operational_restore_plan_test",
+      "operational_restore_certification_test",
+      "diagnostic_redactor_test",
+      "support_bundle_builder_test",
+      "support_bundle_certification_test",
+      "operational_health_inspector_test",
+      "operational_health_certification_test",
+      "disaster_recovery_policy_test",
+      "resilience_certification_test"
+    ]
+  },
+  {
+    "id": "platform",
+    "version": 1,
+    "owns": [
+      "repository_intelligence",
+      "architecture_manifest",
+      "governance_graph"
+    ],
+    "may_use": [
+      "security_privacy",
+      "multi_tenant_platform"
+    ],
+    "cannot_use": [
+      "arbitrary_shell_execution",
+      "unrestricted_network_access"
+    ],
+    "invariants": [
+      "generated artifacts identify the source commit",
+      "provider data retains provenance",
+      "graph traversal is bounded",
+      "MCP tools are allowlisted and read-only by default"
+    ],
+    "required_tests": [
+      "repository_intelligence_test"
+    ]
+  },
+  {
+    "id": "releases",
+    "version": 1,
+    "owns": [
+      "platform_version",
+      "change_fragment",
+      "release_impact",
+      "release_readiness",
+      "pull_request_release_validation",
+      "deterministic_changelog",
+      "release_notes",
+      "migration_notes",
+      "upgrade_notes",
+      "release_preparation",
+      "release_metadata",
+      "release_fragment_archive",
+      "release_compatibility",
+      "release_evidence",
+      "release_consistency",
+      "end_to_end_release_certification"
+    ],
+    "may_use": [
+      "repository_intelligence",
+      "upgrade_manifest",
+      "packaging_manifest",
+      "sbom",
+      "provenance"
+    ],
+    "cannot_use": [
+      "arbitrary_shell_execution",
+      "secret_persistence",
+      "automatic_tag_publication",
+      "automatic_release_publication"
+    ],
+    "invariants": [
+      "VERSION is the canonical platform version",
+      "release metadata is deterministic and credential-free",
+      "behavior changes declare semantic release impact",
+      "migrations and required upgrade actions are explicit",
+      "release-relevant pull requests provide normalized change fragments",
+      "generated release documents match normalized change fragments",
+      "release preparation archives every consumed change fragment",
+      "prepared release metadata binds source version target version impact and fragment digest",
+      "tags notes compatibility SBOM packaging provenance and OCI labels agree on one version",
+      "consistency validation is read-only and reports stable failure codes",
+      "release preparation requires maintainer approval"
+    ],
+    "required_tests": [
+      "platform_version_test",
+      "releases_change_fragment_test",
+      "releases_pull_request_validator_test",
+      "releases_notes_generator_test",
+      "releases_preparation_test",
+      "releases_consistency_validator_test",
+      "release_framework_certification_test"
+    ]
+  },
+  {
+    "id": "representative_application",
+    "version": 1,
+    "owns": [
+      "representative_application_fixture",
+      "public_contract_allowlist",
+      "required_capability_journeys",
+      "deterministic_fixture_evidence",
+      "design_i18n_grid_journey",
+      "domain_services_journey",
+      "multitenant_extension_journey",
+      "representative_application_findings",
+      "representative_application_certification",
+      "representative_application_rc_upgrade_fixtures",
+      "representative_application_rc_upgrade_certification",
+      "functional_framework_certification",
+      "production_deployment_certification",
+      "operational_resilience_certification",
+      "accessibility_certification",
+      "security_privacy_isolation_certification",
+      "performance_compatibility_certification",
+      "ai_readiness_certification"
+    ],
+    "may_use": [
+      "epic_10_validation",
+      "installation",
+      "design_tokens",
+      "themes",
+      "internationalization",
+      "domain_operations",
+      "domain_queries",
+      "authorization_policies",
+      "domain_events",
+      "grid",
+      "saved_views",
+      "exports",
+      "background_jobs",
+      "notifications",
+      "files",
+      "workflow",
+      "audit",
+      "multi_tenancy",
+      "extensions",
+      "operational_health",
+      "upgrades"
+    ],
+    "cannot_use": [
+      "undocumented_internal_contracts",
+      "protected_core_modification",
+      "mandatory_commercial_services",
+      "automatic_telemetry",
+      "maintainer_credentials",
+      "production_data",
+      "release_publication"
+    ],
+    "invariants": [
+      "fixture journeys use documented public contracts only",
+      "fixture operation remains community complete",
+      "fixture evidence is deterministic and credential free",
+      "tenant isolation is exercised with at least two organizations",
+      "Light and Dark themes are required",
+      "English and Brazilian Portuguese journeys are required",
+      "automated certification does not replace required manual reviews",
+      "representative application work cannot authorize publication"
+    ],
+    "required_tests": [
+      "representative_application_test",
+      "representative_application_journey_test",
+      "domain_services_journey_test",
+      "multitenant_extension_journey_test",
+      "representative_application_certification_test",
+      "rc_upgrade_fixture_test",
+      "rc_upgrade_certification_test",
+      "functional_framework_certification_test",
+      "production_deployment_certification_test",
+      "operational_resilience_certification_test",
+      "accessibility_certification_test",
+      "security_privacy_isolation_certification_test",
+      "performance_compatibility_certification_test",
+      "ai_readiness_certification_test"
+    ]
+  },
+  {
+    "id": "upgrades",
+    "version": 1,
+    "owns": [
+      "upgrade_manifest",
+      "installed_platform_state",
+      "upgrade_inspection",
+      "upgrade_preflight",
+      "upgrade_history",
+      "backup_evidence",
+      "maintenance_control",
+      "execution_safety_gate",
+      "resumable_upgrade_execution",
+      "upgrade_operation_registry",
+      "post_upgrade_verification",
+      "replay_safe_upgrade_history",
+      "recovery_guidance",
+      "end_to_end_upgrade_certification"
+    ],
+    "may_use": [
+      "installation_state",
+      "deployment_manifest",
+      "database_schema",
+      "generated_artifacts",
+      "extension_installed_state"
+    ],
+    "cannot_use": [
+      "arbitrary_shell_execution",
+      "secret_persistence",
+      "state_mutation_during_inspection",
+      "automatic_database_rollback"
+    ],
+    "invariants": [
+      "inspection and preflight are read-only",
+      "compatibility evaluation fails closed when required observations are unavailable",
+      "pending extension migrations and incompatible extension state block preflight",
+      "reports contain stable blocker and warning codes",
+      "persisted operational evidence is credential-free",
+      "recovery guidance never mutates execution or installed state",
+      "irreversible operations require forward recovery"
+    ],
+    "required_tests": [
+      "upgrades_installed_state_detector_test",
+      "upgrades_inspector_test",
+      "upgrades_backup_and_maintenance_test",
+      "upgrades_executor_test",
+      "upgrades_post_upgrade_verifier_test",
+      "upgrades_recovery_advisor_test",
+      "upgrade_framework_certification_test"
+    ]
+  }
+]

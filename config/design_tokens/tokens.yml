@@ -1,0 +1,171 @@
+version: 1
+base:
+  # Typography
+  font.family.sans: '"Instrument Sans", Inter, ui-sans-serif, system-ui, sans-serif'
+  font.family.body: '"Instrument Sans", Inter, ui-sans-serif, system-ui, sans-serif'
+  font.family.heading: '"Instrument Sans", Inter, ui-sans-serif, system-ui, sans-serif'
+  font.family.mono: '"IBM Plex Mono", "SFMono-Regular", Consolas, monospace'
+  font.size.badge: 0.75rem
+  font.size.xs: 0.75rem
+  font.size.sm: 0.875rem
+  font.size.md: 1rem
+  font.size.lg: 1.25rem
+  font.size.xl: 1.5rem
+  font.size.xxl: 2.25rem
+  font.size.2xl: 2.25rem
+  font.size.3xl: 3.25rem
+  font.weight.regular: "400"
+  font.weight.medium: "500"
+  font.weight.semibold: "600"
+  font.weight.bold: "700"
+  line.height.heading: "1.15"
+  line.height.body: "1.6"
+  line.height.code: "1.45"
+
+  # Spacing
+  space.xs: 0.25rem
+  space.sm: 0.5rem
+  space.md: 1rem
+  space.lg: 1.5rem
+  space.xl: 2rem
+  space.xxl: 3rem
+  space.2xl: 3.5rem
+
+  # Shape and elevation
+  radius.none: 0px
+  radius.xs: 0.125rem
+  radius.sm: 0.25rem
+  radius.md: 0.375rem
+  radius.lg: 0.5rem
+  radius.xl: 0.75rem
+  radius.full: 9999px
+  shadow.sm: 0 1px 2px 0 rgb(11 18 32 / 0.05)
+  shadow.md: 0 4px 12px -2px rgb(11 18 32 / 0.08), 0 2px 4px -1px rgb(11 18 32 / 0.04)
+  shadow.lg: 0 12px 32px -4px rgb(11 18 32 / 0.12), 0 4px 8px -2px rgb(11 18 32 / 0.06)
+  shadow.card: 0 24px 48px -12px rgb(7 13 23 / 0.28)
+
+  # Controls and motion
+  control.height: 2.5rem
+  transition.fast: 120ms cubic-bezier(0.16, 1, 0.3, 1)
+  transition.normal: 200ms cubic-bezier(0.16, 1, 0.3, 1)
+themes:
+  light:
+    # Canvas and surfaces
+    color.background: "#F8FAFC"
+    color.surface: "#FFFFFF"
+    color.surface.subtle: "#F1F5F9"
+
+    # Content and boundaries
+    color.text: "#0F172A"
+    color.text.muted: "#475569"
+    color.text.subtle: "#94A3B8"
+    color.border: "#E2E8F0"
+    color.border.subtle: "#F1F5F9"
+
+    # Brand and interaction
+    color.primary: "#0284C7"
+    color.primary.hover: "#0369A1"
+    color.on-primary: "#FFFFFF"
+    color.accent.primary: "#0F766E"
+    color.accent.primary-subtle: "rgb(15 118 110 / 0.10)"
+    color.accent.secondary: "#1D4ED8"
+    color.accent.secondary-subtle: "rgb(29 78 216 / 0.10)"
+    color.accent.on-fixed: "#5EEAD4"
+    color.focus: "#2563EB"
+
+    # Feedback and status
+    color.danger: "#DC2626"
+    color.danger.hover: "#B91C1C"
+    color.on-danger: "#FFFFFF"
+    color.success: "#16A34A"
+    color.on-success: "#FFFFFF"
+    color.warning: "#D97706"
+    color.on-warning: "#FFFFFF"
+    color.badge.active-bg: "#0F766E1F"
+    color.badge.active-text: "#0F766E"
+    color.badge.risk-bg: "#DC26261F"
+    color.badge.risk-text: "#DC2626"
+    color.success-subtle: "rgb(22 163 74 / 0.15)"
+    color.warning-subtle: "rgb(217 119 6 / 0.15)"
+
+    # Fixed dark presentation surfaces
+    color.fixed-canvas: "#0B1220"
+    color.fixed-surface: "#111827"
+    color.fixed-border: "#1E293B"
+    color.fixed-text: "#F8FAFC"
+    color.fixed-text-muted: "#94A3B8"
+    color.fixed-overlay: "rgb(255 255 255 / 0.08)"
+    color.fixed-overlay-strong: "rgb(255 255 255 / 0.10)"
+    color.terminal-background: "#0D1117"
+    color.terminal-surface: "#161B22"
+    color.terminal-border: "#30363D"
+    color.terminal-text: "#C9D1D9"
+    color.terminal-text-muted: "#8B949E"
+    color.terminal-info: "#58A6FF"
+    color.terminal-success: "#3FB950"
+    color.terminal-warning: "#D29922"
+    color.terminal-danger: "#F85149"
+    color.terminal-danger-text: "#FFA198"
+    color.window-close: "#FF5F57"
+    color.window-minimize: "#FFBD2E"
+    color.window-maximize: "#28CA41"
+  dark:
+    # Canvas and surfaces
+    color.background: "#070D17"
+    color.surface: "#111827"
+    color.surface.subtle: "#1E293B"
+
+    # Content and boundaries
+    color.text: "#F8FAFC"
+    color.text.muted: "#94A3B8"
+    color.text.subtle: "#475569"
+    color.border: "#1E293B"
+    color.border.subtle: "#0F172A"
+
+    # Brand and interaction
+    color.primary: "#38BDF8"
+    color.primary.hover: "#7DD3FC"
+    color.on-primary: "#0F172A"
+    color.accent.primary: "#5EEAD4"
+    color.accent.primary-subtle: "rgb(94 234 212 / 0.12)"
+    color.accent.secondary: "#60A5FA"
+    color.accent.secondary-subtle: "rgb(96 165 250 / 0.12)"
+    color.accent.on-fixed: "#5EEAD4"
+    color.focus: "#38BDF8"
+
+    # Feedback and status
+    color.danger: "#EF4444"
+    color.danger.hover: "#DC2626"
+    color.on-danger: "#FFFFFF"
+    color.success: "#22C55E"
+    color.on-success: "#FFFFFF"
+    color.warning: "#F59E0B"
+    color.on-warning: "#0F172A"
+    color.badge.active-bg: "#5EEAD426"
+    color.badge.active-text: "#5EEAD4"
+    color.badge.risk-bg: "#EF444426"
+    color.badge.risk-text: "#EF4444"
+    color.success-subtle: "rgb(34 197 94 / 0.15)"
+    color.warning-subtle: "rgb(245 158 11 / 0.15)"
+
+    # Fixed dark presentation surfaces
+    color.fixed-canvas: "#0B1220"
+    color.fixed-surface: "#111827"
+    color.fixed-border: "#1E293B"
+    color.fixed-text: "#F8FAFC"
+    color.fixed-text-muted: "#94A3B8"
+    color.fixed-overlay: "rgb(255 255 255 / 0.08)"
+    color.fixed-overlay-strong: "rgb(255 255 255 / 0.10)"
+    color.terminal-background: "#0D1117"
+    color.terminal-surface: "#161B22"
+    color.terminal-border: "#30363D"
+    color.terminal-text: "#C9D1D9"
+    color.terminal-text-muted: "#8B949E"
+    color.terminal-info: "#58A6FF"
+    color.terminal-success: "#3FB950"
+    color.terminal-warning: "#D29922"
+    color.terminal-danger: "#F85149"
+    color.terminal-danger-text: "#FFA198"
+    color.window-close: "#FF5F57"
+    color.window-minimize: "#FFBD2E"
+    color.window-maximize: "#28CA41"

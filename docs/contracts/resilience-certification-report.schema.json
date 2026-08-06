@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nomotect.example/contracts/resilience-certification-report.schema.json",
+  "title": "NomoTect resilience certification report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "source_commit", "started_at", "completed_at", "status", "summary", "scenarios"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "source_commit": { "type": "string", "minLength": 1 },
+    "started_at": { "type": "string", "format": "date-time" },
+    "completed_at": { "type": "string", "format": "date-time" },
+    "status": { "enum": ["certified", "failed"] },
+    "summary": { "type": "object" },
+    "scenarios": { "type": "array", "minItems": 8 }
+  }
+}

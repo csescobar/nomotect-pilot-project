@@ -1,0 +1,9 @@
+<% content_for(:title, t("home.title")) %>
+
+<div class="card">
+  <h1 class="ui-heading"><%= t("home.heading") %></h1>
+  <p><%= t("home.description") %></p>
+  <div>
+    <%= link_to t("home.primary_action"), health_path, class: "button button--primary" %>
+  </div>
+</div>

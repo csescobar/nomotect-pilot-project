@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "json"
+require "optparse"
+require_relative "../config/environment"
+
+options = {}
+parser = OptionParser.new do |configuration|
+  configuration.banner = "Usage: ruby bin/support-bundle [inspect|build] [--output PATH]"
+  configuration.on("--output PATH", "Local output directory for build") { |path| options[:output] = path }
+end
+parser.parse!
+
+command = ARGV.shift
+abort parser.to_s unless %w[inspect build].include?(command)
+abort parser.to_s if command == "build" && options[:output].blank?
+
+source = {
+  "platform_version" => Platform::Version.current.to_s,
+  "source_commit" => ENV.fetch("SOURCE_COMMIT", "unknown"),
+  "environment" => Rails.env
+}
+builder = OperationalReadiness::SupportBundleBuilder.new(
+  registry: OperationalReadiness::DefaultDiagnosticCollectors.new.registry,
+  output: options[:output] || Rails.root.join("tmp/support-bundle-inspection"),
+  source:
+)
+manifest = command == "inspect" ? builder.inspect : builder.build!
+puts JSON.pretty_generate(manifest.data)

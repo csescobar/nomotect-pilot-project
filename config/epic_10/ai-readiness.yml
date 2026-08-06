@@ -1,0 +1,48 @@
+schema_version: 1
+journey:
+  id: bounded-public-contract-change
+  contributor_profile: unfamiliar
+  objective: Register and certify a bounded repository-native validation capability.
+  guidance:
+    - AGENTS.md
+    - README.md
+    - docs/roadmap/epic-10-plan.md
+    - config/ai/contracts/epic_10_validation.yml
+  steps:
+    - id: discover-boundaries
+      documented_context: true
+      evidence: AGENTS.md
+    - id: identify-public-contract
+      documented_context: true
+      evidence: config/ai/contracts/epic_10_validation.yml
+    - id: implement-bounded-change
+      documented_context: true
+      evidence: docs/roadmap/epic-10-plan.md
+    - id: validate-and-publish-draft
+      documented_context: true
+      evidence: AGENTS.md
+change_boundary:
+  allowed_paths:
+    - app/services/epic_10
+    - config/epic_10
+    - test/services/epic_10
+    - bin
+    - changes
+  public_contracts:
+    - epic_10_validation
+    - representative_application
+  protected_internals_modified: false
+validation:
+  focused_tests: true
+  contract_certification: true
+  release_contract: true
+  draft_review_required: true
+evidence:
+  undocumented_context_steps: 0
+  bounded_change_completion: true
+  deterministic: true
+  credential_free: true
+  production_data_free: true
+findings: []
+publication:
+  allowed: false

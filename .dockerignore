@@ -1,0 +1,16 @@
+.git
+.github
+.bundle
+vendor/bundle
+log/*
+tmp/*
+!tmp/.keep
+storage/*
+!storage/.keep
+var/installation/*
+coverage
+node_modules
+.env
+.env.*
+config/master.key
+config/credentials/*.key

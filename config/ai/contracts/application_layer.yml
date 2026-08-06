@@ -1,0 +1,36 @@
+id: application_layer
+version: 1
+owns:
+  - application_source_boundary
+  - application_bootstrap
+  - application_role_registration
+  - application_grid_registration
+  - application_policy_view_integration
+  - application_extension_packages
+  - application_layer_certification
+may_use:
+  - authorization_policies
+  - grid
+  - extensions
+  - multi_tenancy
+cannot_use:
+  - undocumented_internal_contracts
+  - protected_core_modification
+  - arbitrary_executable_path_discovery
+  - implicit_administrative_permissions
+  - unscoped_grid_relations
+invariants:
+  - product-specific behavior remains below application
+  - shared platform code never references product-specific constants
+  - custom roles declare explicit permissions and never replace protected roles
+  - every application grid registration includes an authorized scope
+  - controller authorization remains mandatory even when views hide denied actions
+  - application extensions are disabled by default and preserve community fallback
+  - application extension paths remain bounded to fixed roots
+  - certification evidence is deterministic credential free and cannot authorize publication
+required_tests:
+  - application_layer_bootstrap_test
+  - application_registrations_test
+  - application_extension_sample_test
+  - application_layer_certification_test
+  - application_layer_contract_workflow

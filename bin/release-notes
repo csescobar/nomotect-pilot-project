@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative "../config/environment"
+
+command = ARGV.fetch(0, "verify")
+generator = Releases::NotesGenerator.new
+
+case command
+when "generate"
+  generator.write!.each { |path| puts "Generated #{path}" }
+when "verify"
+  findings = generator.validate
+  if findings.empty?
+    puts "Generated release documents are current"
+  else
+    findings.each { |finding| warn finding }
+    exit 2
+  end
+else
+  abort "Usage: bin/release-notes [generate|verify]"
+end

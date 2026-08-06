@@ -1,0 +1,6 @@
+schema_version: 1
+extensions:
+  - id: nomotect.sample-audit
+    package: sample-audit
+    enabled: false
+    required: false

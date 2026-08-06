@@ -1,0 +1,23 @@
+en:
+  layout:
+    skip_to_content: Skip to main content
+    open_navigation: Open navigation
+    close_navigation: Close navigation
+    primary_navigation: Primary navigation
+    breadcrumbs: Breadcrumbs
+    account: Account
+    dashboard: Dashboard
+    organizations: Organizations
+    grid_engine: Grid engine
+    close_notification: Close notification
+    component_showcase: Component showcase
+    ej2_showcase: EJ2 Components
+  preferences:
+    title: Settings
+    description: Manage your personal appearance and regional preferences.
+    appearance:
+      title: Appearance
+      description: Choose the theme used on this device.
+    regional:
+      title: Language and region
+      description: Choose the language used by your account.
