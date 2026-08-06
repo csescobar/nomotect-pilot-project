@@ -1,0 +1,32 @@
+schema_version: 1
+
+extension:
+  id: nomotect.service-desk-sla
+  version: 1.0.0
+  contract_version: 1
+  entrypoint: nomotect/service_desk_sla
+
+platform:
+  requirement: ">= 0.9.0, < 1.0.0"
+
+capabilities:
+  provides:
+    - id: service-desk.sla-target
+      version: 1
+  requires: []
+
+dependencies: []
+
+components:
+  configuration: null
+  migrations:
+    namespace: nomotect.service-desk-sla
+    paths: []
+  routes:
+    namespace: nomotect.service-desk-sla
+  assets:
+    namespace: nomotect.service-desk-sla
+  documentation: README.md
+
+security:
+  trust: trusted_in_process

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "repository_commit": "c04584c3e56b173a3e2c3c87f92efe5bfb8ecee1",
+  "repository_commit": "9dacf29a98d9f08dffbde1588f5dc703f2c9b215",
   "generation_command": "ruby bin/repository-intelligence generate",
   "files": [
     {
@@ -51,7 +51,7 @@
     {
       "path": "app/assets/stylesheets/design_tokens.css",
       "kind": "source",
-      "sha256": "bcfede7da6dd3411b61605c93c72cbd9a7dde0e1435ecf1640634a682c741198"
+      "sha256": "f47905b2a0e066e6704fb8c98f82ac8796edede3928dc49061f65d80876802ee"
     },
     {
       "path": "app/assets/stylesheets/marketing.css",
@@ -121,7 +121,7 @@
     {
       "path": "app/components/marketing/footer_component.html.erb",
       "kind": "component",
-      "sha256": "fdf7ffde77a8d297ed2a5ee862555830620097ec47764c7d1e73aa5487faf6af"
+      "sha256": "e02fa94fa583d2ca0e5ccf36d43a07151ba19a47e02ee9ba87949ba1a562b31a"
     },
     {
       "path": "app/components/marketing/footer_component.rb",
@@ -131,7 +131,7 @@
     {
       "path": "app/components/marketing/header_component.html.erb",
       "kind": "component",
-      "sha256": "53117048610052b738771c3a27a630aaec1ceafb08f6ba7b3dd076d90d212cfc"
+      "sha256": "ec6ff92df47ffb43f7cec2bf6f4eb386e44d658aa9c3f08facef945e4f8467e9"
     },
     {
       "path": "app/components/marketing/header_component.rb",
@@ -141,7 +141,7 @@
     {
       "path": "app/components/marketing/hero_component.html.erb",
       "kind": "component",
-      "sha256": "8e6c7b34d4658acce7835f2ebee9dd33aa32aa45c673816dc4b06863e475dd35"
+      "sha256": "9dff4bdd47f95bb76e5863e611384ebf8825e459aeb299191d001ccbda40758e"
     },
     {
       "path": "app/components/marketing/hero_component.rb",
@@ -161,7 +161,7 @@
     {
       "path": "app/components/marketing/product_preview_component.html.erb",
       "kind": "component",
-      "sha256": "285533ae58ee1a1bb53aecb61206680e81be82449ffccb94abb30b2c3539f72b"
+      "sha256": "86bb69a69b4148b426d3236cf18d9335960fa8240a82d3a8e08619d05b1188e9"
     },
     {
       "path": "app/components/marketing/product_preview_component.rb",
@@ -1541,7 +1541,7 @@
     {
       "path": "app/views/layouts/marketing.html.erb",
       "kind": "source",
-      "sha256": "c87a04a774786a4a3b94c562f559ccb9ce48d846f1b9a325fb5f9d966428a4f3"
+      "sha256": "63c6a310a407c58bf0731e7cd6f883cf7ed94c64915cad169265822273f9975a"
     },
     {
       "path": "app/views/marketing/show.html.erb",
@@ -1731,12 +1731,12 @@
     {
       "path": "config/design_tokens/dark.json",
       "kind": "source",
-      "sha256": "08943c1b2c38dc54ecca1b285983ba7c8c905e5b48f5a31c765e16ba86aaa1ce"
+      "sha256": "4e2954fce4194b1f54a4c6c14210a4caab5b2927730e00ce3b4d852d954abb4b"
     },
     {
       "path": "config/design_tokens/light.json",
       "kind": "source",
-      "sha256": "1738a431b5d940a77fa010df8dec7b9e2dea133390708981f3121a6d81675a6b"
+      "sha256": "bbecce5f0ac914d915b2d77bb697e7805a6f9b9a9eacbf0578f347c569a0398f"
     },
     {
       "path": "config/design_tokens/tokens.schema.json",
@@ -1746,7 +1746,7 @@
     {
       "path": "config/design_tokens/tokens.yml",
       "kind": "source",
-      "sha256": "9fd78ad6f61defc92d6a7527a9d8b70edc14d8a6d7ea4c22f8a4d99d8cce869f"
+      "sha256": "2cea85f7fea75e63a4fcf9229c4f05bd501e1618d986323100764fe8fbb17754"
     },
     {
       "path": "config/distributions/application_starter.yml",
@@ -1921,7 +1921,7 @@
     {
       "path": "config/locales/en.yml",
       "kind": "source",
-      "sha256": "08c3d8f862f8f3f3f1d221ffedacfda8588bca7ae90a9609f9d7e95851a5f4b1"
+      "sha256": "3629771902a5fce3250322c92882b7b71e9c38706b6399c0769722532185699a"
     },
     {
       "path": "config/locales/forms.en.yml",
@@ -1986,7 +1986,7 @@
     {
       "path": "config/locales/pt-BR.yml",
       "kind": "source",
-      "sha256": "bf95acd155d25c2ebd6e908b84b3bc3e5591321eac7b1ddefc78efa15affb1c9"
+      "sha256": "0883ab7090c89b411675d7b704702c14b25ec66727deafbc3f482e7b7b7ee58f"
     },
     {
       "path": "config/locales/showcase.en.yml",
@@ -1997,6 +1997,11 @@
       "path": "config/locales/showcase.pt-BR.yml",
       "kind": "source",
       "sha256": "6d66d26a69c84f7fc2168d1bee729d9dd277ce924fa3366add868f603d6d1ab4"
+    },
+    {
+      "path": "config/nomotect/adoption.json",
+      "kind": "source",
+      "sha256": "19fc5b910f26ceb30a6fb645f07997f6eb04052de3bed84eeabda27afc7c9a7a"
     },
     {
       "path": "config/operations/disaster-recovery.example.json",
@@ -2081,22 +2086,12 @@
     {
       "path": "db/schema.rb",
       "kind": "source",
-      "sha256": "c52ce3a910c9ca9f8cb745ac036358c70e1617d61ea6963ad890c06c6edacefe"
+      "sha256": "e66403d69e0c5f0e83513d9f8cec70639a17d811a1c26cf317c4b50e18914c15"
     },
     {
       "path": "db/seeds.rb",
       "kind": "source",
       "sha256": "217b16b847378a714ceb122e0e6412cf1185c5d6c86598c881c5d9a33315b0ca"
-    },
-    {
-      "path": "docs/adoption/clean-starter-onboarding.md",
-      "kind": "documentation",
-      "sha256": "a5c0f00c8da42d7d6bed53fb3f14471165dd25ae52698ef3284f8fe7144580e2"
-    },
-    {
-      "path": "docs/adoption/phase-4b-grid-ux-baseline.md",
-      "kind": "documentation",
-      "sha256": "ba6686b4b02831d43ce1513454361770b835090bb1843304eb7e41fa2adb916d"
     },
     {
       "path": "docs/ai/README.md",
@@ -2269,36 +2264,6 @@
       "sha256": "741b29421d9239532088f8c1106d776658ee3e881676e1ab990728e50e7eab9c"
     },
     {
-      "path": "docs/certifications/epic-9.md",
-      "kind": "documentation",
-      "sha256": "b93aeacdd9dd15f01770a5054ab6fdaff7ce64bfa7a57e20e651293c44bc5ab6"
-    },
-    {
-      "path": "docs/commercial-readiness/certification.md",
-      "kind": "documentation",
-      "sha256": "1615b56f9995c2d7004a8cde0c1c6d914a210863307a065930b7cdb484d03e39"
-    },
-    {
-      "path": "docs/commercial-readiness/editions-and-entitlements.md",
-      "kind": "documentation",
-      "sha256": "285ba625a41f60cb7e739b7b9843ad210f957d99d8ac6c63a10b6d6731bbee17"
-    },
-    {
-      "path": "docs/commercial-readiness/opt-in-telemetry.md",
-      "kind": "documentation",
-      "sha256": "004198c210b9600a7190198dcdc5c643441bc3d2500815175ec43b09ef2ebd01"
-    },
-    {
-      "path": "docs/commercial-readiness/support-consent.md",
-      "kind": "documentation",
-      "sha256": "d929ac076effc211d0552260315b6fd47b8db5df9f8c5da3e3d4c9235b0b2f3a"
-    },
-    {
-      "path": "docs/commercial-readiness/support-identifiers.md",
-      "kind": "documentation",
-      "sha256": "90b90733c03fc98555cf07c23927262fd6a44b2f629eab98f35474818924e114"
-    },
-    {
       "path": "docs/contracts/backup-evidence.schema.json",
       "kind": "documentation",
       "sha256": "a4b0f6c204e51274de28722b8918780b624f5db330f86218f7289dfe440ae7be"
@@ -2444,66 +2409,6 @@
       "sha256": "b4869d18da13e6afcd185ba840d5a953006022691b22a561b285557af08cc9ad"
     },
     {
-      "path": "docs/decisions/0004-apache-2-license.md",
-      "kind": "documentation",
-      "sha256": "b166ade01d67aed0c4c3238618e946a5a3096c45ae32e77b84af3f12778a547c"
-    },
-    {
-      "path": "docs/decisions/0005-ai-native-positioning.md",
-      "kind": "documentation",
-      "sha256": "808251eed03da628b4edef6424c1cbbbc6dadd90040e711e446a4eb3941314f8"
-    },
-    {
-      "path": "docs/decisions/0006-modular-monolith.md",
-      "kind": "documentation",
-      "sha256": "a4611246ba3aecda3424ff2f11ce7f7933818c5788452df0e2d8fa2b11d99702"
-    },
-    {
-      "path": "docs/decisions/0007-rails-authentication.md",
-      "kind": "documentation",
-      "sha256": "a86ba76f95be7345d91c54ac0ede54a448ad1cc9c48531a336902a173a1de69f"
-    },
-    {
-      "path": "docs/decisions/0008-supported-runtime-versions.md",
-      "kind": "documentation",
-      "sha256": "ef3cfdae0f33db79a7e77602bfcf612b19eef42dcacd2fd2d17bb367890d96d6"
-    },
-    {
-      "path": "docs/decisions/0009-javascript-strategy.md",
-      "kind": "documentation",
-      "sha256": "c749b07127f2f2f3b3685f1b1906d5ed578cd32ade6a3d85011af7207cbbec70"
-    },
-    {
-      "path": "docs/decisions/0010-testing-strategy.md",
-      "kind": "documentation",
-      "sha256": "249132969e6de428606e1ecb2631bc4a5e9ce718458de67b84cb6c245a483e12"
-    },
-    {
-      "path": "docs/decisions/0011-css-strategy.md",
-      "kind": "documentation",
-      "sha256": "22bc4c770cbafaf9ae739857f4aa573bcd145424bcc60c6b677ad7f3bde69f40"
-    },
-    {
-      "path": "docs/decisions/0012-design-token-architecture.md",
-      "kind": "documentation",
-      "sha256": "1958a4c4bdacaafdb066ccd1ff21c7b80741732988382c82920b5dc0a887e06c"
-    },
-    {
-      "path": "docs/decisions/0013-enterprise-extension-boundaries.md",
-      "kind": "documentation",
-      "sha256": "90c7fa4bb79d6e300c0652266fc6c3a2e19d292057ffc0106cd0e3f3d2f3045a"
-    },
-    {
-      "path": "docs/decisions/0014-supported-distribution-channels.md",
-      "kind": "documentation",
-      "sha256": "1d1f5761be455062424b91042d7b5ff5a7db78039959c03ca978b99fa61d59b7"
-    },
-    {
-      "path": "docs/decisions/0015-syncfusion-ej2-ui-library.md",
-      "kind": "documentation",
-      "sha256": "da81a2942f836b60e3ec0b52c523536227545c354f50b6fe3942b8f7c65e41c9"
-    },
-    {
       "path": "docs/deployment/container-registry.md",
       "kind": "documentation",
       "sha256": "beebfee7ff29033b368eb0ddcfedf365619d4de08668f272c1e16e2df0e93e3d"
@@ -2562,71 +2467,6 @@
       "path": "docs/design-system/token-integrity.md",
       "kind": "documentation",
       "sha256": "ad8fc4982bcd1100aecb7e22b7881cfd120959610d2840dd4b8713fd2d7cd353"
-    },
-    {
-      "path": "docs/distribution/application-starter.md",
-      "kind": "documentation",
-      "sha256": "195891fdbc0a8db2f8f75d0de0a1317cb244f05f3cf45253162cb7ec96eb5fe5"
-    },
-    {
-      "path": "docs/distribution/architecture.md",
-      "kind": "documentation",
-      "sha256": "2179850058cc5f455936f4efd0f709f379712ababe5a007fa2e465ad10867ba2"
-    },
-    {
-      "path": "docs/distribution/channel-policy.md",
-      "kind": "documentation",
-      "sha256": "35186804c453dfcee73ed1fcca17054792a6e52d4ee0ea176f9f94b93a6ab623"
-    },
-    {
-      "path": "docs/distribution/failure-codes.md",
-      "kind": "documentation",
-      "sha256": "bc2d528d8fa9e6b88e7c76cf9c9395dd6870e816d68c5332a74e47d30dbdfcd2"
-    },
-    {
-      "path": "docs/distribution/ghcr.md",
-      "kind": "documentation",
-      "sha256": "ff36811e9b99a81024775504a49d139a0e28a75c1355a1f53c6aec1073e1e0ce"
-    },
-    {
-      "path": "docs/distribution/github-releases.md",
-      "kind": "documentation",
-      "sha256": "f3607ba85ae664ecfbc8529644a8f06928f5e1ad206471b626c8e50c317ec196"
-    },
-    {
-      "path": "docs/distribution/inspection.md",
-      "kind": "documentation",
-      "sha256": "0eddf91f958d8cedbf5fbc07adf362d1bdaff4e0329aea478e4be63fe946a17d"
-    },
-    {
-      "path": "docs/distribution/operations.md",
-      "kind": "documentation",
-      "sha256": "c8d18496a823089c097d3ba41f9611a39779a2745c924e694272f34b3e570c52"
-    },
-    {
-      "path": "docs/distribution/verification.md",
-      "kind": "documentation",
-      "sha256": "d09bbf13160fc0bb1dee6a099a2850babb6a4a244e87c40bba876d921572ec15"
-    },
-    {
-      "path": "docs/examples/README.md",
-      "kind": "documentation",
-      "sha256": "d7293dd67cc61317ad7514febf60b070d6272a45377b9d74e05d9bde67949272"
-    },
-    {
-      "path": "docs/examples/backup-manifest.json",
-      "kind": "documentation",
-      "sha256": "4d56ae2857d22e9706e95a2b8fe4765efc6272815ba1b5023b00927ec7cdfe06"
-    },
-    {
-      "path": "docs/examples/extension-manifest.yml",
-      "kind": "documentation",
-      "sha256": "d8bac8ab01a94da011c17a7daa803862510644b27c258e78fa30a9cce3f72ef8"
-    },
-    {
-      "path": "docs/examples/upgrade-manifest.json",
-      "kind": "documentation",
-      "sha256": "e6e072fa190104643a4d7c7470e865aa514db67ab069f9327902e8d0fa85d8b9"
     },
     {
       "path": "docs/extensions/architecture.md",
@@ -2879,86 +2719,6 @@
       "sha256": "20251b67016dd3b309b783f1f7696c08eb0b06e11c88e413552e656e75985490"
     },
     {
-      "path": "docs/packaging/container-baseline.md",
-      "kind": "documentation",
-      "sha256": "becdd113b7da1190b005c8d8c1cc323364ec76f84a3e18ed96574c4769ad287a"
-    },
-    {
-      "path": "docs/releases/0.8.0/compatibility.json",
-      "kind": "documentation",
-      "sha256": "2e85294fbc56cba53827c451062fd1534cff2fd0d8be81b50e724e2ad05e02f0"
-    },
-    {
-      "path": "docs/releases/0.8.0/migration-notes.md",
-      "kind": "documentation",
-      "sha256": "885e8935f871a7f5811a24ebac2ed215a65667d532237be26deb052740552f1d"
-    },
-    {
-      "path": "docs/releases/0.8.0/release-metadata.json",
-      "kind": "documentation",
-      "sha256": "c0cdaab01e472cc88b61d13734e34c616809e6562493ced8d91b17a013ce768d"
-    },
-    {
-      "path": "docs/releases/0.8.0/release-notes.md",
-      "kind": "documentation",
-      "sha256": "26603eb102b953fd26098e373012b79b1bef3eb582af9f4ddcdb85a4c7b81fef"
-    },
-    {
-      "path": "docs/releases/0.8.0/upgrade-notes.md",
-      "kind": "documentation",
-      "sha256": "1ee98754fd3848efdc687b5ceadc21757917243dcdd27a2a8aad460d81dd2321"
-    },
-    {
-      "path": "docs/releases/0.9.0/compatibility.json",
-      "kind": "documentation",
-      "sha256": "b0c1c9344cff0f7ce00b3c3e1f9b806914752bddb2f86fc90de51574b5fe673e"
-    },
-    {
-      "path": "docs/releases/0.9.0/migration-notes.md",
-      "kind": "documentation",
-      "sha256": "41f5b00de29b1bf81cbb7a04a40c72d8c39954b1b6a9aa6f1d56536967ce9cc8"
-    },
-    {
-      "path": "docs/releases/0.9.0/release-metadata.json",
-      "kind": "documentation",
-      "sha256": "80c37c57744bd2e1fb04756ab891adc64d7eed91e4b9eeb1bd1efccc635281a1"
-    },
-    {
-      "path": "docs/releases/0.9.0/release-notes.md",
-      "kind": "documentation",
-      "sha256": "ce3b549061665afa10bf79e459cba5529c0fa0260c62d8589db0973c274e57e8"
-    },
-    {
-      "path": "docs/releases/0.9.0/upgrade-notes.md",
-      "kind": "documentation",
-      "sha256": "f0fa90a35857f69be4be35381f21500d066d91a8f92dcc1d8323235d4cfe16c3"
-    },
-    {
-      "path": "docs/releases/architecture.md",
-      "kind": "documentation",
-      "sha256": "486fe5a0bf7bceb6e1c25b5b8f32620d84d13416db3e6df0180d85183ad3c3a0"
-    },
-    {
-      "path": "docs/releases/consistency.md",
-      "kind": "documentation",
-      "sha256": "36a2e2eb3c817f3246164521353482703151877a26369bafb6e7753ec8eb26dd"
-    },
-    {
-      "path": "docs/releases/generated/migration-notes.md",
-      "kind": "documentation",
-      "sha256": "7858a680cda42b53269f527bafc8a5aeb58071f69f5e82fc8a16fe7336c2aa6c"
-    },
-    {
-      "path": "docs/releases/generated/unreleased.md",
-      "kind": "documentation",
-      "sha256": "3a782342ca195cade89cdc83925a3e2b4763c751659586a2a4e3c988df588e65"
-    },
-    {
-      "path": "docs/releases/generated/upgrade-notes.md",
-      "kind": "documentation",
-      "sha256": "0b5c2c10ceaa59fe0e4ea1f87c51b21c2d2b16bc14753de8566d38414be32643"
-    },
-    {
       "path": "docs/repository_intelligence/contracts/platform_owner_completion.schema.json",
       "kind": "documentation",
       "sha256": "0a201f17e91a152ca7fa854256887f7be6db75253103eb43c5eccb102add1ed8"
@@ -2971,17 +2731,7 @@
     {
       "path": "docs/roadmap/adoption-validation-improvements.md",
       "kind": "documentation",
-      "sha256": "ccfdf1fa11dd5221ac511d07dc1e84d0fdb65803a16cb015772446a927a19ccb"
-    },
-    {
-      "path": "docs/roadmap/epic-10-plan.md",
-      "kind": "documentation",
-      "sha256": "03c902b9c37a5f35f3e6f72c11b898e92383ce647b008bed1aa11230013d095a"
-    },
-    {
-      "path": "docs/roadmap/roadmap.md",
-      "kind": "documentation",
-      "sha256": "2569cdadf9985cf5232741b314930a52109c0e8803c4ccb51382e17dcb1cc5d6"
+      "sha256": "af76a572a82f1e309091900542391ec07b770ff869af09388e48d80916ae3dac"
     },
     {
       "path": "docs/security/dependency-and-supply-chain-policy.md",
@@ -3039,56 +2789,6 @@
       "sha256": "e325947071070483ea9dc21846f8f9e95c01414afca19564e3fcdd27f3213229"
     },
     {
-      "path": "docs/validation/architecture.md",
-      "kind": "documentation",
-      "sha256": "fdbb16235be96e4fcde879768b2656eac066b73ecd2508069889c3668a2272d0"
-    },
-    {
-      "path": "docs/validation/findings/BUG-001-ruby-version-mismatch.md",
-      "kind": "documentation",
-      "sha256": "b7fdfd3c9898fd1f758c1c734cbe8207af2fd69b46754b5ad985531b392aee19"
-    },
-    {
-      "path": "docs/validation/findings/BUG-002-bin-ci-executable-permission.md",
-      "kind": "documentation",
-      "sha256": "b0864b478c1542cbb2e54918eeb7a28888e9246ec842361a097240938547082e"
-    },
-    {
-      "path": "docs/validation/findings/BUG-003-postgresql-prerequisite-check.md",
-      "kind": "documentation",
-      "sha256": "5800071895bb72d01de3e19db074da0e1757f14edcd2be52f7be17381f931dfb"
-    },
-    {
-      "path": "docs/validation/findings/ISSUE-001-dx-bootstrap-frictions.md",
-      "kind": "documentation",
-      "sha256": "91d800042c2837dd0e68b70c644037535a2989e2c1f984348eb049fbf2d6b96e"
-    },
-    {
-      "path": "docs/validation/findings/PROPOSAL-BOOTSTRAP-FRICTIONS.md",
-      "kind": "documentation",
-      "sha256": "afe6ec15f22c2848c715f727d99c2cb9739ef0e905f89b3322ad4f445d426ea7"
-    },
-    {
-      "path": "docs/validation/rc-preparation.md",
-      "kind": "documentation",
-      "sha256": "45bb91f9637ba58a479edb598e97d17716220d618104c5a8aa34f9edab8dbade"
-    },
-    {
-      "path": "docs/validation/release-baseline.md",
-      "kind": "documentation",
-      "sha256": "e9752569cf24f2ccb4ab553710c88c3fdfad9f4a17a0df3d9edda1804c0128f4"
-    },
-    {
-      "path": "docs/validation/representative-application.md",
-      "kind": "documentation",
-      "sha256": "24708f19776f77e500f75ae1be17ef5ce04bec2bae56a9a6605540fa7ecccf2c"
-    },
-    {
-      "path": "docs/validation/threat-model.md",
-      "kind": "documentation",
-      "sha256": "f86fbb870ad917d2d176c5c9d891d20fe2d12665f9860c2081e4094f8b0a5794"
-    },
-    {
       "path": "lib/accessibility/html_audit.rb",
       "kind": "source",
       "sha256": "25d7d5215856f68102c1067dda125d09aa36eb6955f1d69c33e3358204734ecf"
@@ -3111,7 +2811,7 @@
     {
       "path": "lib/design_tokens/generated.rb",
       "kind": "source",
-      "sha256": "4a9cb93f5e2709af76a18b12c8b48fd5106a28a974e61c1819d27dbab3d3a59d"
+      "sha256": "d2ec9481ef7fc729cdb6faa61a29cbf67412e2810b942734f0eee49a636f9b00"
     },
     {
       "path": "lib/epic_9/certification.rb",
@@ -3249,6 +2949,11 @@
       "sha256": "fd348d1d7a1a2c3bd46eadd5e77d62fb3d804aae8395ec9d192f94fd3f48d50f"
     },
     {
+      "path": "lib/tasks/service_desk_demo.rake",
+      "kind": "source",
+      "sha256": "583ab375da6aef18f11163eac594e3e11f1b03ef584da0fd78f6960e6b32e346"
+    },
+    {
       "path": "test/application_system_test_case.rb",
       "kind": "test",
       "sha256": "45c762c4b383f02a357b87098c8ff2212181cd397b24afc662db64e7725c2c12"
@@ -3374,6 +3079,11 @@
       "sha256": "78467a606ab6cc88970645e7d02762d4cb490cbd6dda411c917af9fc53174266"
     },
     {
+      "path": "test/fixtures/files/sample.txt",
+      "kind": "test",
+      "sha256": "04d377494ba4fafb962b56944b56944ed0a67c43eb0e5c5ccfaf80d8c724d646"
+    },
+    {
       "path": "test/helpers/localization_helper_test.rb",
       "kind": "test",
       "sha256": "a485809a09bae47408d4b2174bdf91732a96e92b11625b2828207722939d7584"
@@ -3462,11 +3172,6 @@
       "path": "test/lib/application_registrations_test.rb",
       "kind": "test",
       "sha256": "b61726e80a9f2083ac5611366cdf786c0bcd4a93a922729f760c281faf597f98"
-    },
-    {
-      "path": "test/lib/application_starter_test.rb",
-      "kind": "test",
-      "sha256": "3bf8205e2db1f47c05bc29f6da2aa73732ddef0ca7a424fc420ee3ab4a5e8eac"
     },
     {
       "path": "test/lib/clean_starter_onboarding_test.rb",

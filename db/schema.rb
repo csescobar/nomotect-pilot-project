@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_27_170000) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_06_000002) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -104,7 +104,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_27_170000) do
     t.string "status", null: false
     t.datetime "updated_at", null: false
     t.index ["environment", "created_at"], name: "index_installation_records_on_environment_and_created_at"
-    t.check_constraint "status::text = ANY (ARRAY['migrated'::character varying, 'owner_created'::character varying, 'completed'::character varying]::text[])", name: "installation_records_status"
+    t.check_constraint "status::text = ANY (ARRAY['migrated'::character varying::text, 'owner_created'::character varying::text, 'completed'::character varying::text])", name: "installation_records_status"
   end
 
   create_table "memberships", force: :cascade do |t|
@@ -154,7 +154,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_27_170000) do
     t.string "time_zone", default: "UTC", null: false
     t.datetime "updated_at", null: false
     t.index ["slug"], name: "index_organizations_on_slug", unique: true
-    t.check_constraint "theme::text = ANY (ARRAY['light'::character varying, 'dark'::character varying, 'system'::character varying]::text[])", name: "organizations_theme_check"
+    t.check_constraint "theme::text = ANY (ARRAY['light'::character varying::text, 'dark'::character varying::text, 'system'::character varying::text])", name: "organizations_theme_check"
   end
 
   create_table "platform_roles", force: :cascade do |t|
@@ -191,8 +191,26 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_27_170000) do
     t.datetime "updated_at", null: false
     t.index ["organization_id"], name: "index_privacy_requests_on_organization_id"
     t.index ["requested_by_id"], name: "index_privacy_requests_on_requested_by_id"
-    t.check_constraint "kind::text = ANY (ARRAY['export'::character varying, 'anonymize'::character varying]::text[])", name: "privacy_requests_kind_check"
-    t.check_constraint "status::text = ANY (ARRAY['pending'::character varying, 'processing'::character varying, 'completed'::character varying, 'failed'::character varying]::text[])", name: "privacy_requests_status_check"
+    t.check_constraint "kind::text = ANY (ARRAY['export'::character varying::text, 'anonymize'::character varying::text])", name: "privacy_requests_kind_check"
+    t.check_constraint "status::text = ANY (ARRAY['pending'::character varying::text, 'processing'::character varying::text, 'completed'::character varying::text, 'failed'::character varying::text])", name: "privacy_requests_status_check"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "created_by_id", null: false
+    t.text "description"
+    t.date "due_date"
+    t.integer "lock_version", default: 0, null: false
+    t.string "name", null: false
+    t.bigint "organization_id", null: false
+    t.string "priority", default: "medium", null: false
+    t.string "status", default: "draft", null: false
+    t.bigint "stored_file_id"
+    t.datetime "updated_at", null: false
+    t.index ["created_by_id"], name: "index_projects_on_created_by_id"
+    t.index ["organization_id", "status"], name: "index_projects_on_organization_id_and_status"
+    t.index ["organization_id"], name: "index_projects_on_organization_id"
+    t.index ["stored_file_id"], name: "index_projects_on_stored_file_id"
   end
 
   create_table "retention_policies", force: :cascade do |t|
@@ -205,6 +223,43 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_27_170000) do
     t.index ["organization_id", "record_type"], name: "index_retention_policies_on_organization_id_and_record_type", unique: true
     t.index ["organization_id"], name: "index_retention_policies_on_organization_id"
     t.check_constraint "retention_days > 0", name: "retention_policies_positive_days"
+  end
+
+  create_table "service_request_attachments", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "organization_id", null: false
+    t.bigint "service_request_id", null: false
+    t.bigint "stored_file_id", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "uploaded_by_id", null: false
+    t.index ["organization_id"], name: "index_service_request_attachments_on_organization_id"
+    t.index ["service_request_id", "stored_file_id"], name: "index_sr_attachments_on_request_and_file", unique: true
+    t.index ["service_request_id"], name: "index_service_request_attachments_on_service_request_id"
+    t.index ["stored_file_id"], name: "index_service_request_attachments_on_stored_file_id"
+    t.index ["uploaded_by_id"], name: "index_service_request_attachments_on_uploaded_by_id"
+  end
+
+  create_table "service_requests", force: :cascade do |t|
+    t.bigint "assigned_support_agent_id"
+    t.string "category", null: false
+    t.datetime "closed_at"
+    t.datetime "created_at", null: false
+    t.text "description", default: "", null: false
+    t.string "identifier", null: false
+    t.bigint "organization_id", null: false
+    t.string "priority", null: false
+    t.bigint "requester_id", null: false
+    t.datetime "resolved_at"
+    t.string "status", default: "open", null: false
+    t.string "title", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assigned_support_agent_id"], name: "index_service_requests_on_assigned_support_agent_id"
+    t.index ["organization_id", "identifier"], name: "index_service_requests_on_organization_id_and_identifier", unique: true
+    t.index ["organization_id", "priority"], name: "index_service_requests_on_organization_id_and_priority"
+    t.index ["organization_id", "requester_id"], name: "index_service_requests_on_organization_id_and_requester_id"
+    t.index ["organization_id", "status"], name: "index_service_requests_on_organization_id_and_status"
+    t.index ["organization_id"], name: "index_service_requests_on_organization_id"
+    t.index ["requester_id"], name: "index_service_requests_on_requester_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -270,7 +325,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_27_170000) do
   add_foreign_key "privacy_preferences", "users"
   add_foreign_key "privacy_requests", "organizations"
   add_foreign_key "privacy_requests", "users", column: "requested_by_id"
+  add_foreign_key "projects", "organizations"
+  add_foreign_key "projects", "stored_files"
+  add_foreign_key "projects", "users", column: "created_by_id"
   add_foreign_key "retention_policies", "organizations"
+  add_foreign_key "service_request_attachments", "organizations"
+  add_foreign_key "service_request_attachments", "service_requests"
+  add_foreign_key "service_request_attachments", "stored_files"
+  add_foreign_key "service_request_attachments", "users", column: "uploaded_by_id"
+  add_foreign_key "service_requests", "organizations"
+  add_foreign_key "service_requests", "users", column: "assigned_support_agent_id"
+  add_foreign_key "service_requests", "users", column: "requester_id"
   add_foreign_key "sessions", "users"
   add_foreign_key "stored_files", "organizations"
   add_foreign_key "stored_files", "users", column: "uploaded_by_id"

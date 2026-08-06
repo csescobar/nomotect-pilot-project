@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "report": "manual-adoption-validation",
+  "product": "Service Desk Lite",
+  "platform": {
+    "name": "NomoTect",
+    "version": "0.9.0"
+  },
+  "branch": "agent/manual-adoption-validation",
+  "generated_at": "2026-08-06T12:15:00Z",
+  "mcp_evidence": {
+    "client_use_claimed": false,
+    "local_handshake": "PASSED",
+    "handshake_report": "tmp/validation/mcp-setup-certification.json",
+    "notes": "The local MCP handshake passed (resources, tools, graph_statistics, describe_module, describe_contract, impact_analysis, and the generated-write rejection). Client-use verification of a restarted AI client was not reproducible in this environment; discovery claims are therefore not marked PASSED."
+  },
+  "capabilities_validated": {
+    "domain_operations": true,
+    "tenant_isolation_policies": true,
+    "component_crud_pages": true,
+    "design_tokens_integration": true,
+    "grid_engine_integration": true,
+    "background_jobs_with_tenant_checks": true,
+    "file_attachment_handling": true,
+    "custom_extension_registration": true,
+    "real_browser_system_tests": true,
+    "readiness_and_evidence_reports": true
+  },
+  "tests": {
+    "files": 8,
+    "total": 51,
+    "passing": 51,
+    "system_tests_blocked": 0,
+    "notes": "All 51 tests pass. The 4 system tests were initially blocked by the missing Syncfusion EJ2 trial assets (bin/extract_syncfusion_assets); after extracting vendor/javascript/syncfusion and vendor/assets/syncfusion from the trial zip, all 4 pass. Two test bugs were also fixed: the account-menu <details> must be opened before clicking Sign out, and requester scoping is asserted against a request owned by a different user."
+  },
+  "baseline_comparison": {
+    "baseline_runs": 482,
+    "baseline_failures": 6,
+    "baseline_errors": 30,
+    "final_runs": 533,
+    "final_failures": 6,
+    "final_errors": 22,
+    "notes": "The 6 failures are pre-existing platform failures unchanged by this work. Extracting the Syncfusion EJ2 assets resolved 8 of the baseline's 30 errors (the platform's own EJ2 showcase system tests), bringing errors from 30 down to 22; the remaining 22 errors are pre-existing platform issues. All 51 application tests pass."
+  },
+  "ci_status": {
+    "entrypoint": "bin/ci",
+    "overall": "blocked_by_preexisting",
+    "steps": {
+      "design_tokens_check": "pass",
+      "design_token_audit": "pass",
+      "repository_intelligence_validate": "blocked (12 pre-existing missing documentation files in the starter skeleton)",
+      "lint": "pass (482 files, no offenses)",
+      "security": "pass (no vulnerabilities)",
+      "test": "baseline + 47 new passing tests"
+    },
+    "notes": "bin/repository-intelligence validate aborts because the Application Starter skeleton declares 12 platform-owned documentation files (docs/examples/README.md, docs/certifications/epic-9.md, docs/validation/*.md) in config/ai/documentation.yml that were never committed in the single bootstrap commit. These are platform-owned files outside the application-adoption boundary and are not part of this work. All remaining CI steps pass individually."
+  },
+  "undocumented_context_step_count": 11,
+  "undocumented_context_steps": [
+    {
+      "step": 1,
+      "topic": "Grid scope signature",
+      "discovery": "GridEngine::Catalog.scope_for(key, user:, organization:) requires keyword arguments; the registration scope lambda must accept user:, organization: and tolerate extra **.",
+      "documented": false
+    },
+    {
+      "step": 2,
+      "topic": "Grid column storage",
+      "discovery": "GridEngine::Definition#columns is a Hash keyed by column name, not an Array; the HtmlRenderer is driven from the definition, not the relation.",
+      "documented": false
+    },
+    {
+      "step": 3,
+      "topic": "Badge variant vocabulary",
+      "discovery": "Ui::BadgeComponent variants are neutral/primary/success/warning/danger. The 'ui-badge--info' variant assumed during authoring does not exist.",
+      "documented": false
+    },
+    {
+      "step": 4,
+      "topic": "Organization association boundary",
+      "discovery": "Organization is a protected model with no service_requests association; a new record must be built as ServiceRequest.new(organization:), never @organization.service_requests.new.",
+      "documented": false
+    },
+    {
+      "step": 5,
+      "topic": "Index authorization",
+      "discovery": "Grid index actions must call authorize!(@organization, :show?) in addition to the record-scoped policy; the grid scope alone does not deny a non-member.",
+      "documented": false
+    },
+    {
+      "step": 6,
+      "topic": "CSRF and session rotation in HTTP verification",
+      "discovery": "Rails rotates the session on login, invalidating the login-page token for subsequent form posts; raw Net::HTTP verification of write flows requires a fresh token per session.",
+      "documented": false
+    },
+    {
+      "step": 7,
+      "topic": "Integration-test @request collision",
+      "discovery": "ActionDispatch::IntegrationTest reserves @request for the Rack request object; a domain instance variable named @request silently corrupts generated URLs.",
+      "documented": false
+    },
+    {
+      "step": 8,
+      "topic": "Route parameter for organizations",
+      "discovery": "Organization routes use the numeric primary key in URLs (to_param is not overridden); seeded slugs are not used in path helpers.",
+      "documented": false
+    },
+    {
+      "step": 9,
+      "topic": "Controller before_action coverage",
+      "discovery": "A member action added later (attach) must be added to the set_service_request before_action list; missing coverage yields a NilClass policy lookup.",
+      "documented": false
+    },
+    {
+      "step": 10,
+      "topic": "Status default and transition legality",
+      "discovery": "ServiceRequest#status defaults to 'open' via the schema column default, and in_progress->resolved is a legal transition; the transition validator only runs on update.",
+      "documented": false
+    },
+    {
+      "step": 11,
+      "topic": "Extension runtime registry",
+      "discovery": "Extensions::Runtime does not expose the sealed registry post-boot; capability resolution requires rebuilding an in-memory configuration and Loader, or a documented fallback table.",
+      "documented": false
+    }
+  ],
+  "platform_paths_touched": [
+    "config/design_tokens/tokens.yml",
+    "config/design_tokens/light.json",
+    "config/design_tokens/dark.json",
+    "app/assets/stylesheets/design_tokens.css",
+    "lib/design_tokens/generated.rb",
+    "lib/tasks/service_desk_demo.rake",
+    "db/schema.rb",
+    "docs/roadmap/adoption-validation-improvements.md",
+    "docs/ai/generated/**",
+    "test/fixtures/files/sample.txt"
+  ],
+  "application_paths": {
+    "app_models": 2,
+    "app_operations": 7,
+    "app_controllers": 1,
+    "app_policies": 1,
+    "app_jobs": 1,
+    "app_views": 8,
+    "app_helpers": 1,
+    "config_files": 5,
+    "db_migrations": 2,
+    "extensions": 1,
+    "tests": 8
+  },
+  "demo_accounts": {
+    "organization_1": "Acme Services (acme-services)",
+    "organization_2": "Orion Support (orion-support)",
+    "password": "NomoTectLocal2026!",
+    "roles": ["administrator", "support_agent", "requester"]
+  },
+  "known_limitations": [
+    "The Syncfusion EJ2 trial assets are now committed in vendor/ (extracted via bin/extract_syncfusion_assets); they are licensed trial assets, not the full licensed package.",
+    "The SLA extension is committed with enabled: false to satisfy the platform disabled-default contract; the capability is proven through the documented in-memory enablement consumer path.",
+    "The platform's own 6 baseline test failures and 22 errors are pre-existing and unrelated to this work."
+  ],
+  "findings": [
+    {
+      "id": "FIND-2026-001",
+      "severity": "medium",
+      "title": "Application pages are unreachable from the platform navigation",
+      "observed": "Service Desk Lite routes (e.g. /organizations/63/service_requests) are registered only in application/config/routes/application.rb and render correctly at their direct URL. The platform navigation (Dashboard, Organizations, Grid Engine, Component Showcase, EJ2 Components) is hardcoded in the protected layout (app/views/layouts/application.html.erb) and the organization show page links only to the platform Customers feature. There is no documented application-owned extension point to contribute navigation items or organization-scoped links, so an application user cannot discover application pages without typing the URL.",
+      "recommendation": "Implement a navigation extension point (e.g. application-registered nav items or organization-scoped links) or disable the platform demo navigation for application-owned pages. This is a platform contract change beyond the application-adoption boundary and is tracked as follow-up work.",
+      "status": "open"
+    }
+  ]
+}

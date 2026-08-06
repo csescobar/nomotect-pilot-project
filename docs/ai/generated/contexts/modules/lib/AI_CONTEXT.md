@@ -4,12 +4,11 @@
 
 ## Responsibilities
 
-- test: Lib::ApplicationRegistrations, Lib::ApplicationStarter, Lib::CleanStarterOnboarding, Lib::ContainerEnvironmentValidator, Lib::DesignTokens::Compiler, Lib::Epic9Certification, Lib::GridEngine::HtmlRenderer, Lib::GridEngine::Query, Lib::GridEngine::SyncfusionAdapter, Lib::GridEngine::Types, Lib::Localization::SupportedLocales, Lib::McpBootstrap, Lib::Platform::Version, Lib::RepositoryIntelligence, Lib::RepositoryIntelligenceAiArtifact, Lib::RepositoryIntelligenceDocumentationGovernance, Lib::RepositoryIntelligenceHealth, Lib::RepositoryIntelligencePlaybookExecutor, Lib::RepositoryIntelligenceStorage
+- test: Lib::ApplicationRegistrations, Lib::CleanStarterOnboarding, Lib::ContainerEnvironmentValidator, Lib::DesignTokens::Compiler, Lib::Epic9Certification, Lib::GridEngine::HtmlRenderer, Lib::GridEngine::Query, Lib::GridEngine::SyncfusionAdapter, Lib::GridEngine::Types, Lib::Localization::SupportedLocales, Lib::McpBootstrap, Lib::Platform::Version, Lib::RepositoryIntelligence, Lib::RepositoryIntelligenceAiArtifact, Lib::RepositoryIntelligenceDocumentationGovernance, Lib::RepositoryIntelligenceHealth, Lib::RepositoryIntelligencePlaybookExecutor, Lib::RepositoryIntelligenceStorage
 
 ## Source paths
 
 - `test/lib/application_registrations_test.rb`
-- `test/lib/application_starter_test.rb`
 - `test/lib/clean_starter_onboarding_test.rb`
 - `test/lib/container_environment_validator_test.rb`
 - `test/lib/design_tokens/compiler_test.rb`
@@ -34,11 +33,6 @@
 - `controller:Application` —TESTED_BY→ `test:Lib::ApplicationRegistrations`
 - `job:Application` —TESTED_BY→ `test:Lib::ApplicationRegistrations`
 - `policy:Application` —TESTED_BY→ `test:Lib::ApplicationRegistrations`
-- `component:Application` —TESTED_BY→ `test:Lib::ApplicationStarter`
-- `controller:Application` —TESTED_BY→ `test:Lib::ApplicationStarter`
-- `job:Application` —TESTED_BY→ `test:Lib::ApplicationStarter`
-- `policy:Application` —TESTED_BY→ `test:Lib::ApplicationStarter`
-- `document:Commercial-readiness::Certification` —TESTED_BY→ `test:Lib::Epic9Certification`
 - `document:Extensions::Certification` —TESTED_BY→ `test:Lib::Epic9Certification`
 - `document:Deployment::Render` —TESTED_BY→ `test:Lib::GridEngine::HtmlRenderer`
 - `document:Design-system::Localization` —TESTED_BY→ `test:Lib::Localization::SupportedLocales`

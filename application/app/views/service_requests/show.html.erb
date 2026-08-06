@@ -1,0 +1,89 @@
+<% content_for :title, t("service_requests.show.title", identifier: @service_request.identifier) %>
+
+<%= render Ui::Layout::PageHeaderComponent.new(
+  title: "#{@service_request.identifier} · #{@service_request.title}",
+  description: t("service_requests.show.description", identifier: @service_request.identifier)
+) do %>
+  <%= link_to t("service_requests.actions.back"), organization_service_requests_path(@organization), class: "button button--ghost" %>
+  <% if allowed_to?(@service_request, :update?) %>
+    <%= link_to t("service_requests.actions.edit"), edit_organization_service_request_path(@organization, @service_request), class: "button button--secondary" %>
+  <% end %>
+<% end %>
+
+<%= render Ui::CardComponent.new do %>
+  <dl class="ui-property-list">
+    <div class="ui-property-list__item"><dt><%= t("service_requests.fields.status") %></dt><dd><%= render "status_badge", status: @service_request.status %></dd></div>
+    <div class="ui-property-list__item"><dt><%= t("service_requests.fields.priority") %></dt><dd><%= render "priority_badge", priority: @service_request.priority %></dd></div>
+    <div class="ui-property-list__item"><dt><%= t("service_requests.fields.category") %></dt><dd><%= t("service_requests.categories.#{@service_request.category}") %></dd></div>
+    <div class="ui-property-list__item"><dt><%= t("service_requests.fields.requester") %></dt><dd><%= @service_request.requester.email_address %></dd></div>
+    <div class="ui-property-list__item"><dt><%= t("service_requests.fields.assigned_support_agent") %></dt><dd><%= @service_request.assigned_support_agent&.email_address || "—" %></dd></div>
+    <div class="ui-property-list__item"><dt><%= t("service_requests.fields.created_at") %></dt><dd><%= format_local_time(@service_request.created_at) %></dd></div>
+    <div class="ui-property-list__item"><dt><%= t("service_requests.fields.description") %></dt><dd><%= simple_format(@service_request.description) %></dd></div>
+  </dl>
+<% end %>
+
+<% if allowed_to?(@service_request, :transition?) %>
+  <%= render Ui::CardComponent.new do %>
+    <h2><%= t("service_requests.transitions.title") %></h2>
+    <div class="page-stack">
+      <% ServiceRequest::VALID_TRANSITIONS.fetch(@service_request.status).each do |next_status| %>
+        <%= button_to t("service_requests.transitions.to_#{next_status.tr('_', '_')}", default: "→ #{t("service_requests.statuses.#{next_status}")}"),
+          transition_organization_service_request_path(@organization, @service_request, status: next_status),
+          method: :patch, class: "button button--secondary" %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+
+<% if allowed_to?(@service_request, :assign?) %>
+  <%= render Ui::CardComponent.new do %>
+    <h2><%= t("service_requests.assign.title") %></h2>
+    <%= form_with model: @service_request, url: assign_organization_service_request_path(@organization, @service_request), builder: Ui::FormBuilder, html: { class: "showcase__form" } do |form| %>
+      <%= form.ui_select :assigned_support_agent_id, agent_options(@organization), label: t("service_requests.fields.assigned_support_agent"), include_blank: t("service_requests.assign.none") %>
+      <%= form.ui_submit t("service_requests.actions.assign") %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if allowed_to?(@service_request, :attach_file?) %>
+  <%= render Ui::CardComponent.new do %>
+    <h2><%= t("service_requests.attachments.upload_title") %></h2>
+    <%= form_with model: @service_request, url: attach_organization_service_request_path(@organization, @service_request), builder: Ui::FormBuilder, html: { class: "showcase__form", multipart: true } do |form| %>
+      <%= form.label :file, t("service_requests.attachments.file") %>
+      <%= form.file_field :file, class: "ui-input", accept: "application/pdf,image/png,image/jpeg,text/plain" %>
+      <%= form.ui_submit t("service_requests.actions.attach") %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<section aria-labelledby="service-request-attachments" class="content-section">
+  <h2 id="service-request-attachments"><%= t("service_requests.attachments.title") %></h2>
+  <% if @service_request.attachments.any? %>
+    <ul class="ui-list">
+      <% @service_request.attachments.includes(:stored_file).each do |attachment| %>
+        <li>
+          <%= link_to attachment.stored_file.name, organization_stored_file_path(@organization, attachment.stored_file) %>
+          <span class="ui-text--muted"><%= number_to_human_size(attachment.stored_file.byte_size) %></span>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <%= render Ui::EmptyStateComponent.new(title: t("service_requests.attachments.empty.title"), description: t("service_requests.attachments.empty.description")) %>
+  <% end %>
+</section>
+
+<section aria-labelledby="service-request-audit" class="content-section">
+  <h2 id="service-request-audit"><%= t("service_requests.audit.title") %></h2>
+  <% if @events.any? %>
+    <div class="page-stack">
+      <% @events.each do |event| %>
+        <%= render Ui::CardComponent.new do %>
+          <strong><%= t("service_requests.audit.events.#{event.event_type.tr('.', '_')}", default: event.event_type.humanize) %></strong>
+          <p><%= format_local_time(event.occurred_at) %></p>
+        <% end %>
+      <% end %>
+    </div>
+  <% else %>
+    <%= render Ui::EmptyStateComponent.new(title: t("service_requests.audit.empty.title"), description: t("service_requests.audit.empty.description")) %>
+  <% end %>
+</section>

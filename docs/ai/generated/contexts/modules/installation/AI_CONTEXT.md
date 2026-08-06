@@ -13,11 +13,8 @@
 
 ## Relationships
 
-- `controller:Installation::Base` —DOCUMENTED_BY→ `document:Adoption::Phase-4b-grid-ux-baseline`
 - `controller:Installation::Base` —DOCUMENTED_BY→ `document:Installation::Database-provisioning`
-- `controller:Installation::Base` —DOCUMENTED_BY→ `document:Packaging::Container-baseline`
 - `controller:Installation::Base` —DOCUMENTED_BY→ `document:Security::Security-baseline`
-- `controller:Installation::Base` —DOCUMENTED_BY→ `document:Validation::Release-baseline`
 - `controller:Installation::Steps` —TESTED_BY→ `test:Controllers::Installation::StepsController`
 - `controller:Installation::Base` —TESTED_BY→ `test:Services::Epic10::ReleaseBaseline`
 

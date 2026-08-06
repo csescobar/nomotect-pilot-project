@@ -15,7 +15,6 @@
 - `controller:Customers` —TESTED_BY→ `test:Operations::CustomersOperations`
 - `model:Customer` —TESTED_BY→ `test:Operations::CustomersOperations`
 - `policy:Customer` —TESTED_BY→ `test:Operations::CustomersOperations`
-- `document:Distribution::Operations` —TESTED_BY→ `test:Operations::CustomersOperations`
 - `document:Extensions::Operations` —TESTED_BY→ `test:Operations::CustomersOperations`
 - `test:Models::Customer` —TESTED_BY→ `test:Operations::CustomersOperations`
 

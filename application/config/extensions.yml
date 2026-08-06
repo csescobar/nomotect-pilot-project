@@ -4,3 +4,7 @@ extensions:
     package: sample-audit
     enabled: false
     required: false
+  - id: nomotect.service-desk-sla
+    package: service-desk-sla
+    enabled: false
+    required: false

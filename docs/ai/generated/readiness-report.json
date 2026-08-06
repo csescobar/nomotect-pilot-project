@@ -1,14 +1,27 @@
 {
   "schema_version": "1.0",
-  "status": "ready",
-  "indexed_commit": "c04584c3e56b173a3e2c3c87f92efe5bfb8ecee1",
-  "current_commit": "c04584c3e56b173a3e2c3c87f92efe5bfb8ecee1",
+  "status": "not_ready",
+  "indexed_commit": "9dacf29a98d9f08dffbde1588f5dc703f2c9b215",
+  "current_commit": "9dacf29a98d9f08dffbde1588f5dc703f2c9b215",
   "counts": {
-    "files": 804,
-    "nodes": 383,
-    "edges": 281
+    "files": 745,
+    "nodes": 328,
+    "edges": 197
   },
-  "findings": [],
+  "findings": [
+    "docs/examples/README.md documentation file is missing",
+    "docs/examples/README.md source path is missing: docs/examples/extension-manifest.yml",
+    "docs/examples/README.md source path is missing: docs/examples/upgrade-manifest.json",
+    "docs/examples/README.md source path is missing: docs/examples/backup-manifest.json",
+    "docs/certifications/epic-9.md documentation file is missing",
+    "docs/certifications/epic-9.md source path is missing: docs/roadmap/roadmap.md",
+    "docs/validation/architecture.md documentation file is missing",
+    "docs/validation/release-baseline.md documentation file is missing",
+    "docs/validation/rc-preparation.md documentation file is missing",
+    "docs/validation/threat-model.md documentation file is missing",
+    "docs/validation/representative-application.md documentation file is missing",
+    "docs/validation/representative-application.md source path is missing: docs/roadmap/epic-10-plan.md"
+  ],
   "provider": {
     "available": true,
     "provider": "RepositoryIntelligence::Providers::NullProvider"
