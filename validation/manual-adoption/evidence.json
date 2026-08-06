@@ -159,5 +159,15 @@
     "The Syncfusion EJ2 trial assets are now committed in vendor/ (extracted via bin/extract_syncfusion_assets); they are licensed trial assets, not the full licensed package.",
     "The SLA extension is committed with enabled: false to satisfy the platform disabled-default contract; the capability is proven through the documented in-memory enablement consumer path.",
     "The platform's own 6 baseline test failures and 22 errors are pre-existing and unrelated to this work."
+  ],
+  "findings": [
+    {
+      "id": "FIND-2026-001",
+      "severity": "medium",
+      "title": "Application pages are unreachable from the platform navigation",
+      "observed": "Service Desk Lite routes (e.g. /organizations/63/service_requests) are registered only in application/config/routes/application.rb and render correctly at their direct URL. The platform navigation (Dashboard, Organizations, Grid Engine, Component Showcase, EJ2 Components) is hardcoded in the protected layout (app/views/layouts/application.html.erb) and the organization show page links only to the platform Customers feature. There is no documented application-owned extension point to contribute navigation items or organization-scoped links, so an application user cannot discover application pages without typing the URL.",
+      "recommendation": "Implement a navigation extension point (e.g. application-registered nav items or organization-scoped links) or disable the platform demo navigation for application-owned pages. This is a platform contract change beyond the application-adoption boundary and is tracked as follow-up work.",
+      "status": "open"
+    }
   ]
 }

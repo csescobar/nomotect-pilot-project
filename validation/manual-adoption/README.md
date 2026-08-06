@@ -92,3 +92,25 @@ resolved the platform's own 8 EJ2 showcase system tests in the baseline.
   extension. The capability is proven through the documented in-memory enablement
   consumer path.
 - The platform's 6 pre-existing test failures and 22 errors are unrelated to this work.
+
+## Findings
+
+### FIND-2026-001 — Application pages are unreachable from the platform navigation
+
+**Severity:** medium
+
+Service Desk Lite routes (e.g. `/organizations/63/service_requests`) are registered
+only in `application/config/routes/application.rb` and render correctly at their
+direct URL. The platform navigation (Dashboard, Organizations, Grid Engine, Component
+Showcase, EJ2 Components) is hardcoded in the protected layout
+(`app/views/layouts/application.html.erb`) and the organization show page links only to
+the platform Customers feature. There is no documented application-owned extension
+point to contribute navigation items or organization-scoped links, so an application
+user cannot discover application pages without typing the URL.
+
+**Recommendation:** implement a navigation extension point (e.g. application-registered
+nav items or organization-scoped links) or disable the platform demo navigation for
+application-owned pages. This is a platform contract change beyond the
+application-adoption boundary and is tracked as follow-up work.
+
+**Status:** open
